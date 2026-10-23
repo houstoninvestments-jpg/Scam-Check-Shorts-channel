@@ -110,6 +110,8 @@ jobs:
       - name: Publish website
         id: deploy
         if: always()
+        # Stays soft until GitHub Pages is switched on in the repo settings (docs/SETUP.md step 1).
+        continue-on-error: true
         uses: actions/deploy-pages@v4
 
       - name: Save ledger and stats
