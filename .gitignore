@@ -1,0 +1,34 @@
+# Secrets: never commit. Keys live only in GitHub Actions secrets or host env vars.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+client_secret*.json
+token*.json
+secrets/
+.secrets/
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+out/
+.cache/
+.remotion/
+coverage/
+
+# Media and working files (videos go to YouTube, not git)
+*.mp4
+*.wav
+*.mp3
+work/
+models/
+.venv/
+__pycache__/
+
+# OS / editor
+.DS_Store
+*.log
