@@ -1,0 +1,55 @@
+{
+  "channel": {
+    "name": "Scam or Not",
+    "tagline": "One real scam text a day. Real or scam?",
+    "never": "This channel never texts you, calls you, or asks for money.",
+    "closer": "Send this to the one who'd tap it."
+  },
+  "cadence": { "shortsPerDay": 1, "timezone": "America/Chicago" },
+  "models": {
+    "writer": "claude-fable-5-1",
+    "checker": "claude-opus-5-5"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "fallback": "kokoro",
+    "elevenlabsVoiceId": "",
+    "elevenlabsModel": "eleven_multilingual_v2",
+    "monthlyCreditBudget": 90000,
+    "kokoroVoice": "af_heart",
+    "speed": 1.0
+  },
+  "ctaStates": ["none", "soft", "direct"],
+  "skins": ["imessage", "android", "email", "voicemail", "marketplace", "dm"],
+  "site": {
+    "baseUrl": "https://houstoninvestments-jpg.github.io/Scam-Check-Shorts-channel",
+    "fireDrillBaseUrl": ""
+  },
+  "supabase": { "url": "", "publishableKey": "" },
+  "affiliate": {
+    "enabled": false,
+    "label": "Paid link",
+    "name": "Identity protection pick",
+    "url": "",
+    "blurb": "Placeholder. We have not picked a partner yet."
+  },
+  "familyPass": {
+    "enabled": false,
+    "priceUsd": 19,
+    "maxMembers": 6,
+    "refundDays": 30,
+    "stripePaymentLink": ""
+  },
+  "youtube": {
+    "categoryId": "27",
+    "defaultLanguage": "en",
+    "privacyStatus": "public",
+    "firstUploadPrivacy": "private",
+    "dailyQuotaBudget": 9000
+  },
+  "scout": {
+    "maxAgeDays": 45,
+    "minScore": 0.15,
+    "dedupeSimilarity": 0.55
+  }
+}

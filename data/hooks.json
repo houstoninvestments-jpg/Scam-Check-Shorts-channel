@@ -1,0 +1,11 @@
+{
+  "_note": "Hook variants. The learn step updates stats from YouTube retention; the picker favors what holds viewers, while still testing the rest.",
+  "variants": [
+    { "id": "real-or-scam", "pattern": "Real or scam? You get three seconds." },
+    { "id": "would-you-tap", "pattern": "Would you tap this? Decide fast." },
+    { "id": "going-around", "pattern": "This text is going around right now." },
+    { "id": "someone-you-love", "pattern": "Someone you love gets this today. Real or scam?" },
+    { "id": "looks-official", "pattern": "It looks official. Look closer." }
+  ],
+  "stats": {}
+}

@@ -1,0 +1,41 @@
+{
+  "_note": "Real-style messages for the daily round. Each is a typical safe message: it asks for nothing, has no link to tap, and names no real company. 'why' explains the safe pattern in plain words.",
+  "items": [
+    {
+      "id": "code-you-asked-for",
+      "sender": "28819",
+      "body": "Your sign-in code is 482913. It expires in 10 minutes. Never share this code with anyone.",
+      "why": "You asked for this code. It has no link and tells you not to share it. Only type it into the app you just opened yourself."
+    },
+    {
+      "id": "pharmacy-ready",
+      "sender": "Pharmacy",
+      "body": "Your prescription is ready for pickup at the store you chose. Reply STOP to end texts.",
+      "why": "It asks for nothing. No link, no payment, no personal details. If you're unsure, call the store using a number you already have."
+    },
+    {
+      "id": "dentist-reminder",
+      "sender": "+1 (555) 010-0177",
+      "body": "Reminder: you have a cleaning on Tuesday at 2:30 PM. Call the office if you need to change it.",
+      "why": "It points you to the office you already know. It doesn't ask you to tap, pay, or confirm details."
+    },
+    {
+      "id": "card-alert-call-back",
+      "sender": "Card Alerts",
+      "body": "Did you make a purchase of $42.10 today? If not, call the number on the back of your card.",
+      "why": "It sends you to the number on your own card, not a number or link in the text. That's the safe way to check."
+    },
+    {
+      "id": "school-closing",
+      "sender": "School District",
+      "body": "School is closed tomorrow because of snow. Watch the district website for updates.",
+      "why": "It shares news and asks for nothing. You can check it yourself on a site you already know."
+    },
+    {
+      "id": "friend-running-late",
+      "sender": "Sam",
+      "body": "Running 10 min late, save me a seat!",
+      "why": "A known contact, a normal message, no link, no request for money or codes."
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "_note": "Hand-written stand-in for live review b (claude-opus-5-5). Dry-run only: it exercises the agree/skip logic, it is not a real review.",
+  "output": { "verdict": "scam", "confidence": 0.9, "problems": [] }
+}

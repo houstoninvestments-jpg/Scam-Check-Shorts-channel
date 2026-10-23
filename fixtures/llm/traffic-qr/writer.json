@@ -1,0 +1,50 @@
+{
+  "_note": "Hand-written stand-in for the live writer (claude-fable-5-1), built only from fixtures/sources/ftc-traffic-qr.json. Dry-run only.",
+  "output": {
+    "scamName": "Fake traffic ticket text with a QR code",
+    "message": {
+      "sender": "+1 (202) 555-0142",
+      "subject": "",
+      "body": "STATE COURT NOTICE\nCase No. TC-2026-48213\nUnpaid traffic violation.\nHearing: Nov 3, 9:00 AM\nAmount due: $86.50\nScan the QR code to pay now and avoid court. Unpaid cases face default judgment, fines, and enforcement action.",
+      "hasQr": true,
+      "provenance": "recreated",
+      "provenanceNote": "Recreated from the FTC alert on traffic violation texts.",
+      "evidence": [
+        { "quote": "It starts with a text message with a QR code. The message says you need to scan it to pay for a traffic violation to avoid court.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" },
+        { "quote": "The text might look official with a seal from whatever state it claims to be from and a (fake) case number.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" },
+        { "quote": "A hearing date, a hearing time, a payment amount.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" },
+        { "quote": "The scammers will threaten things like default judgments, fines, and enforcement actions.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" }
+      ]
+    },
+    "hook": "This text looks official. Look closer.",
+    "stampSay": "It's a scam. Here's how to tell.",
+    "flags": [
+      {
+        "label": "Scan to pay",
+        "say": "The scam starts right here. Scan this code to pay your ticket.",
+        "target": { "kind": "text", "match": "Scan the QR code to pay now" },
+        "evidence": { "quote": "The message says you need to scan it to pay for a traffic violation to avoid court.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" }
+      },
+      {
+        "label": "Fake case number",
+        "say": "A seal and a case number make it look real. Both are easy to fake.",
+        "target": { "kind": "text", "match": "Case No. TC-2026-48213" },
+        "evidence": { "quote": "The text might look official with a seal from whatever state it claims to be from and a (fake) case number.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" }
+      },
+      {
+        "label": "Scary threats",
+        "say": "Then comes a list of bad things that happen if you don't pay.",
+        "target": { "kind": "text", "match": "default judgment, fines, and enforcement action" },
+        "evidence": { "quote": "The texts will include a list of bad things that could happen if you don't pay.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" }
+      }
+    ],
+    "safeMove": {
+      "label": "Don't reply. Don't scan.",
+      "say": "Don't answer the text, and don't scan the code.",
+      "evidence": { "quote": "If you get a text like this, don't respond, and don't scan the QR code.", "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam" }
+    },
+    "title": "Traffic ticket text with a QR code: real or scam?",
+    "description": "This text says you owe a traffic fine and must scan a QR code to pay. The FTC says texts like this are a scam. Don't reply, and don't scan the code.",
+    "tags": ["scam", "text scam", "traffic ticket scam", "QR code scam", "scam alert", "smishing"]
+  }
+}

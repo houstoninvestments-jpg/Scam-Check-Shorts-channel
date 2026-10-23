@@ -1,0 +1,179 @@
+import { join } from "node:path";
+import type { Episode, Lead, Script } from "../types.js";
+import type { ShortProps } from "../../remotion/props.js";
+import { config } from "../lib/config.js";
+import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
+import { log, pad3, path, slugify, today, writeJson } from "../lib/util.js";
+import type { LLM } from "../llm/client.js";
+import { scout, scoutFromFixtures, updateSourceHealth } from "../scout/index.js";
+import { write } from "../writer/index.js";
+import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
+import { loadHooks, pickHook } from "../learn/hooks.js";
+import { chooseCta, chooseSkin } from "./choose.js";
+import { synthesize, type VoiceResult } from "../voice/index.js";
+import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
+import { uploadRequest, publishShort, type Uploader } from "../publish/youtube.js";
+
+export interface RunOptions {
+  dryRun: boolean;
+  llm: LLM;
+  fixtureSources?: string[]; // dry-run: saved source captures instead of the live scout
+  uploader?: Uploader; // live: YouTube client
+  voice?: "elevenlabs" | "kokoro";
+  workDir?: string;
+}
+
+export interface RunReport {
+  date: string;
+  dryRun: boolean;
+  status: "published" | "rendered" | "skipped" | "failed";
+  episode?: number;
+  videoFile?: string;
+  youtubeId?: string;
+  warnings: string[];
+  errors: string[];
+  steps: { step: string; ok: boolean; detail: string }[];
+}
+
+const SOURCE_SHORT: Record<string, string> = { ftc: "FTC", bbb: "BBB", ag: "state attorney general", reddit: "community" };
+
+/** Which captures are allowed to back a public video. Anything else is dry-run material only. */
+export const PUBLISHABLE_CAPTURES = new Set(["page", "feed"]);
+
+export async function runDaily(opts: RunOptions): Promise<RunReport> {
+  const cfg = config();
+  const date = today(cfg.cadence.timezone);
+  const report: RunReport = { date, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [] };
+  const step = (s: string, ok: boolean, detail: string) => {
+    report.steps.push({ step: s, ok, detail });
+    log(`${ok ? "ok  " : "FAIL"} ${s}: ${detail}`);
+  };
+  const work = opts.workDir ?? path("work", date);
+
+  try {
+    const ledger = loadLedger();
+    if (!opts.dryRun && ledger.episodes.some((e) => e.date === date && e.status === "published")) {
+      step("cadence", true, "already published today");
+      report.status = "skipped";
+      return report;
+    }
+
+    // 1. Scout
+    const found = opts.fixtureSources ? scoutFromFixtures(opts.fixtureSources) : await scout();
+    if (!opts.fixtureSources) updateSourceHealth(found.results);
+    for (const r of found.results.filter((r) => !r.ok)) report.warnings.push(`source ${r.id} failed: ${r.error}`);
+    step("scout", found.leads.length > 0, `${found.leads.length} leads, ${found.dropped.length} dropped as repeats`);
+    if (!found.leads.length) throw new Error("no fresh scams found in any source");
+
+    // 2-3. Write and check, lead by lead, until one passes. Unsure means skip, never escalate.
+    const hooks = loadHooks();
+    const recentHooks = ledger.episodes.slice(-3).map((e) => e.hookVariant).reverse();
+    let chosen: { lead: Lead; script: Script; hookId: string } | undefined;
+    for (const lead of found.leads.slice(0, 4)) {
+      const hook = pickHook(hooks, recentHooks);
+      const skin = chooseSkin(lead.channel, ledger.episodes);
+      let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
+      let mech = mechanicalCheck(script, lead);
+      if (!mech.ok) {
+        // one rewrite with the exact failures, then move on
+        script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems));
+        mech = mechanicalCheck(script, lead);
+      }
+      const verdict = await check(opts.llm, script, lead);
+      step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
+      if (verdict.pass) {
+        chosen = { lead, script, hookId: hook.id };
+        break;
+      }
+      ledger.skipped.push({ leadId: lead.id, date, reason: verdict.reason });
+    }
+    if (!chosen) {
+      saveLedger(ledger);
+      report.status = "skipped";
+      report.warnings.push("no lead passed both checks today; skipped");
+      return report;
+    }
+
+    const number = ledger.nextNumber;
+    const { lead, script } = chosen;
+    const ep: Episode = {
+      number,
+      leadId: lead.id,
+      date,
+      skin: chooseSkin(lead.channel, ledger.episodes),
+      cta: chooseCta(ledger.episodes),
+      hookVariant: chosen.hookId,
+      script,
+      sources: lead.docs.map((d) => ({ url: d.url, name: d.name, capture: d.capture })),
+      slug: `${pad3(number)}-${slugify(script.scamName, 60)}`,
+      status: "checked",
+    };
+
+    // 4. Voice and render
+    const lines = spokenLines(script).map((text, i) => ({ id: ["hook", "stamp", "flag1", "flag2", "flag3", "safe", "closer"][i], text }));
+    const audioDir = join(work, "audio");
+    const publicDir = join(work, "public");
+    let voice: VoiceResult = await synthesize(lines, audioDir, { force: opts.voice });
+    if (voice.provider === "kokoro" && !opts.voice && process.env.ELEVENLABS_API_KEY) report.warnings.push("ElevenLabs failed; used the free fallback voice");
+    let timeline;
+    try {
+      timeline = prepareTimeline(voice, publicDir);
+    } catch (e) {
+      throw new Error(`timing: ${String(e)}`);
+    }
+    step("voice", true, `${voice.label}, ${(timeline.total / timeline.fps).toFixed(1)}s`);
+
+    const props: ShortProps = {
+      number,
+      skin: ep.skin,
+      cta: ep.cta,
+      script,
+      timeline,
+      closer: cfg.channel.closer,
+      voiceLabel: "AI voice",
+      sourceName: SOURCE_SHORT[lead.docs[0].kind] ?? lead.docs[0].name,
+      testLabel: opts.dryRun ? "TEST RENDER" : undefined,
+    };
+    writeJson(join(work, "props.json"), props);
+    const videoFile = join(work, `scam-${pad3(number)}${opts.dryRun ? "-test" : ""}.mp4`);
+    await renderShort(props, publicDir, videoFile);
+    const p = probe(videoFile);
+    assertShort(p);
+    step("render", true, `${videoFile} (${p.width}x${p.height}, ${p.seconds}s)`);
+    ep.status = "rendered";
+    ep.voice = voice.label;
+    report.videoFile = videoFile;
+    report.episode = number;
+
+    // 5. Publish
+    const upload = uploadRequest(ep, voice.label);
+    writeJson(join(work, "upload-request.json"), upload);
+    const unsafe = ep.sources.filter((s) => !PUBLISHABLE_CAPTURES.has(s.capture));
+    if (opts.dryRun) {
+      step("publish", true, "dry run: upload request saved, nothing sent to YouTube");
+      report.status = "rendered";
+    } else if (unsafe.length) {
+      throw new Error(`refusing to publish: sources not fully captured (${unsafe.map((s) => s.capture.split(":")[0]).join(", ")})`);
+    } else {
+      const res = await publishShort(opts.uploader!, ep, videoFile, voice.label, ledger);
+      ep.youtubeId = res.videoId;
+      ep.status = res.lockedPrivate ? "rendered" : "published";
+      report.youtubeId = res.videoId;
+      report.status = res.lockedPrivate ? "rendered" : "published";
+      if (res.lockedPrivate) report.errors.push("first upload is locked private; audit request prepared in docs/youtube-audit-request.md");
+      step("publish", !res.lockedPrivate, res.detail);
+    }
+
+    upsertEpisode(ledger, ep);
+    ledger.nextNumber = number + 1;
+    saveLedger(ledger);
+    return report;
+  } catch (e) {
+    report.errors.push(String((e as Error)?.stack ?? e).slice(0, 1200));
+    report.status = "failed";
+    return report;
+  } finally {
+    writeJson(join(work, "run-report.json"), report);
+    writeJson(path(opts.dryRun ? "data/dry-run/last-run.json" : "data/last-run.json"), report);
+  }
+}

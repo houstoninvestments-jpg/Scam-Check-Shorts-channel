@@ -1,0 +1,69 @@
+{
+  "_note": "Scout sources. Each list page is scanned for article links that match linkPattern. 'verified' flips to true once a live run has pulled at least one article from it (see data/source-health.json).",
+  "sources": [
+    {
+      "id": "ftc-alerts",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "type": "html-list",
+      "listUrl": "https://consumer.ftc.gov/consumer-alerts",
+      "linkPattern": "/consumer-alerts/20\\d{2}/\\d{2}/[a-z0-9-]+",
+      "base": "https://consumer.ftc.gov",
+      "maxArticles": 8,
+      "weight": 1.0
+    },
+    {
+      "id": "bbb-scam-alerts",
+      "kind": "bbb",
+      "name": "BBB Scam Tracker and Scam Alerts",
+      "type": "html-list",
+      "listUrl": "https://www.bbb.org/scamtracker",
+      "linkPattern": "/article/(scams|news-releases)/[0-9]+-[a-z0-9-]+",
+      "base": "https://www.bbb.org",
+      "maxArticles": 6,
+      "weight": 0.9
+    },
+    {
+      "id": "ny-ag",
+      "kind": "ag",
+      "name": "New York Attorney General",
+      "type": "html-list",
+      "listUrl": "https://ag.ny.gov/press-releases",
+      "linkPattern": "/press-release/20\\d{2}/[a-z0-9-]*(scam|fraud|impersonat|text|phish)[a-z0-9-]*",
+      "base": "https://ag.ny.gov",
+      "maxArticles": 4,
+      "weight": 0.8
+    },
+    {
+      "id": "ca-ag",
+      "kind": "ag",
+      "name": "California Attorney General",
+      "type": "html-list",
+      "listUrl": "https://oag.ca.gov/news",
+      "linkPattern": "/news/press-releases/[a-z0-9-]*(scam|fraud|impersonat|text|phish)[a-z0-9-]*",
+      "base": "https://oag.ca.gov",
+      "maxArticles": 4,
+      "weight": 0.8
+    },
+    {
+      "id": "tx-ag",
+      "kind": "ag",
+      "name": "Texas Attorney General",
+      "type": "html-list",
+      "listUrl": "https://www.texasattorneygeneral.gov/news",
+      "linkPattern": "/news/releases/[a-z0-9-]*(scam|fraud|impersonat|text|phish)[a-z0-9-]*",
+      "base": "https://www.texasattorneygeneral.gov",
+      "maxArticles": 4,
+      "weight": 0.8
+    },
+    {
+      "id": "reddit-scams",
+      "kind": "reddit",
+      "name": "r/Scams",
+      "type": "rss",
+      "listUrl": "https://www.reddit.com/r/Scams/new/.rss",
+      "maxArticles": 25,
+      "weight": 0.4
+    }
+  ]
+}

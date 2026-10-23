@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam",
+  "title": "That text about a traffic violation is probably a scam",
+  "publishedAt": "2026-04-14T12:00:00.000Z",
+  "fetchedAt": "2026-10-23T08:55:00.000Z",
+  "capture": "search-excerpt: sentences returned as quotes by a web search on 2026-10-23. The build container could not reach consumer.ftc.gov, so this is not a full-page capture and has not been checked against the live page. Dry-run only; the publish step refuses any video backed by a non-page capture.",
+  "text": "That text about a traffic violation is probably a scam\nIt starts with a text message with a QR code. The message says you need to scan it to pay for a traffic violation to avoid court.\nThe text might look official with a seal from whatever state it claims to be from and a (fake) case number.\nA hearing date, a hearing time, a payment amount.\nThe texts will include a list of bad things that could happen if you don't pay. The scammers will threaten things like default judgments, fines, and enforcement actions.\nIf you get a text like this, don't respond, and don't scan the QR code."
+}

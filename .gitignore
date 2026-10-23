@@ -32,3 +32,6 @@ __pycache__/
 # OS / editor
 .DS_Store
 *.log
+
+# Dry-run state and test renders stay local
+data/dry-run/

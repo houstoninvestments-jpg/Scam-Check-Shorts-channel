@@ -1,0 +1,273 @@
+{
+  "number": 1,
+  "skin": "imessage",
+  "cta": "none",
+  "script": {
+    "scamName": "Fake traffic ticket text with a QR code",
+    "message": {
+      "sender": "+1 (202) 555-0142",
+      "subject": "",
+      "body": "STATE COURT NOTICE\nCase No. TC-2026-48213\nUnpaid traffic violation.\nHearing: Nov 3, 9:00 AM\nAmount due: $86.50\nScan the QR code to pay now and avoid court. Unpaid cases face default judgment, fines, and enforcement action.",
+      "hasQr": true,
+      "provenance": "recreated",
+      "provenanceNote": "Recreated from the FTC alert on traffic violation texts.",
+      "evidence": [
+        {
+          "quote": "It starts with a text message with a QR code. The message says you need to scan it to pay for a traffic violation to avoid court.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        },
+        {
+          "quote": "The text might look official with a seal from whatever state it claims to be from and a (fake) case number.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        },
+        {
+          "quote": "A hearing date, a hearing time, a payment amount.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        },
+        {
+          "quote": "The scammers will threaten things like default judgments, fines, and enforcement actions.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        }
+      ]
+    },
+    "hook": "This text looks official. Look closer.",
+    "stampSay": "It's a scam. Here's how to tell.",
+    "flags": [
+      {
+        "label": "Scan to pay",
+        "say": "The scam starts right here. Scan this code to pay your ticket.",
+        "target": {
+          "kind": "text",
+          "match": "Scan the QR code to pay now"
+        },
+        "evidence": {
+          "quote": "The message says you need to scan it to pay for a traffic violation to avoid court.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        }
+      },
+      {
+        "label": "Fake case number",
+        "say": "A seal and a case number make it look real. Both are easy to fake.",
+        "target": {
+          "kind": "text",
+          "match": "Case No. TC-2026-48213"
+        },
+        "evidence": {
+          "quote": "The text might look official with a seal from whatever state it claims to be from and a (fake) case number.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        }
+      },
+      {
+        "label": "Scary threats",
+        "say": "Then comes a list of bad things that happen if you don't pay.",
+        "target": {
+          "kind": "text",
+          "match": "default judgment, fines, and enforcement action"
+        },
+        "evidence": {
+          "quote": "The texts will include a list of bad things that could happen if you don't pay.",
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+        }
+      }
+    ],
+    "safeMove": {
+      "label": "Don't reply. Don't scan.",
+      "say": "Don't answer the text, and don't scan the code.",
+      "evidence": {
+        "quote": "If you get a text like this, don't respond, and don't scan the QR code.",
+        "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam"
+      }
+    },
+    "title": "Traffic ticket text with a QR code: real or scam?",
+    "description": "This text says you owe a traffic fine and must scan a QR code to pay. The FTC says texts like this are a scam. Don't reply, and don't scan the code.",
+    "tags": [
+      "scam",
+      "text scam",
+      "traffic ticket scam",
+      "QR code scam",
+      "scam alert",
+      "smishing"
+    ]
+  },
+  "timeline": {
+    "fps": 30,
+    "total": 738,
+    "beats": [
+      {
+        "id": "hook",
+        "from": 11,
+        "to": 89,
+        "audio": "vo-hook.wav",
+        "text": "This text looks official. Look closer."
+      },
+      {
+        "id": "countdown",
+        "from": 89,
+        "to": 179
+      },
+      {
+        "id": "stamp",
+        "from": 179,
+        "to": 240,
+        "audio": "vo-stamp.wav",
+        "text": "It's a scam. Here's how to tell."
+      },
+      {
+        "id": "flag1",
+        "from": 240,
+        "to": 350,
+        "audio": "vo-flag1.wav",
+        "text": "The scam starts right here. Scan this code to pay your ticket."
+      },
+      {
+        "id": "flag2",
+        "from": 350,
+        "to": 474,
+        "audio": "vo-flag2.wav",
+        "text": "A seal and a case number make it look real. Both are easy to fake."
+      },
+      {
+        "id": "flag3",
+        "from": 474,
+        "to": 578,
+        "audio": "vo-flag3.wav",
+        "text": "Then comes a list of bad things that happen if you don't pay."
+      },
+      {
+        "id": "safe",
+        "from": 578,
+        "to": 658,
+        "audio": "vo-safe.wav",
+        "text": "Don't answer the text, and don't scan the code."
+      },
+      {
+        "id": "closer",
+        "from": 658,
+        "to": 720,
+        "audio": "vo-closer.wav",
+        "text": "Send this to the one who'd tap it."
+      },
+      {
+        "id": "tail",
+        "from": 720,
+        "to": 738
+      }
+    ],
+    "captions": [
+      {
+        "from": 11,
+        "to": 58,
+        "text": "This text looks official."
+      },
+      {
+        "from": 58,
+        "to": 82,
+        "text": "Look closer."
+      },
+      {
+        "from": 179,
+        "to": 201,
+        "text": "It's a scam."
+      },
+      {
+        "from": 201,
+        "to": 233,
+        "text": "Here's how to tell."
+      },
+      {
+        "from": 240,
+        "to": 276,
+        "text": "The scam starts right"
+      },
+      {
+        "from": 276,
+        "to": 285,
+        "text": "here."
+      },
+      {
+        "from": 285,
+        "to": 315,
+        "text": "Scan this code to"
+      },
+      {
+        "from": 315,
+        "to": 343,
+        "text": "pay your ticket."
+      },
+      {
+        "from": 350,
+        "to": 374,
+        "text": "A seal and a"
+      },
+      {
+        "from": 374,
+        "to": 408,
+        "text": "case number make it"
+      },
+      {
+        "from": 408,
+        "to": 427,
+        "text": "look real."
+      },
+      {
+        "from": 427,
+        "to": 457,
+        "text": "Both are easy to"
+      },
+      {
+        "from": 457,
+        "to": 467,
+        "text": "fake."
+      },
+      {
+        "from": 474,
+        "to": 502,
+        "text": "Then comes a list"
+      },
+      {
+        "from": 502,
+        "to": 532,
+        "text": "of bad things that"
+      },
+      {
+        "from": 532,
+        "to": 563,
+        "text": "happen if you don't"
+      },
+      {
+        "from": 563,
+        "to": 570,
+        "text": "pay."
+      },
+      {
+        "from": 578,
+        "to": 612,
+        "text": "Don't answer the text,"
+      },
+      {
+        "from": 612,
+        "to": 642,
+        "text": "and don't scan the"
+      },
+      {
+        "from": 642,
+        "to": 651,
+        "text": "code."
+      },
+      {
+        "from": 658,
+        "to": 682,
+        "text": "Send this to the"
+      },
+      {
+        "from": 682,
+        "to": 707,
+        "text": "one who'd tap it."
+      }
+    ]
+  },
+  "closer": "Send this to the one who'd tap it.",
+  "voiceLabel": "AI voice",
+  "sourceName": "FTC",
+  "testLabel": "TEST RENDER"
+}
