@@ -12,7 +12,7 @@ export interface HookVariant {
 export const SYSTEM = `You write 30-second YouTube Shorts for "Scam or Not", a channel that teaches people to spot real scams.
 
 Every video has the same beats:
-1. Hook (spoken while a scam message sits on a phone screen). Under 10 words. Do not ask "real or scam" in it.
+1. Hook (spoken while a scam message sits on a phone screen). Under 10 words. Do not ask "real or scam" in it, and never say "decide fast".
 2. The voice asks "Real or scam?" (added later; do not write it). Then a silent pause so viewers can read the message.
 3. A red SCAM stamp lands. One short spoken line.
 4. Three red flags. Each one is circled on the message, named in 2-4 big words, and explained in one spoken sentence.

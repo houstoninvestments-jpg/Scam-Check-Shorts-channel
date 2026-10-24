@@ -7,7 +7,7 @@ import { writeJson } from "../lib/util.js";
 import { synthesize } from "../voice/index.js";
 import { prepareTimeline, renderShort } from "./index.js";
 import { sourceShort } from "./covers.js";
-import { readSeconds } from "./timeline.js";
+import { countdownRed, readWindowChange } from "./cover.js";
 
 /**
  * Preview: render a saved episode's script again with today's video template.
@@ -20,7 +20,7 @@ export async function rerender(number: number, workDir: string, voice?: "elevenl
   const lines = spokenLines(ep.script).map((text, i) => ({ id: ids[i], text }));
   const v = await synthesize(lines, join(workDir, "audio"), { force: voice });
   const publicDir = join(workDir, "public");
-  const timeline = prepareTimeline(v, publicDir, readSeconds(ep.script.message));
+  const timeline = prepareTimeline(v, publicDir);
   const props: ShortProps = {
     number,
     skin: ep.skin,
@@ -35,5 +35,6 @@ export async function rerender(number: number, workDir: string, voice?: "elevenl
   const out = join(workDir, `scam-${String(number).padStart(3, "0")}-preview.mp4`);
   writeJson(join(workDir, "props.json"), props);
   await renderShort(props, publicDir, out);
-  return { file: out, voice: v.label, timeline };
+  const read = timeline.beats.find((b) => b.id === "read")!;
+  return { file: out, voice: v.label, timeline, screenChange: readWindowChange(out, read), countdownRed: countdownRed(out, read, timeline.fps) };
 }

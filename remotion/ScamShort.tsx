@@ -61,11 +61,11 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
   const flag1 = get("flag1");
   const dock = interpolate(frame, [flag1.from, flag1.from + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
 
-  // Read window: the message alone at full brightness. The timer sits under the phone, never on it.
+  // 3-2-1: a big red number above the phone, one per second. The message below stays untouched.
   const read = get("read");
-  const ask = beats.find((b) => b.id === "ask") ?? read;
   const inRead = frame >= read.from && frame < read.to;
-  const readLeft = 1 - (frame - read.from) / Math.max(1, read.to - read.from);
+  const cdN = Math.max(1, 3 - Math.floor((frame - read.from) / fps));
+  const cdLocal = (frame - read.from) % fps;
 
   // Loop: fade every overlay out during the tail so the final frame equals frame 0.
   const overlay = interpolate(frame, [tail.from, tail.to - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -95,7 +95,21 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
       {/* headline zone */}
       <div style={{ position: "absolute", top: 220, left: 60, right: 60, height: 230, display: "flex", alignItems: "center", justifyContent: "center", opacity: overlay }}>
         {beat?.id === "hook" ? <Headline local={local}>{hookLine(p.script.hook)}</Headline> : null}
-        {beat?.id === "ask" || beat?.id === "read" ? <Headline local={frame - ask.from} size={96}>{ASK_LINE}</Headline> : null}
+        {beat?.id === "ask" ? <Headline local={local} size={96}>{ASK_LINE}</Headline> : null}
+        {inRead ? (
+          <div
+            style={{
+              fontSize: 230,
+              fontWeight: 900,
+              lineHeight: 1,
+              color: C.red,
+              transform: `scale(${interpolate(cdLocal, [0, 6], [1.25, 1], { extrapolateRight: "clamp" })})`,
+              opacity: interpolate(cdLocal, [0, 3], [0.4, 1], { extrapolateRight: "clamp" }),
+            }}
+          >
+            {cdN}
+          </div>
+        ) : null}
         {beat?.id === "stamp" ? <Headline local={local} color={C.red} size={96}>SCAM</Headline> : null}
         {flagIdx >= 0 ? (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
@@ -148,16 +162,6 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
         </div>
       ) : null}
 
-      {/* read timer: a thin bar under the phone that runs down, outside the screen */}
-      {inRead ? (
-        <div style={{ position: "absolute", top: 1534, left: 152, width: 776, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-          <div style={{ width: "100%", height: 12, borderRadius: 6, background: "rgba(169,176,186,0.25)", overflow: "hidden" }}>
-            <div style={{ width: `${readLeft * 100}%`, height: "100%", borderRadius: 6, background: C.red }} />
-          </div>
-          <div style={{ fontSize: 30, fontWeight: 700, letterSpacing: 4, color: C.dim }}>READ IT</div>
-        </div>
-      ) : null}
-
       {/* SCAM stamp: slams in over the phone, then docks small at the phone's top-right corner */}
       {stampOn ? (
         <div
@@ -207,8 +211,8 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
             <Audio src={staticFile(b.audio!)} />
           </Sequence>
         ))}
-      {/* soft tick once a second while the viewer reads */}
-      {Array.from({ length: Math.ceil((read.to - read.from) / fps) }, (_, i) => (
+      {/* soft tick on each number */}
+      {[0, 1, 2].map((i) => (
         <Sequence key={`tick${i}`} from={read.from + i * fps} durationInFrames={10}>
           <Audio src={staticFile("tick.wav")} volume={0.3} />
         </Sequence>

@@ -14,6 +14,10 @@ on:
         description: "Also save screenshots of the live privacy, home and terms pages (for Google's API audit form)"
         type: boolean
         default: false
+      preview_number:
+        description: "Instead of making a Short: re-render this saved Scam number with today's template and the real voice, as a labeled preview (nothing uploaded)"
+        type: string
+        default: ""
       release_number:
         description: "Instead of making a Short: make this hidden upload public if it is clean (Scam number, e.g. 1)"
         type: string
@@ -128,6 +132,21 @@ jobs:
       - name: Make the Short
         id: run
         run: |
+          if [ -n "${{ inputs.preview_number }}" ]; then
+            # Preview mode: no new Short, nothing sent to YouTube. The file is kept on a hidden ref
+            # (refs/previews/...), not on any branch, so it can be fetched without touching main.
+            echo "mode=preview" >> "$GITHUB_OUTPUT"
+            n=$(printf '%03d' "${{ inputs.preview_number }}")
+            npx tsx src/cli.ts rerender --number "${{ inputs.preview_number }}" --work work/preview
+            git config user.name "scam-or-not-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            blob=$(git hash-object -w "work/preview/scam-$n-preview.mp4")
+            tree=$(printf '100644 blob %s\tscam-%s-preview.mp4\n' "$blob" "$n" | git mktree)
+            commit=$(git commit-tree "$tree" -m "Preview of Scam No. $n")
+            git push -f -q origin "$commit:refs/previews/scam-$n"
+            echo "::notice title=Preview file::saved to refs/previews/scam-$n"
+            exit 0
+          fi
           if [ -n "${{ inputs.release_number }}" ]; then
             # Release mode: no new Short. Check the hidden upload on YouTube and publish it only if clean.
             echo "mode=release" >> "$GITHUB_OUTPUT"
@@ -190,14 +209,16 @@ jobs:
           base="${{ steps.site.outputs.base_url }}"
           # Fixed pages, the favicon set, and the three newest scam pages from the ledger.
           scams=$(node -e 'const l=require("./data/ledger.json");console.log(l.episodes.filter(e=>e.youtubeId).slice(-3).map(e=>"scam/"+e.slug+"/").join(" "))' 2>/dev/null || true)
+          ok=""
           for page in "" "privacy/" "terms/" "round/" "favicon.svg" "favicon.ico" "apple-touch-icon.png" $scams; do
             for i in 1 2 3 4 5 6; do
               code=$(curl -s -o /dev/null -w "%{http_code}" "$base/$page") && [ "$code" = "200" ] && break
               sleep 10
             done
-            if [ "$code" = "200" ]; then echo "::notice title=Live check::$base/$page answered 200"
+            if [ "$code" = "200" ]; then ok="$ok /$page"
             else echo "::error title=Live check::$base/$page answered $code"; exit 1; fi
           done
+          echo "::notice title=Live check::$base answered 200 for:$ok"
           if curl -s "$base/" | grep -q 'class="stage"' && curl -s "$base/assets/site.css" | grep -q -- '--bg:#0A0C0F'; then
             echo "::notice title=Look::home page has the phone, the stamp and the brand colors"
           else echo "::error title=Look::home page is not showing the new look"; exit 1; fi

@@ -156,7 +156,8 @@ async function main() {
       // Preview of a saved episode in today's template: --number 2 [--voice kokoro] [--work dir]
       const { rerender } = await import("./render/rerender.js");
       const r = await rerender(Number(arg("--number")), arg("--work") ?? path("work/rerender"), arg("--voice") as "kokoro" | undefined);
-      console.log(r.file, r.voice, `${(r.timeline.total / r.timeline.fps).toFixed(1)}s`);
+      const msg = `${r.voice}, ${(r.timeline.total / r.timeline.fps).toFixed(1)}s; countdown red px ${r.countdownRed.join("/")}; phone screen changed ${(r.screenChange * 100).toFixed(2)}% during the countdown`;
+      console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
       break;
     }
     case "release": {

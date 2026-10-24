@@ -40,7 +40,22 @@ function screenGray(video: string, frame: number): Buffer {
 }
 
 /**
- * The read window must show the message exactly as it looked before: no dimming, nothing on top.
+ * The 3-2-1 must be visible: brand red (#FF3B30) in the headline zone above the phone,
+ * in the middle of each of the three seconds. Returns the red pixel count per second.
+ */
+export function countdownRed(video: string, read: { from: number; to: number }, fps = 30): number[] {
+  return [0, 1, 2].map((i) => {
+    const n = read.from + i * fps + Math.floor(fps / 2);
+    const r = spawnSync("ffmpeg", ["-v", "error", "-i", video, "-vf", `select=eq(n\\,${n}),crop=960:230:60:220`, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], { maxBuffer: 1 << 26 });
+    const px = r.stdout as Buffer;
+    let red = 0;
+    for (let k = 0; k + 2 < px.length; k += 3) if (px[k] > 200 && px[k + 1] < 110 && px[k + 2] < 100) red++;
+    return red;
+  });
+}
+
+/**
+ * The countdown must show the message exactly as it looked before: no dimming, nothing on top.
  * Compares the phone screen at the start, middle and end of the window with the frame just before it.
  * Returns the largest share of screen pixels that changed (0 means untouched).
  */

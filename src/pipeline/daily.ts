@@ -12,8 +12,7 @@ import { loadHooks, pickHook } from "../learn/hooks.js";
 import { chooseCta, chooseSkin } from "./choose.js";
 import { synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
-import { readSeconds } from "../render/timeline.js";
-import { extractCover, loopSimilarity, readWindowChange } from "../render/cover.js";
+import { countdownRed, extractCover, loopSimilarity, readWindowChange } from "../render/cover.js";
 import { saveSiteCover } from "../render/covers.js";
 import { categoryFor } from "../publish/tags.js";
 import { uploadRequest, publishShort, recheckLock, type Uploader } from "../publish/youtube.js";
@@ -150,7 +149,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (voice.provider === "kokoro" && !opts.voice && process.env.ELEVENLABS_API_KEY) report.warnings.push("ElevenLabs failed; used the free fallback voice");
     let timeline;
     try {
-      timeline = prepareTimeline(voice, publicDir, readSeconds(script.message));
+      timeline = prepareTimeline(voice, publicDir);
     } catch (e) {
       throw new Error(`timing: ${String(e)}`);
     }
@@ -181,8 +180,10 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (ep.loopSimilarity < 0.97) report.warnings.push(`loop: last frame differs from the cover (similarity ${ep.loopSimilarity})`);
     const read = timeline.beats.find((b) => b.id === "read")!;
     const readChange = readWindowChange(videoFile, read);
-    if (readChange > 0.01) report.warnings.push(`read window: ${(readChange * 100).toFixed(1)}% of the phone screen changed while viewers read`);
-    report.summary.readWindow = `${((read.to - read.from) / timeline.fps).toFixed(1)}s silent, screen ${readChange > 0.01 ? "changed" : "untouched"}`;
+    const red = countdownRed(videoFile, read, timeline.fps);
+    if (readChange > 0.01) report.warnings.push(`countdown: ${(readChange * 100).toFixed(1)}% of the phone screen changed while viewers read`);
+    if (red.some((n) => n < 2000)) report.warnings.push(`countdown: the red 3-2-1 is faint or missing (red pixels ${red.join(", ")})`);
+    report.summary.countdown = `${((read.to - read.from) / timeline.fps).toFixed(1)}s, red 3-2-1 above the phone (${red.join("/")} red px), phone screen ${readChange > 0.01 ? "CHANGED" : "untouched"}`;
     const cover = extractCover(videoFile, videoFile.replace(/\.mp4$/, "-cover.jpg"));
     step("cover", true, `${cover.file} (${Math.round(cover.bytes / 1024)} KB), loop similarity ${ep.loopSimilarity}`);
     if (!opts.dryRun) saveSiteCover(cover.file, number); // the website's case-file card uses the real cover frame

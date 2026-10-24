@@ -8,7 +8,7 @@ import type { ShortProps } from "../../remotion/props.js";
 import { config } from "../lib/config.js";
 import { loadLedger } from "../lib/ledger.js";
 import { log, pad3, path } from "../lib/util.js";
-import { buildTimeline, readSeconds } from "./timeline.js";
+import { buildTimeline } from "./timeline.js";
 
 /** Small copies of each video's cover frame for the website's case-file cards. Kept in the repo. */
 export const coverFile = (n: number) => path("data/covers", `${pad3(n)}.jpg`);
@@ -48,7 +48,7 @@ export async function backfillCovers(episodes: Episode[] = loadLedger().episodes
       skin: e.skin,
       cta: e.cta,
       script: e.script,
-      timeline: buildTimeline(segs, (id) => `vo-${id}.wav`, readSeconds(e.script.message)),
+      timeline: buildTimeline(segs, (id) => `vo-${id}.wav`),
       closer: config().channel.closer,
       voiceLabel: "AI voice",
       sourceName: sourceShort(e.sources[0]?.name ?? ""),

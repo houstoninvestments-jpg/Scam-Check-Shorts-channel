@@ -91,7 +91,7 @@
   },
   "timeline": {
     "fps": 30,
-    "total": 897,
+    "total": 777,
     "beats": [
       {
         "id": "hook",
@@ -110,54 +110,54 @@
       {
         "id": "read",
         "from": 131,
-        "to": 341
+        "to": 221
       },
       {
         "id": "stamp",
-        "from": 341,
-        "to": 402,
+        "from": 221,
+        "to": 282,
         "audio": "vo-stamp.wav",
         "text": "It's a scam. Here's how to tell."
       },
       {
         "id": "flag1",
-        "from": 402,
-        "to": 511,
+        "from": 282,
+        "to": 391,
         "audio": "vo-flag1.wav",
         "text": "The scam starts right here. Scan this code to pay your ticket."
       },
       {
         "id": "flag2",
-        "from": 511,
-        "to": 635,
+        "from": 391,
+        "to": 515,
         "audio": "vo-flag2.wav",
         "text": "A seal and a case number make it look real. Both are easy to fake."
       },
       {
         "id": "flag3",
-        "from": 635,
-        "to": 736,
+        "from": 515,
+        "to": 616,
         "audio": "vo-flag3.wav",
         "text": "Then comes a list of bad things that happen if you don't pay."
       },
       {
         "id": "safe",
-        "from": 736,
-        "to": 817,
+        "from": 616,
+        "to": 697,
         "audio": "vo-safe.wav",
         "text": "Don't answer the text, and don't scan the code."
       },
       {
         "id": "closer",
-        "from": 817,
-        "to": 879,
+        "from": 697,
+        "to": 759,
         "audio": "vo-closer.wav",
         "text": "Send this to the one who'd tap it."
       },
       {
         "id": "tail",
-        "from": 879,
-        "to": 897
+        "from": 759,
+        "to": 777
       }
     ],
     "captions": [
@@ -173,107 +173,107 @@
       },
       {
         "from": 90,
-        "to": 124,
+        "to": 123,
         "text": "Real or scam?"
       },
       {
-        "from": 341,
-        "to": 362,
+        "from": 221,
+        "to": 242,
         "text": "It's a scam."
       },
       {
-        "from": 362,
-        "to": 394,
+        "from": 242,
+        "to": 274,
         "text": "Here's how to tell."
       },
       {
-        "from": 402,
-        "to": 437,
+        "from": 282,
+        "to": 317,
         "text": "The scam starts right"
       },
       {
-        "from": 437,
-        "to": 446,
+        "from": 317,
+        "to": 326,
         "text": "here."
       },
       {
-        "from": 446,
-        "to": 476,
+        "from": 326,
+        "to": 356,
         "text": "Scan this code to"
       },
       {
-        "from": 476,
-        "to": 503,
+        "from": 356,
+        "to": 383,
         "text": "pay your ticket."
       },
       {
-        "from": 511,
-        "to": 535,
+        "from": 391,
+        "to": 415,
         "text": "A seal and a"
       },
       {
-        "from": 535,
-        "to": 569,
+        "from": 415,
+        "to": 449,
         "text": "case number make it"
       },
       {
-        "from": 569,
-        "to": 588,
+        "from": 449,
+        "to": 467,
         "text": "look real."
       },
       {
-        "from": 588,
-        "to": 618,
+        "from": 467,
+        "to": 497,
         "text": "Both are easy to"
       },
       {
-        "from": 618,
-        "to": 627,
+        "from": 497,
+        "to": 507,
         "text": "fake."
       },
       {
-        "from": 635,
-        "to": 662,
+        "from": 515,
+        "to": 542,
         "text": "Then comes a list"
       },
       {
-        "from": 662,
-        "to": 691,
+        "from": 542,
+        "to": 571,
         "text": "of bad things that"
       },
       {
-        "from": 691,
-        "to": 721,
+        "from": 571,
+        "to": 601,
         "text": "happen if you don't"
       },
       {
-        "from": 721,
-        "to": 728,
+        "from": 601,
+        "to": 608,
         "text": "pay."
       },
       {
-        "from": 736,
-        "to": 771,
+        "from": 616,
+        "to": 650,
         "text": "Don't answer the text,"
       },
       {
-        "from": 771,
-        "to": 800,
+        "from": 650,
+        "to": 680,
         "text": "and don't scan the"
       },
       {
-        "from": 800,
-        "to": 810,
+        "from": 680,
+        "to": 689,
         "text": "code."
       },
       {
-        "from": 817,
-        "to": 841,
+        "from": 697,
+        "to": 723,
         "text": "Send this to the"
       },
       {
-        "from": 841,
-        "to": 867,
+        "from": 723,
+        "to": 751,
         "text": "one who'd tap it."
       }
     ]
