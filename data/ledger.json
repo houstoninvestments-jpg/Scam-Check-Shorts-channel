@@ -101,7 +101,8 @@
         "detail": "thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
       },
       "youtubeId": "t44bNq4o3NQ",
-      "youtubePrivacy": "private"
+      "youtubePrivacy": "private",
+      "youtubeHold": "the video frames carry the yellow \"TEST RENDER\" label (the exact file that was uploaded, YouTube's thumbnails of the uploaded copy)"
     },
     {
       "number": 2,

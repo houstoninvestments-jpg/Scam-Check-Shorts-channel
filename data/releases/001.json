@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-10-24T21:17:45.343Z",
+  "number": 1,
+  "videoId": "t44bNq4o3NQ",
+  "metadataBefore": [
+    "search tags differ",
+    "altered-or-synthetic flag is not returned"
+  ],
+  "metadataFixed": false,
+  "metadataAfter": [
+    "search tags differ",
+    "altered-or-synthetic flag is not returned"
+  ],
+  "frames": [
+    {
+      "source": "the exact file that was uploaded",
+      "yellow": [
+        1009,
+        1010,
+        1011,
+        1011,
+        1011
+      ],
+      "label": true
+    },
+    {
+      "source": "YouTube's thumbnails of the uploaded copy",
+      "yellow": [
+        0,
+        2,
+        16,
+        68,
+        50
+      ],
+      "label": true
+    }
+  ],
+  "control": {
+    "source": "a clean live video, for comparison",
+    "yellow": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "label": false
+  },
+  "decision": "held",
+  "reason": "the video frames carry the yellow \"TEST RENDER\" label (the exact file that was uploaded, YouTube's thumbnails of the uploaded copy)",
+  "privacyAfter": "private",
+  "uploads": {
+    "uploadsPlaylist": "UUrzxXdlOog51OqoLJ7cJdaQ",
+    "all": [
+      {
+        "position": 1,
+        "videoId": "tL_Zh-OUa08",
+        "title": "Scam No. 002: A friend's DM pushing guaranteed crypto returns could be a scam",
+        "privacy": "public"
+      },
+      {
+        "position": 2,
+        "videoId": "t44bNq4o3NQ",
+        "title": "Scam No. 001: Fake government agent call says your phone will be cut off",
+        "privacy": "private"
+      }
+    ],
+    "shorts": [
+      {
+        "position": 1,
+        "videoId": "tL_Zh-OUa08",
+        "title": "Scam No. 002: A friend's DM pushing guaranteed crypto returns could be a scam",
+        "privacy": "public"
+      }
+    ]
+  }
+}
