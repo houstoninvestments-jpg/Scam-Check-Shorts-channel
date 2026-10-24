@@ -49,7 +49,8 @@ describe("upload metadata", () => {
     expect(r.status.selfDeclaredMadeForKids).toBe(false);
     expect(r.snippet.description).toMatch(/narration is an AI voice \(ElevenLabs\)/);
     expect(r.snippet.description).toMatch(/never texts you, calls you, or asks for money/);
-    expect(r.snippet.title).toBe("Scam #007: Traffic ticket text with a QR code: real or scam?");
+    expect(r.snippet.title).toBe("Scam No. 007: Traffic ticket text with a QR code: real or scam?");
+    expect(r.snippet.title).not.toContain("#"); // keeps YouTube from reading the number as a hashtag
     expect(r.snippet.title.length).toBeLessThanOrEqual(100);
   });
 });
