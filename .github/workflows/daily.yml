@@ -201,6 +201,9 @@ jobs:
           if curl -s "$base/" | grep -q 'class="stage"' && curl -s "$base/assets/site.css" | grep -q -- '--bg:#0A0C0F'; then
             echo "::notice title=Look::home page has the phone, the stamp and the brand colors"
           else echo "::error title=Look::home page is not showing the new look"; exit 1; fi
+          if curl -s "$base/assets/round.js" | grep -q 'Copied!'; then
+            echo "::notice title=Share button::live round page copies on computers and opens the share sheet on phones"
+          else echo "::error title=Share button::live round page has the old share button"; exit 1; fi
 
       - name: Evidence files from the live site
         if: always() && inputs.evidence && steps.cloudflare.outcome == 'success'
