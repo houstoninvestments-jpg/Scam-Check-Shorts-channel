@@ -14,12 +14,25 @@ on:
         description: "Also save screenshots of the live privacy, home and terms pages (for Google's API audit form)"
         type: boolean
         default: false
+      release_number:
+        description: "Instead of making a Short: make this hidden upload public if it is clean (Scam number, e.g. 1)"
+        type: string
+        default: ""
+      release_run:
+        description: "Run id that uploaded it (its video file is checked frame by frame)"
+        type: string
+        default: ""
+      control_run:
+        description: "Optional: run id of a clean live video, for comparison"
+        type: string
+        default: ""
 
 permissions:
   contents: write   # commit the ledger and stats back to main
   pages: write      # publish the website
   id-token: write   # required by the Pages deploy action
   issues: write     # health check opens an issue only when something breaks
+  actions: read     # release mode reads the video file kept by an earlier run
 
 concurrency:
   group: daily-short
@@ -92,9 +105,38 @@ jobs:
         # Sets SITE_BASE_URL for every later step, so descriptions, share cards and links all use it.
         run: npx tsx src/cli.ts site-target
 
+      - name: Video file that was uploaded (release mode)
+        if: inputs.release_number != '' && inputs.release_run != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: short-${{ inputs.release_run }}
+          run-id: ${{ inputs.release_run }}
+          github-token: ${{ github.token }}
+          path: work/release/uploaded
+
+      - name: Clean video for comparison (release mode)
+        if: inputs.release_number != '' && inputs.control_run != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: short-${{ inputs.control_run }}
+          run-id: ${{ inputs.control_run }}
+          github-token: ${{ github.token }}
+          path: work/release/control
+
       - name: Make the Short
         id: run
         run: |
+          if [ -n "${{ inputs.release_number }}" ]; then
+            # Release mode: no new Short. Check the hidden upload on YouTube and publish it only if clean.
+            echo "mode=release" >> "$GITHUB_OUTPUT"
+            n=$(printf '%03d' "${{ inputs.release_number }}")
+            video=$(find work/release/uploaded -name "scam-$n.mp4" 2>/dev/null | head -1)
+            control=$(find work/release/control -name '*.mp4' 2>/dev/null | head -1)
+            npx tsx src/cli.ts release --number "${{ inputs.release_number }}" ${video:+--video "$video"} ${control:+--control "$control"}
+            exit 0
+          fi
           # Until the one-time YouTube authorization is done, run the full pipeline in dry-run mode.
           if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "mode=dry" >> "$GITHUB_OUTPUT"

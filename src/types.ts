@@ -106,6 +106,7 @@ export interface Episode {
   thumbnail?: { ok: boolean; detail: string };
   category?: string; // id from config/hashtags.json
   youtubePrivacy?: "public" | "unlisted" | "private";
+  youtubeHold?: string; // why an uploaded video is kept hidden
   loopSimilarity?: number;
 }
 

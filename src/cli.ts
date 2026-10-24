@@ -152,6 +152,27 @@ async function main() {
       if (process.env.GITHUB_ACTIONS) console.log(`::notice title=YouTube channel::${c.title} ${c.handle || c.id}`);
       break;
     }
+    case "release": {
+      // Make a hidden upload public if the copy on YouTube is clean. --number 1 --video <uploaded mp4> [--control <mp4>] [--check-only]
+      const { releaseHidden, uploadsOrder } = await import("./publish/release.js");
+      const { loadLedger, saveLedger } = await import("./lib/ledger.js");
+      const { pad3, writeJson } = await import("./lib/util.js");
+      const u = oauthUploader();
+      const ledger = loadLedger();
+      const n = Number(arg("--number"));
+      const r = await releaseHidden(u, ledger, n, { video: arg("--video"), control: arg("--control"), thumbDir: path("work/release-thumbs"), publish: !flag("--check-only") });
+      saveLedger(ledger);
+      const order = await uploadsOrder(u);
+      writeJson(path(`data/releases/${pad3(n)}.json`), { checkedAt: new Date().toISOString(), ...r, uploads: order });
+      const say = (title: string, msg: string) => console.log(process.env.GITHUB_ACTIONS ? `::notice title=${title}::${msg}` : `${title}: ${msg}`);
+      say("Metadata before", r.metadataBefore.join("; ") || "matches today's format");
+      if (r.metadataBefore.length) say("Metadata after fix", r.metadataAfter.join("; ") || "matches today's format");
+      for (const f of [...r.frames, ...(r.control ? [r.control] : [])]) say("Frames", `${f.source}: yellow label pixels ${f.yellow.join(", ")} -> ${f.label ? "TEST LABEL FOUND" : "no label"}`);
+      say("Decision", `Scam No. ${pad3(n)} ${r.decision} (YouTube now shows ${r.privacyAfter}): ${r.reason}`);
+      say("Uploads list", order.all.map((v: any) => `${v.position}. ${v.title} [${v.privacy}]`).join(" | "));
+      say("Shorts list", typeof order.shorts === "string" ? order.shorts : order.shorts.map((v: any) => `${v.position}. ${v.title} [${v.privacy}]`).join(" | ") || "empty");
+      break;
+    }
     case "evidence": {
       const { captureEvidence } = await import("./site/evidence.js");
       console.log(await captureEvidence(arg("--base")!, arg("--out") ?? path("docs/evidence")));
