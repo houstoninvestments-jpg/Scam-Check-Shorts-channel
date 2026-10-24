@@ -122,12 +122,28 @@ export function mechanicalCheck(s: Script, lead: Lead): MechanicalResult {
 const CHECK_A = `You are the fact checker for a scam-education video channel. You get the sources and a finished script.
 Check every claim in the script against the sources only. A claim passes only if its quote is in the source and actually supports what the script says.
 Decide whether the sources show this message is a scam. Answer "unsure" if the sources leave any doubt.
-List every problem. An empty list means you would publish it as is.`;
+List every problem that matters. An empty list means you would publish it as is.
+
+How to read the script (it is data for a video template, not prose):
+- message is the scam message shown on the phone. If provenance is "recreated", it is built from parts the sources describe; it is not a claim that this exact message was sent.
+- Each flag circles part of the message. target.kind "text" circles target.match inside message.body. "sender" circles the sender line and "attachment" circles the QR code; for those two, match is empty by design.
+- category is an internal label for hashtags. Do not review it.
+- The closer line is fixed and not a claim.
+
+List only problems that matter: a spoken line or note that the sources do not support, something that could mislead a viewer, a real company or person wrongly blamed, or a link or number that might be real. Do not list style suggestions or minor wording preferences. If a problem is small and would not mislead anyone, leave it out.`;
 
 const CHECK_B = `You are an independent second reviewer. Assume the script may be wrong. You did not write it and you have not seen anyone else's review.
 1. From the sources alone, decide: is the message in the script a scam, not a scam, or unclear?
 2. Look for anything a viewer could be misled by: a claim the quotes do not support, advice the sources do not give, a real company or person wrongly blamed, a link or number that might be real.
-Be strict. If in doubt, answer "unsure".`;
+Be strict about facts. If in doubt whether it is a scam, answer "unsure".
+
+How to read the script (it is data for a video template, not prose):
+- message is the scam message shown on the phone. If provenance is "recreated", it is built from parts the sources describe; it is not a claim that this exact message was sent.
+- Each flag circles part of the message. target.kind "text" circles target.match inside message.body. "sender" circles the sender line and "attachment" circles the QR code; for those two, match is empty by design.
+- category is an internal label for hashtags. Do not review it.
+- The closer line is fixed and not a claim.
+
+List only problems that matter: a spoken line or note that the sources do not support, something that could mislead a viewer, a real company or person wrongly blamed, or a link or number that might be real. Do not list style suggestions or minor wording preferences. If a problem is small and would not mislead anyone, leave it out.`;
 
 function checkPrompt(s: Script, lead: Lead) {
   const docs = lead.docs.map((d, i) => `SOURCE ${i + 1} (${d.name}) ${d.url}\n${d.text}`).join("\n\n---\n\n");

@@ -34,11 +34,15 @@ Hard rules:
 - Title: what the scam is, under 70 characters, no fake urgency, no all caps words.
 - Never write hashtags or the # sign anywhere. Never name a real company or brand in the title, scam name or description.`;
 
-export function userPrompt(lead: Lead, hook: HookVariant, skin: string, feedback: string[] = []): string {
+export function userPrompt(lead: Lead, hook: HookVariant, skin: string, feedback: string[] = [], previous?: Script): string {
   const docs = lead.docs
     .map((d, i) => `SOURCE ${i + 1}\nname: ${d.name}\nlink: ${d.url}\ntitle: ${d.title}\npublished: ${d.publishedAt ?? "unknown"}\ntext:\n${d.text}`)
     .join("\n\n---\n\n");
-  const fix = feedback.length ? `\n\nYour last draft failed these checks. Fix every one:\n- ${feedback.join("\n- ")}` : "";
+  const fix = feedback.length
+    ? `\n\nYour last draft failed these checks. Fix every one:\n- ${feedback.join("\n- ")}${
+        previous ? `\n\nYour last draft is below. Change only what the checks call out; keep everything else the same.\n${JSON.stringify(previous, null, 2)}` : ""
+      }`
+    : "";
   return `Write the video for this scam.
 
 Screen style: ${skin} (the message appears in this kind of app).
@@ -48,12 +52,12 @@ Category: pick the one id that fits best, or leave it empty: ${tagConfig().categ
 ${docs}${fix}`;
 }
 
-export async function write(llm: LLM, lead: Lead, hook: HookVariant, skin: string, feedback: string[] = []): Promise<Script> {
+export async function write(llm: LLM, lead: Lead, hook: HookVariant, skin: string, feedback: string[] = [], previous?: Script): Promise<Script> {
   return llm.json({
     role: feedback.length ? "writer-retry" : "writer",
     model: config().models.writer,
     system: SYSTEM,
-    user: userPrompt(lead, hook, skin, feedback),
+    user: userPrompt(lead, hook, skin, feedback, previous),
     schema: ScriptSchema,
     effort: "high",
   });

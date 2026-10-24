@@ -85,14 +85,15 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
         mech = mechanicalCheck(script, lead);
       }
       let verdict = await check(opts.llm, script, lead);
-      // Both reviews say it IS a scam but list fixable problems: one rewrite with those exact
-      // problems, then both reviews run again from scratch. Any doubt that it's a scam = skip.
-      const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
-      if (fixable) {
-        step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewriting once)`);
+      // Both reviews say it IS a scam but list fixable problems: up to two rewrites with those exact
+      // problems, each followed by both reviews from scratch. Any doubt that it's a scam = skip.
+      for (let round = 1; round <= 2; round++) {
+        const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
+        if (!fixable) break;
+        step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewrite ${round} of 2)`);
         const problems = [...(verdict.a?.problems ?? []), ...(verdict.b?.problems ?? [])];
-        if (verdict.a && verdict.a.confidence < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
-        script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems));
+        if ((verdict.a?.confidence ?? 1) < 0.8 || (verdict.b?.confidence ?? 1) < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
+        script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems, script));
         verdict = await check(opts.llm, script, lead);
       }
       step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);

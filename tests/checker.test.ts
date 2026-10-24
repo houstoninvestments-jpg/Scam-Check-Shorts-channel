@@ -115,7 +115,7 @@ describe("rewrite after review problems", () => {
     // Stop before voice and render: no voice engine in this test.
     process.env.KOKORO_DIR = "/nonexistent";
     const r = await runDaily({ dryRun: true, llm, fixtureSources: ["ftc-traffic-qr.json"], voice: "kokoro", workDir: join(t, "work") });
-    expect(llm.roles).toEqual(["writer", "checker-a", "checker-b", "writer-retry", "checker-a", "checker-b"]);
+    expect(llm.roles).toEqual(["writer", "checker-a", "checker-b", "writer-retry", "checker-a", "checker-b"]); // second pair clean: no second rewrite
     expect(r.steps.filter((s) => s.step === "check").map((s) => s.ok)).toEqual([false, true]);
   });
 });
