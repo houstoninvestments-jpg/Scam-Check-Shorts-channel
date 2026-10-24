@@ -119,6 +119,8 @@ async function main() {
       log(`site target: ${t.kind} at ${t.baseUrl}${project ? ` (project ${project})` : ""}. Deploy: ${deployCommand(t)}`);
       if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `kind=${t.kind}\nbase_url=${t.baseUrl}\nproject=${project}\n`);
       if (process.env.GITHUB_ENV) appendFileSync(process.env.GITHUB_ENV, `SITE_BASE_URL=${t.baseUrl}\n`);
+      // A run note readable from the Actions API, so the address can be confirmed without downloading logs.
+      if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Website address::${t.kind} ${t.baseUrl}${project ? ` (Cloudflare project ${project})` : ""}`);
       break;
     }
     case "site-redirect": {

@@ -6,6 +6,7 @@ import { loadLedger } from "../lib/ledger.js";
 import { path, readJson, today } from "../lib/util.js";
 import { CSS, esc, page, scamPage, type ShareImage } from "./templates.js";
 import { renderDefaultCard, renderScamCard } from "./cards.js";
+import { privacyPage, termsPage } from "./legal.js";
 import { buildRound, type LegitItem, type Round } from "./round.js";
 
 const pad3 = (n: number) => String(n).padStart(3, "0");
@@ -171,6 +172,7 @@ main{max-width:600px;margin:0 auto;padding:32px 16px}h1{font-size:2em;line-heigh
 <li><b>A request for money, codes, or details.</b> That's the scam.</li></ol>
 <div class="card"><p><b>Safe move:</b> don't tap. Check with the person or company another way, like a number you already have.</p></div>
 <p class="small">Want daily practice? Search for "Scam or Not" on YouTube.</p>
+<p class="small"><a href="${c.site.baseUrl}/privacy/">Privacy</a> · <a href="${c.site.baseUrl}/terms/">Terms</a></p>
 </main>
 <script>
 (function(){var k=new URLSearchParams(location.search).get("k");var S=${JSON.stringify({ u: c.supabase.url, k: c.supabase.publishableKey })};
@@ -226,6 +228,8 @@ export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDril
   write("index.html", linkPage(eps, latest));
   write("round/index.html", roundPage());
   write("scams/index.html", allScams(eps));
+  write("privacy/index.html", privacyPage(c, "../"));
+  write("terms/index.html", termsPage(c, "../"));
   for (const e of eps) write(`scam/${e.slug}/index.html`, scamPage(e, c, "../../", e.youtubeId ? `https://www.youtube.com/shorts/${e.youtubeId}` : undefined));
   if (c.familyPass.enabled) {
     write("family/index.html", familyPage());

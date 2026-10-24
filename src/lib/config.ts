@@ -1,7 +1,7 @@
 import { path, readJson } from "./util.js";
 
 export interface ChannelConfig {
-  channel: { name: string; tagline: string; never: string; closer: string };
+  channel: { name: string; tagline: string; never: string; closer: string; contactEmail: string; policyDate: string };
   cadence: { shortsPerDay: number; timezone: string };
   models: { writer: string; checker: string };
   voice: {

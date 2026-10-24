@@ -113,7 +113,24 @@ jobs:
       - name: Publish website to Cloudflare Pages
         id: cloudflare
         if: always() && steps.site.outputs.kind == 'cloudflare'
-        run: npx --yes wrangler@4.151.2 pages deploy site/dist --project-name="${{ steps.site.outputs.project }}" --branch=main --commit-dirty=true
+        run: |
+          set -o pipefail
+          mkdir -p work
+          npx --yes wrangler@4.151.2 pages deploy site/dist --project-name="${{ steps.site.outputs.project }}" --branch=main --commit-dirty=true 2>&1 | tee work/wrangler.log
+          echo "::notice title=Cloudflare deploy::succeeded, preview $(grep -oE 'https://[a-z0-9.-]+\.pages\.dev' work/wrangler.log | tail -1)"
+
+      - name: Check the live site answers
+        if: always() && steps.cloudflare.outcome == 'success'
+        run: |
+          base="${{ steps.site.outputs.base_url }}"
+          for page in "" "privacy/" "terms/" "round/"; do
+            for i in 1 2 3 4 5 6; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "$base/$page") && [ "$code" = "200" ] && break
+              sleep 10
+            done
+            if [ "$code" = "200" ]; then echo "::notice title=Live check::$base/$page answered 200"
+            else echo "::error title=Live check::$base/$page answered $code"; exit 1; fi
+          done
 
       - name: Forward the old GitHub Pages address to Cloudflare
         if: always() && steps.site.outputs.kind == 'cloudflare'
@@ -132,7 +149,8 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Save ledger and stats
-        if: always() && steps.run.outputs.mode == 'live'
+        # Dry runs save too, so the chosen website address (data/site-target.json) is kept.
+        if: always()
         run: |
           git config user.name "scam-or-not-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -3,7 +3,9 @@
     "name": "Scam or Not",
     "tagline": "One real scam text a day. Real or scam?",
     "never": "This channel never texts you, calls you, or asks for money.",
-    "closer": "Send this to the one who'd tap it."
+    "closer": "Send this to the one who'd tap it.",
+    "contactEmail": "houstoninvestments@gmail.com",
+    "policyDate": "October 24, 2026"
   },
   "cadence": {
     "shortsPerDay": 1,

@@ -91,7 +91,7 @@ ${o.extraHead ?? ""}
 <main>
 ${o.body}
 <footer>
-<p><a href="${o.root}">Scam or Not</a> · <a href="${o.root}round/">Daily round</a> · <a href="${o.root}scams/">All scams</a></p>
+<p><a href="${o.root}">Scam or Not</a> · <a href="${o.root}round/">Daily round</a> · <a href="${o.root}scams/">All scams</a> · <a href="${o.root}privacy/">Privacy</a> · <a href="${o.root}terms/">Terms</a></p>
 <p>We never text you, call you, or ask for money.</p>
 </footer>
 </main>
