@@ -152,6 +152,13 @@ async function main() {
       if (process.env.GITHUB_ACTIONS) console.log(`::notice title=YouTube channel::${c.title} ${c.handle || c.id}`);
       break;
     }
+    case "rerender": {
+      // Preview of a saved episode in today's template: --number 2 [--voice kokoro] [--work dir]
+      const { rerender } = await import("./render/rerender.js");
+      const r = await rerender(Number(arg("--number")), arg("--work") ?? path("work/rerender"), arg("--voice") as "kokoro" | undefined);
+      console.log(r.file, r.voice, `${(r.timeline.total / r.timeline.fps).toFixed(1)}s`);
+      break;
+    }
     case "release": {
       // Make a hidden upload public if the copy on YouTube is clean. --number 1 --video <uploaded mp4> [--control <mp4>] [--check-only]
       const { releaseHidden, uploadsOrder } = await import("./publish/release.js");

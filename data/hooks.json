@@ -3,7 +3,7 @@
   "variants": [
     {
       "id": "real-or-scam",
-      "pattern": "Real or scam? You get three seconds."
+      "pattern": "You get a few seconds. Read it."
     },
     {
       "id": "would-you-tap",
@@ -15,7 +15,7 @@
     },
     {
       "id": "someone-you-love",
-      "pattern": "Someone you love gets this today. Real or scam?"
+      "pattern": "Someone you love gets this today."
     },
     {
       "id": "looks-official",

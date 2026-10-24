@@ -29,3 +29,29 @@ export function loopSimilarity(video: string): number {
   if (!m) throw new Error("could not measure loop similarity");
   return +m[1];
 }
+
+// The phone screen inside the bezel (remotion/ScamShort.tsx: phone at 130,470, 22px bezel).
+const SCREEN = "crop=776:986:152:492";
+
+function screenGray(video: string, frame: number): Buffer {
+  const r = spawnSync("ffmpeg", ["-v", "error", "-i", video, "-vf", `select=eq(n\\,${frame}),${SCREEN}`, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "gray", "-"], { maxBuffer: 1 << 26 });
+  if (r.status !== 0 || !r.stdout?.length) throw new Error(`could not read frame ${frame}: ${r.stderr?.toString().slice(0, 200)}`);
+  return r.stdout as Buffer;
+}
+
+/**
+ * The read window must show the message exactly as it looked before: no dimming, nothing on top.
+ * Compares the phone screen at the start, middle and end of the window with the frame just before it.
+ * Returns the largest share of screen pixels that changed (0 means untouched).
+ */
+export function readWindowChange(video: string, read: { from: number; to: number }): number {
+  const before = screenGray(video, Math.max(0, read.from - 1));
+  let worst = 0;
+  for (const n of [read.from + 2, Math.floor((read.from + read.to) / 2), read.to - 2]) {
+    const b = screenGray(video, n);
+    let changed = 0;
+    for (let i = 0; i < before.length; i++) if (Math.abs(before[i] - b[i]) > 24) changed++;
+    worst = Math.max(worst, changed / before.length);
+  }
+  return +worst.toFixed(4);
+}

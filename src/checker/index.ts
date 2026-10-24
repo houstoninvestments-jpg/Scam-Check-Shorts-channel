@@ -5,13 +5,14 @@ import { config } from "../lib/config.js";
 import { normalizeText } from "../lib/util.js";
 import { checkReadability, fkGrade } from "../lib/readability.js";
 import { namesBrand } from "../publish/tags.js";
+import { ASK_LINE, hookLine } from "../render/timeline.js";
 
-export const MAX_SPOKEN_WORDS = 80;
+export const MAX_SPOKEN_WORDS = 83; // 80 written words plus the fixed "Real or scam?"
 export const MIN_CONFIDENCE = 0.8;
 
 /** Lines the viewer hears, in order. The closer is fixed and added by the pipeline. */
 export function spokenLines(s: Script, closer = config().channel.closer): string[] {
-  return [s.hook, s.stampSay, ...s.flags.map((f) => f.say), s.safeMove.say, closer];
+  return [hookLine(s.hook), ASK_LINE, s.stampSay, ...s.flags.map((f) => f.say), s.safeMove.say, closer];
 }
 
 const SAFE_DOMAIN = /\.(example|invalid|test)$/i;

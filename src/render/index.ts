@@ -16,7 +16,7 @@ export function makeSfx(dir: string) {
   ff(["-f", "lavfi", "-i", "anoisesrc=d=0.35:c=brown:a=0.9", "-af", "lowpass=f=220,afade=t=out:st=0.05:d=0.3,volume=3", join(dir, "stamp.wav")]);
 }
 
-export function prepareTimeline(voice: VoiceResult, publicDir: string): Timeline {
+export function prepareTimeline(voice: VoiceResult, publicDir: string, readSec?: number): Timeline {
   mkdirSync(publicDir, { recursive: true });
   const segs = Object.fromEntries(voice.segments.map((s) => [s.id, s]));
   const names: Record<string, string> = {};
@@ -27,7 +27,7 @@ export function prepareTimeline(voice: VoiceResult, publicDir: string): Timeline
   }
   makeSfx(publicDir);
   copyFileSync(path("node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"), join(publicDir, "inter.woff2"));
-  return buildTimeline(segs, (id) => names[id]);
+  return buildTimeline(segs, (id) => names[id], readSec);
 }
 
 function browserExecutable(): string | undefined {

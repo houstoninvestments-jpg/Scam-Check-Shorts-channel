@@ -27,6 +27,16 @@
     sc.appendChild(b); ph.appendChild(sc); stage.appendChild(ph);
     return stage;
   }
+  // Clipboard API where allowed; the older select-and-copy as a fallback.
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (ok, fail) {
+      var t = el("textarea"); t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      var done = false; try { done = document.execCommand("copy"); } catch (e) {}
+      t.remove(); done ? ok() : fail();
+    });
+  }
   function share() { return "Scam #" + pad3(round.number) + " · I caught " + caught + " of " + round.items.length; }
 
   function show() {
@@ -75,8 +85,13 @@
     btn.onclick = function () {
       // Link to this exact day's round; the page's preview card is the site-wide default.
       var text = share() + "\n" + location.origin + location.pathname + "?d=" + round.date + (round.hashtags ? "\n" + round.hashtags.join(" ") : "");
-      if (navigator.share) navigator.share({ text: text }).catch(function () {});
-      else if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { btn.textContent = "Copied. Paste it anywhere."; });
+      // Phones get the share sheet. Computers (mouse, no touch) copy the text instead.
+      var phone = window.matchMedia && matchMedia("(pointer: coarse)").matches && navigator.share;
+      if (phone) navigator.share({ text: text }).catch(function () {});
+      else copyText(text).then(function () {
+        btn.textContent = "Copied!";
+        setTimeout(function () { btn.textContent = "Share my result"; }, 2000);
+      }, function () { btn.textContent = "Copy failed. Select the line above."; });
     };
     app.appendChild(btn);
     var signupOn = window.SON && SON.supabaseUrl && SON.supabaseKey;

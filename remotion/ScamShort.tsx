@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Easing, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ShortProps } from "./props";
-import { coverOpacity, type Beat, type BeatId } from "../src/render/timeline";
+import { ASK_LINE, coverOpacity, hookLine, type Beat, type BeatId } from "../src/render/timeline";
 import { C, fontFamily } from "./theme";
 import { SKINS } from "./skins/Skins";
 import type { Marks, MarkState } from "./Marks";
@@ -61,10 +61,11 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
   const flag1 = get("flag1");
   const dock = interpolate(frame, [flag1.from, flag1.from + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
 
-  const countdown = get("countdown");
-  const inCountdown = frame >= countdown.from && frame < countdown.to;
-  const cdN = 3 - Math.floor((frame - countdown.from) / fps);
-  const cdLocal = (frame - countdown.from) % fps;
+  // Read window: the message alone at full brightness. The timer sits under the phone, never on it.
+  const read = get("read");
+  const ask = beats.find((b) => b.id === "ask") ?? read;
+  const inRead = frame >= read.from && frame < read.to;
+  const readLeft = 1 - (frame - read.from) / Math.max(1, read.to - read.from);
 
   // Loop: fade every overlay out during the tail so the final frame equals frame 0.
   const overlay = interpolate(frame, [tail.from, tail.to - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -93,8 +94,8 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
 
       {/* headline zone */}
       <div style={{ position: "absolute", top: 220, left: 60, right: 60, height: 230, display: "flex", alignItems: "center", justifyContent: "center", opacity: overlay }}>
-        {beat?.id === "hook" ? <Headline local={local}>{p.script.hook}</Headline> : null}
-        {beat?.id === "countdown" ? <Headline local={local} size={96}>Real or scam?</Headline> : null}
+        {beat?.id === "hook" ? <Headline local={local}>{hookLine(p.script.hook)}</Headline> : null}
+        {beat?.id === "ask" || beat?.id === "read" ? <Headline local={frame - ask.from} size={96}>{ASK_LINE}</Headline> : null}
         {beat?.id === "stamp" ? <Headline local={local} color={C.red} size={96}>SCAM</Headline> : null}
         {flagIdx >= 0 ? (
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
@@ -115,8 +116,6 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
       <div style={{ position: "absolute", top: 470, left: 130, width: 820, height: 1030, borderRadius: 84, background: C.bezel, padding: 22, boxShadow: "0 30px 80px rgba(0,0,0,0.55)" }}>
         <div style={{ width: "100%", height: "100%", borderRadius: 64, overflow: "hidden", position: "relative" }}>
           <Skin sender={p.script.message.sender} subject={p.script.message.subject} body={p.script.message.body} hasQr={p.script.message.hasQr} marks={marks} progress={progress} time="9:41" />
-          {/* dim the screen during the countdown */}
-          {inCountdown ? <AbsoluteFill style={{ background: "rgba(0,0,0,0.55)" }} /> : null}
         </div>
       </div>
 
@@ -149,22 +148,14 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
         </div>
       ) : null}
 
-      {/* 3-2-1 */}
-      {inCountdown && cdN >= 1 ? (
-        <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", top: 0 }}>
-          <div
-            style={{
-              fontSize: 360,
-              fontWeight: 900,
-              color: C.ink,
-              transform: `scale(${interpolate(cdLocal, [0, 6, fps], [1.35, 1, 0.92], { extrapolateRight: "clamp" })})`,
-              opacity: interpolate(cdLocal, [0, 2, fps - 4, fps], [0.3, 1, 1, 0.2], { extrapolateRight: "clamp" }),
-              textShadow: "0 10px 40px rgba(0,0,0,0.6)",
-            }}
-          >
-            {cdN}
+      {/* read timer: a thin bar under the phone that runs down, outside the screen */}
+      {inRead ? (
+        <div style={{ position: "absolute", top: 1534, left: 152, width: 776, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+          <div style={{ width: "100%", height: 12, borderRadius: 6, background: "rgba(169,176,186,0.25)", overflow: "hidden" }}>
+            <div style={{ width: `${readLeft * 100}%`, height: "100%", borderRadius: 6, background: C.red }} />
           </div>
-        </AbsoluteFill>
+          <div style={{ fontSize: 30, fontWeight: 700, letterSpacing: 4, color: C.dim }}>READ IT</div>
+        </div>
       ) : null}
 
       {/* SCAM stamp: slams in over the phone, then docks small at the phone's top-right corner */}
@@ -216,9 +207,10 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
             <Audio src={staticFile(b.audio!)} />
           </Sequence>
         ))}
-      {[0, 1, 2].map((i) => (
-        <Sequence key={`tick${i}`} from={countdown.from + i * fps} durationInFrames={10}>
-          <Audio src={staticFile("tick.wav")} volume={0.6} />
+      {/* soft tick once a second while the viewer reads */}
+      {Array.from({ length: Math.ceil((read.to - read.from) / fps) }, (_, i) => (
+        <Sequence key={`tick${i}`} from={read.from + i * fps} durationInFrames={10}>
+          <Audio src={staticFile("tick.wav")} volume={0.3} />
         </Sequence>
       ))}
       <Sequence from={stamp.from} durationInFrames={20}>

@@ -1,22 +1,37 @@
 import { describe, expect, it } from "vitest";
-import { buildTimeline, captionChunks, MAX_SECONDS } from "../src/render/timeline";
+import { buildTimeline, captionChunks, hookLine, readSeconds } from "../src/render/timeline";
 import { wordsFromAlignment } from "../src/voice";
 
 const seg = (id: string, duration: number, text = "One two three four five six seven.") => ({ id, text, file: `/x/${id}.wav`, duration });
-const segs = (d: number) => Object.fromEntries(["hook", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, seg(id, d)]));
+const segs = (d: number) => Object.fromEntries(["hook", "ask", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, seg(id, d)]));
 
 describe("timeline", () => {
-  it("lays out every beat in order inside 30 seconds", () => {
-    const t = buildTimeline(segs(2.2), (id) => `vo-${id}.wav`);
-    expect(t.beats.map((b) => b.id)).toEqual(["hook", "countdown", "stamp", "flag1", "flag2", "flag3", "safe", "closer", "tail"]);
-    expect(t.total / t.fps).toBeLessThanOrEqual(MAX_SECONDS);
-    const cd = t.beats.find((b) => b.id === "countdown")!;
-    expect(cd.to - cd.from).toBe(90);
+  it("asks once, then gives a silent read window, all under 60 seconds", () => {
+    const t = buildTimeline(segs(2.2), (id) => `vo-${id}.wav`, 7);
+    expect(t.beats.map((b) => b.id)).toEqual(["hook", "ask", "read", "stamp", "flag1", "flag2", "flag3", "safe", "closer", "tail"]);
+    expect(t.total / t.fps).toBeLessThan(60);
+    const read = t.beats.find((b) => b.id === "read")!;
+    expect(read.to - read.from).toBe(210);
+    expect(read.audio).toBeUndefined(); // no voice while reading
+    expect(t.captions.some((c) => c.from < read.to && c.to > read.from)).toBe(false); // no captions either
     for (let i = 1; i < t.beats.length; i++) expect(t.beats[i].from).toBe(t.beats[i - 1].to);
   });
 
-  it("refuses a voice track that runs past 30 seconds", () => {
-    expect(() => buildTimeline(segs(4), (id) => id)).toThrow(/limit is 30s/);
+  it("sizes the read window at 3 words a second, 4 to 7 seconds", () => {
+    expect(readSeconds({ body: "Your package is held." })).toBe(4);
+    expect(readSeconds({ body: Array(15).fill("word").join(" ") })).toBe(5);
+    expect(readSeconds({ subject: "Final notice", body: Array(40).fill("word").join(" ") })).toBe(7);
+  });
+
+  it("drops the hook's own real-or-scam so the question is asked once", () => {
+    expect(hookLine("Real or scam? You get three seconds.")).toBe("You get three seconds.");
+    expect(hookLine("Someone you love gets this today. Real or scam?")).toBe("Someone you love gets this today.");
+    expect(hookLine("Would you tap this? Decide fast.")).toBe("Would you tap this? Decide fast.");
+    expect(hookLine("Real or scam?")).toBe("Read this one closely.");
+  });
+
+  it("refuses a voice track that runs past the limit", () => {
+    expect(() => buildTimeline(segs(6.5), (id) => id, 7)).toThrow(/limit is 59s/);
   });
 
   it("chunks captions and keeps them on screen between chunks", () => {

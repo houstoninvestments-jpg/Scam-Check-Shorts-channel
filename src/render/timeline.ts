@@ -1,12 +1,15 @@
 import type { VoiceSegment, Word } from "../voice/index.js";
 
 export const FPS = 30;
-export const MAX_SECONDS = 30;
-export const COUNTDOWN_SECONDS = 3;
+export const MAX_SECONDS = 59; // Shorts stay under 60s
+export const ASK_LINE = "Real or scam?"; // spoken once, right before the read window
+export const READ_WORDS_PER_SECOND = 3;
+export const READ_MIN_SECONDS = 4;
+export const READ_MAX_SECONDS = 7;
 const GAP = 0.25; // breath between lines
 const TAIL = 0.6; // hold after the closer, then fade back to the opening frame for a clean loop
 
-export type BeatId = "hook" | "countdown" | "stamp" | "flag1" | "flag2" | "flag3" | "safe" | "closer" | "tail";
+export type BeatId = "hook" | "ask" | "read" | "stamp" | "flag1" | "flag2" | "flag3" | "safe" | "closer" | "tail";
 
 export interface Beat {
   id: BeatId;
@@ -30,6 +33,22 @@ export interface Timeline {
 }
 
 const f = (s: number) => Math.round(s * FPS);
+
+/** Silent read window: the message's words at 3 a second, between 4 and 7 seconds. */
+export function readSeconds(message: { subject?: string; body: string }): number {
+  const words = `${message.subject ?? ""} ${message.body}`.split(/\s+/).filter(Boolean).length;
+  return Math.min(READ_MAX_SECONDS, Math.max(READ_MIN_SECONDS, +(words / READ_WORDS_PER_SECOND).toFixed(1)));
+}
+
+/** The hook without its own "real or scam?", since the video asks that once, right after the hook. */
+export function hookLine(hook: string): string {
+  const out = hook
+    .replace(/\b(is (it|this) )?real or (a )?scam\b[?.!]*/gi, "")
+    .replace(/\s{2,}/g, " ")
+    .replace(/^[\s,.;:!?-]+/, "")
+    .trim();
+  return out || "Read this one closely.";
+}
 
 /** Split a spoken line into short caption chunks, timed by real word timings when we have them. */
 export function captionChunks(seg: VoiceSegment, startSec: number, maxWords = 4): Caption[] {
@@ -64,10 +83,10 @@ export function captionChunks(seg: VoiceSegment, startSec: number, maxWords = 4)
 }
 
 /**
- * Lay the beats end to end: hook, silent 3-2-1, stamp, three flags, safe move, closer.
+ * Lay the beats end to end: hook, "Real or scam?", silent read window, stamp, three flags, safe move, closer.
  * Throws if the voice runs long, so the writer gets another try instead of shipping a cut video.
  */
-export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id: string) => string): Timeline {
+export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id: string) => string, readSec = READ_MIN_SECONDS): Timeline {
   const beats: Beat[] = [];
   const captions: Caption[] = [];
   let t = 0.35; // a beat of the clean phone before the hook, matches the loop point
@@ -79,8 +98,10 @@ export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id
     t += len + GAP;
   };
   spoken("hook");
-  beats.push({ id: "countdown", from: f(t), to: f(t + COUNTDOWN_SECONDS) });
-  t += COUNTDOWN_SECONDS;
+  if (segs.ask) spoken("ask");
+  // No voice, no overlay: the message at full brightness, long enough to read it.
+  beats.push({ id: "read", from: f(t), to: f(t + readSec) });
+  t += readSec;
   spoken("stamp", 1.4);
   spoken("flag1", 2.4);
   spoken("flag2", 2.4);

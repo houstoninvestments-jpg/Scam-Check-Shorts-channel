@@ -6,7 +6,7 @@ import { buildTimeline, coverOpacity, COVER_FADE } from "../src/render/timeline"
 import { extractCover, loopSimilarity, THUMB_MAX_BYTES } from "../src/render/cover";
 import { tmp } from "./helpers";
 
-const segs = Object.fromEntries(["hook", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, { id, text: "One two three.", file: "", duration: 2 }]));
+const segs = Object.fromEntries(["hook", "ask", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, { id, text: "One two three.", file: "", duration: 2 }]));
 const t = buildTimeline(segs, (id) => id);
 const at = (id: string) => t.beats.find((b) => b.id === id)!;
 
@@ -17,7 +17,7 @@ describe("cover frame timing", () => {
   });
   it("clears the cover once the hook starts and keeps it off until the tail", () => {
     expect(coverOpacity(at("hook").from + COVER_FADE, t.beats)).toBe(0);
-    for (const id of ["countdown", "stamp", "flag1", "flag2", "flag3", "safe", "closer"]) expect(coverOpacity(at(id).from + 2, t.beats)).toBe(0);
+    for (const id of ["ask", "read", "stamp", "flag1", "flag2", "flag3", "safe", "closer"]) expect(coverOpacity(at(id).from + 2, t.beats)).toBe(0);
   });
   it("never shows the cover while the verdict is on screen", () => {
     for (let f = at("stamp").from; f < at("tail").from; f++) expect(coverOpacity(f, t.beats)).toBe(0);
