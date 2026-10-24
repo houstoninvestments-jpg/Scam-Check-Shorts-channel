@@ -139,6 +139,11 @@ async function main() {
       await deployDryRun();
       break;
     }
+    case "covers-backfill": {
+      const { backfillCovers } = await import("./render/covers.js");
+      console.log(await backfillCovers());
+      break;
+    }
     case "stripe-setup": {
       const { stripeSetup } = await import("./site/stripe-setup.js");
       await stripeSetup();

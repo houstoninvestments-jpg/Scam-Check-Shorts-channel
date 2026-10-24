@@ -46,7 +46,7 @@ describe("website", () => {
     const $ = cheerio.load(readFileSync(join(dir, "scam/002-fake-traffic-ticket/index.html"), "utf8"));
     expect($("title").text()).toBe(fixtureScript().message.body.replace(/\s+/g, " "));
     expect($("a[href='../../']").length).toBeGreaterThan(0);
-    expect($(".verdict").text()).toBe("SCAM");
+    expect($(".verdict-stamp").text()).toBe("SCAM");
     expect($("a[href='https://www.youtube.com/shorts/yt2']").length).toBe(1);
   });
 

@@ -13,6 +13,7 @@ import { chooseCta, chooseSkin } from "./choose.js";
 import { synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { extractCover, loopSimilarity } from "../render/cover.js";
+import { saveSiteCover } from "../render/covers.js";
 import { categoryFor } from "../publish/tags.js";
 import { uploadRequest, publishShort, recheckLock, type Uploader } from "../publish/youtube.js";
 
@@ -164,7 +165,8 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       closer: cfg.channel.closer,
       voiceLabel: "AI voice",
       sourceName: SOURCE_SHORT[lead.docs[0].kind] ?? lead.docs[0].name,
-      testLabel: opts.dryRun ? "TEST RENDER" : undefined,
+      // Always set explicitly: an absent value would fall back to the template's sample settings.
+      testLabel: opts.dryRun ? "TEST RENDER" : "",
     };
     writeJson(join(work, "props.json"), props);
     const videoFile = join(work, `scam-${pad3(number)}${opts.dryRun ? "-test" : ""}.mp4`);
@@ -178,6 +180,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (ep.loopSimilarity < 0.97) report.warnings.push(`loop: last frame differs from the cover (similarity ${ep.loopSimilarity})`);
     const cover = extractCover(videoFile, videoFile.replace(/\.mp4$/, "-cover.jpg"));
     step("cover", true, `${cover.file} (${Math.round(cover.bytes / 1024)} KB), loop similarity ${ep.loopSimilarity}`);
+    if (!opts.dryRun) saveSiteCover(cover.file, number); // the website's case-file card uses the real cover frame
     ep.status = "rendered";
     ep.voice = voice.label;
     report.videoFile = videoFile;

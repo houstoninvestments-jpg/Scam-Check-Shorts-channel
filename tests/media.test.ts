@@ -39,3 +39,12 @@ describe("timeline", () => {
     ]);
   });
 });
+
+describe("real renders never carry the test label", () => {
+  it("sample settings for the template have no test label to fall back on", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { path } = await import("../src/lib/util");
+    expect(JSON.parse(readFileSync(path("remotion/sample-props.json"), "utf8")).testLabel).toBeUndefined();
+    expect(readFileSync(path("src/pipeline/daily.ts"), "utf8")).toContain('testLabel: opts.dryRun ? "TEST RENDER" : ""');
+  });
+});

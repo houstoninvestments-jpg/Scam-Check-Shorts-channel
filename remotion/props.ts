@@ -10,6 +10,6 @@ export interface ShortProps {
   closer: string;
   voiceLabel: string; // on-screen AI voice disclosure
   sourceName: string; // "FTC" etc. for the recreated-from note
-  testLabel?: string; // shown on dry-run renders so a test file can never pass as real
+  testLabel: string; // "TEST RENDER" on dry runs, "" on real renders (always set: absent falls back to sample props)
   [key: string]: unknown;
 }

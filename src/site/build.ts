@@ -1,10 +1,12 @@
-import { copyFileSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import type { Episode } from "../types.js";
 import { config } from "../lib/config.js";
 import { loadLedger } from "../lib/ledger.js";
 import { path, readJson, today } from "../lib/util.js";
-import { CSS, esc, page, scamPage, type ShareImage } from "./templates.js";
+import { CSS, esc, page, phone, scamPage, topBar, type ShareImage } from "./templates.js";
+import { writeFavicons } from "./favicon.js";
+import { coverFile } from "../render/covers.js";
 import { renderDefaultCard, renderScamCard } from "./cards.js";
 import { privacyPage, termsPage } from "./legal.js";
 import { buildRound, type LegitItem, type Round } from "./round.js";
@@ -32,30 +34,41 @@ function browserConfig() {
   })};`;
 }
 
-function linkPage(eps: Episode[], round: Round | null) {
+/** A case-file card: the video's cover frame, numbered, newest first. */
+function caseCard(e: Episode, root: string, hasCover: (n: number) => boolean) {
+  const no = `Scam No. ${pad3(e.number)}`;
+  const img = hasCover(e.number)
+    ? `<img src="${root}covers/${pad3(e.number)}.jpg" alt="Cover of ${esc(no)}: a message with a Real or Scam stamp" width="540" height="960" loading="lazy">`
+    : `<span class="ph">REAL OR SCAM?</span>`;
+  return `<a class="case" href="${root}scam/${e.slug}/"><span class="no">${esc(no)}</span>${img}<span class="name">${esc(e.script.scamName)}</span><span class="date">${esc(e.date)}</span></a>`;
+}
+
+function linkPage(eps: Episode[], round: Round | null, hasCover: (n: number) => boolean) {
   const c = config();
-  const latest = eps.slice(-5).reverse();
+  const today = eps.at(-1);
   const aff = c.affiliate;
   const body = `
-<h1>Scam or Not</h1>
-<p class="lede">${esc(c.channel.tagline)} Each day we show one scam that is going around right now, then how to spot it.</p>
-<a class="btn" href="round/">Play today's round</a>
-<p class="small">Three messages. Real or scam? Takes one minute.${round ? ` Today: Scam #${pad3(round.number)}.` : ""}</p>
+${
+  today
+    ? phone({ sender: today.script.message.sender, body: today.script.message.body, stamp: "question" })
+    : phone({ sender: "Scam or Not", body: "The first scam text lands here soon.", stamp: "question" })
+}
+<a class="btn main" href="round/">Play today's round</a>
+<p class="tagline">${esc(c.channel.tagline)}</p>
+<p class="small" style="text-align:center">Three messages. Takes one minute.${round ? ` Today: Scam No. ${pad3(round.number)}.` : ""}</p>
 
-<div class="card never"><p><b>${esc(c.channel.never)}</b></p><p>If someone says they are us and asks for money, it's a scam.</p></div>
+<h2>Past scams</h2>
+${eps.length ? `<div class="cases">\n${[...eps].reverse().slice(0, 12).map((e) => caseCard(e, "", hasCover)).join("\n")}\n</div>` : "<p>The first case file is on its way.</p>"}
+${eps.length > 12 ? `<p><a href="scams/">See every scam</a></p>` : ""}
 
-<h2>Newest scams</h2>
-<div class="list">
-${latest.map((e) => `<a href="scam/${e.slug}/"><b>Scam #${pad3(e.number)}: ${esc(e.script.scamName)}</b><small>${esc(e.date)}</small></a>`).join("\n") || "<p>The first video is on its way.</p>"}
-</div>
-<p><a href="scams/">See every scam</a></p>
+<p class="never">${esc(c.channel.never)}</p>
 
 <section id="signup" class="hidden">
 <h2>Get the daily round by email</h2>
 <p>Free. One short email a day. Leave anytime.</p>
 <form id="signup-form">
 <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-<button class="btn" type="submit">Send me the daily round</button>
+<button class="btn light" type="submit">Send me the daily round</button>
 <p id="signup-msg" class="small" role="status"></p>
 </form>
 </section>
@@ -64,16 +77,25 @@ ${latest.map((e) => `<a href="scam/${e.slug}/"><b>Scam #${pad3(e.number)}: ${esc
 <p><span class="paid">${esc(aff.label)}</span></p>
 ${
   aff.enabled && aff.url
-    ? `<p><b>${esc(aff.name)}</b></p><p>${esc(aff.blurb)}</p><a class="btn alt" href="${esc(aff.url)}" rel="sponsored noopener">See our pick</a><p class="small">We earn money if you buy through this link.</p>`
+    ? `<p><b>${esc(aff.name)}</b></p><p>${esc(aff.blurb)}</p><a class="btn" href="${esc(aff.url)}" rel="sponsored noopener">See our pick</a><p class="small">We earn money if you buy through this link.</p>`
     : `<p><b>Identity protection pick: coming soon.</b></p><p class="small">When we add one, we will say clearly that it's a paid link.</p>`
 }
 </div>
 ${
   c.familyPass.enabled
-    ? `<h2>Family Pass</h2><p>Practice together. Past rounds, a family group with streaks, big text, and Fire Drill. $${c.familyPass.priceUsd} once.</p><a class="btn alt" href="family/">See Family Pass</a>`
+    ? `<h2>Family Pass</h2><p>Practice together. Past rounds, a family group with streaks, big text, and Fire Drill. $${c.familyPass.priceUsd} once.</p><a class="btn" href="family/">See Family Pass</a>`
     : ""
 }`;
-  return page({ title: "Scam or Not: one real scam text a day", description: c.channel.tagline, body, root: "", canonical: `${c.site.baseUrl}/`, image: defaultImage(), scripts: `<script src="assets/config.js"></script><script src="assets/signup.js"></script>` });
+  return page({
+    top: topBar("", today ? `Scam No. ${pad3(today.number)}` : ""),
+    title: "Scam or Not: one real scam text a day",
+    description: c.channel.tagline,
+    body,
+    root: "",
+    canonical: `${c.site.baseUrl}/`,
+    image: defaultImage(),
+    scripts: `<script src="assets/config.js"></script><script src="assets/signup.js"></script>`,
+  });
 }
 
 function roundPage() {
@@ -94,9 +116,9 @@ function roundPage() {
   });
 }
 
-function allScams(eps: Episode[]) {
+function allScams(eps: Episode[], hasCover: (n: number) => boolean) {
   const body = `<h1>Every scam so far</h1>
-<div class="list">${[...eps].reverse().map((e) => `<a href="../scam/${e.slug}/"><b>Scam #${pad3(e.number)}: ${esc(e.script.scamName)}</b><small>${esc(e.script.message.body.replace(/\s+/g, " ").slice(0, 120))}</small></a>`).join("\n")}</div>`;
+<div class="cases">${[...eps].reverse().map((e) => caseCard(e, "../", hasCover)).join("\n")}</div>`;
   return page({ title: "Every scam so far | Scam or Not", description: "Every scam text we have broken down, newest first.", body, root: "../", canonical: `${config().site.baseUrl}/scams/`, image: defaultImage() });
 }
 
@@ -205,6 +227,8 @@ export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDril
   };
 
   out(dir, "assets/site.css", CSS);
+  mkdirSync(join(dir, "assets"), { recursive: true });
+  copyFileSync(path("node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"), join(dir, "assets/inter.woff2"));
   out(dir, "assets/config.js", browserConfig());
   for (const f of ["round.js", "signup.js", ...(c.familyPass.enabled ? ["family.js", "round-family.js"] : [])]) copyFileSync(path("site/static", f), join(dir, "assets", f));
 
@@ -226,9 +250,20 @@ export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDril
   await renderDefaultCard(join(dir, "og/default.png"));
   for (const e of eps) await renderScamCard(e, join(dir, `og/${e.slug}.png`));
 
-  write("index.html", linkPage(eps, latest));
+  // Cover frames of each video (kept in data/covers) for the case-file cards.
+  const covered = new Set<number>();
+  for (const e of eps) {
+    if (!existsSync(coverFile(e.number))) continue;
+    mkdirSync(join(dir, "covers"), { recursive: true });
+    copyFileSync(coverFile(e.number), join(dir, "covers", `${pad3(e.number)}.jpg`));
+    covered.add(e.number);
+  }
+  const hasCover = (n: number) => covered.has(n);
+  await writeFavicons(dir);
+
+  write("index.html", linkPage(eps, latest, hasCover));
   write("round/index.html", roundPage());
-  write("scams/index.html", allScams(eps));
+  write("scams/index.html", allScams(eps, hasCover));
   write("privacy/index.html", privacyPage(c, "../"));
   write("terms/index.html", termsPage(c, "../"));
   for (const e of eps) write(`scam/${e.slug}/index.html`, scamPage(e, c, "../../", e.youtubeId && e.youtubePrivacy !== "private" ? `https://www.youtube.com/shorts/${e.youtubeId}` : undefined));
