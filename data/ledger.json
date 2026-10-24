@@ -1,6 +1,109 @@
 {
-  "nextNumber": 1,
-  "episodes": [],
+  "nextNumber": 2,
+  "episodes": [
+    {
+      "number": 1,
+      "leadId": "3c29af3c3dae",
+      "date": "2026-10-24",
+      "skin": "imessage",
+      "cta": "none",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake FTC agent phone cutoff call",
+        "message": {
+          "sender": "FTC Official",
+          "subject": "",
+          "body": "FTC: Agent Badge ID 4471-B. A phone registered under your name is being used for scams overseas. Your number will be deactivated unless you cooperate. Do not discuss this case with anyone. A police officer will contact you to file a report.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "The FTC Consumer Alert describes this scheme as a phone call from someone claiming to be an FTC official. The call's claims (the badge ID, the phone-registered-in-your-name story, the deactivation threat, the secrecy demand, and the handoff to a fake police officer) are adapted into a text message here so they can be shown on the screen.",
+          "evidence": [
+            {
+              "quote": "someone claiming to be an FTC official (who’s really a scammer) calls to say a phone was registered under your name and number and is being used to commit scams in another country.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            },
+            {
+              "quote": "If you don’t cooperate, they threaten to deactivate your phone number.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            },
+            {
+              "quote": "the FTC impersonator will transfer you to a (fake) police officer to file a report.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            }
+          ]
+        },
+        "hook": "Real or scam? You get three seconds.",
+        "stampSay": "Scam. The FTC won't cut you off.",
+        "flags": [
+          {
+            "label": "Phone cutoff threat",
+            "say": "They scare you by saying your number will be shut off.",
+            "target": {
+              "kind": "text",
+              "match": "Your number will be deactivated"
+            },
+            "evidence": {
+              "quote": "A real FTC employee will never ever threaten to disconnect your phone. That’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            }
+          },
+          {
+            "label": "Keep it secret",
+            "say": "A real FTC employee never tells you to keep your conversations secret.",
+            "target": {
+              "kind": "text",
+              "match": "Do not discuss this case with anyone"
+            },
+            "evidence": {
+              "quote": "A real FTC employee will never ever tell you to keep your conversations secret. That’s always a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            }
+          },
+          {
+            "label": "Fake badge number",
+            "say": "That badge ID is fake and meant to sound official.",
+            "target": {
+              "kind": "text",
+              "match": "Agent Badge ID 4471-B"
+            },
+            "evidence": {
+              "quote": "The “FTC official” even reads off their badge ID (it’s a fake badge).",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Report it",
+          "say": "Tell the FTC about it at ReportFraud.ftc.gov.",
+          "evidence": {
+            "quote": "Spot one of these scams? Tell the FTC at ReportFraud.ftc.gov.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number"
+          }
+        },
+        "title": "Fake government agent call says your phone will be cut off",
+        "description": "A caller posing as a government agent says your number is tied to scams and will be shut off. They read off a badge ID and tell you to keep quiet. Here are three signs it is a scam and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "001-fake-ftc-agent-phone-cutoff-call",
+      "status": "rendered",
+      "category": "impostor",
+      "loopSimilarity": 0.994511,
+      "voice": "AI voice (ElevenLabs)",
+      "thumbnail": {
+        "ok": false,
+        "detail": "thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
+      },
+      "youtubeId": "t44bNq4o3NQ",
+      "youtubePrivacy": "private"
+    }
+  ],
   "skipped": [
     {
       "leadId": "3c29af3c3dae",
@@ -52,5 +155,11 @@
       "date": "2026-10-24",
       "reason": "reviews disagree or unsure (unsure / scam)"
     }
-  ]
+  ],
+  "firstUploadCheck": {
+    "videoId": "t44bNq4o3NQ",
+    "checkedAt": "2026-10-24T07:16:59.288Z",
+    "locked": true,
+    "detail": "status stayed private after asking for unlisted"
+  }
 }

@@ -1,13 +1,14 @@
 {
   "date": "2026-10-24",
   "dryRun": false,
-  "status": "skipped",
+  "status": "rendered",
   "warnings": [
     "source bbb-scam-alerts failed: no articles found",
-    "source tx-ag failed: no articles found",
-    "no lead passed both checks today; skipped"
+    "source tx-ag failed: no articles found"
   ],
-  "errors": [],
+  "errors": [
+    "first upload is locked private; audit request prepared in docs/youtube-audit-request.md"
+  ],
   "steps": [
     {
       "step": "scout",
@@ -17,48 +18,54 @@
     {
       "step": "check",
       "ok": false,
-      "detail": "The FTC is not calling to deactivate your phone number: problems: Flag 'Threatens your phone': the say line widens 'A real FTC employee' to 'A real agency employee'. The source covers only the FTC, not every agency. (rewriting once)"
+      "detail": "The FTC is not calling to deactivate your phone number: problems: Channel mismatch: the source describes this scheme as a phone call (\"calls to say a phone was registered under your name\"; the fake official \"reads off their badge ID\"), but the scamName, title (\"Fake government agent text says your phone will be cut off\") and the on-screen message present it as a text message. The recreated provenance covers the wording, but the title tells viewers this scam arrives by text, which the source does not say. Reframe it as a call, or say the call version was adapted into a text. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "The FTC is not calling to deactivate your phone number: problems: provenanceNote says the source describes a follow-up text with a fake employee ID photo 'that the source says scammers send.' The source never says scammers in this scheme text a photo. It only says a real FTC employee will never text a photo of their employee ID. In the source, the badge ID is read aloud on the call. The note should not attribute this to the source."
+      "detail": "The FTC is not calling to deactivate your phone number: problems: The recreated message never claims to be from the FTC. The sender and body say \"Consumer Protection Office,\" but the stamp (\"The FTC won't cut you off\") and the secrecy flag (\"A real FTC employee never...\") rely on the FTC rules from the source. Viewers could wrongly think these red flags only apply when the FTC is named. The FTC's statements also say nothing about what a generic \"Consumer Protection Office\" would or would not do. The message should name the FTC, as in the source (e.g., \"FTC official\"), or the spoken lines should be reworded to match the sender. (rewrite 2 of 2)"
     },
     {
       "step": "check",
-      "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / scam)"
+      "ok": true,
+      "detail": "The FTC is not calling to deactivate your phone number: both reviews agree: scam, no problems"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Delivery channel is not sourced. The description says 'A text invites you', the category is 'text', and the sender is a phone number. The source only describes outreach 'in prayer groups and through social media and WhatsApp group chats'. It never mentions SMS or text messages. Either say the message is a recreated composite, or reframe it as a group-chat or social-media post. (rewriting once)"
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (ElevenLabs), 28.3s"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: The 'Faith used as bait' flag targets the sender with an empty match string, so it highlights nothing specific. The religious appeal is in the body ('God has opened a door for us'), so the flag should target that text."
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001.mp4 (1080x1920, 28.35s)"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Minor: The category is 'impostor', but Source 1 presents this pattern mainly as a Confidence Scam, which is investment fraud. The friend-account-hacked angle is only implied by the 'Verify friends' tip, so 'investment' may be the more accurate category. (rewriting once)"
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001-cover.jpg (201 KB), loop similarity 0.994511"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Flag 'Friendly stranger mentor' has target kind 'sender' with an empty match string, so it does not point at the sender 'Coach Daniel'."
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
     },
     {
-      "step": "check",
+      "step": "publish",
       "ok": false,
-      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / scam)"
+      "detail": "status stayed private after asking for unlisted"
     }
   ],
-  "summary": {}
+  "summary": {
+    "scam": "Fake FTC agent phone cutoff call | sources: FTC Consumer Alerts 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (ElevenLabs) (voice ID from secret: yes), 28.3s",
+    "title": "Scam No. 001: Fake government agent call says your phone will be cut off",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornot.pages.dev/scam/001-fake-ftc-agent-phone-cutoff-call/",
+    "upload": "t44bNq4o3NQ, private, LOCKED private by Google",
+    "thumbnail": "refused: thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
+  },
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001.mp4",
+  "episode": 1,
+  "youtubeId": "t44bNq4o3NQ"
 }
