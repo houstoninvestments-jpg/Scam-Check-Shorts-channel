@@ -81,8 +81,8 @@ describe("website", () => {
     expect(readFileSync(join(dir, "assets/round.js"), "utf8")).toMatch(/round\.hashtags\.join\(" "\)/);
   });
 
-  it("never links a private test video from the scam page", async () => {
-    writeFileSync(process.env.LEDGER_FILE!, JSON.stringify({ nextNumber: 2, episodes: [{ ...ep(1, "2026-10-22"), youtubePrivacy: "private" }], skipped: [] }));
+  it("publishes the page for an uploaded private video, without linking the video", async () => {
+    writeFileSync(process.env.LEDGER_FILE!, JSON.stringify({ nextNumber: 2, episodes: [{ ...ep(1, "2026-10-22"), status: "rendered", youtubePrivacy: "private" }], skipped: [] }));
     const { buildSite } = await import("../src/site/build");
     await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     const html = readFileSync(join(dir, "scam/001-fake-traffic-ticket/index.html"), "utf8");

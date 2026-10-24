@@ -14,7 +14,7 @@ import { synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { extractCover, loopSimilarity } from "../render/cover.js";
 import { categoryFor } from "../publish/tags.js";
-import { uploadRequest, publishShort, type Uploader } from "../publish/youtube.js";
+import { uploadRequest, publishShort, recheckLock, type Uploader } from "../publish/youtube.js";
 
 export interface RunOptions {
   dryRun: boolean;
@@ -61,6 +61,19 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       step("cadence", true, "already published today");
       report.status = "skipped";
       return report;
+    }
+
+    // 0. While Google keeps uploads locked to private, re-test once a day before spending anything.
+    if (!opts.dryRun && ledger.firstUploadCheck?.locked && opts.uploader) {
+      const lock = await recheckLock(opts.uploader, ledger);
+      saveLedger(ledger);
+      step("upload lock", !lock.locked, lock.locked ? `still locked private: ${lock.detail}` : `lock lifted: ${lock.detail}`);
+      report.summary.upload = lock.locked ? "uploads still locked private by Google; waiting for the API audit" : "lock lifted; uploads go public again";
+      if (lock.locked) {
+        report.status = "skipped";
+        report.warnings.push("uploads still locked private by Google (API audit pending); skipped before writing to save cost");
+        return report;
+      }
     }
 
     // 1. Scout

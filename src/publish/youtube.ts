@@ -179,6 +179,23 @@ export async function setThumbnail(u: Uploader, videoId: string, jpeg: string): 
   }
 }
 
+/**
+ * Daily re-test while uploads are locked: try the private test video as unlisted again.
+ * If it sticks, the audit has lifted the lock: put the test video back to private and carry on.
+ */
+export async function recheckLock(u: Uploader, ledger: Ledger): Promise<{ locked: boolean; detail: string }> {
+  const check = ledger.firstUploadCheck;
+  if (!check?.locked) return { locked: false, detail: "not locked" };
+  const res = await lockTest(u, check.videoId);
+  if (!res.locked) {
+    await setPrivacy(u, check.videoId, config().youtube.firstUploadPrivacy);
+    ledger.firstUploadCheck = { ...check, locked: false, checkedAt: new Date().toISOString(), detail: `lock lifted: ${res.detail}` };
+  } else {
+    ledger.firstUploadCheck = { ...check, checkedAt: new Date().toISOString(), detail: res.detail };
+  }
+  return res;
+}
+
 export interface PublishResult {
   videoId: string;
   lockedPrivate: boolean;

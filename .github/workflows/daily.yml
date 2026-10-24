@@ -180,7 +180,11 @@ jobs:
           open=$(gh issue list --label health --state open --json number -q '.[0].number')
           if [ "$code" = "2" ]; then
             gh label create health --color B60205 --description "Automated health check" 2>/dev/null || true
-            if [ -n "$open" ]; then gh issue comment "$open" --body-file work/health-issue.md
+            # Same problems as already reported: stay quiet. Only new or changed problems get a comment.
+            mark="health:$(sha256sum work/health-issue.md | cut -c1-12)"
+            printf '\n<!-- %s -->\n' "$mark" >> work/health-issue.md
+            if [ -n "$open" ] && gh issue view "$open" --json body,comments -q '.body + ([.comments[].body] | join(" "))' | grep -q "$mark"; then echo "already reported"
+            elif [ -n "$open" ]; then gh issue comment "$open" --body-file work/health-issue.md
             else gh issue create --title "Scam or Not: something broke" --label health --body-file work/health-issue.md; fi
           elif [ -n "$open" ]; then
             gh issue close "$open" --comment "Fixed: today's health check passed."

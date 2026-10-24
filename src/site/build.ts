@@ -194,7 +194,8 @@ export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDril
   const dir = opts.dir ?? path("site/dist");
   const date = opts.date ?? today(c.cadence.timezone);
   const ledger = loadLedger();
-  const eps = ledger.episodes.filter((e) => e.status === "published" || (opts.dryRun && e.status === "rendered"));
+  // Uploaded videos count even while private (the page is checked; it just doesn't link the video).
+  const eps = ledger.episodes.filter((e) => e.status === "published" || (e.status === "rendered" && (e.youtubeId || opts.dryRun)));
   const legit = readJson<{ items: LegitItem[] }>(path("data/legit-texts.json")).items;
   rmSync(dir, { recursive: true, force: true });
   const pages: string[] = [];

@@ -126,3 +126,22 @@ describe("thumbnail from the cover frame", () => {
     expect(ledger.firstUploadCheck.locked).toBe(false);
   });
 });
+
+describe("daily lock re-test", () => {
+  const locked = () => ({ nextNumber: 2, episodes: [], skipped: [], firstUploadCheck: { videoId: "vid123", checkedAt: "", locked: true, detail: "status stayed private" } }) as any;
+  it("stays locked while Google keeps the test video private", async () => {
+    const { recheckLock } = await import("../src/publish/youtube");
+    const yt = fakeYouTube("locked");
+    const ledger = locked();
+    expect((await recheckLock(yt.u, ledger)).locked).toBe(true);
+    expect(ledger.firstUploadCheck.locked).toBe(true);
+  });
+  it("notices when the lock is lifted, puts the test video back to private, and unlocks", async () => {
+    const { recheckLock } = await import("../src/publish/youtube");
+    const yt = fakeYouTube("open");
+    const ledger = locked();
+    expect((await recheckLock(yt.u, ledger)).locked).toBe(false);
+    expect(ledger.firstUploadCheck.locked).toBe(false);
+    expect(yt.privacy()).toBe("private");
+  });
+});
