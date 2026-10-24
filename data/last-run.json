@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "dryRun": false,
+  "status": "skipped",
+  "warnings": [
+    "source bbb-scam-alerts failed: no articles found",
+    "source tx-ag failed: no articles found",
+    "no lead passed both checks today; skipped"
+  ],
+  "errors": [],
+  "steps": [
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "7 leads, 0 dropped as repeats"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "The FTC is not calling to deactivate your phone number: problems: The 'Badge photo proof' flag targets an attachment, but the message has none. The body only states a badge ID number in text. The flag points at nothing on screen."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (scam / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 1 'say' ('No real investment hands you a set profit every single week') is a general claim about all legitimate investments. The quote only says NovaTech advertised about 2-4% per week. The source never says fixed weekly returns are impossible for real investments."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Flag 'Friendly mentor': the say line 'then drain everything' is not supported by the attached quote, which only covers mentors building trust. The source does say scammers 'ultimately vanish with all the victim's money,' but that line is not the cited evidence. Either swap the quote or soften the say line."
+    }
+  ],
+  "summary": {}
+}
