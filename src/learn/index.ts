@@ -90,7 +90,7 @@ export async function learn(u: Uploader, now = new Date()) {
   writeJson(SCORED(), [...alreadyScored]);
   writeJson(METRICS(), metrics);
   saveHooks(hooks);
-  writeJson(path("data/learn-report.json"), summarize(Object.values(metrics)));
+  writeJson(process.env.LEARN_REPORT_FILE || path("data/learn-report.json"), summarize(Object.values(metrics)));
   log(`learn: scored ${scored} videos`);
 }
 

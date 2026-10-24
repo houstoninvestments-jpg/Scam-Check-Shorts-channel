@@ -56,6 +56,7 @@ describe("YouTube data is kept 30 days at most", () => {
     process.env.SCORED_FILE = join(t, "s.json");
     process.env.LEDGER_FILE = join(t, "l.json");
     process.env.HOOKS_FILE = join(t, "h.json");
+    process.env.LEARN_REPORT_FILE = join(t, "r.json");
     writeFileSync(process.env.HOOKS_FILE, JSON.stringify({ variants: [{ id: "a", pattern: "A" }], stats: {} }));
     writeFileSync(process.env.LEDGER_FILE, JSON.stringify({ nextNumber: 2, episodes: [{ number: 1, date: "2026-09-01", status: "published", youtubeId: "old", hookVariant: "a", cta: "none" }], skipped: [] }));
     writeFileSync(process.env.METRICS_FILE, JSON.stringify({ old: { videoId: "old", number: 1, hookVariant: "a", cta: "none", views: 900, averageViewPercentage: 70, holdAt10: 0.8, scored: true, measuredAt: "2026-09-05T00:00:00Z" } }));
