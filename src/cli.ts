@@ -110,6 +110,27 @@ async function main() {
       }
       break;
     }
+    case "site-target": {
+      // Run by the daily job before anything else: decides Cloudflare vs GitHub Pages and the site address.
+      const { pickSiteTarget, deployCommand } = await import("./site/target.js");
+      const { appendFileSync } = await import("node:fs");
+      const t = await pickSiteTarget();
+      const project = t.kind === "cloudflare" ? t.project : "";
+      log(`site target: ${t.kind} at ${t.baseUrl}${project ? ` (project ${project})` : ""}. Deploy: ${deployCommand(t)}`);
+      if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `kind=${t.kind}\nbase_url=${t.baseUrl}\nproject=${project}\n`);
+      if (process.env.GITHUB_ENV) appendFileSync(process.env.GITHUB_ENV, `SITE_BASE_URL=${t.baseUrl}\n`);
+      break;
+    }
+    case "site-redirect": {
+      const { buildRedirectSite } = await import("./site/target.js");
+      console.log(buildRedirectSite(arg("--out") ?? path("site/redirect-dist"), arg("--to")!, arg("--prefix") ?? ""));
+      break;
+    }
+    case "deploy-dry-run": {
+      const { deployDryRun } = await import("./site/deploy-dry-run.js");
+      await deployDryRun();
+      break;
+    }
     case "stripe-setup": {
       const { stripeSetup } = await import("./site/stripe-setup.js");
       await stripeSetup();

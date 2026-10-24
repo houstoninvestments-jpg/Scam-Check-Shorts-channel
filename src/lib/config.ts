@@ -32,7 +32,7 @@ export interface ChannelConfig {
 let cached: ChannelConfig | undefined;
 
 /**
- * The free GitHub Pages address for a repo. A repo named "<owner>.github.io" is served at the root
+ * The free GitHub Pages address for a repo (the fallback until Cloudflare Pages is set up). A repo named "<owner>.github.io" is served at the root
  * (https://scamornot.github.io); any other repo is served under its name as a path.
  */
 export function pagesBaseUrl(repository: string): string {
@@ -46,9 +46,8 @@ export function config(): ChannelConfig {
   if (cached) return cached;
   const c = readJson<ChannelConfig>(path("config/channel.json"));
   const e = process.env;
-  // In GitHub Actions the address follows the repo, so moving or renaming it needs no edits here.
-  if (e.SITE_BASE_URL) c.site.baseUrl = e.SITE_BASE_URL;
-  else if (e.GITHUB_REPOSITORY) c.site.baseUrl = pagesBaseUrl(e.GITHUB_REPOSITORY);
+  // The daily job sets SITE_BASE_URL from wherever the site is deployed (see src/site/target.ts).
+  if (e.SITE_BASE_URL) c.site.baseUrl = e.SITE_BASE_URL.replace(/\/+$/, "");
   if (e.FIREDRILL_BASE_URL) c.site.fireDrillBaseUrl = e.FIREDRILL_BASE_URL;
   if (e.SUPABASE_URL) c.supabase.url = e.SUPABASE_URL;
   if (e.SUPABASE_PUBLISHABLE_KEY) c.supabase.publishableKey = e.SUPABASE_PUBLISHABLE_KEY;

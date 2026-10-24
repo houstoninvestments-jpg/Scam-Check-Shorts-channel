@@ -44,7 +44,12 @@ One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
    `config/hashtags.json` (fallback `#TextScam`); the writer only picks a
    category id. Search tags are phrases from the same file, brand-free and
    under YouTube's 500-character limit. Preview: `npx tsx src/cli.ts metadata-preview`.
-7. **Website** (`src/site`) on GitHub Pages: a link page, the daily 3-message
+7. **Website** (`src/site`) at `https://scamornot.pages.dev` on Cloudflare Pages
+   (free plan). The daily job deploys with Wrangler once `CLOUDFLARE_API_TOKEN`
+   and `CLOUDFLARE_ACCOUNT_ID` are set, picking `scamornot`, then
+   `scamornotdaily`, then `scamornotshorts`, whichever is free. Until then it
+   deploys to GitHub Pages; after the switch the old address forwards to the
+   new one. `npx tsx src/cli.ts deploy-dry-run` shows both paths. The site has a link page, the daily 3-message
    round with a share line ("Scam #047 · I caught 2 of 3"), one page per scam
    titled with the exact scam text, email signup, and a labeled paid-link slot.
    Every scam page gets a 1200x630 share card (the question, never the answer),

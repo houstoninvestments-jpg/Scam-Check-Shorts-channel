@@ -3,39 +3,51 @@
 Four steps. After step 4, the next morning's run goes live on its own.
 Until then it runs in dry-run mode every day and uploads nothing.
 
-Where a step says "verified", the click path comes from the linked official
+Where a step says "Verified" or "Source", the click path comes from the linked official
 page as read on 2026-10-23. Screens can change; the page is the source of truth.
 
-## 1. Give the site a clean free address, then turn it on (3 minutes)
+## 1. Put the website on Cloudflare Pages (free, about 5 minutes)
 
-The site will live at `https://scamornot.github.io` instead of a link with
-`houstoninvestments-jpg` in it. Free. The code picks up the new address by itself.
+The site will live at `https://scamornot.pages.dev`. If that name is taken,
+the job uses `scamornotdaily.pages.dev`, then `scamornotshorts.pages.dev`, on
+its own. Free plan only; no card needed for anything here. Until both keys
+below are saved, the job keeps publishing to GitHub Pages; it switches by
+itself on the next run after they are saved.
 
-**a. Create a free organization**
-Verified: [GitHub Docs, creating an organization](https://help.github.com/articles/creating-a-new-organization-from-scratch)
-1. Click your profile picture (top right), then **Settings**.
-2. In the sidebar, under "Access", click **Organizations**.
-3. Click **New organization** and choose the free plan.
-4. Name it `scamornot`. If that is taken, try `scam-or-not`, then `scamornotdaily`.
-5. Click **Create organization**.
+**a. Create a free Cloudflare account**
+Source: [Cloudflare, create an account](https://developers.cloudflare.com/fundamentals/account/create-account/)
+and [verify your email](https://developers.cloudflare.com/fundamentals/account/verify-email-address/)
+1. Open `https://dash.cloudflare.com/sign-up`.
+2. Enter an email and a password, then submit.
+3. Open the verification email from Cloudflare (check spam) and click the link.
 
-**b. Move this repo into it, with its new name**
-Verified: [GitHub Docs, transferring a repository](https://docs.github.com/en/enterprise-server@3.21/repositories/creating-and-managing-repositories/transferring-a-repository)
-and [GitHub Pages naming rule](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
-1. Open the repo `Scam-Check-Shorts-channel`, click **Settings**.
-2. At the bottom ("Danger Zone"), click **Transfer**.
-3. New owner: the organization from step a.
-4. New repository name: the organization name plus `.github.io`, all lowercase.
-   For `scamornot` that is `scamornot.github.io`.
-5. Type the repo name to confirm, then transfer.
+**b. Create the API token (only the Pages permission)**
+Source: [Cloudflare Pages, direct upload with CI](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
+and [Cloudflare, create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
+1. In the Cloudflare dashboard, go to **Manage Account**, then **Account API Tokens**.
+2. Click **Create Token**.
+3. Next to **Create Custom Token**, click **Get started**.
+4. Name it `scam-or-not-pages`.
+5. Under **Permissions**, choose **Account**, then **Cloudflare Pages**, then **Edit**.
+   Add nothing else.
+6. Click **Continue to summary**, then **Create Token**.
+7. Copy the token now. Cloudflare shows it only once.
 
-**c. Turn on the website**
-Verified: [GitHub Docs, publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-1. In the moved repo, click **Settings**, then **Pages** (under "Code and automation").
-2. Under "Build and deployment", under "Source", select **GitHub Actions**.
+**c. Copy the Account ID**
+Source: [Cloudflare, find account and zone IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
+1. Go to the **Account home** page.
+2. Open the menu at the end of the account row and choose **Copy account ID**.
+   (It is also shown under **Account details** on the **Workers & Pages** page.)
 
-The bio link for the YouTube channel is then `https://scamornot.github.io`
-(or `https://<your org name>.github.io`).
+**d. Save both in GitHub**
+Source: [GitHub Docs, using secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
+1. In the repo, click **Settings**.
+2. In the sidebar, under "Security", click **Secrets and variables**, then **Actions**.
+3. Click **New repository secret**. Name `CLOUDFLARE_API_TOKEN`, paste the token, click **Add secret**.
+4. Click **New repository secret** again. Name `CLOUDFLARE_ACCOUNT_ID`, paste the ID, click **Add secret**.
+
+The YouTube bio link is then `https://scamornot.pages.dev` (the run report and
+`data/site-target.json` show the exact address if a fallback name was used).
 
 ## 2. Create the YouTube channel
 

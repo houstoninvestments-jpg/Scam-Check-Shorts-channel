@@ -5,7 +5,10 @@
     "never": "This channel never texts you, calls you, or asks for money.",
     "closer": "Send this to the one who'd tap it."
   },
-  "cadence": { "shortsPerDay": 1, "timezone": "America/Chicago" },
+  "cadence": {
+    "shortsPerDay": 1,
+    "timezone": "America/Chicago"
+  },
   "models": {
     "writer": "claude-fable-5-1",
     "checker": "claude-opus-5-5"
@@ -19,13 +22,27 @@
     "kokoroVoice": "af_heart",
     "speed": 1.0
   },
-  "ctaStates": ["none", "soft", "direct"],
-  "skins": ["imessage", "android", "email", "voicemail", "marketplace", "dm"],
+  "ctaStates": [
+    "none",
+    "soft",
+    "direct"
+  ],
+  "skins": [
+    "imessage",
+    "android",
+    "email",
+    "voicemail",
+    "marketplace",
+    "dm"
+  ],
   "site": {
-    "baseUrl": "https://houstoninvestments-jpg.github.io/Scam-Check-Shorts-channel",
+    "baseUrl": "https://scamornot.pages.dev",
     "fireDrillBaseUrl": ""
   },
-  "supabase": { "url": "", "publishableKey": "" },
+  "supabase": {
+    "url": "",
+    "publishableKey": ""
+  },
   "affiliate": {
     "enabled": false,
     "label": "Paid link",

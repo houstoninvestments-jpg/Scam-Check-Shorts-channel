@@ -37,6 +37,9 @@ jobs:
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
       SUPABASE_URL: ${{ vars.SUPABASE_URL }}
       SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+      # Website host: Cloudflare Pages once both are set; GitHub Pages until then.
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       KOKORO_DIR: ${{ github.workspace }}/models/kokoro
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -71,6 +74,11 @@ jobs:
           [ -f kokoro-v1.0.int8.onnx ] || curl -sSL -o kokoro-v1.0.int8.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.int8.onnx
           [ -f voices-v1.0.bin ] || curl -sSL -o voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
 
+      - name: Pick the website address
+        id: site
+        # Sets SITE_BASE_URL for every later step, so descriptions, share cards and links all use it.
+        run: npx tsx src/cli.ts site-target
+
       - name: Make the Short
         id: run
         run: |
@@ -102,15 +110,24 @@ jobs:
         # Public site shows published videos only. Dry-run test renders never appear on it.
         run: npx tsx src/cli.ts site
 
+      - name: Publish website to Cloudflare Pages
+        id: cloudflare
+        if: always() && steps.site.outputs.kind == 'cloudflare'
+        run: npx --yes wrangler@4.151.2 pages deploy site/dist --project-name="${{ steps.site.outputs.project }}" --branch=main --commit-dirty=true
+
+      - name: Forward the old GitHub Pages address to Cloudflare
+        if: always() && steps.site.outputs.kind == 'cloudflare'
+        run: npx tsx src/cli.ts site-redirect --out site/redirect-dist --to "${{ steps.site.outputs.base_url }}" --prefix "/${{ github.event.repository.name }}"
+
       - uses: actions/upload-pages-artifact@v3
         if: always()
         with:
-          path: site/dist
+          path: ${{ steps.site.outputs.kind == 'cloudflare' && 'site/redirect-dist' || 'site/dist' }}
 
-      - name: Publish website
+      - name: Publish website (GitHub Pages)
         id: deploy
         if: always()
-        # Stays soft until GitHub Pages is switched on in the repo settings (docs/SETUP.md step 1).
+        # Soft: GitHub Pages may not be switched on, and once Cloudflare is live it only forwards old links.
         continue-on-error: true
         uses: actions/deploy-pages@v4
 
@@ -119,7 +136,7 @@ jobs:
         run: |
           git config user.name "scam-or-not-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs || true
+          git add data docs || true  # includes data/site-target.json, the Cloudflare project in use
           if git diff --cached --quiet; then exit 0; fi
           scripts/secret-scan.sh
           git commit -q -m "Daily run $(date -u +%F)"
