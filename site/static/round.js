@@ -62,7 +62,7 @@
     var btn = el("button", "btn", "Share my result");
     btn.onclick = function () {
       // Link to this exact day's round; the page's preview card is the site-wide default.
-      var text = share() + "\n" + location.origin + location.pathname + "?d=" + round.date;
+      var text = share() + "\n" + location.origin + location.pathname + "?d=" + round.date + (round.hashtags ? "\n" + round.hashtags.join(" ") : "");
       if (navigator.share) navigator.share({ text: text }).catch(function () {});
       else if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { btn.textContent = "Copied. Paste it anywhere."; });
     };

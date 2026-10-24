@@ -90,6 +90,26 @@ async function main() {
       console.log(await renderDefaultCard(`${out}/card-default.png`));
       break;
     }
+    case "metadata-preview": {
+      // Prints exactly what would be sent to YouTube for three sample scams of different types.
+      const { readJson } = await import("./lib/util.js");
+      const { uploadRequest, episodeCategory } = await import("./publish/youtube.js");
+      const { tagCharCount } = await import("./publish/tags.js");
+      const base = readJson<any>(path("fixtures/llm/traffic-qr/writer.json")).output;
+      const { samples } = readJson<any>(path("fixtures/samples/metadata-samples.json"));
+      for (const x of samples) {
+        const script = x.fromFixture
+          ? base
+          : { ...base, scamName: x.scamName, title: x.title, description: x.description, safeMove: { ...base.safeMove, say: x.safeMove }, message: { ...base.message, body: x.body, provenanceNote: x.provenanceNote } };
+        const ep: any = { number: x.number, slug: `${String(x.number).padStart(3, "0")}-sample`, script, sources: [{ name: "FTC Consumer Alerts", url: "https://consumer.ftc.gov/consumer-alerts" }] };
+        const r = uploadRequest(ep, "AI voice (ElevenLabs)");
+        console.log(`\n==================== SAMPLE ${x.number} (category: ${episodeCategory(ep).id}) ====================`);
+        console.log(`TITLE: ${r.snippet.title}\n`);
+        console.log(`DESCRIPTION:\n${r.snippet.description}\n`);
+        console.log(`TAGS (${tagCharCount(r.snippet.tags)} of 500 characters): ${r.snippet.tags.join(", ")}`);
+      }
+      break;
+    }
     case "stripe-setup": {
       const { stripeSetup } = await import("./site/stripe-setup.js");
       await stripeSetup();

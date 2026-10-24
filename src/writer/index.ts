@@ -2,6 +2,7 @@ import type { Lead, Script } from "../types.js";
 import { Script as ScriptSchema } from "../types.js";
 import type { LLM } from "../llm/client.js";
 import { config } from "../lib/config.js";
+import { tagConfig } from "../publish/tags.js";
 
 export interface HookVariant {
   id: string;
@@ -27,7 +28,8 @@ Hard rules:
 - If you circle text, target.match must be an exact substring of message.body.
 - Plain words. Grade 8 reading level. Every sentence under 18 words. No jargon. If you use a term like "QR code", the visual makes it clear.
 - Calm, kind, and direct. Never mock the people who fall for scams.
-- Title: what the scam is, under 70 characters, no fake urgency, no all caps words.`;
+- Title: what the scam is, under 70 characters, no fake urgency, no all caps words.
+- Never write hashtags or the # sign anywhere. Never name a real company or brand in the title, scam name or description.`;
 
 export function userPrompt(lead: Lead, hook: HookVariant, skin: string, feedback: string[] = []): string {
   const docs = lead.docs
@@ -38,6 +40,7 @@ export function userPrompt(lead: Lead, hook: HookVariant, skin: string, feedback
 
 Screen style: ${skin} (the message appears in this kind of app).
 Hook style to adapt: "${hook.pattern}"
+Category: pick the one id that fits best, or leave it empty: ${tagConfig().categories.map((c) => c.id).join(", ")}
 
 ${docs}${fix}`;
 }

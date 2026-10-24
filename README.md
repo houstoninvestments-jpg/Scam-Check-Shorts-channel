@@ -39,6 +39,11 @@ One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
    If locked, the audit answers are written to `docs/youtube-audit-request.md`.
    The cover frame is saved as a JPEG and sent as the video's thumbnail. If
    YouTube refuses a custom thumbnail, that is logged and the upload stands.
+   Each description ends with exactly four hashtags: `#ScamOrNot`, the scam
+   type, `#ScamAlert`, `#Shorts`. The scam type comes from the approved list in
+   `config/hashtags.json` (fallback `#TextScam`); the writer only picks a
+   category id. Search tags are phrases from the same file, brand-free and
+   under YouTube's 500-character limit. Preview: `npx tsx src/cli.ts metadata-preview`.
 7. **Website** (`src/site`) on GitHub Pages: a link page, the daily 3-message
    round with a share line ("Scam #047 · I caught 2 of 3"), one page per scam
    titled with the exact scam text, email signup, and a labeled paid-link slot.

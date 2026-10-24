@@ -1,5 +1,6 @@
 import type { Episode } from "../types.js";
 import type { ChannelConfig } from "../lib/config.js";
+import { episodeHashtags } from "../publish/youtube.js";
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const pad3 = (n: number) => String(n).padStart(3, "0");
@@ -38,6 +39,7 @@ input[type=email]{width:100%;font:inherit;padding:14px;border-radius:12px;border
 .row{display:flex;gap:12px}.row>*{flex:1}
 footer{margin-top:48px;font-size:.85em;color:var(--dim)}
 .hidden{display:none}
+.tags{font-weight:700;color:var(--dim);margin:-.2em 0 .8em;word-spacing:.3em}
 `;
 
 export interface ShareImage {
@@ -101,10 +103,12 @@ ${o.scripts ?? ""}
 
 export function scamPage(e: Episode, cfg: ChannelConfig, root: string, youtubeUrl?: string) {
   const s = e.script;
+  const hashtags = episodeHashtags(e);
   const exact = s.message.body.replace(/\s+/g, " ").trim();
   const body = `
 <p class="small">Scam #${pad3(e.number)} · ${esc(e.date)}</p>
 <h1>Is this text a scam?</h1>
+<p class="tags">${hashtags.map(esc).join(" ")}</p>
 <p class="sender">From: ${esc(s.message.sender)}${s.message.subject ? ` · Subject: ${esc(s.message.subject)}` : ""}</p>
 <div class="bubble">${esc(s.message.body)}</div>
 <p class="small">${esc(s.message.provenance === "recreated" ? s.message.provenanceNote : "A real message, with links and numbers swapped out for safety.")}</p>

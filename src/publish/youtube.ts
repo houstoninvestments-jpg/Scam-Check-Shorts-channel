@@ -3,6 +3,7 @@ import type { Episode, Ledger } from "../types.js";
 import { config } from "../lib/config.js";
 import { log, pad3, path, requireEnv } from "../lib/util.js";
 import { writeAuditRequest } from "./audit.js";
+import { backendTags, categoryFor, hashtagsFor, noHash, tagConfig } from "./tags.js";
 
 export interface Uploader {
   token(): Promise<string>;
@@ -35,17 +36,23 @@ export function oauthUploader(fetchImpl: typeof fetch = fetch): Uploader {
 }
 
 export function videoTitle(ep: Episode) {
-  const t = `Scam #${pad3(ep.number)}: ${ep.script.title}`;
+  const t = `Scam #${pad3(ep.number)}: ${noHash(ep.script.title)}`;
   return t.length <= 100 ? t : t.slice(0, 99) + "…";
 }
+
+/** The episode's category: saved at write time, or worked out the same way for older episodes. */
+export const episodeCategory = (ep: Episode) => categoryFor({ ...ep.script, category: ep.category ?? ep.script.category });
+
+/** The four hashtags for this video, in YouTube display order. Same set the website uses. */
+export const episodeHashtags = (ep: Episode) => hashtagsFor(episodeCategory(ep));
 
 export function videoDescription(ep: Episode, voiceLabel: string) {
   const cfg = config();
   const page = `${cfg.site.baseUrl}/scam/${ep.slug}/`;
   return [
-    ep.script.description,
+    noHash(ep.script.description),
     "",
-    `Safe move: ${ep.script.safeMove.say}`,
+    `Safe move: ${noHash(ep.script.safeMove.say)}`,
     "",
     `Full breakdown and sources: ${page}`,
     `Play today's 3-text round: ${cfg.site.baseUrl}/round/`,
@@ -57,7 +64,8 @@ export function videoDescription(ep: Episode, voiceLabel: string) {
     `Disclosure: the narration is an ${voiceLabel}. The phone screen is a code-made recreation.`,
     cfg.channel.never,
     "",
-    "#scam #scamalert #shorts",
+    // Only hashtags in the description, last line, exactly four: #ScamOrNot #<Type>Scam #ScamAlert #Shorts
+    episodeHashtags(ep).join(" "),
   ].join("\n");
 }
 
@@ -68,7 +76,7 @@ export function uploadRequest(ep: Episode, voiceLabel: string, privacy?: "public
     snippet: {
       title: videoTitle(ep),
       description: videoDescription(ep, voiceLabel),
-      tags: [...new Set([...ep.script.tags, "scam or not", "scam alert"])].slice(0, 15),
+      tags: backendTags(ep.script, episodeCategory(ep), tagConfig()),
       categoryId: cfg.youtube.categoryId,
       defaultLanguage: cfg.youtube.defaultLanguage,
       defaultAudioLanguage: cfg.youtube.defaultLanguage,

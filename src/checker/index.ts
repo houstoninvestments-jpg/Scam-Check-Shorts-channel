@@ -4,6 +4,7 @@ import type { LLM } from "../llm/client.js";
 import { config } from "../lib/config.js";
 import { normalizeText } from "../lib/util.js";
 import { checkReadability, fkGrade } from "../lib/readability.js";
+import { namesBrand } from "../publish/tags.js";
 
 export const MAX_SPOKEN_WORDS = 80;
 export const MIN_CONFIDENCE = 0.8;
@@ -109,6 +110,10 @@ export function mechanicalCheck(s: Script, lead: Lead): MechanicalResult {
   }
   for (const m of s.message.body.match(PHONE) ?? []) if (!SAFE_PHONE.test(m)) problems.push(`message shows a real-looking phone number: ${m}`);
   if (s.title.length > 70) problems.push("title over 70 characters");
+  for (const [field, text] of [["title", s.title], ["scam name", s.scamName], ["description", s.description]] as const) {
+    if (text.includes("#")) problems.push(`${field} contains a # sign; hashtags are added in code`);
+    if (namesBrand(text)) problems.push(`${field} names a company or brand: "${text}"`);
+  }
   if (!lead.docs.some((d) => AUTHORITATIVE.includes(d.kind))) problems.push("no authoritative source for this scam");
   return { ok: problems.length === 0, problems };
 }

@@ -1,0 +1,342 @@
+{
+  "_note": "Approved hashtags and search tags. Every video gets exactly: brand, one scam-type tag from this list, then the tail. The writer only picks a category id; it never writes hashtags. Keywords match the scam's name, title and text when the writer gives no valid category. No company or brand names anywhere in this file except the blocklist.",
+  "brand": "#ScamOrNot",
+  "tail": [
+    "#ScamAlert",
+    "#Shorts"
+  ],
+  "fallback": "text",
+  "alwaysTags": [
+    "scam or not",
+    "scam alert"
+  ],
+  "categories": [
+    {
+      "id": "toll",
+      "hashtag": "#TollScam",
+      "keywords": [
+        "toll",
+        "turnpike",
+        "tollway",
+        "toll road"
+      ],
+      "phrases": [
+        "unpaid toll text scam",
+        "is this toll text real",
+        "toll text scam",
+        "fake toll payment text",
+        "unpaid toll balance text"
+      ]
+    },
+    {
+      "id": "traffic_ticket",
+      "hashtag": "#TrafficTicketScam",
+      "keywords": [
+        "traffic violation",
+        "traffic ticket",
+        "traffic fine",
+        "speeding ticket",
+        "parking ticket",
+        "citation",
+        "court notice",
+        "hearing date"
+      ],
+      "phrases": [
+        "traffic ticket text scam",
+        "is this traffic violation text real",
+        "fake traffic fine text",
+        "traffic violation qr code scam",
+        "court notice text scam"
+      ]
+    },
+    {
+      "id": "dmv",
+      "hashtag": "#DMVScam",
+      "keywords": [
+        "dmv",
+        "driver's license",
+        "drivers license",
+        "license suspension",
+        "vehicle registration",
+        "motor vehicle"
+      ],
+      "phrases": [
+        "dmv text scam",
+        "is this dmv text real",
+        "license suspension text scam",
+        "fake dmv message"
+      ]
+    },
+    {
+      "id": "package",
+      "hashtag": "#PackageScam",
+      "keywords": [
+        "package",
+        "parcel",
+        "shipment",
+        "customs fee",
+        "held at",
+        "tracking number"
+      ],
+      "phrases": [
+        "package held text scam",
+        "is this package text real",
+        "fake tracking number text",
+        "package fee text scam"
+      ]
+    },
+    {
+      "id": "delivery",
+      "hashtag": "#DeliveryScam",
+      "keywords": [
+        "delivery",
+        "redelivery",
+        "missed delivery",
+        "delivery attempt",
+        "courier"
+      ],
+      "phrases": [
+        "missed delivery text scam",
+        "is this delivery text real",
+        "redelivery fee scam",
+        "fake delivery notice text"
+      ]
+    },
+    {
+      "id": "job",
+      "hashtag": "#JobScam",
+      "keywords": [
+        "job",
+        "hiring",
+        "recruiter",
+        "remote work",
+        "work from home",
+        "employment",
+        "interview"
+      ],
+      "phrases": [
+        "job offer text scam",
+        "is this job text real",
+        "remote job text scam",
+        "fake recruiter text",
+        "task job scam"
+      ]
+    },
+    {
+      "id": "bank",
+      "hashtag": "#BankScam",
+      "keywords": [
+        "bank",
+        "account locked",
+        "account suspended",
+        "debit card",
+        "credit card",
+        "fraud alert",
+        "unusual activity",
+        "wire transfer"
+      ],
+      "phrases": [
+        "bank fraud alert text scam",
+        "is this bank text real",
+        "fake bank text",
+        "account locked text scam"
+      ]
+    },
+    {
+      "id": "refund",
+      "hashtag": "#RefundScam",
+      "keywords": [
+        "refund",
+        "overpayment",
+        "reimbursement",
+        "money back"
+      ],
+      "phrases": [
+        "refund text scam",
+        "is this refund text real",
+        "overpayment refund scam",
+        "fake refund message"
+      ]
+    },
+    {
+      "id": "tax",
+      "hashtag": "#TaxScam",
+      "keywords": [
+        "tax refund",
+        "tax return",
+        "tax office",
+        "back taxes",
+        "tax"
+      ],
+      "phrases": [
+        "tax refund text scam",
+        "is this tax text real",
+        "fake tax refund message",
+        "tax office text scam"
+      ]
+    },
+    {
+      "id": "prize",
+      "hashtag": "#PrizeScam",
+      "keywords": [
+        "prize",
+        "winner",
+        "you won",
+        "sweepstakes",
+        "lottery",
+        "gift card",
+        "reward"
+      ],
+      "phrases": [
+        "prize winner text scam",
+        "is this prize text real",
+        "you won text scam",
+        "fake sweepstakes message"
+      ]
+    },
+    {
+      "id": "wrong_number",
+      "hashtag": "#WrongNumberScam",
+      "keywords": [
+        "wrong number",
+        "sorry, wrong",
+        "who is this",
+        "nice to meet you",
+        "texted the wrong"
+      ],
+      "phrases": [
+        "wrong number text scam",
+        "is this wrong number text a scam",
+        "random hi text scam",
+        "wrong number text from stranger"
+      ]
+    },
+    {
+      "id": "impostor",
+      "hashtag": "#ImpostorScam",
+      "keywords": [
+        "impersonat",
+        "pretending to be",
+        "government agency",
+        "deactivate your phone",
+        "posing as"
+      ],
+      "phrases": [
+        "government impostor scam",
+        "is this government call real",
+        "impostor scam call",
+        "fake official message"
+      ]
+    },
+    {
+      "id": "marketplace",
+      "hashtag": "#MarketplaceScam",
+      "keywords": [
+        "marketplace",
+        "buyer",
+        "seller",
+        "listing",
+        "verification code to sell"
+      ],
+      "phrases": [
+        "marketplace buyer scam",
+        "is this buyer real",
+        "fake buyer verification code scam",
+        "online selling scam"
+      ]
+    },
+    {
+      "id": "tech_support",
+      "hashtag": "#TechSupportScam",
+      "keywords": [
+        "tech support",
+        "virus",
+        "computer is infected",
+        "remote access",
+        "pop-up"
+      ],
+      "phrases": [
+        "tech support scam",
+        "is this virus warning real",
+        "fake tech support call",
+        "computer virus pop up scam"
+      ]
+    },
+    {
+      "id": "text",
+      "hashtag": "#TextScam",
+      "keywords": [],
+      "phrases": [
+        "text message scam",
+        "is this text a scam",
+        "scam text message",
+        "how to spot a scam text"
+      ]
+    }
+  ],
+  "blockedBrands": [
+    "usps",
+    "ups",
+    "fedex",
+    "dhl",
+    "amazon",
+    "paypal",
+    "zelle",
+    "venmo",
+    "cash app",
+    "cashapp",
+    "apple",
+    "icloud",
+    "netflix",
+    "e-zpass",
+    "ezpass",
+    "sunpass",
+    "fastrak",
+    "peach pass",
+    "txtag",
+    "ipass",
+    "wells fargo",
+    "chase",
+    "bank of america",
+    "citi",
+    "capital one",
+    "walmart",
+    "costco",
+    "best buy",
+    "coinbase",
+    "binance",
+    "microsoft",
+    "google",
+    "gmail",
+    "facebook",
+    "instagram",
+    "whatsapp",
+    "telegram",
+    "tiktok",
+    "geek squad",
+    "norton",
+    "mcafee",
+    "verizon",
+    "at&t",
+    "t-mobile",
+    "comcast",
+    "xfinity",
+    "spectrum",
+    "mastercard",
+    "american express",
+    "amex",
+    "turbotax",
+    "h&r block",
+    "craigslist",
+    "offerup",
+    "ebay",
+    "etsy",
+    "linkedin",
+    "indeed",
+    "uber",
+    "lyft",
+    "doordash",
+    "instacart",
+    "target stores"
+  ]
+}

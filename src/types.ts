@@ -77,7 +77,8 @@ export const Script = z.object({
   }),
   title: z.string().describe("YouTube title, under 70 characters, no clickbait lies."),
   description: z.string().describe("2 to 3 short sentences. Plain words."),
-  tags: z.array(z.string()).max(12),
+  // The writer only picks a category id from config/hashtags.json. Hashtags and search tags are built in code.
+  category: z.string().optional().describe("One category id from the list in the prompt. Leave empty if none fits."),
 });
 export type Script = z.infer<typeof Script>;
 
@@ -103,6 +104,7 @@ export interface Episode {
   skipReason?: string;
   voice?: string;
   thumbnail?: { ok: boolean; detail: string };
+  category?: string; // id from config/hashtags.json
   loopSimilarity?: number;
 }
 

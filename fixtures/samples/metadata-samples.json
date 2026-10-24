@@ -1,0 +1,24 @@
+{
+  "_note": "Metadata preview samples only. The first is the dry-run fixture. The other two are made-up examples to show other scam types; they are never published and were not fact-checked.",
+  "samples": [
+    { "number": 1, "fromFixture": "traffic-qr" },
+    {
+      "number": 2,
+      "scamName": "Unpaid toll text",
+      "title": "Unpaid toll text with a late fee: real or scam?",
+      "description": "This text says you owe a small toll and must pay today to avoid a fee. Don't tap the link.",
+      "safeMove": "Check your toll account by typing the address you already use.",
+      "body": "Toll Services: you have an unpaid toll of $4.15. Pay today to avoid a $50 late fee: pay-tolls.example",
+      "provenanceNote": "Made up for this preview."
+    },
+    {
+      "number": 3,
+      "scamName": "Remote job offer text",
+      "title": "A job offer by text that pays for easy tasks: real or scam?",
+      "description": "This text offers easy remote work and asks you to reply to start. Real employers don't hire like this.",
+      "safeMove": "Don't reply. Delete the text.",
+      "body": "Hi! We're hiring for remote work, 1 hour a day, $300 daily. Reply YES to start.",
+      "provenanceNote": "Made up for this preview."
+    }
+  ]
+}

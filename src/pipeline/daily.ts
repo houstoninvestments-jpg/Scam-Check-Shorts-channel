@@ -13,6 +13,7 @@ import { chooseCta, chooseSkin } from "./choose.js";
 import { synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { extractCover, loopSimilarity } from "../render/cover.js";
+import { categoryFor } from "../publish/tags.js";
 import { uploadRequest, publishShort, type Uploader } from "../publish/youtube.js";
 
 export interface RunOptions {
@@ -109,6 +110,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       sources: lead.docs.map((d) => ({ url: d.url, name: d.name, capture: d.capture })),
       slug: `${pad3(number)}-${slugify(script.scamName, 60)}`,
       status: "checked",
+      category: categoryFor(script, lead.title).id,
     };
 
     // 4. Voice and render

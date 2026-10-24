@@ -71,6 +71,16 @@ describe("website", () => {
     expect(readFileSync(join(dir, "assets/round.js"), "utf8")).toMatch(/"\?d=" \+ round\.date/);
   });
 
+  it("uses the video's hashtags in the scam page title area and in the round's share text", async () => {
+    const { buildSite } = await import("../src/site/build");
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const $ = cheerio.load(readFileSync(join(dir, "scam/002-fake-traffic-ticket/index.html"), "utf8"));
+    expect($("h1 + .tags").text()).toBe("#ScamOrNot #TrafficTicketScam #ScamAlert #Shorts");
+    const round = JSON.parse(readFileSync(join(dir, "rounds/latest.json"), "utf8"));
+    expect(round.hashtags).toEqual(["#ScamOrNot", "#TrafficTicketScam", "#ScamAlert", "#Shorts"]);
+    expect(readFileSync(join(dir, "assets/round.js"), "utf8")).toMatch(/round\.hashtags\.join\(" "\)/);
+  });
+
   it("link page says we never ask for money, labels the paid slot, and passes the reading gate", async () => {
     const { buildSite } = await import("../src/site/build");
     await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });

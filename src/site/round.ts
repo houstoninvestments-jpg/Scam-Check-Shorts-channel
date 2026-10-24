@@ -1,5 +1,6 @@
 import type { Episode } from "../types.js";
 import { sha } from "../lib/util.js";
+import { episodeHashtags } from "../publish/youtube.js";
 
 export interface RoundItem {
   sender: string;
@@ -13,6 +14,7 @@ export interface RoundItem {
 export interface Round {
   date: string;
   number: number; // the newest Scam # on that day, used in the share line
+  hashtags: string[]; // the newest scam's hashtags, added to the share text
   items: RoundItem[];
 }
 
@@ -58,7 +60,7 @@ export function buildRound(date: string, episodes: Episode[], legit: LegitItem[]
     })),
     ...reals.map((r) => ({ sender: r.sender, body: r.body, answer: "real" as const, why: r.why })),
   ];
-  return { date, number: newest.number, items: seeded(items, date + "order") };
+  return { date, number: newest.number, hashtags: episodeHashtags(newest), items: seeded(items, date + "order") };
 }
 
 export function shareLine(number: number, caught: number, total = 3) {
