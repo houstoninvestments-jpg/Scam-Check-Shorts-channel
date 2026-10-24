@@ -17,7 +17,7 @@ export interface SkinProps {
  * area: usable text area in px^2; each character takes about 0.68 * size^2 with line height.
  */
 export function fitFont(body: string, area: number, hasQr: boolean, max = 44, min = 28): number {
-  const usable = hasQr ? area - 200 * 640 : area;
+  const usable = hasQr ? area - 235 * 640 : area;
   const size = Math.sqrt(usable / (Math.max(body.length, 40) * 0.56 * 1.25));
   return Math.round(Math.max(min, Math.min(max, size)));
 }
@@ -96,7 +96,7 @@ const Email: React.FC<SkinProps> = (p) => (
   <div style={{ background: "#fff", height: "100%", color: "#111" }}>
     <Status time={p.time} />
     <div style={{ padding: "10px 40px 0", fontSize: 30, color: "#6b7280" }}>‹ Inbox</div>
-    <div style={{ padding: "22px 40px 18px", fontSize: 42, fontWeight: 800, lineHeight: 1.2 }}>{p.subject || "(no subject)"}</div>
+    {p.subject ? <div style={{ padding: "22px 40px 18px", fontSize: 42, fontWeight: 800, lineHeight: 1.2 }}>{p.subject}</div> : <div style={{ height: 22 }} />}
     <div style={{ display: "flex", alignItems: "center", gap: 20, padding: "0 40px 22px", borderBottom: "1px solid #eee" }}>
       <Avatar label="!" bg="#8b93a1" size={72} />
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -104,7 +104,7 @@ const Email: React.FC<SkinProps> = (p) => (
         <span style={{ fontSize: 24, color: "#6b7280" }}>to me · {p.time}</span>
       </div>
     </div>
-    <div style={{ padding: "28px 40px", fontSize: fitFont(p.body, 700 * 560, p.hasQr), lineHeight: 1.34 }}>
+    <div style={{ padding: "28px 40px", fontSize: fitFont(p.body, p.subject ? 700 * 470 : 700 * 520, p.hasQr), lineHeight: 1.34 }}>
       <MarkedBody body={p.body} marks={p.marks} progress={p.progress} />
       <Qr {...p} />
     </div>

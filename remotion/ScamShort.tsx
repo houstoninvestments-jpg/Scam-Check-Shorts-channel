@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Easing, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import type { ShortProps } from "./props";
-import type { Beat, BeatId } from "../src/render/timeline";
+import { coverOpacity, type Beat, type BeatId } from "../src/render/timeline";
 import { C, fontFamily } from "./theme";
 import { SKINS } from "./skins/Skins";
 import type { Marks, MarkState } from "./Marks";
@@ -68,6 +68,7 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
 
   // Loop: fade every overlay out during the tail so the final frame equals frame 0.
   const overlay = interpolate(frame, [tail.from, tail.to - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const cover = coverOpacity(frame, beats);
   const caption = captions.find((c) => frame >= c.from && frame < c.to);
   const flagIdx = beat ? FLAGS.indexOf(beat.id) : -1;
 
@@ -76,20 +77,22 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
       {/* soft neutral light behind the phone */}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 70% 45% at 50% 52%, #1d222a 0%, rgba(10,12,15,0) 70%)" }} />
 
-      {/* top bar */}
-      <div style={{ position: "absolute", top: 92, left: 64, right: 64, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ fontSize: 40, fontWeight: 900, letterSpacing: 2 }}>SCAM #{pad3(p.number)}</div>
-        <div style={{ fontSize: 24, fontWeight: 600, color: C.dim, border: `2px solid ${C.faint}`, borderRadius: 40, padding: "6px 16px" }}>{p.voiceLabel}</div>
+      {/* top row: small, constant on every frame so the loop matches */}
+      <div style={{ position: "absolute", top: 84, left: 64, right: 64, display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 26, color: C.dim, fontWeight: 500 }}>
+        <div>{p.script.message.provenance === "recreated" ? `Recreated from ${p.sourceName} warnings` : ""}</div>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          {p.testLabel ? <div style={{ fontSize: 24, color: "#111", background: "#FFD60A", fontWeight: 800, borderRadius: 8, padding: "4px 12px" }}>{p.testLabel}</div> : null}
+          <div style={{ fontSize: 24, fontWeight: 600, border: `2px solid ${C.faint}`, borderRadius: 40, padding: "6px 16px" }}>{p.voiceLabel}</div>
+        </div>
       </div>
-      {p.script.message.provenance === "recreated" ? (
-        <div style={{ position: "absolute", top: 156, left: 64, fontSize: 26, color: C.dim, fontWeight: 500 }}>Recreated from {p.sourceName} warnings</div>
-      ) : null}
-      {p.testLabel ? (
-        <div style={{ position: "absolute", top: 156, right: 64, fontSize: 26, color: "#111", background: "#FFD60A", fontWeight: 800, borderRadius: 8, padding: "2px 12px" }}>{p.testLabel}</div>
-      ) : null}
+
+      {/* Scam number: big on the cover, settles smaller for the rest of the video */}
+      <div style={{ position: "absolute", top: 134, left: 0, right: 0, textAlign: "center", fontSize: interpolate(cover, [0, 1], [44, 72]), fontWeight: 900, letterSpacing: interpolate(cover, [0, 1], [3, 5]), lineHeight: 1 }}>
+        SCAM #{pad3(p.number)}
+      </div>
 
       {/* headline zone */}
-      <div style={{ position: "absolute", top: 222, left: 60, right: 60, height: 200, display: "flex", alignItems: "center", justifyContent: "center", opacity: overlay }}>
+      <div style={{ position: "absolute", top: 220, left: 60, right: 60, height: 230, display: "flex", alignItems: "center", justifyContent: "center", opacity: overlay }}>
         {beat?.id === "hook" ? <Headline local={local}>{p.script.hook}</Headline> : null}
         {beat?.id === "countdown" ? <Headline local={local} size={96}>Real or scam?</Headline> : null}
         {beat?.id === "stamp" ? <Headline local={local} color={C.red} size={96}>SCAM</Headline> : null}
@@ -109,13 +112,42 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
       </div>
 
       {/* phone */}
-      <div style={{ position: "absolute", top: 430, left: 130, width: 820, height: 1060, borderRadius: 84, background: C.bezel, padding: 22, boxShadow: "0 30px 80px rgba(0,0,0,0.55)" }}>
+      <div style={{ position: "absolute", top: 470, left: 130, width: 820, height: 1030, borderRadius: 84, background: C.bezel, padding: 22, boxShadow: "0 30px 80px rgba(0,0,0,0.55)" }}>
         <div style={{ width: "100%", height: "100%", borderRadius: 64, overflow: "hidden", position: "relative" }}>
           <Skin sender={p.script.message.sender} subject={p.script.message.subject} body={p.script.message.body} hasQr={p.script.message.hasQr} marks={marks} progress={progress} time="9:41" />
           {/* dim the screen during the countdown */}
           {inCountdown ? <AbsoluteFill style={{ background: "rgba(0,0,0,0.55)" }} /> : null}
         </div>
       </div>
+
+      {/* cover stamp: the question, never the answer */}
+      {cover > 0 ? (
+        <div
+          style={{
+            position: "absolute",
+            left: 540,
+            top: 380,
+            transform: `translate(-50%, -50%) rotate(-7deg) scale(${interpolate(cover, [0, 1], [0.85, 1])})`,
+            opacity: cover,
+            border: `14px solid ${C.red}`,
+            borderRadius: 34,
+            color: C.red,
+            background: "rgba(10,12,15,0.92)",
+            fontSize: 112,
+            fontWeight: 900,
+            lineHeight: 0.98,
+            letterSpacing: 2,
+            padding: "26px 46px 22px",
+            textAlign: "center",
+            whiteSpace: "nowrap",
+            boxShadow: "0 18px 50px rgba(0,0,0,0.5)",
+          }}
+        >
+          REAL OR
+          <br />
+          SCAM?
+        </div>
+      ) : null}
 
       {/* 3-2-1 */}
       {inCountdown && cdN >= 1 ? (
@@ -141,7 +173,7 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
           style={{
             position: "absolute",
             left: interpolate(dock, [0, 1], [540, 868]),
-            top: interpolate(dock, [0, 1], [930, 468]),
+            top: interpolate(dock, [0, 1], [950, 508]),
             transform: `translate(-50%, -50%) rotate(-12deg) scale(${interpolate(stampIn, [0, 1], [2.4, 1]) * interpolate(dock, [0, 1], [1, 0.36])})`,
             opacity: Math.min(1, stampIn * 1.5) * overlay,
             border: `16px solid ${C.red}`,

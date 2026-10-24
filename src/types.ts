@@ -102,6 +102,8 @@ export interface Episode {
   status: "scripted" | "checked" | "rendered" | "published" | "skipped";
   skipReason?: string;
   voice?: string;
+  thumbnail?: { ok: boolean; detail: string };
+  loopSimilarity?: number;
 }
 
 export interface Ledger {

@@ -15,6 +15,15 @@ async function main() {
   switch (cmd) {
     case "daily": {
       const dryRun = flag("--dry-run");
+      const skin = arg("--skin") as import("./types.js").SkinId | undefined;
+      if (dryRun && skin) {
+        // Skin test renders: own folder and a fresh ledger so each starts clean.
+        process.env.LEDGER_FILE ??= path("work", `skin-${skin}`, "ledger.json");
+        if (arg("--number")) {
+          const { writeJson } = await import("./lib/util.js");
+          writeJson(process.env.LEDGER_FILE, { nextNumber: Number(arg("--number")), episodes: [], skipped: [] });
+        }
+      }
       if (dryRun) {
         // Dry runs keep their own ledger so test numbering never touches the real channel.
         process.env.LEDGER_FILE ??= path("data/dry-run/ledger.json");
@@ -29,6 +38,8 @@ async function main() {
         fixtureSources: dryRun && !flag("--live-scout") ? (arg("--sources") ?? "ftc-traffic-qr.json").split(",") : undefined,
         uploader: dryRun ? undefined : oauthUploader(),
         voice: (arg("--voice") as "elevenlabs" | "kokoro" | undefined) ?? undefined,
+        skin: dryRun ? skin : undefined,
+        workDir: dryRun && skin ? path("work", `skin-${skin}`) : undefined,
       });
       log(`result: ${report.status}${report.videoFile ? ` ${report.videoFile}` : ""}`);
       if (report.status === "failed") {
@@ -50,7 +61,7 @@ async function main() {
       const preview = flag("--test-preview");
       if (preview) process.env.LEDGER_FILE ??= path("data/dry-run/ledger.json");
       const { buildSite } = await import("./site/build.js");
-      const r = buildSite({ dryRun: preview, dir: preview ? path("work/site-preview") : undefined, fireDrillDir: preview ? path("work/firedrill-preview") : undefined });
+      const r = await buildSite({ dryRun: preview, dir: preview ? path("work/site-preview") : undefined, fireDrillDir: preview ? path("work/firedrill-preview") : undefined });
       log(`site: ${r.pages.length} pages in ${r.dir}`);
       break;
     }
@@ -67,6 +78,16 @@ async function main() {
     case "preview-skins": {
       const { previewSkins } = await import("./render/preview.js");
       console.log(await previewSkins(arg("--work") ?? path("work", (await import("./lib/util.js")).today()), arg("--beat") ?? "flag3"));
+      break;
+    }
+    case "cards-preview": {
+      // QA helper: share cards for the dry-run scam plus the site-wide default.
+      const { renderScamCard, renderDefaultCard } = await import("./site/cards.js");
+      const { readJson } = await import("./lib/util.js");
+      const out = arg("--out") ?? path("work/cards");
+      const s = readJson<any>(path("fixtures/llm/traffic-qr/writer.json")).output;
+      console.log(await renderScamCard({ number: 1, script: s }, `${out}/card-scam-001.png`));
+      console.log(await renderDefaultCard(`${out}/card-default.png`));
       break;
     }
     case "stripe-setup": {

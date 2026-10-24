@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import type { Episode, Lead, Script } from "../types.js";
+import type { Episode, Lead, Script, SkinId } from "../types.js";
 import type { ShortProps } from "../../remotion/props.js";
 import { config } from "../lib/config.js";
 import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
@@ -12,6 +12,7 @@ import { loadHooks, pickHook } from "../learn/hooks.js";
 import { chooseCta, chooseSkin } from "./choose.js";
 import { synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
+import { extractCover, loopSimilarity } from "../render/cover.js";
 import { uploadRequest, publishShort, type Uploader } from "../publish/youtube.js";
 
 export interface RunOptions {
@@ -21,6 +22,7 @@ export interface RunOptions {
   uploader?: Uploader; // live: YouTube client
   voice?: "elevenlabs" | "kokoro";
   workDir?: string;
+  skin?: SkinId; // test renders only: force a phone skin
 }
 
 export interface RunReport {
@@ -100,7 +102,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       number,
       leadId: lead.id,
       date,
-      skin: chooseSkin(lead.channel, ledger.episodes),
+      skin: opts.skin ?? chooseSkin(lead.channel, ledger.episodes),
       cta: chooseCta(ledger.episodes),
       hookVariant: chosen.hookId,
       script,
@@ -140,6 +142,12 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     const p = probe(videoFile);
     assertShort(p);
     step("render", true, `${videoFile} (${p.width}x${p.height}, ${p.seconds}s)`);
+
+    // The cover (frame 0) doubles as the thumbnail. The last frame must land back on it.
+    ep.loopSimilarity = loopSimilarity(videoFile);
+    if (ep.loopSimilarity < 0.97) report.warnings.push(`loop: last frame differs from the cover (similarity ${ep.loopSimilarity})`);
+    const cover = extractCover(videoFile, videoFile.replace(/\.mp4$/, "-cover.jpg"));
+    step("cover", true, `${cover.file} (${Math.round(cover.bytes / 1024)} KB), loop similarity ${ep.loopSimilarity}`);
     ep.status = "rendered";
     ep.voice = voice.label;
     report.videoFile = videoFile;
@@ -155,7 +163,11 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     } else if (unsafe.length) {
       throw new Error(`refusing to publish: sources not fully captured (${unsafe.map((s) => s.capture.split(":")[0]).join(", ")})`);
     } else {
-      const res = await publishShort(opts.uploader!, ep, videoFile, voice.label, ledger);
+      const res = await publishShort(opts.uploader!, ep, videoFile, voice.label, ledger, cover.file);
+      if (res.thumbnail) {
+        ep.thumbnail = res.thumbnail;
+        step("thumbnail", true, res.thumbnail.detail); // logged either way; never fails the upload
+      }
       ep.youtubeId = res.videoId;
       ep.status = res.lockedPrivate ? "rendered" : "published";
       report.youtubeId = res.videoId;

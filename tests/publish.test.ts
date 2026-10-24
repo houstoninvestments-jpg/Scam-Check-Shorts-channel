@@ -8,8 +8,9 @@ import { path } from "../src/lib/util";
 const ep = () => ({ number: 7, leadId: "x", date: "2026-10-23", skin: "imessage", cta: "soft", hookVariant: "a", script: fixtureScript(), sources: [{ url: "https://consumer.ftc.gov/x", name: "FTC Consumer Alerts", capture: "page" }], slug: "007-fake", status: "rendered" }) as any;
 
 /** Fake YouTube. lockMode "locked" ignores privacy changes like an unaudited project would. */
-function fakeYouTube(lockMode: "open" | "locked") {
+function fakeYouTube(lockMode: "open" | "locked", thumbMode: "ok" | "refused" = "ok") {
   const log: string[] = [];
+  const thumbs: { url: string; type: string }[] = [];
   let privacy = "private";
   const f = (async (url: string, init: any = {}) => {
     const m = init.method ?? "GET";
@@ -20,6 +21,10 @@ function fakeYouTube(lockMode: "open" | "locked") {
       return ok({}, { location: "https://upload.example/session" });
     }
     if (url === "https://upload.example/session") return ok({ id: "vid123" });
+    if (url.includes("/thumbnails/set")) {
+      thumbs.push({ url, type: init.headers["content-type"] });
+      return thumbMode === "ok" ? ok({ items: [{}] }) : new Response(JSON.stringify({ error: { message: "The authenticated user doesn't have permissions to upload and set custom video thumbnails." } }), { status: 403 });
+    }
     if (m === "PUT" && url.includes("/videos?part=status")) {
       if (lockMode === "open") privacy = JSON.parse(init.body).status.privacyStatus;
       return ok({});
@@ -28,7 +33,7 @@ function fakeYouTube(lockMode: "open" | "locked") {
     return new Response("not found", { status: 404 });
   }) as unknown as typeof fetch;
   const u: Uploader = { fetch: f, token: async () => "t" };
-  return { u, log, privacy: () => privacy };
+  return { u, log, thumbs, privacy: () => privacy };
 }
 
 function videoFile() {
@@ -82,5 +87,39 @@ describe("first upload lock test", () => {
     await publishShort(yt.u, ep(), videoFile(), "AI voice", ledger);
     expect(yt.privacy()).toBe("public");
     expect(yt.log.filter((l) => l.startsWith("PUT https://www.googleapis.com/youtube/v3/videos")).length).toBe(0);
+  });
+});
+
+describe("thumbnail from the cover frame", () => {
+  const jpeg = () => {
+    const f = join(tmp(), "cover.jpg");
+    writeFileSync(f, Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0, 0]));
+    return f;
+  };
+  const passed = () => ({ nextNumber: 2, episodes: [], skipped: [], firstUploadCheck: { videoId: "v0", checkedAt: "", locked: false, detail: "" } }) as any;
+
+  it("sets the cover as the thumbnail after the upload", async () => {
+    const yt = fakeYouTube("open");
+    const r = await publishShort(yt.u, ep(), videoFile(), "AI voice", passed(), jpeg());
+    expect(r.thumbnail).toEqual({ ok: true, detail: "thumbnail set from the cover frame" });
+    expect(yt.thumbs[0].url).toMatch(/thumbnails\/set\?videoId=vid123/);
+    expect(yt.thumbs[0].type).toBe("image/jpeg");
+  });
+
+  it("logs and moves on when YouTube refuses the thumbnail; the upload still counts", async () => {
+    const yt = fakeYouTube("open", "refused");
+    const r = await publishShort(yt.u, ep(), videoFile(), "AI voice", passed(), jpeg());
+    expect(r.videoId).toBe("vid123");
+    expect(r.thumbnail?.ok).toBe(false);
+    expect(r.thumbnail?.detail).toMatch(/403/);
+    expect(yt.privacy()).toBe("public");
+  });
+
+  it("still tries the thumbnail on the first, private test upload", async () => {
+    const yt = fakeYouTube("open");
+    const ledger: any = { nextNumber: 1, episodes: [], skipped: [] };
+    const r = await publishShort(yt.u, ep(), videoFile(), "AI voice", ledger, jpeg());
+    expect(r.thumbnail?.ok).toBe(true);
+    expect(ledger.firstUploadCheck.locked).toBe(false);
   });
 });

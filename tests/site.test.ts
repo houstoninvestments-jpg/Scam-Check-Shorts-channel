@@ -41,7 +41,7 @@ describe("website", () => {
 
   it("builds a page per scam, titled with the exact scam text, linking to the link page", async () => {
     const { buildSite } = await import("../src/site/build");
-    const r = buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     expect(r.pages).toContain("scam/002-fake-traffic-ticket/index.html");
     const $ = cheerio.load(readFileSync(join(dir, "scam/002-fake-traffic-ticket/index.html"), "utf8"));
     expect($("title").text()).toBe(fixtureScript().message.body.replace(/\s+/g, " "));
@@ -50,9 +50,30 @@ describe("website", () => {
     expect($("a[href='https://www.youtube.com/shorts/yt2']").length).toBe(1);
   });
 
+  it("every page carries a share card: one per scam, the default for the link page and the round", async () => {
+    const { buildSite } = await import("../src/site/build");
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const base = config().site.baseUrl;
+    const meta = (rel: string) => {
+      const $ = cheerio.load(readFileSync(join(dir, rel), "utf8"));
+      return (k: string) => $(`meta[property='${k}'], meta[name='${k}']`).attr("content");
+    };
+    const scam = meta("scam/002-fake-traffic-ticket/index.html");
+    expect(scam("og:image")).toBe(`${base}/og/002-fake-traffic-ticket.png`);
+    expect(scam("twitter:card")).toBe("summary_large_image");
+    expect(scam("twitter:image")).toBe(scam("og:image"));
+    expect(scam("og:image:width")).toBe("1200");
+    expect(scam("og:url")).toBe(`${base}/scam/002-fake-traffic-ticket/`);
+    expect(scam("og:description")).not.toMatch(/is a scam|it's a scam|says .* scam/i); // no spoiler in the preview
+    expect(existsSync(join(dir, "og/002-fake-traffic-ticket.png"))).toBe(true);
+    for (const rel of ["index.html", "round/index.html", "scams/index.html"]) expect(meta(rel)("og:image")).toBe(`${base}/og/default.png`);
+    expect(existsSync(join(dir, "og/default.png"))).toBe(true);
+    expect(readFileSync(join(dir, "assets/round.js"), "utf8")).toMatch(/"\?d=" \+ round\.date/);
+  });
+
   it("link page says we never ask for money, labels the paid slot, and passes the reading gate", async () => {
     const { buildSite } = await import("../src/site/build");
-    buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     const $ = cheerio.load(readFileSync(join(dir, "index.html"), "utf8"));
     expect($(".never").text()).toMatch(/never texts you, calls you, or asks for money/);
     expect($(".paid").text()).toBe("Paid link");
@@ -65,7 +86,7 @@ describe("website", () => {
 
   it("keeps Family Pass off: no pages, no scripts", async () => {
     const { buildSite } = await import("../src/site/build");
-    const r = buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     expect(config().familyPass.enabled).toBe(false);
     expect(r.pages.some((p) => p.startsWith("family"))).toBe(false);
     expect(existsSync(join(dir, "assets/family.js"))).toBe(false);
@@ -74,7 +95,7 @@ describe("website", () => {
   it("builds Family Pass and Fire Drill when switched on", async () => {
     const { buildSite } = await import("../src/site/build");
     config().familyPass.enabled = true;
-    const r = buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     expect(r.pages).toContain("family/index.html");
     expect(r.pages).toContain("family/app/index.html");
     expect(readFileSync(join(dir, "family/index.html"), "utf8")).toMatch(/\$19, one time/);
@@ -87,7 +108,7 @@ describe("website", () => {
 
   it("puts no secret in the browser config", async () => {
     const { buildSite } = await import("../src/site/build");
-    buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     const js = readFileSync(join(dir, "assets/config.js"), "utf8");
     expect(Object.keys(JSON.parse(js.replace(/^window\.SON=|;$/g, ""))).sort()).toEqual(["baseUrl", "fireDrillBase", "maxMembers", "supabaseKey", "supabaseUrl"]);
     expect(js).not.toMatch(/service_role|sk_|secret/i);

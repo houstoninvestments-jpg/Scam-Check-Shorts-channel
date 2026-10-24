@@ -4,10 +4,14 @@ import type { Episode } from "../types.js";
 import { config } from "../lib/config.js";
 import { loadLedger } from "../lib/ledger.js";
 import { path, readJson, today } from "../lib/util.js";
-import { CSS, esc, page, scamPage } from "./templates.js";
+import { CSS, esc, page, scamPage, type ShareImage } from "./templates.js";
+import { renderDefaultCard, renderScamCard } from "./cards.js";
 import { buildRound, type LegitItem, type Round } from "./round.js";
 
 const pad3 = (n: number) => String(n).padStart(3, "0");
+
+/** Site-wide preview card for the link page, the daily round and the index pages. */
+const defaultImage = (): ShareImage => ({ url: `${config().site.baseUrl}/og/default.png`, alt: "Scam or Not: one real scam text a day. Real or scam?" });
 
 function out(dir: string, rel: string, content: string) {
   const f = join(dir, rel);
@@ -68,7 +72,7 @@ ${
     ? `<h2>Family Pass</h2><p>Practice together. Past rounds, a family group with streaks, big text, and Fire Drill. $${c.familyPass.priceUsd} once.</p><a class="btn alt" href="family/">See Family Pass</a>`
     : ""
 }`;
-  return page({ title: "Scam or Not: one real scam text a day", description: c.channel.tagline, body, root: "", canonical: `${c.site.baseUrl}/`, scripts: `<script src="assets/config.js"></script><script src="assets/signup.js"></script>` });
+  return page({ title: "Scam or Not: one real scam text a day", description: c.channel.tagline, body, root: "", canonical: `${c.site.baseUrl}/`, image: defaultImage(), scripts: `<script src="assets/config.js"></script><script src="assets/signup.js"></script>` });
 }
 
 function roundPage() {
@@ -84,6 +88,7 @@ function roundPage() {
     body,
     root: "../",
     canonical: `${c.site.baseUrl}/round/`,
+    image: defaultImage(),
     scripts: `<script src="../assets/config.js"></script><script src="../assets/round.js"></script>${c.familyPass.enabled ? `<script type="module" src="../assets/round-family.js"></script>` : ""}`,
   });
 }
@@ -91,7 +96,7 @@ function roundPage() {
 function allScams(eps: Episode[]) {
   const body = `<h1>Every scam so far</h1>
 <div class="list">${[...eps].reverse().map((e) => `<a href="../scam/${e.slug}/"><b>Scam #${pad3(e.number)}: ${esc(e.script.scamName)}</b><small>${esc(e.script.message.body.replace(/\s+/g, " ").slice(0, 120))}</small></a>`).join("\n")}</div>`;
-  return page({ title: "Every scam so far | Scam or Not", description: "Every scam text we have broken down, newest first.", body, root: "../" });
+  return page({ title: "Every scam so far | Scam or Not", description: "Every scam text we have broken down, newest first.", body, root: "../", canonical: `${config().site.baseUrl}/scams/`, image: defaultImage() });
 }
 
 function familyPage() {
@@ -112,7 +117,7 @@ function familyPage() {
 <a class="btn" href="${esc(f.stripePaymentLink || "#")}">Get Family Pass</a>
 <p class="small">You get access right away by email link. Changed your mind? Refund yourself in one tap within ${f.refundDays} days.</p>
 <p class="small">Fire Drill links only show a friendly lesson page. They never ask for or keep any personal information.</p>`;
-  return page({ title: "Family Pass | Scam or Not", description: "Practice spotting scams together.", body, root: "../" });
+  return page({ title: "Family Pass | Scam or Not", description: "Practice spotting scams together.", body, root: "../", canonical: `${c.site.baseUrl}/family/`, image: defaultImage() });
 }
 
 function familyApp() {
@@ -182,7 +187,7 @@ export interface BuildResult {
   round: Round | null;
 }
 
-export function buildSite(opts: { dryRun?: boolean; dir?: string; fireDrillDir?: string; date?: string } = {}): BuildResult {
+export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDrillDir?: string; date?: string } = {}): Promise<BuildResult> {
   const c = config();
   const dir = opts.dir ?? path("site/dist");
   const date = opts.date ?? today(c.cadence.timezone);
@@ -213,6 +218,10 @@ export function buildSite(opts: { dryRun?: boolean; dir?: string; fireDrillDir?:
   }
   if (latest) out(dir, "rounds/latest.json", JSON.stringify(latest));
   out(dir, "rounds/index.json", JSON.stringify(index));
+
+  // Share preview cards: one per scam (the question, never the answer) plus the site-wide default.
+  await renderDefaultCard(join(dir, "og/default.png"));
+  for (const e of eps) await renderScamCard(e, join(dir, `og/${e.slug}.png`));
 
   write("index.html", linkPage(eps, latest));
   write("round/index.html", roundPage());

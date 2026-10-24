@@ -92,3 +92,18 @@ export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id
   if (t > MAX_SECONDS) throw new Error(`video would run ${t.toFixed(1)}s; limit is ${MAX_SECONDS}s`);
   return { fps: FPS, total: f(t), beats, captions };
 }
+
+export const COVER_FADE = 8; // frames for the cover to clear once the hook starts
+
+/**
+ * How visible the cover is (0..1). The cover is the thumbnail: phone, scam text, "REAL OR SCAM?", Scam #.
+ * Fully on at frame 0, clears as the hook starts, and comes back during the tail
+ * so the last frame matches frame 0 and the loop lands on the cover again.
+ */
+export function coverOpacity(frame: number, beats: Beat[]): number {
+  const hook = beats.find((b) => b.id === "hook")!;
+  const tail = beats.find((b) => b.id === "tail")!;
+  if (frame < hook.from) return 1;
+  if (frame < tail.from) return Math.max(0, 1 - (frame - hook.from) / COVER_FADE);
+  return Math.min(1, (frame - tail.from) / Math.max(1, tail.to - 2 - tail.from));
+}

@@ -28,15 +28,24 @@ One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
    open Kokoro voice keeps the day on track, and the health check says so.
 5. **Render** (`remotion/`). Six logo-free phone skins: text (two styles),
    email, voicemail transcript, marketplace chat, social DM. Burned-in
-   captions. Red only for the verdict and the flags.
+   captions. Red only for the verdict and the flags. Frame 0 is the cover:
+   the phone with the scam text, a big "REAL OR SCAM?" stamp and the Scam
+   number, never the answer. The video fades back to it at the end, and each
+   render is checked that its last frame matches its first.
 6. **Publish** (`src/publish`). Resumable upload through the YouTube Data API,
    one a day. Every upload sets YouTube's altered-or-synthetic flag and says
    the narration is an AI voice. The very first upload goes up private and is
    tested for the "locked private" restriction before anything goes public.
    If locked, the audit answers are written to `docs/youtube-audit-request.md`.
+   The cover frame is saved as a JPEG and sent as the video's thumbnail. If
+   YouTube refuses a custom thumbnail, that is logged and the upload stands.
 7. **Website** (`src/site`) on GitHub Pages: a link page, the daily 3-message
    round with a share line ("Scam #047 · I caught 2 of 3"), one page per scam
    titled with the exact scam text, email signup, and a labeled paid-link slot.
+   Every scam page gets a 1200x630 share card (the question, never the answer),
+   and the other pages share a default card, so links preview in texts,
+   WhatsApp, Facebook and iMessage. Cards are drawn from code at build time
+   (`src/site/cards.ts`, Satori + resvg, no browser, no accounts).
 8. **Learn** (`src/learn`) reads YouTube retention once a video has a few days
    of data and shifts future hooks toward the ones that hold viewers. The three
    call-to-action states (none, soft, direct) rotate evenly and are measured.

@@ -145,13 +145,48 @@ export async function lockTest(u: Uploader, id: string): Promise<{ locked: boole
   return { locked: true, detail: `status stayed ${st?.privacyStatus ?? "unknown"} after asking for unlisted` };
 }
 
+export interface ThumbnailResult {
+  ok: boolean;
+  detail: string;
+}
+
+/**
+ * Try to set the cover frame as the video's thumbnail. YouTube may refuse custom thumbnails
+ * on Shorts or on some channels. That is never a reason to fail the day: log it and move on.
+ */
+export async function setThumbnail(u: Uploader, videoId: string, jpeg: string): Promise<ThumbnailResult> {
+  try {
+    const body = readFileSync(jpeg);
+    const res = await u.fetch(`https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId=${encodeURIComponent(videoId)}&uploadType=media`, {
+      method: "POST",
+      headers: { authorization: `Bearer ${await u.token()}`, "content-type": "image/jpeg", "content-length": String(body.length) },
+      body,
+    });
+    const text = await res.text();
+    if (!res.ok) return { ok: false, detail: `thumbnail not set (${res.status}): ${text.replace(/\s+/g, " ").slice(0, 200)}` };
+    return { ok: true, detail: "thumbnail set from the cover frame" };
+  } catch (e) {
+    return { ok: false, detail: `thumbnail not set: ${String(e).slice(0, 200)}` };
+  }
+}
+
 export interface PublishResult {
   videoId: string;
   lockedPrivate: boolean;
   detail: string;
+  thumbnail?: ThumbnailResult;
 }
 
-export async function publishShort(u: Uploader, ep: Episode, file: string, voiceLabel: string, ledger: Ledger): Promise<PublishResult> {
+export async function publishShort(u: Uploader, ep: Episode, file: string, voiceLabel: string, ledger: Ledger, coverJpg?: string): Promise<PublishResult> {
+  const r = await publishVideo(u, ep, file, voiceLabel, ledger);
+  if (coverJpg) {
+    r.thumbnail = await setThumbnail(u, r.videoId, coverJpg);
+    log(r.thumbnail.detail);
+  }
+  return r;
+}
+
+async function publishVideo(u: Uploader, ep: Episode, file: string, voiceLabel: string, ledger: Ledger): Promise<PublishResult> {
   if (ledger.firstUploadCheck?.locked) throw new Error("uploads are locked private until the YouTube API audit passes; see docs/youtube-audit-request.md");
 
   if (!ledger.firstUploadCheck) {

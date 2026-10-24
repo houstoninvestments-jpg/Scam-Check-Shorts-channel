@@ -40,7 +40,38 @@ footer{margin-top:48px;font-size:.85em;color:var(--dim)}
 .hidden{display:none}
 `;
 
-export function page(o: { title: string; description: string; body: string; root: string; canonical?: string; extraHead?: string; scripts?: string }) {
+export interface ShareImage {
+  url: string; // absolute
+  alt: string;
+}
+
+/** Open Graph + Twitter card tags so links preview in texts, WhatsApp, Facebook and iMessage. */
+export function shareTags(o: { title: string; description: string; url?: string; image?: ShareImage }) {
+  const t = [
+    `<meta property="og:site_name" content="Scam or Not">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:title" content="${esc(o.title)}">`,
+    `<meta property="og:description" content="${esc(o.description)}">`,
+    o.url ? `<meta property="og:url" content="${esc(o.url)}">` : "",
+    `<meta name="twitter:card" content="${o.image ? "summary_large_image" : "summary"}">`,
+    `<meta name="twitter:title" content="${esc(o.title)}">`,
+    `<meta name="twitter:description" content="${esc(o.description)}">`,
+  ];
+  if (o.image)
+    t.push(
+      `<meta property="og:image" content="${esc(o.image.url)}">`,
+      `<meta property="og:image:secure_url" content="${esc(o.image.url)}">`,
+      `<meta property="og:image:type" content="image/png">`,
+      `<meta property="og:image:width" content="1200">`,
+      `<meta property="og:image:height" content="630">`,
+      `<meta property="og:image:alt" content="${esc(o.image.alt)}">`,
+      `<meta name="twitter:image" content="${esc(o.image.url)}">`,
+      `<meta name="twitter:image:alt" content="${esc(o.image.alt)}">`,
+    );
+  return t.filter(Boolean).join("\n");
+}
+
+export function page(o: { title: string; description: string; body: string; root: string; canonical?: string; image?: ShareImage; extraHead?: string; scripts?: string }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -49,8 +80,7 @@ export function page(o: { title: string; description: string; body: string; root
 <title>${esc(o.title)}</title>
 <meta name="description" content="${esc(o.description)}">
 ${o.canonical ? `<link rel="canonical" href="${esc(o.canonical)}">` : ""}
-<meta property="og:title" content="${esc(o.title)}">
-<meta property="og:description" content="${esc(o.description)}">
+${shareTags({ title: o.title, description: o.description, url: o.canonical, image: o.image })}
 <link rel="stylesheet" href="${o.root}assets/site.css">
 ${o.extraHead ?? ""}
 </head>
@@ -92,5 +122,12 @@ ${youtubeUrl ? `<a class="btn alt" href="${esc(youtubeUrl)}">Watch the 30-second
 <h2>Sources</h2>
 <ul>${e.sources.map((src) => `<li><a href="${esc(src.url)}" rel="nofollow noopener">${esc(src.name)}</a></li>`).join("")}</ul>
 `;
-  return page({ title: exact, description: `${s.scamName}. ${s.description}`, body, root, canonical: `${cfg.site.baseUrl}/scam/${e.slug}/` });
+  return page({
+    title: exact,
+    description: `Real or scam? Scam #${pad3(e.number)}. Look closer before you tap.`,
+    body,
+    root,
+    canonical: `${cfg.site.baseUrl}/scam/${e.slug}/`,
+    image: { url: `${cfg.site.baseUrl}/og/${e.slug}.png`, alt: `Scam #${pad3(e.number)}: a text message. Real or scam?` },
+  });
 }
