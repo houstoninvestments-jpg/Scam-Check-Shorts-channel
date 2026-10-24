@@ -94,7 +94,7 @@ jobs:
           # Until the one-time YouTube authorization is done, run the full pipeline in dry-run mode.
           if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "mode=dry" >> "$GITHUB_OUTPUT"
-            npx tsx src/cli.ts daily --dry-run
+            npx tsx src/cli.ts daily --dry-run --voice kokoro  # free voice: dry runs never spend ElevenLabs credits
           else
             echo "mode=live" >> "$GITHUB_OUTPUT"
             npx tsx src/cli.ts daily
@@ -137,7 +137,9 @@ jobs:
         if: always() && steps.cloudflare.outcome == 'success'
         run: |
           base="${{ steps.site.outputs.base_url }}"
-          for page in "" "privacy/" "terms/" "round/" "favicon.svg" "favicon.ico" "apple-touch-icon.png"; do
+          # Fixed pages, the favicon set, and the three newest scam pages from the ledger.
+          scams=$(node -e 'const l=require("./data/ledger.json");console.log(l.episodes.filter(e=>e.youtubeId).slice(-3).map(e=>"scam/"+e.slug+"/").join(" "))' 2>/dev/null || true)
+          for page in "" "privacy/" "terms/" "round/" "favicon.svg" "favicon.ico" "apple-touch-icon.png" $scams; do
             for i in 1 2 3 4 5 6; do
               code=$(curl -s -o /dev/null -w "%{http_code}" "$base/$page") && [ "$code" = "200" ] && break
               sleep 10
