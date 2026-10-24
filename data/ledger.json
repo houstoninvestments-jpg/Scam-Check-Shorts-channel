@@ -1,5 +1,5 @@
 {
-  "nextNumber": 2,
+  "nextNumber": 3,
   "episodes": [
     {
       "number": 1,
@@ -102,6 +102,108 @@
       },
       "youtubeId": "t44bNq4o3NQ",
       "youtubePrivacy": "private"
+    },
+    {
+      "number": 2,
+      "leadId": "6de33e3b46aa",
+      "date": "2026-10-24",
+      "skin": "dm",
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Hacked friend's crypto money tip",
+        "message": {
+          "sender": "Jess M.",
+          "subject": "",
+          "body": "heyyy! ok so I've been making serious money with a crypto trading mentor 🙌 guaranteed 20% returns every week, zero risk. you just send $500 in crypto to open your account. sign up here: crypto-mentor-pro.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the California Attorney General release, which describes a friend's possibly hacked account messaging about a great investment opportunity, guarantees of large returns, and required crypto payments.",
+          "evidence": [
+            {
+              "quote": "If a friend suddenly messages you about a \"great investment opportunity,\" contact them outside of Facebook via phone call or text to ensure their account hasn't been hacked.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            },
+            {
+              "quote": "Guarantees of large returns in exchange for money or cryptocurrency: If it sounds too good to be true, it probably is.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            },
+            {
+              "quote": "Requiring payments in cryptocurrency: No legitimate companies or government agencies will force you to pay in cryptocurrencies or other crypto assets.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            }
+          ]
+        },
+        "hook": "Would you tap this? Decide fast.",
+        "stampSay": "Scam. Here's how to tell.",
+        "flags": [
+          {
+            "label": "Friend's sudden pitch",
+            "say": "A friend's account suddenly pushing an investment may have been hacked.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "If a friend suddenly messages you about a \"great investment opportunity,\" contact them outside of Facebook via phone call or text to ensure their account hasn't been hacked.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            }
+          },
+          {
+            "label": "Guaranteed big returns",
+            "say": "Nobody can promise big crypto gains, because there are no guaranteed returns.",
+            "target": {
+              "kind": "text",
+              "match": "guaranteed 20% returns every week"
+            },
+            "evidence": {
+              "quote": "Remember, there are no guarantees of large returns with crypto assets.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            }
+          },
+          {
+            "label": "Pay in crypto",
+            "say": "No real company forces you to pay in crypto.",
+            "target": {
+              "kind": "text",
+              "match": "send $500 in crypto"
+            },
+            "evidence": {
+              "quote": "No legitimate companies or government agencies will force you to pay in cryptocurrencies or other crypto assets.",
+              "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Call your friend",
+          "say": "Call or text your friend outside the app to check their account is still theirs.",
+          "evidence": {
+            "quote": "contact them outside of Facebook via phone call or text to ensure their account hasn't been hacked.",
+            "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen"
+          }
+        },
+        "title": "A friend's DM pushing guaranteed crypto returns could be a scam",
+        "description": "A friend's account messages you about easy crypto profits with guaranteed returns and asks you to pay in crypto. The account may be hacked, and guaranteed crypto returns sound too good to be true. Call your friend before you tap anything.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://oag.ca.gov/news/press-releases/crypto-scams-are-booming-attorney-general-bonta-clocks-crypto-conmen",
+          "name": "California Attorney General",
+          "capture": "page"
+        }
+      ],
+      "slug": "002-hacked-friends-crypto-money-tip",
+      "status": "published",
+      "category": "impostor",
+      "loopSimilarity": 0.992834,
+      "voice": "AI voice (ElevenLabs)",
+      "thumbnail": {
+        "ok": false,
+        "detail": "thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
+      },
+      "youtubeId": "tL_Zh-OUa08",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -154,12 +256,22 @@
       "leadId": "b51e443cfe3d",
       "date": "2026-10-24",
       "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "e5d3f689169c",
+      "date": "2026-10-24",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "555e40b0d31c",
+      "date": "2026-10-24",
+      "reason": "problems: safeMove label 'Keep your crypto' is advice the source never gives. The source only reports that investors could not withdraw when NovaTech collapsed; it offers no protective guidance."
     }
   ],
   "firstUploadCheck": {
     "videoId": "t44bNq4o3NQ",
-    "checkedAt": "2026-10-24T07:16:59.288Z",
-    "locked": true,
-    "detail": "status stayed private after asking for unlisted"
+    "checkedAt": "2026-10-24T17:30:49.462Z",
+    "locked": false,
+    "detail": "lock lifted: private test video could be made unlisted; uploads are not locked"
   }
 }

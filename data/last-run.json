@@ -1,49 +1,67 @@
 {
   "date": "2026-10-24",
   "dryRun": false,
-  "status": "rendered",
+  "status": "published",
   "warnings": [
     "source bbb-scam-alerts failed: no articles found",
     "source tx-ag failed: no articles found"
   ],
-  "errors": [
-    "first upload is locked private; audit request prepared in docs/youtube-audit-request.md"
-  ],
+  "errors": [],
   "steps": [
+    {
+      "step": "upload lock",
+      "ok": true,
+      "detail": "lock lifted: private test video could be made unlisted; uploads are not locked"
+    },
     {
       "step": "scout",
       "ok": true,
-      "detail": "7 leads, 0 dropped as repeats"
+      "detail": "6 leads, 1 dropped as repeats"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "The FTC is not calling to deactivate your phone number: problems: Channel mismatch: the source describes this scheme as a phone call (\"calls to say a phone was registered under your name\"; the fake official \"reads off their badge ID\"), but the scamName, title (\"Fake government agent text says your phone will be cut off\") and the on-screen message present it as a text message. The recreated provenance covers the wording, but the title tells viewers this scam arrives by text, which the source does not say. Reframe it as a call, or say the call version was adapted into a text. (rewrite 1 of 2)"
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "The FTC is not calling to deactivate your phone number: problems: The recreated message never claims to be from the FTC. The sender and body say \"Consumer Protection Office,\" but the stamp (\"The FTC won't cut you off\") and the secrecy flag (\"A real FTC employee never...\") rely on the FTC rules from the source. Viewers could wrongly think these red flags only apply when the FTC is named. The FTC's statements also say nothing about what a generic \"Consumer Protection Office\" would or would not do. The message should name the FTC, as in the source (e.g., \"FTC official\"), or the spoken lines should be reworded to match the sender. (rewrite 2 of 2)"
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 'Bonus for recruiting': the cited quote is about AWS Mining, the earlier scheme with 15 to 20 percent monthly returns, not the NovaTech-style pitch shown (2 to 4 percent weekly, registered broker). The claim itself is true for NovaTech, but the evidence should use the NovaTech sentence ('...promoted recruitment bonuses...') so the quote matches the scheme on screen. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: safeMove: the label 'Tell the Attorney General' tells viewers to report to the AG, but the source gives no reporting instruction, phone number, or channel. The quote only says the office 'will always stand up for New Yorkers who have been targeted'. Viewers get an action with no way to take it. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: safeMove label 'Keep your crypto' is advice the source never gives. The source only reports that investors could not withdraw when NovaTech collapsed; it offers no protective guidance."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: The title 'A friend's crypto money tip in your DMs is a scam' states as a blanket fact that any friend's crypto tip is a scam. The source only says a friend's sudden 'great investment opportunity' message may mean the account was hacked, and advises checking. The scam verdict for this message rests on the guaranteed returns and the required crypto payment, not on the fact that it came from a friend. Tie the title to those red flags, or soften it (for example, 'could be a scam'). (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "The FTC is not calling to deactivate your phone number: both reviews agree: scam, no problems"
+      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (ElevenLabs), 28.3s"
+      "detail": "AI voice (ElevenLabs), 29.0s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001.mp4 (1080x1920, 28.35s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002.mp4 (1080x1920, 29.01s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001-cover.jpg (201 KB), loop similarity 0.994511"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002-cover.jpg (193 KB), loop similarity 0.992834"
     },
     {
       "step": "thumbnail",
@@ -52,20 +70,20 @@
     },
     {
       "step": "publish",
-      "ok": false,
-      "detail": "status stayed private after asking for unlisted"
+      "ok": true,
+      "detail": "uploaded tL_Zh-OUa08 as public"
     }
   ],
   "summary": {
-    "scam": "Fake FTC agent phone cutoff call | sources: FTC Consumer Alerts 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (ElevenLabs) (voice ID from secret: yes), 28.3s",
-    "title": "Scam No. 001: Fake government agent call says your phone will be cut off",
+    "upload": "tL_Zh-OUa08, public, not locked",
+    "scam": "Hacked friend's crypto money tip | sources: California Attorney General 2026-10-19 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (ElevenLabs) (voice ID from secret: yes), 29.0s",
+    "title": "Scam No. 002: A friend's DM pushing guaranteed crypto returns could be a scam",
     "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornot.pages.dev/scam/001-fake-ftc-agent-phone-cutoff-call/",
-    "upload": "t44bNq4o3NQ, private, LOCKED private by Google",
+    "page": "https://scamornot.pages.dev/scam/002-hacked-friends-crypto-money-tip/",
     "thumbnail": "refused: thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-001.mp4",
-  "episode": 1,
-  "youtubeId": "t44bNq4o3NQ"
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002.mp4",
+  "episode": 2,
+  "youtubeId": "tL_Zh-OUa08"
 }
