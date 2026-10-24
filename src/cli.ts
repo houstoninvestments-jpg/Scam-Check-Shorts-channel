@@ -42,6 +42,12 @@ async function main() {
         workDir: dryRun && skin ? path("work", `skin-${skin}`) : undefined,
       });
       log(`result: ${report.status}${report.videoFile ? ` ${report.videoFile}` : ""}`);
+      if (process.env.GITHUB_ACTIONS) {
+        // Run notes readable through the Actions API (raw logs are not always reachable).
+        const clean = (v: string) => v.replace(/[\r\n]+/g, " ").slice(0, 900);
+        console.log(`::notice title=Run result::${report.status}${report.errors[0] ? ` | ${clean(report.errors[0])}` : ""}${report.warnings.length ? ` | warnings: ${clean(report.warnings.join("; "))}` : ""}`);
+        for (const [k, v] of Object.entries(report.summary)) console.log(`::notice title=${k}::${clean(v)}`);
+      }
       if (report.status === "failed") {
         console.error(report.errors.join("\n"));
         process.exitCode = 1;

@@ -182,6 +182,7 @@ export async function setThumbnail(u: Uploader, videoId: string, jpeg: string): 
 export interface PublishResult {
   videoId: string;
   lockedPrivate: boolean;
+  privacy: "public" | "unlisted" | "private";
   detail: string;
   thumbnail?: ThumbnailResult;
 }
@@ -206,12 +207,18 @@ async function publishVideo(u: Uploader, ep: Episode, file: string, voiceLabel: 
     log(`first upload lock test: ${res.detail}`);
     if (res.locked) {
       writeAuditRequest(path("docs/youtube-audit-request.md"), res.detail);
-      return { videoId: id, lockedPrivate: true, detail: res.detail };
+      return { videoId: id, lockedPrivate: true, privacy: "private", detail: res.detail };
     }
-    await setPrivacy(u, id, config().youtube.privacyStatus);
-    return { videoId: id, lockedPrivate: false, detail: `${res.detail}; now ${config().youtube.privacyStatus}` };
+    // The first upload is the test video: it goes back to private and stays there.
+    // Every upload after it goes up with the normal setting (public).
+    const keep = config().youtube.firstUploadPrivacy;
+    await setPrivacy(u, id, keep);
+    const after = await videoStatus(u, id);
+    if (after?.privacyStatus !== keep) throw new Error(`test video should be ${keep} but is ${after?.privacyStatus}`);
+    return { videoId: id, lockedPrivate: false, privacy: keep, detail: `${res.detail}; test video kept ${keep}` };
   }
 
+  const privacy = config().youtube.privacyStatus;
   const id = await uploadVideo(u, file, uploadRequest(ep, voiceLabel));
-  return { videoId: id, lockedPrivate: false, detail: `uploaded ${id}` };
+  return { videoId: id, lockedPrivate: false, privacy, detail: `uploaded ${id} as ${privacy}` };
 }

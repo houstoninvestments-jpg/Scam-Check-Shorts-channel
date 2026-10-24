@@ -105,6 +105,7 @@ export interface Episode {
   voice?: string;
   thumbnail?: { ok: boolean; detail: string };
   category?: string; // id from config/hashtags.json
+  youtubePrivacy?: "public" | "unlisted" | "private";
   loopSimilarity?: number;
 }
 

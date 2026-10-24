@@ -56,13 +56,15 @@ describe("upload metadata", () => {
 });
 
 describe("first upload lock test", () => {
-  it("uploads private, proves the lock is off via unlisted, then goes public", async () => {
+  it("uploads private, proves the lock is off via unlisted, then keeps the test video private", async () => {
     const yt = fakeYouTube("open");
     const ledger: any = { nextNumber: 1, episodes: [], skipped: [] };
     const r = await publishShort(yt.u, ep(), videoFile(), "AI voice", ledger);
     expect(r.lockedPrivate).toBe(false);
+    expect(r.privacy).toBe("private");
     expect(ledger.firstUploadCheck.locked).toBe(false);
-    expect(yt.privacy()).toBe("public");
+    expect(yt.privacy()).toBe("private");
+    expect(yt.log.filter((l) => l.startsWith("PUT https://www.googleapis.com/youtube/v3/videos")).length).toBe(2); // unlisted, then back to private
   });
 
   it("detects a locked project, writes the audit answers, and stops uploading", async () => {

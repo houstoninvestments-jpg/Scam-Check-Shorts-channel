@@ -36,6 +36,8 @@ export interface RunReport {
   warnings: string[];
   errors: string[];
   steps: { step: string; ok: boolean; detail: string }[];
+  /** One line per thing a person would check, posted as notes on the GitHub run. */
+  summary: Record<string, string>;
 }
 
 const SOURCE_SHORT: Record<string, string> = { ftc: "FTC", bbb: "BBB", ag: "state attorney general", reddit: "community" };
@@ -46,7 +48,7 @@ export const PUBLISHABLE_CAPTURES = new Set(["page", "feed"]);
 export async function runDaily(opts: RunOptions): Promise<RunReport> {
   const cfg = config();
   const date = today(cfg.cadence.timezone);
-  const report: RunReport = { date, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [] };
+  const report: RunReport = { date, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [], summary: {} };
   const step = (s: string, ok: boolean, detail: string) => {
     report.steps.push({ step: s, ok, detail });
     log(`${ok ? "ok  " : "FAIL"} ${s}: ${detail}`);
@@ -85,6 +87,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       const verdict = await check(opts.llm, script, lead);
       step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
       if (verdict.pass) {
+        report.summary.scam = `${script.scamName} | sources: ${lead.docs.map((d) => `${d.name} ${d.publishedAt?.slice(0, 10) ?? ""} (${d.capture})`).join("; ")} | checks: ${verdict.reason}`;
         chosen = { lead, script, hookId: hook.id };
         break;
       }
@@ -126,6 +129,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       throw new Error(`timing: ${String(e)}`);
     }
     step("voice", true, `${voice.label}, ${(timeline.total / timeline.fps).toFixed(1)}s`);
+    report.summary.voice = `${voice.label}${voice.provider === "elevenlabs" ? ` (voice ID from secret: ${config().voice.elevenlabsVoiceId ? "yes" : "no"})` : ""}, ${(timeline.total / timeline.fps).toFixed(1)}s`;
 
     const props: ShortProps = {
       number,
@@ -158,6 +162,9 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     // 5. Publish
     const upload = uploadRequest(ep, voice.label);
     writeJson(join(work, "upload-request.json"), upload);
+    report.summary.title = upload.snippet.title;
+    report.summary.hashtags = upload.snippet.description.trim().split("\n").at(-1)!;
+    report.summary.page = `${cfg.site.baseUrl}/scam/${ep.slug}/`;
     const unsafe = ep.sources.filter((s) => !PUBLISHABLE_CAPTURES.has(s.capture));
     if (opts.dryRun) {
       step("publish", true, "dry run: upload request saved, nothing sent to YouTube");
@@ -171,7 +178,10 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
         step("thumbnail", true, res.thumbnail.detail); // logged either way; never fails the upload
       }
       ep.youtubeId = res.videoId;
+      ep.youtubePrivacy = res.privacy;
       ep.status = res.lockedPrivate ? "rendered" : "published";
+      report.summary.upload = `${res.videoId}, ${res.privacy}${res.lockedPrivate ? ", LOCKED private by Google" : ", not locked"}`;
+      report.summary.thumbnail = res.thumbnail ? `${res.thumbnail.ok ? "set" : "refused"}: ${res.thumbnail.detail}` : "not tried";
       report.youtubeId = res.videoId;
       report.status = res.lockedPrivate ? "rendered" : "published";
       if (res.lockedPrivate) report.errors.push("first upload is locked private; audit request prepared in docs/youtube-audit-request.md");

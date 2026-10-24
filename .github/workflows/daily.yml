@@ -74,6 +74,15 @@ jobs:
           [ -f kokoro-v1.0.int8.onnx ] || curl -sSL -o kokoro-v1.0.int8.onnx https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.int8.onnx
           [ -f voices-v1.0.bin ] || curl -sSL -o voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
 
+      - name: Check which keys are set (names only)
+        run: |
+          set_list=""; missing=""
+          for n in ANTHROPIC_API_KEY ELEVENLABS_API_KEY ELEVENLABS_VOICE_ID YOUTUBE_CLIENT_ID YOUTUBE_CLIENT_SECRET YOUTUBE_REFRESH_TOKEN CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID; do
+            if [ -n "${!n}" ]; then set_list="$set_list $n"; else missing="$missing $n"; fi
+          done
+          echo "::notice title=Keys set::${set_list:- none}"
+          [ -z "$missing" ] || echo "::warning title=Keys missing::$missing"
+
       - name: Pick the website address
         id: site
         # Sets SITE_BASE_URL for every later step, so descriptions, share cards and links all use it.
@@ -167,6 +176,7 @@ jobs:
           npx tsx src/cli.ts health
           code=$?
           set -e
+          if [ "$code" = "0" ]; then echo "::notice title=Health check::passed"; else echo "::warning title=Health check::found problems (see the health issue)"; fi
           open=$(gh issue list --label health --state open --json number -q '.[0].number')
           if [ "$code" = "2" ]; then
             gh label create health --color B60205 --description "Automated health check" 2>/dev/null || true

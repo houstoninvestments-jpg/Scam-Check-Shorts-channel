@@ -230,7 +230,7 @@ export async function buildSite(opts: { dryRun?: boolean; dir?: string; fireDril
   write("scams/index.html", allScams(eps));
   write("privacy/index.html", privacyPage(c, "../"));
   write("terms/index.html", termsPage(c, "../"));
-  for (const e of eps) write(`scam/${e.slug}/index.html`, scamPage(e, c, "../../", e.youtubeId ? `https://www.youtube.com/shorts/${e.youtubeId}` : undefined));
+  for (const e of eps) write(`scam/${e.slug}/index.html`, scamPage(e, c, "../../", e.youtubeId && e.youtubePrivacy !== "private" ? `https://www.youtube.com/shorts/${e.youtubeId}` : undefined));
   if (c.familyPass.enabled) {
     write("family/index.html", familyPage());
     write("family/app/index.html", familyApp());
