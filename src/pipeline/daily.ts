@@ -74,7 +74,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     const hooks = loadHooks();
     const recentHooks = ledger.episodes.slice(-3).map((e) => e.hookVariant).reverse();
     let chosen: { lead: Lead; script: Script; hookId: string } | undefined;
-    for (const lead of found.leads.slice(0, 4)) {
+    for (const lead of found.leads.slice(0, 6)) {
       const hook = pickHook(hooks, recentHooks);
       const skin = chooseSkin(lead.channel, ledger.episodes);
       let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
@@ -84,7 +84,17 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
         script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems));
         mech = mechanicalCheck(script, lead);
       }
-      const verdict = await check(opts.llm, script, lead);
+      let verdict = await check(opts.llm, script, lead);
+      // Both reviews say it IS a scam but list fixable problems: one rewrite with those exact
+      // problems, then both reviews run again from scratch. Any doubt that it's a scam = skip.
+      const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
+      if (fixable) {
+        step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewriting once)`);
+        const problems = [...(verdict.a?.problems ?? []), ...(verdict.b?.problems ?? [])];
+        if (verdict.a && verdict.a.confidence < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
+        script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems));
+        verdict = await check(opts.llm, script, lead);
+      }
       step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
       if (verdict.pass) {
         report.summary.scam = `${script.scamName} | sources: ${lead.docs.map((d) => `${d.name} ${d.publishedAt?.slice(0, 10) ?? ""} (${d.capture})`).join("; ")} | checks: ${verdict.reason}`;

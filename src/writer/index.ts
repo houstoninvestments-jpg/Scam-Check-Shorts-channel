@@ -22,6 +22,9 @@ Every video has the same beats:
 Hard rules:
 - Explain the scam in the channel's own words. Never read the scam message aloud. Never copy more than five words in a row from the message into anything spoken.
 - Every red flag and the safe move must carry a quote copied word for word from one of the sources given, with that source's link. Copy the quote exactly: same words, same order. If the sources do not back a claim, do not make the claim.
+- Each spoken line may say only what its own quote says. Pick the sentence that directly supports the line. Never widen it into a general rule ("no real company ever..."), never add a result the quote doesn't state, and never name a company the source accuses unless you need to.
+- Pick a scam people can meet in a message: a text, email, call, voicemail, DM or chat. Skip court cases and settlements unless the source describes the message itself.
+- target.kind "attachment" means the QR code or file shown in the message; use it only when message.hasQr is true.
 - Use only these sources. Add no facts from memory: no statistics, no dollar totals, no agency names that the sources do not name.
 - message.provenance is "verbatim" only if a source quotes the full message. Otherwise "recreated": build the message only from parts the sources describe, and say which source in provenanceNote.
 - In a recreated message, use generic names ("Toll Services", "State Court") rather than real company or agency names. Use phone numbers in the range set aside for fiction, like (202) 555-0142 (555-0100 to 555-0199) and links on example.com-style fake domains that cannot resolve, such as "pay-tolls.example". Never a real, working link.

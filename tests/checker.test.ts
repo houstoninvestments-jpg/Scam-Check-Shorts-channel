@@ -81,3 +81,41 @@ describe("two independent reviews", () => {
     expect(llm.calls).toEqual([]);
   });
 });
+
+describe("attachment circles", () => {
+  it("rejects a flag that circles an attachment the message doesn't show", () => {
+    const s = fixtureScript();
+    s.message.hasQr = false;
+    s.flags[0].target = { kind: "attachment", match: "" };
+    expect(mechanicalCheck(s, fixtureLead()).problems.join()).toMatch(/circles an attachment, but the message shows none/);
+  });
+});
+
+describe("rewrite after review problems", () => {
+  it("rewrites once with both reviews' problems when both say scam, then passes", async () => {
+    const { runDaily } = await import("../src/pipeline/daily");
+    const { mkdtempSync } = await import("node:fs");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const t = mkdtempSync(join(tmpdir(), "rw-"));
+    process.env.LEDGER_FILE = join(t, "ledger.json");
+    const script = fixtureScript();
+    let reviews = 0;
+    const llm: any = {
+      mode: "fixture",
+      roles: [] as string[],
+      async json(call: any) {
+        this.roles.push(call.role);
+        if (call.role.startsWith("writer")) return call.schema.parse(script);
+        reviews++;
+        const ok = reviews > 2; // first pair lists a problem, second pair is clean
+        return call.schema.parse({ verdict: "scam", confidence: 0.9, problems: ok ? [] : ["flag 1 overstates its quote"] });
+      },
+    };
+    // Stop before voice and render: no voice engine in this test.
+    process.env.KOKORO_DIR = "/nonexistent";
+    const r = await runDaily({ dryRun: true, llm, fixtureSources: ["ftc-traffic-qr.json"], voice: "kokoro", workDir: join(t, "work") });
+    expect(llm.roles).toEqual(["writer", "checker-a", "checker-b", "writer-retry", "checker-a", "checker-b"]);
+    expect(r.steps.filter((s) => s.step === "check").map((s) => s.ok)).toEqual([false, true]);
+  });
+});

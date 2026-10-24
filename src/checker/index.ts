@@ -85,6 +85,7 @@ export function mechanicalCheck(s: Script, lead: Lead): MechanicalResult {
     checkQuote(f.evidence, `flag ${i + 1}`, true);
     if (f.target.kind === "text" && !s.message.body.includes(f.target.match)) problems.push(`flag ${i + 1}: circle text "${f.target.match}" is not in the message`);
     if (f.label.split(/\s+/).length > 4) problems.push(`flag ${i + 1}: label over 4 words`);
+    if (f.target.kind === "attachment" && !s.message.hasQr) problems.push(`flag ${i + 1}: circles an attachment, but the message shows none`);
   });
   checkQuote(s.safeMove.evidence, "safe move", true);
 
