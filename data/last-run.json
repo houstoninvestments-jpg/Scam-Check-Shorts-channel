@@ -17,22 +17,47 @@
     {
       "step": "check",
       "ok": false,
-      "detail": "The FTC is not calling to deactivate your phone number: problems: The 'Badge photo proof' flag targets an attachment, but the message has none. The body only states a badge ID number in text. The flag points at nothing on screen."
+      "detail": "The FTC is not calling to deactivate your phone number: problems: Flag 'Threatens your phone': the say line widens 'A real FTC employee' to 'A real agency employee'. The source covers only the FTC, not every agency. (rewriting once)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (scam / unsure)"
+      "detail": "The FTC is not calling to deactivate your phone number: problems: provenanceNote says the source describes a follow-up text with a fake employee ID photo 'that the source says scammers send.' The source never says scammers in this scheme text a photo. It only says a real FTC employee will never text a photo of their employee ID. In the source, the badge ID is read aloud on the call. The note should not attribute this to the source."
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 1 'say' ('No real investment hands you a set profit every single week') is a general claim about all legitimate investments. The quote only says NovaTech advertised about 2-4% per week. The source never says fixed weekly returns are impossible for real investments."
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / scam)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Flag 'Friendly mentor': the say line 'then drain everything' is not supported by the attached quote, which only covers mentors building trust. The source does say scammers 'ultimately vanish with all the victim's money,' but that line is not the cited evidence. Either swap the quote or soften the say line."
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Delivery channel is not sourced. The description says 'A text invites you', the category is 'text', and the sender is a phone number. The source only describes outreach 'in prayer groups and through social media and WhatsApp group chats'. It never mentions SMS or text messages. Either say the message is a recreated composite, or reframe it as a group-chat or social-media post. (rewriting once)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: The 'Faith used as bait' flag targets the sender with an empty match string, so it highlights nothing specific. The religious appeal is in the body ('God has opened a door for us'), so the flag should target that text."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Minor: The category is 'impostor', but Source 1 presents this pattern mainly as a Confidence Scam, which is investment fraud. The friend-account-hacked angle is only implied by the 'Verify friends' tip, so 'investment' may be the more accurate category. (rewriting once)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: Flag 'Friendly stranger mentor' has target kind 'sender' with an empty match string, so it does not point at the sender 'Coach Daniel'."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / scam)"
     }
   ],
   "summary": {}

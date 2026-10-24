@@ -21,6 +21,36 @@
       "leadId": "6de33e3b46aa",
       "date": "2026-10-24",
       "reason": "problems: Flag 'Friendly mentor': the say line 'then drain everything' is not supported by the attached quote, which only covers mentors building trust. The source does say scammers 'ultimately vanish with all the victim's money,' but that line is not the cited evidence. Either swap the quote or soften the say line."
+    },
+    {
+      "leadId": "3c29af3c3dae",
+      "date": "2026-10-24",
+      "reason": "problems: provenanceNote says the source describes a follow-up text with a fake employee ID photo 'that the source says scammers send.' The source never says scammers in this scheme text a photo. It only says a real FTC employee will never text a photo of their employee ID. In the source, the badge ID is read aloud on the call. The note should not attribute this to the source."
+    },
+    {
+      "leadId": "e5d3f689169c",
+      "date": "2026-10-24",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "555e40b0d31c",
+      "date": "2026-10-24",
+      "reason": "problems: The 'Faith used as bait' flag targets the sender with an empty match string, so it highlights nothing specific. The religious appeal is in the body ('God has opened a door for us'), so the flag should target that text."
+    },
+    {
+      "leadId": "6de33e3b46aa",
+      "date": "2026-10-24",
+      "reason": "problems: Flag 'Friendly stranger mentor' has target kind 'sender' with an empty match string, so it does not point at the sender 'Coach Daniel'."
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-24",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "b51e443cfe3d",
+      "date": "2026-10-24",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ]
 }
