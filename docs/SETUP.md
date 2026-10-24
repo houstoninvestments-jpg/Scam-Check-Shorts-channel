@@ -6,17 +6,36 @@ Until then it runs in dry-run mode every day and uploads nothing.
 Where a step says "verified", the click path comes from the linked official
 page as read on 2026-10-23. Screens can change; the page is the source of truth.
 
-## 1. Turn on the website (1 minute)
+## 1. Give the site a clean free address, then turn it on (3 minutes)
 
+The site will live at `https://scamornot.github.io` instead of a link with
+`houstoninvestments-jpg` in it. Free. The code picks up the new address by itself.
+
+**a. Create a free organization**
+Verified: [GitHub Docs, creating an organization](https://help.github.com/articles/creating-a-new-organization-from-scratch)
+1. Click your profile picture (top right), then **Settings**.
+2. In the sidebar, under "Access", click **Organizations**.
+3. Click **New organization** and choose the free plan.
+4. Name it `scamornot`. If that is taken, try `scam-or-not`, then `scamornotdaily`.
+5. Click **Create organization**.
+
+**b. Move this repo into it, with its new name**
+Verified: [GitHub Docs, transferring a repository](https://docs.github.com/en/enterprise-server@3.21/repositories/creating-and-managing-repositories/transferring-a-repository)
+and [GitHub Pages naming rule](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
+1. Open the repo `Scam-Check-Shorts-channel`, click **Settings**.
+2. At the bottom ("Danger Zone"), click **Transfer**.
+3. New owner: the organization from step a.
+4. New repository name: the organization name plus `.github.io`, all lowercase.
+   For `scamornot` that is `scamornot.github.io`.
+5. Type the repo name to confirm, then transfer.
+
+**c. Turn on the website**
 Verified: [GitHub Docs, publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+1. In the moved repo, click **Settings**, then **Pages** (under "Code and automation").
+2. Under "Build and deployment", under "Source", select **GitHub Actions**.
 
-1. Open the repo on GitHub: `houstoninvestments-jpg/Scam-Check-Shorts-channel`.
-2. Click **Settings**.
-3. In the sidebar, under "Code and automation", click **Pages**.
-4. Under "Build and deployment", under "Source", select **GitHub Actions**.
-
-The site will live at:
-`https://houstoninvestments-jpg.github.io/Scam-Check-Shorts-channel/`
+The bio link for the YouTube channel is then `https://scamornot.github.io`
+(or `https://<your org name>.github.io`).
 
 ## 2. Create the YouTube channel
 
