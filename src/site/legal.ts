@@ -26,9 +26,19 @@ export function privacyPage(c: ChannelConfig, root: string) {
 <h2>Our web host</h2>
 <p>The site is hosted by Cloudflare. Cloudflare handles the traffic to the site, like any web host. It may keep basic records, such as visit times and browser types. We don't use those records to track you.</p>
 
-<h2>YouTube</h2>
-<p>Our videos are on YouTube. We use YouTube's tools for two things. The first is posting videos to our own Scam or Not channel. The second is reading how our own videos do, like views and watch time. We never sign in to your account. We never see who you are when you watch.</p>
-<p>When you watch on YouTube, YouTube's own rules apply. See the <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
+<h2>YouTube API Services</h2>
+<p>Scam or Not uses YouTube API Services. That is how our system posts our videos to YouTube and reads our own channel's numbers.</p>
+<p>When you watch our videos on YouTube, you agree to the <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>. The <a href="http://www.google.com/policies/privacy" rel="noopener">Google Privacy Policy</a> explains how Google uses data.</p>
+<p><b>What YouTube data we use.</b> Only data about our own Scam or Not channel. Our system does three things with it:</p>
+<ul>
+<li>It posts our own videos to our channel.</li>
+<li>It checks the privacy setting of the videos it posted.</li>
+<li>It reads stats for our own videos. That means views, how much people watch, and how many stay past the start.</li>
+</ul>
+<p><b>What we never see.</b> Your YouTube account, your name, your watch history or your comments. We can't tell who watched.</p>
+<p><b>What we keep.</b> The ID, title and privacy setting of each video we posted. We keep the stats for each video for 30 days at most, then delete them. From those stats we keep one score per opening-line style. That score holds no personal data.</p>
+<p><b>Who can turn it off.</b> Only the owner of the Scam or Not channel signs in to YouTube for our system. The owner can remove its access at any time on <a href="https://security.google.com/settings/security/permissions" rel="noopener">Google's security settings page</a>. Then our system can no longer post or read stats.</p>
+<p><b>Getting data deleted.</b> Email us and we will delete stored YouTube data within 30 days.</p>
 
 <h2>We never sell or share it</h2>
 <p>We don't sell your information. We don't rent it or trade it. We don't give it to advertisers.</p>
@@ -72,6 +82,9 @@ export function termsPage(c: ChannelConfig, root: string) {
 
 <h2>Using our content</h2>
 <p>You are welcome to share links to our pages and videos. Please don't copy whole pages or videos and post them as your own.</p>
+
+<h2>YouTube</h2>
+<p>Our videos are on YouTube, and we post them using YouTube API Services. When you watch them there, you agree to the <a href="https://www.youtube.com/t/terms" rel="noopener">YouTube Terms of Service</a>. Our <a href="../privacy/">privacy page</a> explains what YouTube data we use.</p>
 
 <h2>Other websites</h2>
 <p>We link to other sites, like the agencies we quote and YouTube. We don't control those sites. Their own rules apply there.</p>

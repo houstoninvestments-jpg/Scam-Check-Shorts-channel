@@ -56,12 +56,35 @@ describe("privacy and terms", () => {
     expect(off).toContain("mailto:houstoninvestments@gmail.com");
     expect(off).toMatch(/delete it within 30 days/);
     expect(off).toMatch(/We don't sell your information/);
-    expect(off).toMatch(/posting videos to our own Scam or Not channel/);
+    expect(off).toMatch(/Scam or Not uses YouTube API Services/);
+    expect(off).toMatch(/posts our own videos to our channel/);
     expect(off).toContain("https://www.youtube.com/t/terms");
-    expect(off).toContain("https://policies.google.com/privacy");
+    expect(off).toContain("http://www.google.com/policies/privacy");
+    expect(off).toContain("https://security.google.com/settings/security/permissions");
+    expect(off).toMatch(/stats for each video for 30 days at most, then delete them/);
     c.supabase.url = "https://x.supabase.co";
     c.supabase.publishableKey = "pk";
     expect(privacyPage(c, "../")).not.toMatch(/turned off/);
     resetConfigCache();
+  });
+});
+
+describe("Watch on YouTube link", () => {
+  it("sits next to Privacy in the footer, as plain text linking to the channel, once the channel is known", async () => {
+    const { join } = await import("node:path");
+    const ch = join(tmp(), "ch.json");
+    writeFileSync(ch, JSON.stringify({ id: "UC123", title: "Scam or Not", handle: "@scamornot" }));
+    process.env.YOUTUBE_CHANNEL_FILE = ch;
+    const { buildSite } = await import("../src/site/build");
+    await buildSite({ dir, fireDrillDir: join(dir, "..", "fd"), date: "2026-10-22" });
+    const $ = cheerio.load(readFileSync(join(dir, "index.html"), "utf8"));
+    const links = $("footer a").map((_, a) => $(a).text()).get();
+    expect(links.indexOf("Watch on YouTube")).toBe(links.indexOf("Terms") + 1);
+    expect($("footer a:contains('Watch on YouTube')").attr("href")).toBe("https://www.youtube.com/@scamornot");
+    expect($("footer img").length).toBe(0); // no logo drawn by us
+    process.env.YOUTUBE_CHANNEL_FILE = join(tmp(), "missing.json");
+    await buildSite({ dir, fireDrillDir: join(dir, "..", "fd"), date: "2026-10-22" });
+    expect(readFileSync(join(dir, "index.html"), "utf8")).not.toContain("Watch on YouTube");
+    delete process.env.YOUTUBE_CHANNEL_FILE;
   });
 });

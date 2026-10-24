@@ -16,7 +16,9 @@ export interface VideoMetrics {
   measuredAt: string;
 }
 
-const METRICS = () => path("data/metrics.json");
+const METRICS = () => process.env.METRICS_FILE || path("data/metrics.json");
+const SCORED = () => process.env.SCORED_FILE || path("data/metrics-scored.json");
+export const RETENTION_DAYS = 30;
 const MIN_AGE_DAYS = 3;
 const MIN_VIEWS = 50;
 const GIVE_UP_DAYS = 21;
@@ -62,9 +64,10 @@ export async function learn(u: Uploader, now = new Date()) {
   const ledger = loadLedger();
   const metrics = readJson<Record<string, VideoMetrics>>(METRICS(), {});
   const hooks = loadHooks();
+  const alreadyScored = new Set(readJson<string[]>(SCORED(), []));
   let scored = 0;
   for (const ep of published(ledger)) {
-    if (!ep.youtubeId || metrics[ep.youtubeId]?.scored) continue;
+    if (!ep.youtubeId || metrics[ep.youtubeId]?.scored || alreadyScored.has(ep.youtubeId)) continue;
     const age = (now.getTime() - Date.parse(ep.date)) / 86_400_000;
     if (age < MIN_AGE_DAYS) continue;
     const m = await measure(u, ep, now);
@@ -73,10 +76,18 @@ export async function learn(u: Uploader, now = new Date()) {
     if (ready && m.views > 0) {
       recordReward(hooks, ep.hookVariant, reward(m));
       m.scored = true;
+      alreadyScored.add(ep.youtubeId);
       scored++;
     }
     metrics[ep.youtubeId] = m;
   }
+  // YouTube data is kept 30 days at most: drop per-video stats older than that.
+  // Only our own video IDs stay, so a scored video is never measured twice.
+  for (const [id, m] of Object.entries(metrics)) {
+    if (m.scored) alreadyScored.add(id);
+    if (now.getTime() - Date.parse(m.measuredAt) > RETENTION_DAYS * 86_400_000) delete metrics[id];
+  }
+  writeJson(SCORED(), [...alreadyScored]);
   writeJson(METRICS(), metrics);
   saveHooks(hooks);
   writeJson(path("data/learn-report.json"), summarize(Object.values(metrics)));

@@ -1,6 +1,15 @@
 import type { Episode } from "../types.js";
 import type { ChannelConfig } from "../lib/config.js";
 import { episodeHashtags } from "../publish/youtube.js";
+import { path, readJson } from "../lib/util.js";
+
+/** The channel link, from data/youtube-channel.json (written by the daily job). Plain text, no logo. */
+export function youtubeChannelUrl(): string | null {
+  const c = readJson<{ id?: string; handle?: string }>(process.env.YOUTUBE_CHANNEL_FILE || path("data/youtube-channel.json"), {});
+  if (c.handle) return `https://www.youtube.com/${c.handle.startsWith("@") ? c.handle : "@" + c.handle}`;
+  if (c.id) return `https://www.youtube.com/channel/${c.id}`;
+  return null;
+}
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const pad3 = (n: number) => String(n).padStart(3, "0");
@@ -146,7 +155,9 @@ ${o.extraHead ?? ""}
 ${o.top ?? topBar(o.root)}
 ${o.body}
 <footer>
-<p><a href="${o.root}">Scam or Not</a> · <a href="${o.root}round/">Daily round</a> · <a href="${o.root}scams/">All scams</a> · <a href="${o.root}privacy/">Privacy</a> · <a href="${o.root}terms/">Terms</a></p>
+<p><a href="${o.root}">Scam or Not</a> · <a href="${o.root}round/">Daily round</a> · <a href="${o.root}scams/">All scams</a> · <a href="${o.root}privacy/">Privacy</a> · <a href="${o.root}terms/">Terms</a>${
+  youtubeChannelUrl() ? ` · <a href="${esc(youtubeChannelUrl()!)}" rel="noopener">Watch on YouTube</a>` : ""
+}</p>
 <p>We never text you, call you, or ask for money.</p>
 </footer>
 </main>

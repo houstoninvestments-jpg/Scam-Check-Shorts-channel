@@ -154,6 +154,14 @@ export async function lockTest(u: Uploader, id: string): Promise<{ locked: boole
   return { locked: true, detail: `status stayed ${st?.privacyStatus ?? "unknown"} after asking for unlisted` };
 }
 
+/** Our own channel's public id, title and handle (read-only, 1 quota unit). Used for the site's YouTube link. */
+export async function channelInfo(u: Uploader): Promise<{ id: string; title: string; handle: string }> {
+  const j = await api(u, "GET", `${API}/channels?part=snippet&mine=true`);
+  const c = j.items?.[0];
+  if (!c) throw new Error("no channel found for this sign-in");
+  return { id: c.id, title: c.snippet?.title ?? "", handle: c.snippet?.customUrl ?? "" };
+}
+
 export interface ThumbnailResult {
   ok: boolean;
   detail: string;

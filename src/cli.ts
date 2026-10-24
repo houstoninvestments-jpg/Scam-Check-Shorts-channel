@@ -144,6 +144,19 @@ async function main() {
       console.log(await backfillCovers());
       break;
     }
+    case "channel-info": {
+      const { channelInfo, oauthUploader } = await import("./publish/youtube.js");
+      const { writeJson } = await import("./lib/util.js");
+      const c = await channelInfo(oauthUploader());
+      writeJson(path("data/youtube-channel.json"), c);
+      if (process.env.GITHUB_ACTIONS) console.log(`::notice title=YouTube channel::${c.title} ${c.handle || c.id}`);
+      break;
+    }
+    case "evidence": {
+      const { captureEvidence } = await import("./site/evidence.js");
+      console.log(await captureEvidence(arg("--base")!, arg("--out") ?? path("docs/evidence")));
+      break;
+    }
     case "stripe-setup": {
       const { stripeSetup } = await import("./site/stripe-setup.js");
       await stripeSetup();

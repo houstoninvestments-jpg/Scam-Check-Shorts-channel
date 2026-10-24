@@ -10,6 +10,10 @@ on:
         description: "Dry run (render only, nothing uploaded)"
         type: boolean
         default: false
+      evidence:
+        description: "Also save screenshots of the live privacy, home and terms pages (for Google's API audit form)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # commit the ledger and stats back to main
@@ -114,6 +118,11 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
 
+      - name: Our YouTube channel's link (for the site)
+        if: always() && env.YOUTUBE_REFRESH_TOKEN != ''
+        continue-on-error: true
+        run: npx tsx src/cli.ts channel-info
+
       - name: Cover images for the website
         if: always()
         continue-on-error: true
@@ -150,6 +159,10 @@ jobs:
           if curl -s "$base/" | grep -q 'class="stage"' && curl -s "$base/assets/site.css" | grep -q -- '--bg:#0A0C0F'; then
             echo "::notice title=Look::home page has the phone, the stamp and the brand colors"
           else echo "::error title=Look::home page is not showing the new look"; exit 1; fi
+
+      - name: Evidence files from the live site
+        if: always() && inputs.evidence && steps.cloudflare.outcome == 'success'
+        run: npx tsx src/cli.ts evidence --base "${{ steps.site.outputs.base_url }}" --out docs/evidence
 
       - name: Forward the old GitHub Pages address to Cloudflare
         if: always() && steps.site.outputs.kind == 'cloudflare'
