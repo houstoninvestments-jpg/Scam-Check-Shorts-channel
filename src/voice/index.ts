@@ -69,6 +69,7 @@ function recordUsage(chars: number, now = new Date()) {
 }
 
 async function elevenlabs(lines: Line[], outDir: string, fetchImpl: typeof fetch = fetch): Promise<VoiceResult> {
+  if (!elevenlabsOn()) throw new Error("ElevenLabs is switched off in config/channel.json");
   const key = env("ELEVENLABS_API_KEY")!;
   const voiceId = config().voice.elevenlabsVoiceId;
   if (!voiceId) throw new Error("ELEVENLABS_VOICE_ID is not set");
@@ -120,6 +121,7 @@ function kokoro(lines: Line[], outDir: string): VoiceResult {
       model: join(models, "kokoro-v1.0.int8.onnx"),
       voices: join(models, "voices-v1.0.bin"),
       voice: config().voice.kokoroVoice,
+      lang: config().voice.kokoroLang ?? "en-us",
       speed: config().voice.speed,
       out_dir: outDir,
       lines,
@@ -134,9 +136,19 @@ function kokoro(lines: Line[], outDir: string): VoiceResult {
   };
 }
 
-/** ElevenLabs when configured; otherwise, or if it fails, the free Kokoro voice so the day still ships. */
+/** ElevenLabs may be used only while config/channel.json has voice.provider "elevenlabs". Keys alone never switch it on. */
+export const elevenlabsOn = () => config().voice.provider === "elevenlabs";
+
+/**
+ * The voice comes from config/channel.json. Kokoro (free, open model) needs no key.
+ * ElevenLabs runs only when the config picks it; if it then fails, Kokoro keeps the day on track.
+ */
 export async function synthesize(lines: Line[], outDir: string, opts: { force?: "elevenlabs" | "kokoro" } = {}): Promise<VoiceResult> {
-  const want = opts.force ?? (env("ELEVENLABS_API_KEY") ? config().voice.provider : "kokoro");
+  let want = opts.force ?? (elevenlabsOn() && env("ELEVENLABS_API_KEY") ? "elevenlabs" : "kokoro");
+  if (want === "elevenlabs" && !elevenlabsOn()) {
+    log("voice: ElevenLabs is switched off in config/channel.json; using Kokoro");
+    want = "kokoro";
+  }
   if (want === "elevenlabs") {
     try {
       return await elevenlabs(lines, outDir);

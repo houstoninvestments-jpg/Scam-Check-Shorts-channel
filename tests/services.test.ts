@@ -5,11 +5,36 @@ import { stripeSetup } from "../src/site/stripe-setup";
 import { tmp } from "./helpers";
 import { existsSync } from "node:fs";
 
-describe("ElevenLabs voice", () => {
-  beforeEach(() => {
+describe("voice choice", () => {
+  it("never calls ElevenLabs while the config picks Kokoro, even with keys set and ElevenLabs asked for", async () => {
+    process.env.ELEVENLABS_API_KEY = "test-key";
+    const { config, resetConfigCache } = await import("../src/lib/config");
+    resetConfigCache();
+    expect(config().voice.provider).toBe("kokoro");
+    expect(config().voice.kokoroVoice).toBe("am_michael");
+    expect(config().voice.speed).toBe(0.95);
+    const calls: string[] = [];
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = (async (url: string) => (calls.push(url), new Response("{}"))) as any;
+    try {
+      // Kokoro may be missing on this machine; what matters is that ElevenLabs is never called.
+      await synthesize([{ id: "hook", text: "Hi" }], join(tmp(), "k"), { force: "elevenlabs" }).catch(() => {});
+      await synthesize([{ id: "hook", text: "Hi" }], join(tmp(), "k2")).catch(() => {});
+      expect(calls).toEqual([]);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+});
+
+describe("ElevenLabs voice (kept for when the config switches it back on)", () => {
+  beforeEach(async () => {
     process.env.VOICE_USAGE_FILE = join(tmp(), "usage.json");
     process.env.ELEVENLABS_API_KEY = "test-key";
     process.env.ELEVENLABS_VOICE_ID = "voice1";
+    const { config, resetConfigCache } = await import("../src/lib/config");
+    resetConfigCache();
+    config().voice.provider = "elevenlabs";
   });
 
   it("requests timed speech per line and keeps word timings", async () => {
@@ -21,8 +46,6 @@ describe("ElevenLabs voice", () => {
       return new Response(JSON.stringify({ audio_base64: Buffer.from("mp3").toString("base64"), alignment: { characters: [..."Hi"], character_start_times_seconds: [0, 0.1], character_end_times_seconds: [0.1, 0.3] } }));
     }) as any;
     try {
-      const { resetConfigCache } = await import("../src/lib/config");
-      resetConfigCache();
       const r = await synthesize([{ id: "hook", text: "Hi" }], join(tmp(), "a"), { force: "elevenlabs" });
       expect(r.provider).toBe("elevenlabs");
       expect(r.segments[0].words).toEqual([{ word: "Hi", start: 0, end: 0.3 }]);

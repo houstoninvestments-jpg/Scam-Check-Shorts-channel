@@ -109,17 +109,22 @@ Verified: [GitHub Docs, using secrets](https://docs.github.com/en/actions/how-to
 
 ```
 ANTHROPIC_API_KEY
-ELEVENLABS_API_KEY
-ELEVENLABS_VOICE_ID
 YOUTUBE_CLIENT_ID
 YOUTUBE_CLIENT_SECRET
 YOUTUBE_REFRESH_TOKEN
 ```
 
-Not verified from here: the exact screens where the Anthropic key, the
-ElevenLabs key, and the ElevenLabs voice ID are shown. Anthropic keys come
-from `https://console.anthropic.com`. The ElevenLabs key and voice ID come from
-the ElevenLabs account on the Creator plan.
+The voice is the free Kokoro model (`am_michael`) and needs no key. Two
+ElevenLabs secrets may stay set; they are unused while `voice.provider` in
+`config/channel.json` is `"kokoro"`:
+
+```
+ELEVENLABS_API_KEY
+ELEVENLABS_VOICE_ID
+```
+
+Not verified from here: the exact screen where the Anthropic key is shown.
+Anthropic keys come from `https://console.anthropic.com`.
 
 ## Later, only when wanted
 

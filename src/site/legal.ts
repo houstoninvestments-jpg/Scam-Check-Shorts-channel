@@ -72,7 +72,7 @@ export function termsPage(c: ChannelConfig, root: string) {
 
 <h2>How we make the messages</h2>
 <p>Each scam comes from public warnings and reports, like those from government agencies. Some messages are recreated from those warnings. We swap out real links and phone numbers so nobody can tap a live scam. We link the sources on each scam's page.</p>
-<p>The voice in our videos is made by AI. The phone screens are made by code.</p>
+<p>The voice in our videos is made by AI. It comes from Kokoro, a free open voice model. The phone screens are made by code.</p>
 
 <h2>We do our best, but we can be wrong</h2>
 <p>We check every claim against its source before we post. Still, scams change fast, and we can make mistakes. Use your own judgment. When unsure, contact the company yourself, using a number or website you already trust.</p>

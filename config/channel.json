@@ -16,13 +16,14 @@
     "checker": "claude-opus-5-5"
   },
   "voice": {
-    "provider": "elevenlabs",
+    "provider": "kokoro",
     "fallback": "kokoro",
     "elevenlabsVoiceId": "",
     "elevenlabsModel": "eleven_multilingual_v2",
     "monthlyCreditBudget": 90000,
-    "kokoroVoice": "af_heart",
-    "speed": 1.0
+    "kokoroVoice": "am_michael",
+    "kokoroLang": "en-us",
+    "speed": 0.95
   },
   "ctaStates": [
     "none",

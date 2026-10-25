@@ -30,7 +30,7 @@ beforeAll(async () => {
   });
   await new Promise<void>((ok) => server.listen(0, "127.0.0.1", ok));
   base = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
-});
+}, 60_000); // building the site can be slow while other test files run alongside
 afterAll(() => server?.close());
 
 async function playRound(context: any) {

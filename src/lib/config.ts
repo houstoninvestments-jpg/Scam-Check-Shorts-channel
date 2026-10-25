@@ -9,6 +9,7 @@ export interface ChannelConfig {
     fallback: "kokoro" | "none";
     elevenlabsVoiceId: string;
     elevenlabsModel: string;
+    kokoroLang: string;
     monthlyCreditBudget: number;
     kokoroVoice: string;
     speed: number;

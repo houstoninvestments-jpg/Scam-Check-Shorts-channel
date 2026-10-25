@@ -35,7 +35,7 @@ We keep video IDs, titles, and our own channel's daily view and retention number
 We store no data about viewers.
 
 **How do you show users that content is AI-assisted?**
-Every upload sets the altered or synthetic content flag and says in the description that the narration is an AI voice.
+Every upload sets the altered or synthetic content flag and says in the description that the narration is an AI voice (the open Kokoro model).
 
 **Quota needed**
 The default 10,000 units a day is enough. We ask only for the upload lock to be lifted.

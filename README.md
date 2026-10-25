@@ -23,9 +23,11 @@ One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
    swapped out, and every line must pass a grade 8 reading gate. Then two
    independent Claude Opus 5.5 reviews. Both must say "scam" with no problems,
    or the scam is skipped.
-4. **Voice** (`src/voice`). ElevenLabs on the existing Creator plan, with a
-   monthly credit budget in `config/channel.json`. If ElevenLabs fails, the free
-   open Kokoro voice keeps the day on track, and the health check says so.
+4. **Voice** (`src/voice`). The free, open Kokoro model, voice `am_michael`,
+   US English, speed 0.95, set in `config/channel.json`. It runs inside the
+   daily job and needs no key. ElevenLabs code is kept but switched off: it
+   runs only if `voice.provider` in that file is set back to `"elevenlabs"`.
+   Keys alone never turn it on, so no ElevenLabs credits are spent.
 5. **Render** (`remotion/`). Six logo-free phone skins: text (two styles),
    email, voicemail transcript, marketplace chat, social DM. Burned-in
    captions. Red only for the verdict and the flags. Frame 0 is the cover:

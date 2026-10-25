@@ -10,7 +10,7 @@ import { write } from "../writer/index.js";
 import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
 import { loadHooks, pickHook } from "../learn/hooks.js";
 import { chooseCta, chooseSkin } from "./choose.js";
-import { synthesize, type VoiceResult } from "../voice/index.js";
+import { elevenlabsOn, synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { countdownRed, extractCover, loopSimilarity, readWindowChange } from "../render/cover.js";
 import { saveSiteCover } from "../render/covers.js";
@@ -146,7 +146,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     const audioDir = join(work, "audio");
     const publicDir = join(work, "public");
     let voice: VoiceResult = await synthesize(lines, audioDir, { force: opts.voice });
-    if (voice.provider === "kokoro" && !opts.voice && process.env.ELEVENLABS_API_KEY) report.warnings.push("ElevenLabs failed; used the free fallback voice");
+    if (voice.provider === "kokoro" && !opts.voice && elevenlabsOn() && process.env.ELEVENLABS_API_KEY) report.warnings.push("ElevenLabs failed; used the free fallback voice");
     let timeline;
     try {
       timeline = prepareTimeline(voice, publicDir);
@@ -154,7 +154,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       throw new Error(`timing: ${String(e)}`);
     }
     step("voice", true, `${voice.label}, ${(timeline.total / timeline.fps).toFixed(1)}s`);
-    report.summary.voice = `${voice.label}${voice.provider === "elevenlabs" ? ` (voice ID from secret: ${config().voice.elevenlabsVoiceId ? "yes" : "no"})` : ""}, ${(timeline.total / timeline.fps).toFixed(1)}s`;
+    report.summary.voice = `${voice.label}${voice.provider === "elevenlabs" ? ` (voice ID from secret: ${config().voice.elevenlabsVoiceId ? "yes" : "no"})` : `, voice ${config().voice.kokoroVoice} at speed ${config().voice.speed}`}, ${(timeline.total / timeline.fps).toFixed(1)}s`;
 
     const props: ShortProps = {
       number,

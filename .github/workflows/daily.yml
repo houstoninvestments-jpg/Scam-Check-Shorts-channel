@@ -159,7 +159,7 @@ jobs:
           # Until the one-time YouTube authorization is done, run the full pipeline in dry-run mode.
           if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "mode=dry" >> "$GITHUB_OUTPUT"
-            npx tsx src/cli.ts daily --dry-run --voice kokoro  # free voice: dry runs never spend ElevenLabs credits
+            npx tsx src/cli.ts daily --dry-run --voice kokoro  # same free voice as live runs
           else
             echo "mode=live" >> "$GITHUB_OUTPUT"
             npx tsx src/cli.ts daily

@@ -139,7 +139,7 @@ export async function releaseHidden(u: Uploader, ledger: Ledger, number: number,
 
   let live = await readVideo(u, id);
   const privacy = live.status.privacyStatus as "public" | "private" | "unlisted";
-  const want = uploadRequest(ep, ep.voice ?? "AI voice (ElevenLabs)", privacy);
+  const want = uploadRequest(ep, ep.voice ?? "AI voice", privacy);
   const before = metadataProblems(live, want);
   let after = before;
   if (before.length) {
