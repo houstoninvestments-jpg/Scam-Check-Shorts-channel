@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [
@@ -12,42 +12,47 @@
     {
       "step": "scout",
       "ok": true,
-      "detail": "5 leads, 2 dropped as repeats"
+      "detail": "4 leads, 3 dropped as repeats"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Hook says 'This group chat message is going around right now.' The source does not support this. The message is recreated, and the source describes a scheme that ran from 2019 to 2023 and collapsed in May 2023. Nothing in the source shows this message, or this scheme, is circulating now. (rewrite 1 of 2)"
+      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / scam)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 'Paid to recruit' blames the wrong company. The recreated message is built from NovaTech's pitch (registered broker, 2 to 4% weekly, withdraw any time), but the spoken line says AWS Mining promised recruiting bonuses and collapsed in 2019. AWS Mining is a separate, earlier scheme with different promises (15 to 20 percent monthly). Viewers could think the message on screen came from AWS Mining. Use the NovaTech evidence instead ('promoted recruitment bonuses'), or make clear these are two different schemes run by the same founders. (rewrite 2 of 2)"
+      "detail": "What to know ahead of Open Enrollment to avoid health insura: problems: Flag 'Lookalike web address' uses target.kind \"link\" with an empty match. Empty match is only valid for \"sender\" and \"attachment\", so this flag will circle nothing and viewers won't see which address is the lookalike. Change it to kind \"text\" with match \"healthcare-gov-enroll.example\". (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: both reviews agree: scam, no problems"
+      "detail": "What to know ahead of Open Enrollment to avoid health insura: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 37.6s"
+      "detail": "AI voice (Kokoro open model), 31.5s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003.mp4 (1080x1920, 37.61s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004.mp4 (1080x1920, 31.51s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003-cover.jpg (184 KB), loop similarity 0.994761"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004-cover.jpg (187 KB), loop similarity 0.994715"
     },
     {
       "step": "thumbnail",
@@ -57,40 +62,40 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded XVZ7AbUa-wU as public"
+      "detail": "uploaded 9qFEqnt1HqU as public"
     }
   ],
   "summary": {
-    "scam": "Group chat crypto investment scheme | sources: New York Attorney General 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 37.6s",
-    "countdown": "3.0s, red 3-2-1 above the phone (13661/13469/8889 red px), phone screen untouched",
-    "title": "Scam No. 003: The group chat crypto offer that was a pyramid scheme",
-    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
-    "page": "https://scamornot.pages.dev/scam/003-group-chat-crypto-investment-scheme/",
-    "upload": "XVZ7AbUa-wU, public, not locked",
+    "scam": "Fake health insurance ad | sources: FTC Consumer Alerts 2026-09-28 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 31.5s",
+    "countdown": "3.0s, red 3-2-1 above the phone (13661/13454/8876 red px), phone screen untouched",
+    "title": "Scam No. 004: Fake health insurance ad during Open Enrollment",
+    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
+    "page": "https://scamornot.pages.dev/scam/004-fake-health-insurance-ad/",
+    "upload": "9qFEqnt1HqU, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.42 for 13 model calls (writer 5x $1.10, checker-b 4x $0.15, checker-a 4x $0.17)"
+    "cost": "$1.02 for 12 model calls (writer 4x $0.76, checker-b 4x $0.13, checker-a 4x $0.13)"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003.mp4",
-  "episode": 3,
-  "youtubeId": "XVZ7AbUa-wU",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004.mp4",
+  "episode": 4,
+  "youtubeId": "9qFEqnt1HqU",
   "cost": {
-    "usd": 1.4157,
-    "calls": 13,
-    "inputTokens": 65104,
-    "outputTokens": 24881,
+    "usd": 1.0247,
+    "calls": 12,
+    "inputTokens": 39448,
+    "outputTokens": 20493,
     "byRole": {
       "writer": {
-        "calls": 5,
-        "usd": 1.0962
+        "calls": 4,
+        "usd": 0.7617
       },
       "checker-b": {
         "calls": 4,
-        "usd": 0.1454
+        "usd": 0.1307
       },
       "checker-a": {
         "calls": 4,
-        "usd": 0.1741
+        "usd": 0.1322
       }
     },
     "models": [

@@ -1,5 +1,5 @@
 {
-  "nextNumber": 4,
+  "nextNumber": 5,
   "episodes": [
     {
       "number": 1,
@@ -309,6 +309,112 @@
       },
       "youtubeId": "XVZ7AbUa-wU",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 4,
+      "leadId": "d9173078427e",
+      "date": "2026-10-25",
+      "skin": "marketplace",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake health insurance ad",
+        "message": {
+          "sender": "Official Health Plan Center",
+          "subject": "",
+          "body": "Sponsored\nOpen Enrollment is here! Compare health plans, check your coverage, and see if you qualify for savings.\nEnroll today at healthcare-gov-enroll.example\nOr call (202) 555-0142",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post, which describes paid ads with lookalike government web addresses, official-looking logos, and a link or phone number inside the ad.",
+          "evidence": [
+            {
+              "quote": "But before you click on a search result, remember: scammers and dishonest businesses sometimes pay to appear at the top.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            },
+            {
+              "quote": "Bad actors often use web addresses that look similar to government website addresses. They also use keywords and official-looking logos to make you think you’re at the real Healthcare.gov or Medicare.gov when you’re not.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            },
+            {
+              "quote": "If you use the link or phone number in the ad, you might end up paying for a scammy plan that’s not health insurance, or expose yourself to medical identity theft.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "A paid ad, not the real site.",
+        "flags": [
+          {
+            "label": "Paid ad label",
+            "say": "That small Sponsored tag means someone paid to put this here.",
+            "target": {
+              "kind": "text",
+              "match": "Sponsored"
+            },
+            "evidence": {
+              "quote": "Look for small “Ad” or “Sponsored” labels next to search results to identify paid ads.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            }
+          },
+          {
+            "label": "Lookalike web address",
+            "say": "Scammers use web addresses that look a lot like government ones.",
+            "target": {
+              "kind": "text",
+              "match": "healthcare-gov-enroll.example"
+            },
+            "evidence": {
+              "quote": "Bad actors often use web addresses that look similar to government website addresses.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            }
+          },
+          {
+            "label": "Number in the ad",
+            "say": "Call that number and you might pay for a plan that isn't insurance.",
+            "target": {
+              "kind": "text",
+              "match": "(202) 555-0142"
+            },
+            "evidence": {
+              "quote": "If you use the link or phone number in the ad, you might end up paying for a scammy plan that’s not health insurance, or expose yourself to medical identity theft.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Type the site yourself",
+          "say": "Skip the ad and type the real website's name into the search engine yourself.",
+          "evidence": {
+            "quote": "Type the name of the website directly into the search engine.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams"
+          }
+        },
+        "title": "Fake health insurance ad during Open Enrollment",
+        "description": "Paid ads can look like the real government health insurance site. Learn the three signs that an ad is not what it seems. Then see the one safe move to find real plans.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "004-fake-health-insurance-ad",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 1.0247,
+      "renderAttempts": 1,
+      "loopSimilarity": 0.994715,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "9qFEqnt1HqU",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -376,6 +482,16 @@
       "leadId": "e5d3f689169c",
       "date": "2026-10-25",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-25",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "b51e443cfe3d",
+      "date": "2026-10-25",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
   "firstUploadCheck": {
