@@ -2,14 +2,12 @@
   "date": "2026-10-25",
   "slot": 1,
   "dryRun": false,
-  "status": "failed",
+  "status": "published",
   "warnings": [
     "source bbb-scam-alerts failed: no articles found",
     "source tx-ag failed: no articles found"
   ],
-  "errors": [
-    "Error: render check failed: length 35.35s\n    at assertShort (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/render/index.ts:91:30)\n    at runDaily (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/pipeline/daily.ts:221:5)\n    at async main (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/cli.ts:52:22)"
-  ],
+  "errors": [],
   "steps": [
     {
       "step": "scout",
@@ -19,12 +17,17 @@
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / not_scam)"
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Hook says 'This group chat message is going around right now,' but the source does not support that. The message is recreated, and the source describes a scheme that collapsed in May 2023, with legal action reported in October 2026. Nothing in the source says these messages are circulating now. Reword to something like 'Messages like this targeted prayer groups.' (rewrite 1 of 2)"
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Hook says 'This group chat message is going around right now.' The source does not support this. The message is recreated, and the source describes a scheme that ran from 2019 to 2023 and collapsed in May 2023. Nothing in the source shows this message, or this scheme, is circulating now. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 'Paid to recruit' blames the wrong company. The recreated message is built from NovaTech's pitch (registered broker, 2 to 4% weekly, withdraw any time), but the spoken line says AWS Mining promised recruiting bonuses and collapsed in 2019. AWS Mining is a separate, earlier scheme with different promises (15 to 20 percent monthly). Viewers could think the message on screen came from AWS Mining. Use the NovaTech evidence instead ('promoted recruitment bonuses'), or make clear these are two different schemes run by the same founders. (rewrite 2 of 2)"
     },
     {
       "step": "check",
@@ -34,31 +37,60 @@
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 35.3s"
+      "detail": "AI voice (Kokoro open model), 37.6s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003.mp4 (1080x1920, 37.61s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003-cover.jpg (184 KB), loop similarity 0.994761"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded XVZ7AbUa-wU as public"
     }
   ],
   "summary": {
-    "scam": "Crypto prayer group chat scam | sources: New York Attorney General 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 35.3s",
-    "cost": "$0.88 for 9 model calls (writer 3x $0.66, checker-b 3x $0.10, checker-a 3x $0.12)"
+    "scam": "Group chat crypto investment scheme | sources: New York Attorney General 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 37.6s",
+    "countdown": "3.0s, red 3-2-1 above the phone (13661/13469/8889 red px), phone screen untouched",
+    "title": "Scam No. 003: The group chat crypto offer that was a pyramid scheme",
+    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
+    "page": "https://scamornot.pages.dev/scam/003-group-chat-crypto-investment-scheme/",
+    "upload": "XVZ7AbUa-wU, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.42 for 13 model calls (writer 5x $1.10, checker-b 4x $0.15, checker-a 4x $0.17)"
   },
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot1/scam-003.mp4",
+  "episode": 3,
+  "youtubeId": "XVZ7AbUa-wU",
   "cost": {
-    "usd": 0.8792,
-    "calls": 9,
-    "inputTokens": 44521,
-    "outputTokens": 15247,
+    "usd": 1.4157,
+    "calls": 13,
+    "inputTokens": 65104,
+    "outputTokens": 24881,
     "byRole": {
       "writer": {
-        "calls": 3,
-        "usd": 0.6603
+        "calls": 5,
+        "usd": 1.0962
       },
       "checker-b": {
-        "calls": 3,
-        "usd": 0.0993
+        "calls": 4,
+        "usd": 0.1454
       },
       "checker-a": {
-        "calls": 3,
-        "usd": 0.1196
+        "calls": 4,
+        "usd": 0.1741
       }
     },
     "models": [

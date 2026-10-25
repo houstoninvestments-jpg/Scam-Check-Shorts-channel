@@ -1,5 +1,5 @@
 {
-  "nextNumber": 3,
+  "nextNumber": 4,
   "episodes": [
     {
       "number": 1,
@@ -205,6 +205,110 @@
       },
       "youtubeId": "tL_Zh-OUa08",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 3,
+      "leadId": "555e40b0d31c",
+      "date": "2026-10-25",
+      "skin": "android",
+      "slot": 1,
+      "brands": [
+        "whatsapp"
+      ],
+      "cta": "direct",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Group chat crypto investment scheme",
+        "message": {
+          "sender": "Example Crypto Fund Chat",
+          "subject": "",
+          "body": "Blessings family 🙏 Our fund is a registered broker and pays 2 to 4% profit every week. Withdraw your money any time. Earn a bonus for every friend you bring in. Join here: join-tradefund.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the New York Attorney General press release, which describes WhatsApp group chat ads promising two to four percent weekly profits, recruitment bonuses, withdrawals at any time, and false claims of being a registered broker.",
+          "evidence": [
+            {
+              "quote": "through social media and WhatsApp group chats with fraudulent promises of high returns on investments",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+            },
+            {
+              "quote": "advertised high profits from trading of approximately two to four percent per week, promoted recruitment bonuses, and promised that investors could withdraw their funds and profits at any time.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+            }
+          ]
+        },
+        "hook": "This group chat pitch cost thousands their savings.",
+        "stampSay": "It's a pyramid scheme, not an investment.",
+        "flags": [
+          {
+            "label": "Big weekly profits",
+            "say": "Group chats like this pushed fraudulent promises of high returns on investments.",
+            "target": {
+              "kind": "text",
+              "match": "2 to 4% profit every week"
+            },
+            "evidence": {
+              "quote": "through social media and WhatsApp group chats with fraudulent promises of high returns on investments",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+            }
+          },
+          {
+            "label": "Paid to recruit",
+            "say": "This scheme recruited investors with promises of high returns and generous recruitment bonuses.",
+            "target": {
+              "kind": "text",
+              "match": "a bonus for every friend you bring in"
+            },
+            "evidence": {
+              "quote": "recruited investors with promises of high returns and generous recruitment bonuses",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+            }
+          },
+          {
+            "label": "Withdraw anytime claim",
+            "say": "When the scheme collapsed, tens of thousands could not withdraw their money.",
+            "target": {
+              "kind": "text",
+              "match": "Withdraw your money any time"
+            },
+            "evidence": {
+              "quote": "When NovaTech collapsed in May 2023, tens of thousands of investors were unable to withdraw their cryptocurrency.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Doubt the license claim",
+          "say": "This fund claimed to be a registered, licensed broker in the U.S., and that was false.",
+          "evidence": {
+            "quote": "falsely marketed NovaTech as a registered hedge fund broker, misrepresented that NovaTech was licensed to trade cryptocurrency in the U.S.",
+            "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted"
+          }
+        },
+        "title": "The group chat crypto offer that was a pyramid scheme",
+        "description": "A friendly group chat message promises weekly profits, easy withdrawals, and bonuses for bringing in friends. Thousands of people lost their savings to this kind of offer. Here is how to spot it.",
+        "category": ""
+      },
+      "sources": [
+        {
+          "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-secures-nearly-6-million-crypto-scammers-who-targeted",
+          "name": "New York Attorney General",
+          "capture": "page"
+        }
+      ],
+      "slug": "003-group-chat-crypto-investment-scheme",
+      "status": "published",
+      "category": "text",
+      "costUsd": 1.4157,
+      "renderAttempts": 1,
+      "loopSimilarity": 0.994761,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "XVZ7AbUa-wU",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -267,6 +371,11 @@
       "leadId": "555e40b0d31c",
       "date": "2026-10-24",
       "reason": "problems: safeMove label 'Keep your crypto' is advice the source never gives. The source only reports that investors could not withdraw when NovaTech collapsed; it offers no protective guidance."
+    },
+    {
+      "leadId": "e5d3f689169c",
+      "date": "2026-10-25",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "firstUploadCheck": {
