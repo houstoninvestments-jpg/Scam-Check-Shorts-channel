@@ -97,7 +97,7 @@ export function mechanicalCheck(s: Script, lead: Lead): MechanicalResult {
   }
   const spoken = lines.join(" ");
   const wordCount = spoken.split(/\s+/).length;
-  if (wordCount > MAX_SPOKEN_WORDS) problems.push(`script has ${wordCount} spoken words; limit is ${MAX_SPOKEN_WORDS} for 30 seconds`);
+  if (wordCount > MAX_SPOKEN_WORDS) problems.push(`script has ${wordCount} spoken words; limit is ${MAX_SPOKEN_WORDS} to keep the video short`);
   const r = checkReadability(lines.map((l) => (/[.!?]$/.test(l) ? l : `${l}.`)).join(" "));
   problems.push(...r.problems.map((p) => `readability: ${p}`));
   // A short script can average out one hard line, so cap each line too.

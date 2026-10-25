@@ -109,3 +109,35 @@ describe("source health with three runs a day", () => {
     expect(updateSourceHealth([{ id: "x", ok: true, docs: [] }] as any, file).x.consecutiveFailures).toBe(0);
   });
 });
+
+describe("length cap and resuming a checked script", () => {
+  it("accepts a 35-second Short and refuses one over 45 seconds", async () => {
+    const { assertShort } = await import("../src/render/index");
+    const ok = { width: 1080, height: 1920, seconds: 35.35, hasAudio: true };
+    expect(() => assertShort(ok)).not.toThrow();
+    expect(() => assertShort({ ...ok, seconds: 46 })).toThrow(/most is 45s/);
+  });
+
+  it("a script that passed the checks but failed later is made next, without new model calls; two failures drop it", async () => {
+    const { runDaily } = await import("../src/pipeline/daily");
+    const { today } = await import("../src/lib/util");
+    const { config } = await import("../src/lib/config");
+    const { loadLedger } = await import("../src/lib/ledger");
+    const t = mkdtempSync(join(tmpdir(), "resume-"));
+    process.env.LEDGER_FILE = join(t, "ledger.json");
+    process.env.LAST_RUN_FILE = join(t, "last-run.json");
+    process.env.KOKORO_DIR = "/nonexistent"; // the voice step fails, like a render failure would
+    const date = today(config().cadence.timezone);
+    const checked = { number: 3, leadId: "lead-x", date, skin: "dm", cta: "none", hookVariant: "a", script: fixtureScript(), sources: [{ url: "https://ag.ny.gov/x", name: "New York Attorney General", capture: "page" }], slug: "003-x", status: "checked" };
+    writeFileSync(process.env.LEDGER_FILE, JSON.stringify({ nextNumber: 4, episodes: [checked], skipped: [] }));
+    const llm: any = { mode: "fixture", calls: [], async json() { throw new Error("must not write or check again"); } };
+    const first = await runDaily({ dryRun: true, llm, voice: "kokoro", fixtureSources: ["ftc-traffic-qr.json"], workDir: join(t, "w1") });
+    expect(first.steps[0].step).toBe("resume");
+    expect(loadLedger().episodes[0].renderAttempts).toBe(1);
+    await runDaily({ dryRun: true, llm, voice: "kokoro", fixtureSources: ["ftc-traffic-qr.json"], workDir: join(t, "w2") });
+    expect(loadLedger().episodes[0].renderAttempts).toBe(2);
+    const third = await runDaily({ dryRun: true, llm: { ...llm, async json() { throw new Error("fresh write"); } }, voice: "kokoro", fixtureSources: ["ftc-traffic-qr.json"], workDir: join(t, "w3") });
+    expect(third.warnings.join(" ")).toMatch(/failed to render twice; dropped/);
+    expect(loadLedger().nextNumber).toBe(3); // number given back
+  });
+});

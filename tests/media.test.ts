@@ -9,10 +9,10 @@ const seg = (id: string, duration: number, text = "One two three four five six s
 const segs = (d: number) => Object.fromEntries(["hook", "ask", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, seg(id, d)]));
 
 describe("timeline", () => {
-  it("asks once, then a silent 3-second countdown, all under 60 seconds", () => {
+  it("asks once, then a silent 3-second countdown, all under 45 seconds", () => {
     const t = buildTimeline(segs(2.2), (id) => `vo-${id}.wav`);
     expect(t.beats.map((b) => b.id)).toEqual(["hook", "ask", "read", "stamp", "flag1", "flag2", "flag3", "safe", "closer", "tail"]);
-    expect(t.total / t.fps).toBeLessThan(60);
+    expect(t.total / t.fps).toBeLessThanOrEqual(45);
     const read = t.beats.find((b) => b.id === "read")!;
     expect(read.to - read.from).toBe(90); // exactly 3 seconds
     expect(read.audio).toBeUndefined(); // no voice while reading
@@ -38,7 +38,7 @@ describe("timeline", () => {
   });
 
   it("refuses a voice track that runs past the limit", () => {
-    expect(() => buildTimeline(segs(7), (id) => id)).toThrow(/limit is 59s/);
+    expect(() => buildTimeline(segs(7), (id) => id)).toThrow(/limit is 45s/);
   });
 
   it("chunks captions and keeps them on screen between chunks", () => {

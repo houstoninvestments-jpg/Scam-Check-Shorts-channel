@@ -110,6 +110,7 @@ export interface Episode {
   slot?: number; // which of the day's posting slots made it (1-3)
   brands?: string[]; // brands the sources name, used only to keep one day's scams different
   costUsd?: number; // model cost of the run that made it, at list prices
+  renderAttempts?: number; // tries at voice, render and upload after the checks passed
   loopSimilarity?: number;
 }
 

@@ -6,7 +6,7 @@ import { renderMedia, selectComposition } from "@remotion/renderer";
 import type { ShortProps } from "../../remotion/props.js";
 import { env, log, path } from "../lib/util.js";
 import type { VoiceResult } from "../voice/index.js";
-import { buildTimeline, type Timeline } from "./timeline.js";
+import { MAX_SECONDS, buildTimeline, type Timeline } from "./timeline.js";
 
 /** Short synthetic sound effects, made with ffmpeg so no audio files need licensing. */
 export function makeSfx(dir: string) {
@@ -82,11 +82,11 @@ export function probe(file: string): VideoProbe {
   return { width: v.width, height: v.height, seconds: +(+out.format.duration).toFixed(2), hasAudio: out.streams.some((s: any) => s.codec_type === "audio") };
 }
 
-/** A Short must be vertical, at most 30 seconds here, and carry the voice track. */
+/** A Short must be vertical, at most MAX_SECONDS (45) here, and carry the voice track. */
 export function assertShort(p: VideoProbe) {
   const problems: string[] = [];
   if (p.width !== 1080 || p.height !== 1920) problems.push(`size ${p.width}x${p.height}`);
-  if (p.seconds > 30.5) problems.push(`length ${p.seconds}s`);
+  if (p.seconds > MAX_SECONDS + 0.5) problems.push(`length ${p.seconds}s (most is ${MAX_SECONDS}s)`);
   if (!p.hasAudio) problems.push("no audio");
   if (problems.length) throw new Error(`render check failed: ${problems.join(", ")}`);
 }

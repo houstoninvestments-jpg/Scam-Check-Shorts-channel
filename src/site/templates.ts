@@ -184,7 +184,7 @@ ${s.flags.map((f, i) => `<li><span class="flag-no">RED FLAG ${i + 1}</span><b>${
 <h2>Safe move</h2>
 <div class="card"><b>${esc(s.safeMove.label)}</b><br>${esc(s.safeMove.say)}<br><span class="small">Source: “${esc(s.safeMove.evidence.quote)}” <a href="${esc(s.safeMove.evidence.url)}" rel="nofollow noopener">link</a></span></div>
 <p><b>${esc(cfg.channel.closer)}</b></p>
-${youtubeUrl ? `<a class="btn alt" href="${esc(youtubeUrl)}">Watch the 30-second video</a>` : ""}
+${youtubeUrl ? `<a class="btn alt" href="${esc(youtubeUrl)}">Watch the video</a>` : ""}
 <a class="btn main" href="${root}round/">Play today's round</a>
 <a class="btn alt" href="${root}">More from Scam or Not</a>
 <h2>Sources</h2>

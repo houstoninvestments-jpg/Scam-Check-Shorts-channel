@@ -1,7 +1,7 @@
 import type { VoiceSegment, Word } from "../voice/index.js";
 
 export const FPS = 30;
-export const MAX_SECONDS = 59; // Shorts stay under 60s
+export const MAX_SECONDS = 45; // tight content, room for the slower open voice; Shorts allow far longer
 export const ASK_LINE = "Real or scam?"; // spoken once, then the countdown
 export const COUNTDOWN_SECONDS = 3; // silent 3-2-1 with soft ticks; the message stays untouched
 const GAP = 0.25; // breath between lines

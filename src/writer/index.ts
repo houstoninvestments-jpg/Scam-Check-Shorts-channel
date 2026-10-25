@@ -9,7 +9,7 @@ export interface HookVariant {
   pattern: string; // example line the writer adapts
 }
 
-export const SYSTEM = `You write 30-second YouTube Shorts for "Scam or Not", a channel that teaches people to spot real scams.
+export const SYSTEM = `You write short YouTube Shorts (about 30 to 40 seconds spoken, never over 45) for "Scam or Not", a channel that teaches people to spot real scams.
 
 Every video has the same beats:
 1. Hook (spoken while a scam message sits on a phone screen). Under 10 words. Do not ask "real or scam" in it, and never say "decide fast".
