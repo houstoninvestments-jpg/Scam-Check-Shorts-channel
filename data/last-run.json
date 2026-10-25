@@ -1,89 +1,69 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "failed",
   "warnings": [
     "source bbb-scam-alerts failed: no articles found",
     "source tx-ag failed: no articles found"
   ],
-  "errors": [],
+  "errors": [
+    "Error: render check failed: length 35.35s\n    at assertShort (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/render/index.ts:91:30)\n    at runDaily (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/pipeline/daily.ts:221:5)\n    at async main (/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/src/cli.ts:52:22)"
+  ],
   "steps": [
-    {
-      "step": "upload lock",
-      "ok": true,
-      "detail": "lock lifted: private test video could be made unlisted; uploads are not locked"
-    },
     {
       "step": "scout",
       "ok": true,
-      "detail": "6 leads, 1 dropped as repeats"
+      "detail": "5 leads, 2 dropped as repeats"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / not_scam)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Flag 'Bonus for recruiting': the cited quote is about AWS Mining, the earlier scheme with 15 to 20 percent monthly returns, not the NovaTech-style pitch shown (2 to 4 percent weekly, registered broker). The claim itself is true for NovaTech, but the evidence should use the NovaTech sentence ('...promoted recruitment bonuses...') so the quote matches the scheme on screen. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: safeMove: the label 'Tell the Attorney General' tells viewers to report to the AG, but the source gives no reporting instruction, phone number, or channel. The quote only says the office 'will always stand up for New Yorkers who have been targeted'. Viewers get an action with no way to take it. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: safeMove label 'Keep your crypto' is advice the source never gives. The source only reports that investors could not withdraw when NovaTech collapsed; it offers no protective guidance."
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: problems: The title 'A friend's crypto money tip in your DMs is a scam' states as a blanket fact that any friend's crypto tip is a scam. The source only says a friend's sudden 'great investment opportunity' message may mean the account was hacked, and advises checking. The scam verdict for this message rests on the guaranteed returns and the required crypto payment, not on the fact that it came from a friend. Tie the title to those red flags, or soften it (for example, 'could be a scam'). (rewrite 1 of 2)"
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: problems: Hook says 'This group chat message is going around right now,' but the source does not support that. The message is recreated, and the source describes a scheme that collapsed in May 2023, with legal action reported in October 2026. Nothing in the source says these messages are circulating now. Reword to something like 'Messages like this targeted prayer groups.' (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Crypto Scams are Booming: Attorney General Bonta Clocks Cryp: both reviews agree: scam, no problems"
+      "detail": "Attorney General James Secures Nearly $6 Million From Crypto: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (ElevenLabs), 29.0s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002.mp4 (1080x1920, 29.01s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002-cover.jpg (193 KB), loop similarity 0.992834"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded tL_Zh-OUa08 as public"
+      "detail": "AI voice (Kokoro open model), 35.3s"
     }
   ],
   "summary": {
-    "upload": "tL_Zh-OUa08, public, not locked",
-    "scam": "Hacked friend's crypto money tip | sources: California Attorney General 2026-10-19 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (ElevenLabs) (voice ID from secret: yes), 29.0s",
-    "title": "Scam No. 002: A friend's DM pushing guaranteed crypto returns could be a scam",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornot.pages.dev/scam/002-hacked-friends-crypto-money-tip/",
-    "thumbnail": "refused: thumbnail not set (403): { \"error\": { \"code\": 403, \"message\": \"The authenticated user doesn't have permissions to upload and set custom video thumbnails.\", \"errors\": [ { \"message\": \"The authenticated user doesn't have permiss"
+    "scam": "Crypto prayer group chat scam | sources: New York Attorney General 2026-10-22 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 35.3s",
+    "cost": "$0.88 for 9 model calls (writer 3x $0.66, checker-b 3x $0.10, checker-a 3x $0.12)"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-24/scam-002.mp4",
-  "episode": 2,
-  "youtubeId": "tL_Zh-OUa08"
+  "cost": {
+    "usd": 0.8792,
+    "calls": 9,
+    "inputTokens": 44521,
+    "outputTokens": 15247,
+    "byRole": {
+      "writer": {
+        "calls": 3,
+        "usd": 0.6603
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0993
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.1196
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
+  }
 }

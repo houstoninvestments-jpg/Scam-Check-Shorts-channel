@@ -1,0 +1,31 @@
+[
+  {
+    "at": "2026-10-25T17:47:12.426Z",
+    "date": "2026-10-25",
+    "slot": 1,
+    "status": "failed",
+    "episode": null,
+    "usd": 0.8792,
+    "calls": 9,
+    "inputTokens": 44521,
+    "outputTokens": 15247,
+    "byRole": {
+      "writer": {
+        "calls": 3,
+        "usd": 0.6603
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0993
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.1196
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
+  }
+]
