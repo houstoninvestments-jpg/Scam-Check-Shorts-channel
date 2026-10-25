@@ -7,16 +7,18 @@ import { buildLeads, dedupe } from "./rank.js";
 import { pullSource, type SourceDef, type SourceResult } from "./sources.js";
 
 export interface SourceHealth {
-  [id: string]: { lastOk?: string; lastError?: string; consecutiveFailures: number; verified: boolean };
+  [id: string]: { lastOk?: string; lastError?: string; consecutiveFailures: number; lastFailDay?: string; verified: boolean };
 }
 
 export function updateSourceHealth(results: SourceResult[], file = path("data/source-health.json")): SourceHealth {
   const h = readJson<SourceHealth>(file, {});
   const now = new Date().toISOString();
+  const day = now.slice(0, 10);
   for (const r of results) {
     const cur = h[r.id] ?? { consecutiveFailures: 0, verified: false };
-    if (r.ok) h[r.id] = { ...cur, lastOk: now, consecutiveFailures: 0, verified: true, lastError: undefined };
-    else h[r.id] = { ...cur, lastError: r.error, consecutiveFailures: cur.consecutiveFailures + 1 };
+    if (r.ok) h[r.id] = { ...cur, lastOk: now, consecutiveFailures: 0, lastFailDay: undefined, verified: true, lastError: undefined };
+    // Counted in days, not runs: up to three runs a day must not make a source look broken three times as fast.
+    else h[r.id] = { ...cur, lastError: r.error, consecutiveFailures: cur.lastFailDay === day ? cur.consecutiveFailures : cur.consecutiveFailures + 1, lastFailDay: day };
   }
   writeJson(file, h);
   return h;

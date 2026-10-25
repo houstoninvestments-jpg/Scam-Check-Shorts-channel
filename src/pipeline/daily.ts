@@ -94,7 +94,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
 
     // 1. Scout
     const found = opts.fixtureSources ? scoutFromFixtures(opts.fixtureSources) : await scout();
-    if (!opts.fixtureSources) updateSourceHealth(found.results);
+    if (!opts.fixtureSources && !opts.dryRun) updateSourceHealth(found.results); // test runs never touch source health
     for (const r of found.results.filter((r) => !r.ok)) report.warnings.push(`source ${r.id} failed: ${r.error}`);
     step("scout", found.leads.length > 0, `${found.leads.length} leads, ${found.dropped.length} dropped as repeats`);
     if (!found.leads.length) {

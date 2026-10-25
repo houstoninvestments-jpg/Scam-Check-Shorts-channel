@@ -96,3 +96,16 @@ describe("run cost", () => {
     expect(s.byRole.writer).toEqual({ calls: 2, usd: 0.75 });
   });
 });
+
+describe("source health with three runs a day", () => {
+  it("counts a failing source once per day, not once per run", async () => {
+    const { updateSourceHealth } = await import("../src/scout/index");
+    const file = join(mkdtempSync(join(tmpdir(), "sh-")), "h.json");
+    const fail = [{ id: "x", ok: false, error: "no articles found", docs: [] }] as any;
+    updateSourceHealth(fail, file);
+    updateSourceHealth(fail, file);
+    const h = updateSourceHealth(fail, file);
+    expect(h.x.consecutiveFailures).toBe(1);
+    expect(updateSourceHealth([{ id: "x", ok: true, docs: [] }] as any, file).x.consecutiveFailures).toBe(0);
+  });
+});
