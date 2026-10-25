@@ -8,7 +8,12 @@
     "policyDate": "October 24, 2026"
   },
   "cadence": {
-    "shortsPerDay": 1,
+    "shortsPerDay": 3,
+    "slots": [
+      { "slot": 1, "pacific": "07:20" },
+      { "slot": 2, "pacific": "12:20" },
+      { "slot": 3, "pacific": "17:20" }
+    ],
     "timezone": "America/Chicago"
   },
   "models": {

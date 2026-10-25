@@ -3,6 +3,7 @@ import { AnthropicLLM, FixtureLLM, RecordingLLM } from "./llm/client.js";
 import { runDaily } from "./pipeline/daily.js";
 import { oauthUploader } from "./publish/youtube.js";
 import { env, log, path } from "./lib/util.js";
+import { config } from "./lib/config.js";
 
 const [cmd, ...rest] = process.argv.slice(2);
 const flag = (f: string) => rest.includes(f);
@@ -24,11 +25,27 @@ async function main() {
           writeJson(process.env.LEDGER_FILE, { nextNumber: Number(arg("--number")), episodes: [], skipped: [] });
         }
       }
+      if (dryRun && flag("--live-scout") && !process.env.LEDGER_FILE) {
+        // Live-source test runs start each day from a copy of the real ledger, so repeats are judged
+        // against what the channel really posted and numbering continues from it. Never written back.
+        const { existsSync, copyFileSync, readFileSync } = await import("node:fs");
+        const { today } = await import("./lib/util.js");
+        const copy = path("data/dry-run/live-ledger.json");
+        const day = (await import("./lib/config.js")).config().cadence.timezone;
+        const stamp = path("data/dry-run/live-ledger.day");
+        mkdirSync(path("data/dry-run"), { recursive: true });
+        if (!existsSync(copy) || !existsSync(stamp) || readFileSync(stamp, "utf8").trim() !== today(day)) {
+          copyFileSync(path("data/ledger.json"), copy);
+          (await import("node:fs")).writeFileSync(stamp, today(day));
+        }
+        process.env.LEDGER_FILE = copy;
+      }
       if (dryRun) {
         // Dry runs keep their own ledger so test numbering never touches the real channel.
         process.env.LEDGER_FILE ??= path("data/dry-run/ledger.json");
         mkdirSync(path("data/dry-run"), { recursive: true });
       }
+      const slot = arg("--slot") ? Number(arg("--slot")) : undefined;
       const scenario = arg("--scenario") ?? "traffic-qr";
       const live = !dryRun || flag("--live-llm");
       const llm = live ? (env("RECORD_FIXTURES") ? new RecordingLLM(new AnthropicLLM(), scenario) : new AnthropicLLM()) : new FixtureLLM(scenario);
@@ -39,7 +56,8 @@ async function main() {
         uploader: dryRun ? undefined : oauthUploader(),
         voice: (arg("--voice") as "elevenlabs" | "kokoro" | undefined) ?? undefined,
         skin: dryRun ? skin : undefined,
-        workDir: dryRun && skin ? path("work", `skin-${skin}`) : undefined,
+        slot,
+        workDir: dryRun && skin ? path("work", `skin-${skin}`) : slot ? path("work", `${(await import("./lib/util.js")).today(config().cadence.timezone)}-slot${slot}`) : undefined,
       });
       log(`result: ${report.status}${report.videoFile ? ` ${report.videoFile}` : ""}`);
       if (process.env.GITHUB_ACTIONS) {
@@ -72,6 +90,13 @@ async function main() {
       break;
     }
     case "learn": {
+      // Once a day, whichever slot gets here first: retention data only changes daily.
+      const { readJson } = await import("./lib/util.js");
+      const last = readJson<{ updatedAt?: string }>(process.env.LEARN_REPORT_FILE || path("data/learn-report.json"), {}).updatedAt;
+      if (last && last.slice(0, 10) === new Date().toISOString().slice(0, 10) && !flag("--force")) {
+        log("learn: already ran today");
+        break;
+      }
       const { learn } = await import("./learn/index.js");
       await learn(oauthUploader());
       break;
@@ -158,6 +183,16 @@ async function main() {
       const r = await rerender(Number(arg("--number")), arg("--work") ?? path("work/rerender"), arg("--voice") as "kokoro" | undefined);
       const msg = `${r.voice}, ${(r.timeline.total / r.timeline.fps).toFixed(1)}s; countdown red px ${r.countdownRed.join("/")}; phone screen changed ${(r.screenChange * 100).toFixed(2)}% during the countdown`;
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
+      break;
+    }
+    case "slot-gate": {
+      // Which posting slot a scheduled firing is. Writes go/slot for the workflow; manual runs pass --slot.
+      const { slotFor } = await import("./pipeline/slots.js");
+      const { appendFileSync } = await import("node:fs");
+      const sched = arg("--schedule") ?? "";
+      const r = sched ? slotFor(sched) : { go: true, slot: arg("--slot") ? Number(arg("--slot")) : undefined, why: "started by hand" };
+      if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `go=${r.go}\nslot=${r.slot ?? ""}\n`);
+      console.log(process.env.GITHUB_ACTIONS ? `::notice title=Slot::${r.why}` : JSON.stringify(r));
       break;
     }
     case "release": {

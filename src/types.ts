@@ -107,6 +107,9 @@ export interface Episode {
   category?: string; // id from config/hashtags.json
   youtubePrivacy?: "public" | "unlisted" | "private";
   youtubeHold?: string; // why an uploaded video is kept hidden
+  slot?: number; // which of the day's posting slots made it (1-3)
+  brands?: string[]; // brands the sources name, used only to keep one day's scams different
+  costUsd?: number; // model cost of the run that made it, at list prices
   loopSimilarity?: number;
 }
 

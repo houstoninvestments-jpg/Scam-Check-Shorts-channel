@@ -2,12 +2,27 @@ name: Daily Short
 
 on:
   schedule:
-    # 14:23 UTC = morning in the US. Off the top of the hour to dodge scheduler congestion.
-    - cron: "23 14 * * *"
+    # Up to 3 a day at 7:20am, 12:20pm and 5:20pm Pacific (config/channel.json cadence.slots).
+    # Cron is UTC with no daylight saving, so each slot is listed for both PDT and PST;
+    # the gate job lets only the one that lands on the Pacific time go ahead.
+    - cron: "20 14 * * *"   # 7:20am PDT
+    - cron: "20 15 * * *"   # 7:20am PST
+    - cron: "20 19 * * *"   # 12:20pm PDT
+    - cron: "20 20 * * *"   # 12:20pm PST
+    - cron: "20 0 * * *"    # 5:20pm PDT
+    - cron: "20 1 * * *"    # 5:20pm PST
   workflow_dispatch:
     inputs:
       dry_run:
         description: "Dry run (render only, nothing uploaded)"
+        type: boolean
+        default: false
+      slot:
+        description: "Run as this posting slot (1, 2 or 3). Empty = a manual run outside the slots"
+        type: string
+        default: ""
+      live_test:
+        description: "Dry run with live sources and the real model: real checks and real cost, nothing uploaded"
         type: boolean
         default: false
       evidence:
@@ -43,7 +58,26 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    # Which slot this firing is. The off-season twin of each slot exits here in seconds.
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.slot.outputs.go }}
+      slot: ${{ steps.slot.outputs.slot }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Pick the slot
+        id: slot
+        run: npx tsx src/cli.ts slot-gate ${{ github.event_name == 'schedule' && format('--schedule "{0}"', github.event.schedule) || '' }} ${{ inputs.slot != '' && format('--slot {0}', inputs.slot) || '' }}
+
   short:
+    needs: gate
+    if: needs.gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     environment:
@@ -62,6 +96,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       KOKORO_DIR: ${{ github.workspace }}/models/kokoro
+      SLOT: ${{ needs.gate.outputs.slot }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
@@ -159,10 +194,11 @@ jobs:
           # Until the one-time YouTube authorization is done, run the full pipeline in dry-run mode.
           if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "mode=dry" >> "$GITHUB_OUTPUT"
-            npx tsx src/cli.ts daily --dry-run --voice kokoro  # same free voice as live runs
+            live=""; [ "${{ inputs.live_test }}" = "true" ] && live="--live-scout --live-llm"
+            npx tsx src/cli.ts daily --dry-run --voice kokoro $live ${SLOT:+--slot $SLOT}  # same free voice as live runs
           else
             echo "mode=live" >> "$GITHUB_OUTPUT"
-            npx tsx src/cli.ts daily
+            npx tsx src/cli.ts daily ${SLOT:+--slot $SLOT}
           fi
 
       - name: Learn from retention
@@ -255,7 +291,7 @@ jobs:
           git add data docs || true  # includes data/site-target.json, the Cloudflare project in use
           if git diff --cached --quiet; then exit 0; fi
           scripts/secret-scan.sh
-          git commit -q -m "Daily run $(date -u +%F)"
+          git commit -q -m "Daily run $(date -u +%F)${SLOT:+ slot $SLOT}"
           for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
 
       - name: Health check

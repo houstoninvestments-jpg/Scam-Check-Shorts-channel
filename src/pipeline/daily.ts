@@ -3,13 +3,14 @@ import type { Episode, Lead, Script, SkinId } from "../types.js";
 import type { ShortProps } from "../../remotion/props.js";
 import { config } from "../lib/config.js";
 import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
-import { log, pad3, path, slugify, today, writeJson } from "../lib/util.js";
+import { log, pad3, path, readJson, slugify, today, writeJson } from "../lib/util.js";
 import type { LLM } from "../llm/client.js";
 import { scout, scoutFromFixtures, updateSourceHealth } from "../scout/index.js";
 import { write } from "../writer/index.js";
 import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
 import { loadHooks, pickHook } from "../learn/hooks.js";
-import { chooseCta, chooseSkin } from "./choose.js";
+import { chooseCta, chooseSkin, episodeMark, leadMark, sameDayClash, type DayMark } from "./choose.js";
+import { costSummary } from "../llm/client.js";
 import { elevenlabsOn, synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { countdownRed, extractCover, loopSimilarity, readWindowChange } from "../render/cover.js";
@@ -25,10 +26,12 @@ export interface RunOptions {
   voice?: "elevenlabs" | "kokoro";
   workDir?: string;
   skin?: SkinId; // test renders only: force a phone skin
+  slot?: number; // which of the day's posting slots this run is (1-3); manual runs leave it empty
 }
 
 export interface RunReport {
   date: string;
+  slot?: number;
   dryRun: boolean;
   status: "published" | "rendered" | "skipped" | "failed";
   episode?: number;
@@ -39,6 +42,8 @@ export interface RunReport {
   steps: { step: string; ok: boolean; detail: string }[];
   /** One line per thing a person would check, posted as notes on the GitHub run. */
   summary: Record<string, string>;
+  /** Model cost of this run at list prices, whether or not it posted. */
+  cost?: ReturnType<typeof costSummary>;
 }
 
 const SOURCE_SHORT: Record<string, string> = { ftc: "FTC", bbb: "BBB", ag: "state attorney general", reddit: "community" };
@@ -49,7 +54,7 @@ export const PUBLISHABLE_CAPTURES = new Set(["page", "feed"]);
 export async function runDaily(opts: RunOptions): Promise<RunReport> {
   const cfg = config();
   const date = today(cfg.cadence.timezone);
-  const report: RunReport = { date, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [], summary: {} };
+  const report: RunReport = { date, slot: opts.slot, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [], summary: {} };
   const step = (s: string, ok: boolean, detail: string) => {
     report.steps.push({ step: s, ok, detail });
     log(`${ok ? "ok  " : "FAIL"} ${s}: ${detail}`);
@@ -58,13 +63,23 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
 
   try {
     const ledger = loadLedger();
-    if (!opts.dryRun && ledger.episodes.some((e) => e.date === date && e.status === "published")) {
-      step("cadence", true, "already published today");
+    // Up to shortsPerDay a day. A ceiling, not a quota: each slot posts only if a new scam passes both checks.
+    const todays = ledger.episodes.filter((e) => e.date === date && (e.status === "published" || (opts.dryRun && e.status === "rendered")));
+    if (todays.length >= cfg.cadence.shortsPerDay) {
+      step("cadence", true, `already ${todays.length} today (most is ${cfg.cadence.shortsPerDay})`);
       report.status = "skipped";
       return report;
     }
+    const usedSkins = new Set(todays.map((e) => e.skin));
+    const todayMarks = todays.map(episodeMark);
 
     // 0. While Google keeps uploads locked to private, re-test once a day before spending anything.
+    if (!opts.dryRun && ledger.firstUploadCheck?.locked && ledger.firstUploadCheck.checkedAt.slice(0, 10) === new Date().toISOString().slice(0, 10)) {
+      step("upload lock", false, "still locked private (already re-tested today)");
+      report.status = "skipped";
+      report.warnings.push("uploads still locked private by Google (API audit pending); skipped before writing to save cost");
+      return report;
+    }
     if (!opts.dryRun && ledger.firstUploadCheck?.locked && opts.uploader) {
       const lock = await recheckLock(opts.uploader, ledger);
       saveLedger(ledger);
@@ -82,16 +97,43 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (!opts.fixtureSources) updateSourceHealth(found.results);
     for (const r of found.results.filter((r) => !r.ok)) report.warnings.push(`source ${r.id} failed: ${r.error}`);
     step("scout", found.leads.length > 0, `${found.leads.length} leads, ${found.dropped.length} dropped as repeats`);
-    if (!found.leads.length) throw new Error("no fresh scams found in any source");
+    if (!found.leads.length) {
+      // Normal on a thin day: the ceiling is not a quota. Health still flags a long dry spell.
+      report.status = "skipped";
+      report.warnings.push("no new scam in any source for this slot; skipped");
+      return report;
+    }
 
     // 2-3. Write and check, lead by lead, until one passes. Unsure means skip, never escalate.
     const hooks = loadHooks();
     const recentHooks = ledger.episodes.slice(-3).map((e) => e.hookVariant).reverse();
-    let chosen: { lead: Lead; script: Script; hookId: string } | undefined;
-    for (const lead of found.leads.slice(0, 6)) {
+    let chosen: { lead: Lead; script: Script; hookId: string; skin: SkinId; mark: DayMark } | undefined;
+    // A lead that failed the checks earlier today is not tried again today.
+    const failedToday = new Set(ledger.skipped.filter((s) => s.date === date).map((s) => s.leadId));
+    const fresh = found.leads.filter((l) => !failedToday.has(l.id));
+    if (fresh.length < found.leads.length) step("same day", true, `${found.leads.length - fresh.length} leads already failed the checks today; not retried`);
+    let tried = 0;
+    for (const lead of fresh) {
+      if (tried >= 6) break;
+      // Same-day variety, decided before any model call: a free skin, and a different scam type or brand.
+      const skin = opts.skin ?? chooseSkin(lead.channel, ledger.episodes, usedSkins);
+      if (!skin) {
+        step("same day", true, `${lead.title.slice(0, 60)}: its screen style already ran today; waits for another day`);
+        continue;
+      }
+      const guess = leadMark(lead);
+      if (sameDayClash(guess, todayMarks)) {
+        step("same day", true, `${lead.title.slice(0, 60)}: same type (${guess.category}${guess.brands.length ? `, ${guess.brands.join("/")}` : ""}) as an earlier video today; waits for another day`);
+        continue;
+      }
+      tried++;
       const hook = pickHook(hooks, recentHooks);
-      const skin = chooseSkin(lead.channel, ledger.episodes);
       let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
+      const mark: DayMark = { category: categoryFor(script, lead.title).id, brands: guess.brands };
+      if (sameDayClash(mark, todayMarks)) {
+        step("same day", true, `${lead.title.slice(0, 60)}: written as ${mark.category}, same as an earlier video today; not checked, waits for another day`);
+        continue;
+      }
       let mech = mechanicalCheck(script, lead);
       if (!mech.ok) {
         // one rewrite with the exact failures, then move on
@@ -113,7 +155,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
       if (verdict.pass) {
         report.summary.scam = `${script.scamName} | sources: ${lead.docs.map((d) => `${d.name} ${d.publishedAt?.slice(0, 10) ?? ""} (${d.capture})`).join("; ")} | checks: ${verdict.reason}`;
-        chosen = { lead, script, hookId: hook.id };
+        chosen = { lead, script, hookId: hook.id, skin, mark };
         break;
       }
       ledger.skipped.push({ leadId: lead.id, date, reason: verdict.reason });
@@ -131,7 +173,9 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       number,
       leadId: lead.id,
       date,
-      skin: opts.skin ?? chooseSkin(lead.channel, ledger.episodes),
+      skin: chosen.skin,
+      slot: opts.slot,
+      brands: chosen.mark.brands,
       cta: chooseCta(ledger.episodes),
       hookVariant: chosen.hookId,
       script,
@@ -221,6 +265,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       step("publish", !res.lockedPrivate, res.detail);
     }
 
+    ep.costUsd = costSummary(opts.llm.calls ?? []).usd;
     upsertEpisode(ledger, ep);
     ledger.nextNumber = number + 1;
     saveLedger(ledger);
@@ -230,7 +275,16 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     report.status = "failed";
     return report;
   } finally {
+    // Model cost of this run at list prices, posted or not. The history file makes cost per video visible over time.
+    report.cost = costSummary(opts.llm.calls ?? []);
+    if (opts.llm.mode === "live") {
+      report.summary.cost = `$${report.cost.usd.toFixed(2)} for ${report.cost.calls} model calls (${Object.entries(report.cost.byRole).map(([r, v]) => `${r} ${v.calls}x $${v.usd.toFixed(2)}`).join(", ")})`;
+      const histFile = path(opts.dryRun ? "data/dry-run/run-costs.json" : "data/run-costs.json");
+      const hist = readJson<unknown[]>(histFile, []);
+      hist.push({ at: new Date().toISOString(), date, slot: opts.slot ?? null, status: report.status, episode: report.episode ?? null, usd: report.cost.usd, calls: report.cost.calls, inputTokens: report.cost.inputTokens, outputTokens: report.cost.outputTokens, byRole: report.cost.byRole, models: report.cost.models });
+      writeJson(histFile, hist);
+    }
     writeJson(join(work, "run-report.json"), report);
-    writeJson(path(opts.dryRun ? "data/dry-run/last-run.json" : "data/last-run.json"), report);
+    writeJson(process.env.LAST_RUN_FILE || path(opts.dryRun ? "data/dry-run/last-run.json" : "data/last-run.json"), report);
   }
 }

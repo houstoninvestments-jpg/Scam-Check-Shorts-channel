@@ -1,15 +1,25 @@
 # Scam or Not
 
-An automated, faceless YouTube Shorts channel. Each day one real scam text
-lands on a phone screen. Real or scam? Three seconds. Then a red SCAM stamp,
+An automated, faceless YouTube Shorts channel. Up to three times a day a real
+scam text lands on a phone screen. Real or scam? Three seconds. Then a red SCAM stamp,
 three red flags circled and named, one safe move, and "Send this to the one
 who'd tap it." About 30 seconds, numbered (Scam #001), loops cleanly.
 
-Nobody reviews videos. If the checks are unsure, the day is skipped.
+Nobody reviews videos. If the checks are unsure, that slot is skipped.
 
 ## How a day runs
 
-One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
+One GitHub Actions job (`.github/workflows/daily.yml`) runs in three slots a day:
+7:20am, 12:20pm and 5:20pm Pacific (`cadence.slots` in `config/channel.json`).
+Cron runs in UTC, so each slot is scheduled at both its summer and winter UTC
+time, and a small gate job lets only the right one through. Three is a
+ceiling, not a quota: a slot posts only if a new scam passes both checks.
+Videos on the same day never share a phone screen style, and never share a
+scam type unless they name different brands. A lead that failed the checks
+is not retried the same day. The upload-lock re-test and the retention
+learning run once a day. Each run logs its model cost at list prices in
+`data/last-run.json` and appends it to `data/run-costs.json`.
+
 
 1. **Scout** (`src/scout`) pulls fresh scam alerts from the FTC, BBB, three
    state attorneys general and r/Scams. It groups pages about the same scam,
@@ -35,7 +45,7 @@ One GitHub Actions job (`.github/workflows/daily.yml`) runs every morning:
    number, never the answer. The video fades back to it at the end, and each
    render is checked that its last frame matches its first.
 6. **Publish** (`src/publish`). Resumable upload through the YouTube Data API,
-   one a day. Every upload sets YouTube's altered-or-synthetic flag and says
+   up to three a day. Every upload sets YouTube's altered-or-synthetic flag and says
    the narration is an AI voice. The very first upload goes up private and is
    tested for the "locked private" restriction before anything goes public.
    If locked, the audit answers are written to `docs/youtube-audit-request.md`.

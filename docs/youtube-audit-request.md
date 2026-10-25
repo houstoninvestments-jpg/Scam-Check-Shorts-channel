@@ -8,12 +8,12 @@ Form: https://support.google.com/youtube/contact/yt_api_form
 ## Answers to paste
 
 **What does your API client do?**
-It uploads one short video a day to our own channel, Scam or Not.
+It uploads up to three short videos a day to our own channel, Scam or Not.
 Each video shows a real scam message and explains three warning signs and one safe step.
 No other users. No other channels. We only upload to the channel we own.
 
 **Which API features do you use?**
-- videos.insert (one upload a day to our own channel)
+- videos.insert (up to three uploads a day to our own channel)
 - videos.update (privacy status on our own videos)
 - videos.list (read back our own video status)
 - YouTube Analytics reports for our own channel (retention, views), used to improve future videos
