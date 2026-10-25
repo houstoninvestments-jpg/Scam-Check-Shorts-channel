@@ -108,7 +108,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     const hooks = loadHooks();
     const recentHooks = ledger.episodes.slice(-3).map((e) => e.hookVariant).reverse();
     let chosen: { lead: Lead; script: Script; hookId: string; skin: SkinId; mark: DayMark } | undefined;
-    // A lead that failed the checks earlier today is not tried again today.
+    // A lead that failed the checks (or clashed with an earlier video) today is not tried again today.
     const failedToday = new Set(ledger.skipped.filter((s) => s.date === date).map((s) => s.leadId));
     const fresh = found.leads.filter((l) => !failedToday.has(l.id));
     if (fresh.length < found.leads.length) step("same day", true, `${found.leads.length - fresh.length} leads already failed the checks today; not retried`);
@@ -132,6 +132,8 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       const mark: DayMark = { category: categoryFor(script, lead.title).id, brands: guess.brands };
       if (sameDayClash(mark, todayMarks)) {
         step("same day", true, `${lead.title.slice(0, 60)}: written as ${mark.category}, same as an earlier video today; not checked, waits for another day`);
+        // Remembered for today only, so the next slot doesn't pay to write it again. Tomorrow it is fair game.
+        ledger.skipped.push({ leadId: lead.id, date, reason: `same type as an earlier video today (${mark.category})` });
         continue;
       }
       let mech = mechanicalCheck(script, lead);
