@@ -2,31 +2,31 @@
   "ftc-alerts": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-25T04:35:16.260Z"
+    "lastOk": "2026-10-25T04:38:02.704Z"
   },
   "bbb-scam-alerts": {
-    "consecutiveFailures": 6,
+    "consecutiveFailures": 7,
     "verified": false,
     "lastError": "no articles found"
   },
   "ny-ag": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-25T04:35:16.260Z"
+    "lastOk": "2026-10-25T04:38:02.704Z"
   },
   "ca-ag": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-25T04:35:16.260Z"
+    "lastOk": "2026-10-25T04:38:02.704Z"
   },
   "tx-ag": {
-    "consecutiveFailures": 6,
+    "consecutiveFailures": 7,
     "verified": false,
     "lastError": "no articles found"
   },
   "reddit-scams": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-25T04:35:16.260Z"
+    "lastOk": "2026-10-25T04:38:02.704Z"
   }
 }
