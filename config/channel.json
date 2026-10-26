@@ -87,7 +87,7 @@
     "dedupeSimilarity": 0.55
   },
   "music": {
-    "enabled": false,
+    "enabled": true,
     "belowVoiceDb": 20
   }
 }

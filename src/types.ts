@@ -111,6 +111,7 @@ export interface Episode {
   brands?: string[]; // brands the sources name, used only to keep one day's scams different
   costUsd?: number; // model cost of the run that made it, at list prices
   renderAttempts?: number; // tries at voice, render and upload after the checks passed
+  music?: string; // the tension bed it got, e.g. "A tritone 73 BPM, 20 dB under the voice"
   loopSimilarity?: number;
 }
 

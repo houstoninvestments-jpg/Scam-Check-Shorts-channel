@@ -246,6 +246,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (cfg.music.enabled) {
       const m = makeMusic(timeline, publicDir, cfg.music.belowVoiceDb, number);
       props.music = true;
+      ep.music = `${m.params.key} ${m.params.thirdName} ${m.params.bpm} BPM, ${m.belowVoiceDb} dB under the voice`;
       report.summary.music = `tension bed on: ${m.params.key} with a ${m.params.thirdName}, ${m.params.bpm} BPM; voice ${m.voiceLufs} LUFS, bed ${m.musicLufs} LUFS (${m.belowVoiceDb} dB under)`;
     }
     writeJson(join(work, "props.json"), props);
