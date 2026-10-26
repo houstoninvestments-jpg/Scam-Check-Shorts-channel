@@ -6,7 +6,7 @@ import { path } from "../src/lib/util";
 
 // Runs the real migration on an in-memory Postgres with a minimal stand-in for Supabase's auth schema and roles.
 const AUTH_STUB = `
-create role anon nologin; create role authenticated nologin;
+create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;
 create schema auth;
 create table auth.users (id uuid primary key, email text);
 create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
@@ -19,7 +19,7 @@ const U1 = "00000000-0000-0000-0000-000000000001";
 const U2 = "00000000-0000-0000-0000-000000000002";
 const U3 = "00000000-0000-0000-0000-000000000003";
 
-async function as(role: "anon" | "authenticated" | "postgres", uid: string | null, sql: string, params: unknown[] = []) {
+async function as(role: "anon" | "authenticated" | "service_role" | "postgres", uid: string | null, sql: string, params: unknown[] = []) {
   await db.exec(`reset role; select set_config('request.jwt.claim.sub', '${uid ?? ""}', false);`);
   if (role !== "postgres") await db.exec(`set role ${role};`);
   try {
@@ -37,6 +37,14 @@ beforeAll(async () => {
 });
 
 describe("database rules", () => {
+  it("the server role used by the edge functions can record a purchase; the browser can't even read signups", async () => {
+    await as("service_role", null, "insert into public.purchases(email, stripe_session_id, amount_cents) values ('srv@example.com', 'cs_srv_test', 1900)");
+    const n = await as("postgres", null, "select count(*)::int as n from public.purchases where stripe_session_id = 'cs_srv_test'");
+    expect(n.rows[0].n).toBe(1);
+    await as("postgres", null, "delete from public.purchases where stripe_session_id = 'cs_srv_test'");
+    await expect(as("anon", null, "select email from public.round_signups")).rejects.toThrow(/permission denied/);
+  });
+
   it("anyone can sign up for the daily round; nobody can read the list", async () => {
     await as("anon", null, "insert into round_signups(email) values ('a@example.com')");
     await expect(as("anon", null, "insert into round_signups(email) values ('not-an-email')")).rejects.toThrow();
