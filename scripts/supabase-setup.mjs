@@ -16,7 +16,7 @@ const mode = process.argv[2];
 
 const note = (title, msg) => console.log(`::notice title=${title}::${String(msg).replace(/[\r\n]+/g, " ").slice(0, 900)}`);
 const fail = (msg) => {
-  console.log(`::error title=Supabase setup::${msg}`);
+  console.log(`::error title=Supabase setup::${String(msg).replace(/[\r\n]+/g, " ").slice(0, 1500)}`);
   process.exit(1);
 };
 if (!REF || !TOKEN) fail("PROJECT_REF and SUPABASE_ACCESS_TOKEN are required");
@@ -174,7 +174,9 @@ async function purchaseTest() {
   try {
     const p = await browser.newPage();
     try {
-    await p.goto(link, { waitUntil: "networkidle" });
+    // Stripe's checkout page keeps talking to its servers, so wait for the form, not for silence.
+    await p.goto(link, { waitUntil: "domcontentloaded", timeout: 60000 });
+    await p.waitForSelector("#email", { timeout: 45000 });
     await p.fill("#email", email);
     // Card first if Stripe shows a payment-method choice.
     const cardTab = p.locator('[data-testid="card-accordion-item-button"], button:has-text("Card")').first();
