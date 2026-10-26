@@ -65,21 +65,6 @@ jobs:
         if: inputs.step == 'test'
         run: npx tsx scripts/supabase-setup.mjs test
 
-      - name: Stripe test mode
-        if: inputs.step == 'stripe'
-        env:
-        run: npx tsx scripts/supabase-setup.mjs stripe
-
-      - name: Test purchase and refund
-        if: inputs.step == 'purchase-test'
-        env:
-        run: npx tsx scripts/supabase-setup.mjs purchase-test
-
-      - name: Diagnose the webhook
-        if: inputs.step == 'diagnose' || inputs.step == 'webhook-check' || inputs.step == 'refund-orphans'
-        env:
-        run: npx tsx scripts/supabase-setup.mjs ${{ inputs.step }}
-
       - name: Save config
         if: always()
         run: |

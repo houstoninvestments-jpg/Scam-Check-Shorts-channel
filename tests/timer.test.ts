@@ -27,6 +27,6 @@ describe("Cloudflare timer", () => {
     const on = day("2026-10-27T00:00:00Z").filter((j) => j.repo.endsWith("congress-receipts")).map((j) => j.at.slice(11, 16));
     expect(on).toEqual(["02:37", "16:37", "21:37"]);
     expect(plan(new Date("2026-10-27T16:37:00Z"), { CONGRESS_ENABLED: "false" })).toEqual([]);
-    expect(readFileSync(path("timer/wrangler.toml"), "utf8")).toMatch(/CONGRESS_ENABLED = "false"/);
+    expect(readFileSync(path("timer/wrangler.toml"), "utf8")).toMatch(/CONGRESS_ENABLED = "true"/);
   });
 });

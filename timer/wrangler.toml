@@ -9,5 +9,5 @@ workers_dev = true
 crons = ["20 * * * *", "37 * * * *"]
 
 [vars]
-# Off until Congress Receipts' own GitHub schedule is removed, so its slots never start twice.
-CONGRESS_ENABLED = "false"
+# On: Congress Receipts' own GitHub schedule was removed (its commit d50dbd1), so the timer is its only starter.
+CONGRESS_ENABLED = "true"
