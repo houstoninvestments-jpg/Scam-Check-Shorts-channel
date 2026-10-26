@@ -307,10 +307,12 @@ async function diagnose() {
   if (logPath) {
     const q = "select timestamp, event_message from function_logs order by timestamp desc limit 15";
     const since = new Date(Date.now() - 3 * 3600_000).toISOString();
-    const logs = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q)}&iso_timestamp_start=${since}`).catch((e) => ({ error: String(e).slice(0, 200) }));
+    const until = new Date().toISOString();
+    note("Logs endpoint", `${logPath} params: ${JSON.stringify((spec.paths[logPath].get?.parameters ?? []).map((x) => x.name ?? x.$ref))}`);
+    const logs = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q)}&iso_timestamp_start=${since}&iso_timestamp_end=${until}`).catch((e) => ({ error: String(e).slice(-400) }));
     note("Function logs", JSON.stringify(logs.result ?? logs).replace(/eyJ[\w-]+\.[\w-]+\.[\w-]+|sk_test_\w+|whsec_\w+/g, "[hidden]").slice(0, 1400));
     const q2 = "select timestamp, event_message from function_edge_logs order by timestamp desc limit 10";
-    const edge = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q2)}&iso_timestamp_start=${since}`).catch((e) => ({ error: String(e).slice(0, 200) }));
+    const edge = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q2)}&iso_timestamp_start=${since}&iso_timestamp_end=${until}`).catch((e) => ({ error: String(e).slice(-400) }));
     note("Function calls", JSON.stringify(edge.result ?? edge).slice(0, 1400));
   } else note("Function logs", "no logs endpoint in the API description");
 }
