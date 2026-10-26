@@ -318,8 +318,38 @@ async function diagnose() {
   } else note("Function logs", "no logs endpoint in the API description");
 }
 
+// Send the webhook function a correctly signed sample event and read its exact reply, then make a fresh
+// Stripe webhook (new signing secret) and store that secret, so nothing is left on the test value.
+async function webhookCheck() {
+  const { createHmac, randomBytes } = await import("node:crypto");
+  const temp = `whsec_diag${randomBytes(12).toString("hex")}`;
+  await setSecrets({ STRIPE_WEBHOOK_SECRET: temp });
+  await new Promise((r) => setTimeout(r, 8000)); // let the function pick up the new value
+  const email = `son-hook-test+${Date.now()}@example.com`;
+  const body = JSON.stringify({ id: "evt_diag", type: "checkout.session.completed", livemode: false, data: { object: { id: `cs_diag_${Date.now()}`, payment_status: "paid", customer_details: { email }, payment_intent: "pi_diag", amount_total: 1900 } } });
+  const t = Math.floor(Date.now() / 1000);
+  const sig = createHmac("sha256", temp).update(`${t}.${body}`).digest("hex");
+  const res = await fetch(`${URL_}/functions/v1/stripe-webhook`, { method: "POST", headers: { "stripe-signature": `t=${t},v1=${sig}`, "content-type": "application/json" }, body });
+  note("Signed sample event", `function answered ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  const [row] = await sql(`select id, user_id from public.purchases where email = '${email}'`);
+  const users = await sql(`select id, email_confirmed_at, invited_at from auth.users where email = '${email}'`);
+  note("Sample result", `purchase saved: ${!!row}, account linked: ${!!row?.user_id}, account exists: ${users.length > 0}, invited: ${!!users[0]?.invited_at}`);
+  await sql(`delete from public.purchases where email = '${email}'; delete from auth.users where email = '${email}';`);
+
+  // Fresh Stripe webhook: delete ours, create it again, store the new secret.
+  const sk = { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`, "content-type": "application/x-www-form-urlencoded" };
+  const target = `${URL_}/functions/v1/stripe-webhook`;
+  const list = await (await fetch("https://api.stripe.com/v1/webhook_endpoints?limit=20", { headers: sk })).json();
+  for (const h of (list.data ?? []).filter((h) => h.url === target)) await fetch(`https://api.stripe.com/v1/webhook_endpoints/${h.id}`, { method: "DELETE", headers: sk });
+  const hook = await (await fetch("https://api.stripe.com/v1/webhook_endpoints", { method: "POST", headers: sk, body: new URLSearchParams({ url: target, "enabled_events[0]": "checkout.session.completed" }) })).json();
+  if (!hook.secret) fail(`could not recreate the Stripe webhook: ${JSON.stringify(hook.error ?? hook).slice(0, 200)}`);
+  await setSecrets({ STRIPE_WEBHOOK_SECRET: hook.secret });
+  note("Stripe webhook", "recreated with a new signing secret, stored in Supabase");
+}
+
 try {
   if (mode === "diagnose") await diagnose();
+  else if (mode === "webhook-check") await webhookCheck();
   else if (mode === "setup") await setup();
   else if (mode === "purchase-test") await purchaseTest();
   else if (mode === "functions") await functionsReport();
