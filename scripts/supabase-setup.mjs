@@ -185,6 +185,12 @@ async function purchaseTest() {
     };
     const cardInput = (f) => f.locator('#cardNumber, input[name="number"], input[name="cardnumber"]').first();
     if (!(await inFrames((f) => cardInput(f).isVisible()))) {
+      // Stripe's accordion button is covered by its styled label: click it directly.
+      const acc = p.locator('[data-testid="card-accordion-item-button"]').first();
+      if (await acc.count()) await acc.click({ force: true }).catch(() => acc.dispatchEvent("click"));
+      await p.waitForTimeout(2000);
+    }
+    if (!(await inFrames((f) => cardInput(f).isVisible()))) {
       await inFrames(async (f) => {
         for (const sel of ['[data-testid="card-accordion-item-button"]', 'button:has-text("Card")', '[role="radio"]:has-text("Card")', 'label:has-text("Card")', "text=Card"]) {
           const el = f.locator(sel).first();
