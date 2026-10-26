@@ -110,9 +110,21 @@ describe("website", () => {
     expect(existsSync(join(dir, "assets/family.js"))).toBe(false);
   });
 
+  it("hides Fire Drill until it has its own address, and the member app still loads without it", async () => {
+    const { buildSite } = await import("../src/site/build");
+    config().familyPass.enabled = true;
+    config().site.fireDrillBaseUrl = "";
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    expect(readFileSync(join(dir, "family/index.html"), "utf8")).not.toMatch(/Fire Drill/);
+    expect(readFileSync(join(dir, "family/app/index.html"), "utf8")).not.toMatch(/drill-form/);
+    expect(readFileSync(join(dir, "index.html"), "utf8")).not.toMatch(/Fire Drill/);
+    resetConfigCache();
+  });
+
   it("builds Family Pass and Fire Drill when switched on", async () => {
     const { buildSite } = await import("../src/site/build");
     config().familyPass.enabled = true;
+    config().site.fireDrillBaseUrl = "https://drill.example";
     const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
     expect(r.pages).toContain("family/index.html");
     expect(r.pages).toContain("family/app/index.html");

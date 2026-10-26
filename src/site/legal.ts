@@ -9,17 +9,33 @@ import { esc, page } from "./templates.js";
 export function privacyPage(c: ChannelConfig, root: string) {
   const email = esc(c.channel.contactEmail);
   const signupOn = Boolean(c.supabase.url && c.supabase.publishableKey);
+  const passOn = c.familyPass.enabled;
+  const drillOn = passOn && Boolean(c.site.fireDrillBaseUrl);
   const body = `
 <h1>Privacy</h1>
 <p class="small">Last updated ${esc(c.channel.policyDate)}</p>
-<p class="lede">Short version: we collect almost nothing. We never sell your information.</p>
+<p class="lede">Short version: we collect ${passOn ? "very little" : "almost nothing"}. We never sell your information.</p>
 
 <h2>What this site collects</h2>
 <p><b>Your email, only if you sign up.</b> The site has a box to get the daily round by email.${
     signupOn ? "" : " Right now that box is turned off, so the site collects no email addresses at all."
   } When it is on, you can type in your email. We then save your email address and the date you signed up. We keep it in our database (Supabase). We use it only to send you the daily round.</p>
-<p><b>Nothing else.</b> The site has no ads, no tracking tools, and no visitor counters. Our site's code sets no cookies.</p>
-
+<p><b>${passOn ? "Nothing else for free visitors." : "Nothing else."}</b> The site has no ads, no tracking tools, and no visitor counters. Our site's code sets no cookies.</p>
+${
+  passOn
+    ? `
+<h2>If you buy the Family Pass</h2>
+<p><b>Paying.</b> Stripe handles your payment. You type your card on Stripe's page, not ours. We never see or store your card number. See <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
+<p><b>What we keep.</b> Your email, the date, the amount, and Stripe's payment number. We keep it in our database (Supabase).</p>
+<p><b>Signing in.</b> We email you a sign-in link. Our email service, Resend, sends it for us.</p>
+<p><b>Your family group.</b> We keep the group's name, the names you type for members, and the emails you invite. We also keep which days each person finished the round and their score. That is how streaks work.</p>${
+        drillOn ? `
+<p><b>Fire Drill.</b> When someone taps a practice link, we save only the time of the tap. Nothing about the person.</p>` : ""
+      }
+<p><b>Deleting it.</b> Email us and we will delete your account and family group within 30 days. We keep payment records only as long as the law requires.</p>
+`
+    : ""
+}
 <h2>What stays on your phone</h2>
 <p>When you play the daily round, your score is saved in your own browser. So is your text size choice. Neither is sent to us. You can clear it by clearing your browser's site data.</p>
 
@@ -62,10 +78,11 @@ export function privacyPage(c: ChannelConfig, root: string) {
 
 export function termsPage(c: ChannelConfig, root: string) {
   const email = esc(c.channel.contactEmail);
+  // The Family Pass section appears only when the pass is switched on.
   const body = `
 <h1>Terms</h1>
 <p class="small">Last updated ${esc(c.channel.policyDate)}</p>
-<p class="lede">Scam or Not is free. These are the simple rules for using it.</p>
+<p class="lede">Scam or Not is free${c.familyPass.enabled ? `. The optional Family Pass costs $${c.familyPass.priceUsd} once` : ""}. These are the simple rules for using it.</p>
 
 <h2>What this is</h2>
 <p>Scam or Not shows real scam messages and explains how to spot them. It is for learning. It is not legal, money, or police advice. Lost money to a scam? Call your bank first. Then report it where you live.</p>
@@ -89,7 +106,17 @@ export function termsPage(c: ChannelConfig, root: string) {
 <h2>Other websites</h2>
 <p>We link to other sites, like the agencies we quote and YouTube. We don't control those sites. Their own rules apply there.</p>
 
-<h2>Paid links</h2>
+${
+  c.familyPass.enabled
+    ? `<h2>Family Pass</h2>
+<p><b>What you get.</b> You pay $${c.familyPass.priceUsd} one time. It covers you and up to ${c.familyPass.maxMembers - 1} family members. You all get every past round and big text. You also get a private family group with streaks${c.site.fireDrillBaseUrl ? ", plus Fire Drill" : ""}. There is no subscription.</p>
+<p><b>Paying.</b> Stripe handles the payment. Prices are in US dollars.</p>
+<p><b>Refunds.</b> Changed your mind? Within ${c.familyPass.refundDays} days of buying, tap "Refund my Family Pass" or email us. The refund ends access for your whole family group.</p>
+<p><b>Changes.</b> We may improve or change the Family Pass features over time.</p>
+
+`
+    : ""
+}<h2>Paid links</h2>
 <p>If we ever add a paid link, we will label it "Paid link" right next to it.</p>
 
 <h2>No promises</h2>

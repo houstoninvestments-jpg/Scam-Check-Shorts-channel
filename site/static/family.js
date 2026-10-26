@@ -4,7 +4,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 const S = window.SON;
 const sb = createClient(S.supabaseUrl, S.supabaseKey);
 const $ = (id) => document.getElementById(id);
-const show = (id, on) => $(id).classList.toggle("hidden", !on);
+const show = (id, on) => $(id)?.classList.toggle("hidden", !on);
 const say = (id, t) => ($(id).textContent = t);
 
 async function fn(name, body) {
@@ -46,15 +46,16 @@ async function load() {
 
   // Family group and streaks
   const { data: fam } = await sb.rpc("my_family");
-  show("make-family", !fam);
+  show("make-family-form", !fam);
   show("family", !!fam);
   if (fam) {
     say("family-name", fam.name);
     $("members").innerHTML = fam.members.map((m) => `<li><b>${m.display_name}</b> ${m.streak ? `· ${m.streak}-day streak` : ""}</li>`).join("");
-    show("add-member", fam.is_owner && fam.members.length < S.maxMembers);
+    show("add-member-form", fam.is_owner && fam.members.length < S.maxMembers);
   }
 
-  // Fire drills
+  // Fire drills (only when the Fire Drill page has its own address)
+  if (!$("drills")) return;
   const { data: drills } = await sb.from("fire_drill_summary").select("*").order("created_at", { ascending: false });
   $("drills").innerHTML = (drills || []).map((d) => `<li>${d.label}: ${d.taps ? `<b>tapped ${d.taps} time${d.taps > 1 ? "s" : ""}</b>` : "not tapped yet"}</li>`).join("");
 }
@@ -75,7 +76,7 @@ $("add-member-form").addEventListener("submit", async (e) => {
   } catch (err) { say("member-msg", err.message); }
 });
 
-$("drill-form").addEventListener("submit", async (e) => {
+$("drill-form")?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const { data, error } = await sb.rpc("create_drill", { drill_label: e.target.label.value.trim() || "Practice text" });
   if (error) return say("member-msg", error.message);
@@ -85,7 +86,7 @@ $("drill-form").addEventListener("submit", async (e) => {
   load();
 });
 
-$("copy-drill").addEventListener("click", () => navigator.clipboard?.writeText($("drill-text").textContent).then(() => say("copy-drill", "Copied")));
+$("copy-drill")?.addEventListener("click", () => navigator.clipboard?.writeText($("drill-text").textContent).then(() => say("copy-drill", "Copied")));
 
 $("refund").addEventListener("click", async () => {
   if (!confirm("Refund your Family Pass? Access ends right away for your whole family.")) return;

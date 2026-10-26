@@ -215,8 +215,75 @@ async function verify() {
   note("Site button", page.includes(link) ? `${SITE}/family/ "Get Family Pass" goes to the live checkout` : `${SITE}/family/ does not show the live link yet`);
 }
 
+// ---------- app-test ----------
+// The member area in a real browser, as a buyer would use it: sign in by email link, see the pass,
+// start a family group, invite someone. The "purchase" is a database row only: no Stripe charge.
+async function appTest() {
+  const cfg = JSON.parse(readFileSync("config/channel.json", "utf8"));
+  const keys = (await supa("GET", `/v1/projects/${REF}/api-keys?reveal=true`)).j;
+  const service = (keys.find((k) => k.name === "service_role") ?? keys.find((k) => k.type === "secret"))?.api_key;
+  if (!service) fail("no service key found");
+  console.log(`::add-mask::${service}`);
+  const admin = { apikey: service, authorization: `Bearer ${service}`, "content-type": "application/json" };
+  const buyer = `son-app-test+${Date.now()}@example.com`;
+  const invitee = "delivered@resend.dev";
+  const step = (t, m) => note(`Member area: ${t}`, m);
+  let ok = true;
+  const u = await (await fetch(`${SUPA}/auth/v1/admin/users`, { method: "POST", headers: admin, body: JSON.stringify({ email: buyer, email_confirm: true }) })).json();
+  if (!u.id) fail(`could not make the test buyer: ${JSON.stringify(u).slice(0, 200)}`);
+  await sql(`insert into public.purchases(email, user_id, stripe_session_id, stripe_payment_intent, amount_cents, livemode) values ('${buyer}', '${u.id}', 'cs_son_app_test', 'pi_son_app_test', 1900, false)`);
+  const { chromium } = await import("playwright-core");
+  const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome" });
+  try {
+    const gen = await (await fetch(`${SUPA}/auth/v1/admin/generate_link`, { method: "POST", headers: admin, body: JSON.stringify({ type: "magiclink", email: buyer, redirect_to: `${SITE}/family/app/` }) })).json();
+    const action = gen.action_link ?? gen.properties?.action_link;
+    if (!action) fail("no sign-in link");
+    const p = await browser.newPage();
+    const errors = [];
+    p.on("pageerror", (e) => errors.push(String(e).slice(0, 160)));
+    await p.goto(action, { waitUntil: "domcontentloaded", timeout: 60000 });
+    await p.waitForURL((x) => x.hostname.endsWith("scamornotdaily.com"), { timeout: 30000 });
+    await p.waitForSelector("#member:not(.hidden)", { timeout: 30000 });
+    const msg = await p.textContent("#member-msg");
+    if (/no active Family Pass/.test(msg ?? "")) fail("signed in, but the page says there is no pass");
+    step("signed in", `the email link opened ${SITE}/family/app/ signed in, with the pass`);
+    await p.waitForSelector("#library a, #library p", { timeout: 20000 });
+    step("past rounds", `${await p.locator("#library a").count()} past rounds listed`);
+    await p.waitForSelector("#make-family-form:not(.hidden)", { timeout: 20000 });
+    await p.fill("#make-family-form input[name=name]", "Test family");
+    await p.click("#make-family-form button[type=submit]");
+    await p.waitForFunction(() => document.getElementById("family-name")?.textContent === "Test family", null, { timeout: 20000 });
+    step("family group", "started; the buyer shows as a member");
+    await p.waitForSelector("#add-member-form:not(.hidden)", { timeout: 20000 });
+    await p.fill("#add-member-form input[name=name]", "Tester");
+    await p.fill("#add-member-form input[name=email]", invitee);
+    await p.click("#add-member-form button[type=submit]");
+    await p.waitForFunction(() => /Invite sent|error|wrong|couldn/i.test(document.getElementById("member-msg")?.textContent ?? ""), null, { timeout: 30000 });
+    const after = await p.textContent("#member-msg");
+    if (!/Invite sent/.test(after ?? "")) {
+      ok = false;
+      note("Member area: invite", `did not go through: ${after}`);
+    } else step("invite", "sent (to Resend's test address)");
+    if (await p.locator("#drill-form").count()) step("fire drill", "shown"); else step("fire drill", "hidden (no Fire Drill address yet)");
+    step("refund button", (await p.locator("#refund").isVisible()) ? "shown (not pressed: this test has no real payment to refund)" : "missing");
+    if (errors.length) {
+      ok = false;
+      note("Member area: page errors", errors.join(" | "));
+    }
+  } finally {
+    await browser.close();
+    const ids = await sql(`select id from auth.users where email in ('${buyer}', '${invitee}')`);
+    for (const r of ids) await sql(`delete from auth.users where id = '${r.id}'`);
+    await sql(`delete from public.purchases where email = '${buyer}'`);
+    const [left] = await sql(`select (select count(*) from public.purchases where email = '${buyer}')::int as p, (select count(*) from auth.users where email in ('${buyer}', '${invitee}'))::int as u, (select count(*) from public.families where name = 'Test family')::int as f`);
+    note("Member area: cleanup", `test buyer, invitee, purchase and family deleted (left: ${left.p} purchases, ${left.u} accounts, ${left.f} families)`);
+  }
+  if (!ok) fail("member area test found a problem (see notes)");
+}
+
 try {
-  if (mode === "check") await check();
+  if (mode === "app-test") await appTest();
+  else if (mode === "check") await check();
   else if (mode === "tidy-test") await tidyTest();
   else if (mode === "setup") await setup();
   else if (mode === "verify") await verify();

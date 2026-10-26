@@ -7,7 +7,7 @@ on:
       step:
         description: "check = accounts, payouts, our test objects | tidy-test = remove our test objects from another account | setup = live product, link, webhook, secrets, Pass on | verify = live checkout loads at $19"
         type: choice
-        options: [check, tidy-test, setup, verify]
+        options: [check, tidy-test, setup, verify, app-test]
         default: check
 
 permissions:

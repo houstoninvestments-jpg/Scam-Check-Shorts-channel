@@ -87,4 +87,24 @@ describe("Watch on YouTube link", () => {
     expect(readFileSync(join(dir, "index.html"), "utf8")).not.toContain("Watch on YouTube");
     delete process.env.YOUTUBE_CHANNEL_FILE;
   });
+
+  it("with the Family Pass on: say Stripe takes the card, what is kept, the refund window, and still pass the reading gate", async () => {
+    const { privacyPage, termsPage } = await import("../src/site/legal");
+    const c = config();
+    c.familyPass.enabled = true;
+    c.site.fireDrillBaseUrl = "";
+    const priv = privacyPage(c, "../");
+    const terms = termsPage(c, "../");
+    expect(priv).toMatch(/We never see or store your card number/);
+    expect(priv).toMatch(/Your email, the date, the amount, and Stripe's payment number/);
+    expect(priv).toMatch(/Resend/);
+    expect(priv).not.toMatch(/Fire Drill/); // no address yet, so no Fire Drill
+    expect(terms).toMatch(/\$19 one time/);
+    expect(terms).toMatch(/Within 30 days of buying/);
+    expect(terms).toMatch(/up to 5 family members/);
+    for (const html of [priv, terms]) expect(checkReadability(text(html)).problems).toEqual([]);
+    c.site.fireDrillBaseUrl = "https://drill.example";
+    expect(privacyPage(c, "../")).toMatch(/Fire Drill/);
+    resetConfigCache();
+  });
 });

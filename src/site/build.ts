@@ -75,7 +75,7 @@ ${
 </div>
 ${
   c.familyPass.enabled
-    ? `<h2>Family Pass</h2><p>Practice together. Past rounds, a family group with streaks, big text, and Fire Drill. $${c.familyPass.priceUsd} once.</p><a class="btn" href="family/">See Family Pass</a>`
+    ? `<h2>Family Pass</h2><p>Practice together. Past rounds, a family group with streaks${c.site.fireDrillBaseUrl ? ", big text, and Fire Drill" : ", and big text"}. $${c.familyPass.priceUsd} once.</p><a class="btn" href="family/">See Family Pass</a>`
     : ""
 }`;
   return page({
@@ -131,6 +131,9 @@ function allScams(eps: Episode[], hasCover: (n: number) => boolean) {
   return page({ title: "Every scam so far | Scam or Not", description: "Every scam text we have broken down, newest first.", body, root: "../", canonical: `${config().site.baseUrl}/scams/`, image: defaultImage() });
 }
 
+/** Fire Drill shows only once its landing page has its own address (site.fireDrillBaseUrl). */
+const fireDrillOn = () => Boolean(config().site.fireDrillBaseUrl);
+
 function familyPage() {
   const c = config();
   const f = c.familyPass;
@@ -143,12 +146,12 @@ function familyPage() {
 <li><b>Every past round.</b> Replay any day you missed.</li>
 <li><b>A private family group.</b> Up to ${f.maxMembers} people. See each other's streaks.</li>
 <li><b>Big text mode.</b> Easier reading on any phone.</li>
-<li><b>Fire Drill.</b> Send your family a harmless practice scam. If they tap, they land on a kind page that shows what to look for.</li>
+${fireDrillOn() ? `<li><b>Fire Drill.</b> Send your family a harmless practice scam. If they tap, they land on a kind page that shows what to look for.</li>` : ""}
 </ul>
 </div>
 <a class="btn" href="${esc(f.stripePaymentLink || "#")}">Get Family Pass</a>
 <p class="small">You get access right away by email link. Changed your mind? Refund yourself in one tap within ${f.refundDays} days.</p>
-<p class="small">Fire Drill links only show a friendly lesson page. They never ask for or keep any personal information.</p>`;
+${fireDrillOn() ? `<p class="small">Fire Drill links only show a friendly lesson page. They never ask for or keep any personal information.</p>` : ""}`;
   return page({ title: "Family Pass | Scam or Not", description: "Practice spotting scams together.", body, root: "../", canonical: `${c.site.baseUrl}/family/`, image: defaultImage() });
 }
 
@@ -167,11 +170,15 @@ function familyApp() {
 <form id="make-family-form" class="hidden"><p>Start your family group.</p><input name="name" required placeholder="Family name" style="width:100%;font:inherit;padding:14px;border-radius:12px;border:2px solid var(--line)"><button class="btn" type="submit">Create group</button></form>
 <div id="family" class="hidden"><p><b id="family-name"></b></p><ul id="members"></ul>
 <form id="add-member-form" class="hidden"><input name="name" required placeholder="Their name" style="width:100%;font:inherit;padding:14px;border-radius:12px;border:2px solid var(--line);margin-bottom:8px"><input type="email" name="email" required placeholder="Their email"><button class="btn alt" type="submit">Invite</button></form></div>
-<h2>Fire Drill</h2>
+${
+  fireDrillOn()
+    ? `<h2>Fire Drill</h2>
 <p>Make a harmless practice scam to send your family. If someone taps it, you'll see it here.</p>
 <form id="drill-form"><input name="label" placeholder="Who is it for? (only you see this)" style="width:100%;font:inherit;padding:14px;border-radius:12px;border:2px solid var(--line)"><button class="btn" type="submit">Make a practice text</button></form>
 <div id="drill-out" class="card hidden"><p id="drill-text"></p><button id="copy-drill" class="btn alt" type="button">Copy</button><p class="small">Text it from your own phone. Tell them afterward it was practice.</p></div>
-<ul id="drills"></ul>
+<ul id="drills"></ul>`
+    : ""
+}
 <h2>Past rounds</h2>
 <div id="library" class="list"></div>
 <h2>Account</h2>
