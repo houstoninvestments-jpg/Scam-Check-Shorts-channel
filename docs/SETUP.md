@@ -195,3 +195,24 @@ The saved `RESEND_API_KEY` is a "Sending access" key. Setup needs "Full access".
 
 Not verified from here: the Cloudflare and Resend screens. They come from
 Cloudflare's and Resend's docs found by search, not from a live screen.
+
+## 7. On-time slots: the timer's GitHub key (AARON)
+
+A free Cloudflare timer starts each slot on time for Scam or Not and Congress
+Receipts. It needs one GitHub key that can only start jobs in those two repos.
+
+1. Open `https://github.com/settings/personal-access-tokens/new`.
+2. Token name: `scamornot-timer`.
+3. Resource owner: `houstoninvestments-jpg`.
+4. Expiration: the longest offered (up to 366 days). When it runs out, the timer
+   stops starting slots and the health check opens an issue.
+5. Repository access: **Only select repositories**. Pick `Scam-Check-Shorts-channel`
+   and `congress-receipts`.
+6. Permissions, Repository permissions, **Actions**: `Read and write`.
+   (Metadata: Read-only is added by GitHub on its own.) Leave everything else as is.
+7. Click **Generate token**. Copy it. It is shown once.
+8. In the Scam-Check-Shorts-channel repo: Settings, Secrets and variables,
+   Actions, New repository secret. Name: `GH_DISPATCH_TOKEN`. Paste. Add secret.
+
+Not verified from here: GitHub's token screen. The steps come from GitHub's docs
+found by search, not from a live screen.
