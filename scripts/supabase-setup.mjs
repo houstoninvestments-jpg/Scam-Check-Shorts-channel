@@ -221,7 +221,10 @@ async function purchaseTest() {
     await fillAny(['#cardCvc', 'input[name="cvc"]'], "123");
     await fillAny(['#billingName', 'input[name="name"]', 'input[name="billingName"]'], "Test Buyer").catch(() => {});
     await fillAny(['#billingPostalCode', 'input[name="postalCode"]', 'input[name="postal"]'], "94107").catch(() => {});
-    await p.click('button[type="submit"], .SubmitButton');
+    // "Save my info" (Stripe Link) asks for a phone number when ticked: leave it off.
+    const save = p.locator("#enableStripePass");
+    if (await save.isChecked().catch(() => false)) await save.click({ force: true }).catch(() => save.uncheck({ force: true }));
+    await p.locator('[data-testid="hosted-payment-submit-button"], button[type="submit"]').first().click();
     await p.waitForURL((u) => !u.hostname.endsWith("stripe.com"), { timeout: 60000 });
     step("paid", `test card accepted on Stripe's checkout page; sent back to ${new URL(p.url()).origin}${new URL(p.url()).pathname}`);
     } catch (e) {
@@ -231,7 +234,11 @@ async function purchaseTest() {
         const names = await f.$$eval("input, select, button, [role=radio]", (els) => els.map((e) => e.getAttribute("data-testid") || e.id || e.getAttribute("name") || e.textContent?.trim()).filter(Boolean).slice(0, 25)).catch(() => []);
         fields.push(`[${new URL(f.url() || "about:blank").hostname}: ${names.join(",")}]`);
       }
-      const text = (await p.innerText("body").catch(() => "")).replace(/\s+/g, " ").slice(0, 400);
+      const body = (await p.innerText("body").catch(() => "")).replace(/\s+/g, " ");
+      const errors = await p.$$eval('[role="alert"], .FieldError, [class*="Error"]', (els) => els.map((e) => e.textContent?.trim()).filter(Boolean).slice(0, 8)).catch(() => []);
+      const sessions = await (await fetch("https://api.stripe.com/v1/checkout/sessions?limit=3", { headers: { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}` } })).json().catch(() => ({}));
+      const recent = (sessions.data ?? []).map((x) => `${x.status}/${x.payment_status}`).join(",");
+      const text = `errors: ${errors.join(" | ") || "none"} | Stripe sessions: ${recent || "none"} | end of page: ${body.slice(-500)}`;
       fail(`checkout step failed: ${String(e?.message ?? e).slice(0, 200)} | page: ${p.url()} | fields: ${fields.join(",")} | text: ${text}`);
     }
   } finally {
