@@ -11,7 +11,7 @@ const REF = process.env.PROJECT_REF;
 const TOKEN = process.env.SUPABASE_ACCESS_TOKEN;
 const API = "https://api.supabase.com";
 const URL_ = `https://${REF}.supabase.co`;
-const SITE = process.env.SITE_BASE_URL || "https://scamornot.pages.dev";
+const SITE = process.env.SITE_BASE_URL || "https://scamornotdaily.com";
 const mode = process.argv[2];
 
 const note = (title, msg) => console.log(`::notice title=${title}::${String(msg).replace(/[\r\n]+/g, " ").slice(0, 900)}`);

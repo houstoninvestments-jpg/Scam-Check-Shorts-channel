@@ -244,6 +244,14 @@ async function e2e() {
   const link = cfg.familyPass.stripePaymentLink;
   if (!/^https:\/\/buy\.stripe\.com\/test_/.test(link)) fail(`payment link is not a Stripe TEST link: ${link}`);
   const pub = cfg.supabase.publishableKey;
+  // After paying, Stripe sends buyers back to our own domain.
+  const sk = { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`, "content-type": "application/x-www-form-urlencoded" };
+  const links = await (await fetch("https://api.stripe.com/v1/payment_links?limit=20", { headers: sk })).json();
+  const pl = (links.data ?? []).find((l) => l.url === link);
+  if (pl && !String(pl.after_completion?.redirect?.url ?? "").startsWith(NEW_BASE)) {
+    const up = await fetch(`https://api.stripe.com/v1/payment_links/${pl.id}`, { method: "POST", headers: sk, body: new URLSearchParams({ "after_completion[type]": "redirect", "after_completion[redirect][url]": `${NEW_BASE}/family/app/?welcome=1` }) });
+    note("Stripe", up.ok ? `after paying, buyers now return to ${NEW_BASE}/family/app/` : `could not update the return page (${up.status})`);
+  }
   const box = await inbox();
   const email = box.address;
   const step = (t, m) => note(`E2E: ${t}`, m);

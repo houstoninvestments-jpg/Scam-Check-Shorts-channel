@@ -25,7 +25,7 @@ jobs:
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       PROJECT_REF: gnzefjbxpqpjxfvribyg
-      SITE_BASE_URL: https://scamornot.pages.dev
+      SITE_BASE_URL: https://scamornotdaily.com
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

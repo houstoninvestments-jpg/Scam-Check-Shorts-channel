@@ -56,7 +56,7 @@ learning run once a day. Each run logs its model cost at list prices in
    `config/hashtags.json` (fallback `#TextScam`); the writer only picks a
    category id. Search tags are phrases from the same file, brand-free and
    under YouTube's 500-character limit. Preview: `npx tsx src/cli.ts metadata-preview`.
-7. **Website** (`src/site`) at `https://scamornot.pages.dev` on Cloudflare Pages
+7. **Website** (`src/site`) at `https://scamornotdaily.com` (also `www.` and the original `https://scamornot.pages.dev`) on Cloudflare Pages
    (free plan). The daily job deploys with Wrangler once `CLOUDFLARE_API_TOKEN`
    and `CLOUDFLARE_ACCOUNT_ID` are set, picking `scamornot`, then
    `scamornotdaily`, then `scamornotshorts`, whichever is free. Until then it

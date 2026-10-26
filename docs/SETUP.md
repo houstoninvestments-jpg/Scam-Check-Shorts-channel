@@ -46,8 +46,8 @@ Source: [GitHub Docs, using secrets](https://docs.github.com/en/actions/how-tos/
 3. Click **New repository secret**. Name `CLOUDFLARE_API_TOKEN`, paste the token, click **Add secret**.
 4. Click **New repository secret** again. Name `CLOUDFLARE_ACCOUNT_ID`, paste the ID, click **Add secret**.
 
-The YouTube bio link is then `https://scamornot.pages.dev` (the run report and
-`data/site-target.json` show the exact address if a fallback name was used).
+The site is now at `https://scamornotdaily.com` (and `www.`); `https://scamornot.pages.dev`
+keeps working. The YouTube bio link and every link in descriptions use `https://scamornotdaily.com`.
 
 ## 2. Create the YouTube channel
 

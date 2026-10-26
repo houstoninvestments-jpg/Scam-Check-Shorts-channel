@@ -32,4 +32,4 @@ Every upload sets the altered or synthetic content flag and says in the descript
 The default 10,000 units a day is enough. We ask only for the upload lock to be lifted.
 
 **Channel**
-Scam or Not. Site: https://scamornot.pages.dev
+Scam or Not. Site: https://scamornotdaily.com (also https://scamornot.pages.dev)

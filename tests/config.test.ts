@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import { config, pagesBaseUrl, resetConfigCache } from "../src/lib/config";
 
 describe("site address", () => {
-  it("defaults to the Cloudflare Pages address", () => {
+  it("defaults to our own domain", () => {
     const keep = process.env.SITE_BASE_URL;
     delete process.env.SITE_BASE_URL;
     resetConfigCache();
-    expect(config().site.baseUrl).toBe("https://scamornot.pages.dev");
+    expect(config().site.baseUrl).toBe("https://scamornotdaily.com");
     if (keep) process.env.SITE_BASE_URL = keep;
     resetConfigCache();
   });
