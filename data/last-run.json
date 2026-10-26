@@ -1,23 +1,24 @@
 {
-  "date": "2026-10-25",
-  "slot": 2,
+  "date": "2026-10-26",
+  "slot": 3,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [
     "source bbb-scam-alerts failed: no articles found",
-    "source tx-ag failed: no articles found"
+    "source tx-ag failed: no articles found",
+    "no lead passed both checks today; skipped"
   ],
   "errors": [],
   "steps": [
     {
       "step": "scout",
       "ok": true,
-      "detail": "4 leads, 3 dropped as repeats"
+      "detail": "3 leads, 4 dropped as repeats"
     },
     {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
+      "step": "check",
+      "ok": false,
+      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
     },
     {
       "step": "check",
@@ -27,75 +28,29 @@
     {
       "step": "check",
       "ok": false,
-      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / scam)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "What to know ahead of Open Enrollment to avoid health insura: problems: Flag 'Lookalike web address' uses target.kind \"link\" with an empty match. Empty match is only valid for \"sender\" and \"attachment\", so this flag will circle nothing and viewers won't see which address is the lookalike. Change it to kind \"text\" with match \"healthcare-gov-enroll.example\". (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "What to know ahead of Open Enrollment to avoid health insura: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 31.5s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004.mp4 (1080x1920, 31.51s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004-cover.jpg (187 KB), loop similarity 0.994715"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded 9qFEqnt1HqU as public"
+      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "summary": {
-    "scam": "Fake health insurance ad | sources: FTC Consumer Alerts 2026-09-28 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 31.5s",
-    "countdown": "3.0s, red 3-2-1 above the phone (13661/13454/8876 red px), phone screen untouched",
-    "title": "Scam No. 004: Fake health insurance ad during Open Enrollment",
-    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
-    "page": "https://scamornot.pages.dev/scam/004-fake-health-insurance-ad/",
-    "upload": "9qFEqnt1HqU, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.02 for 12 model calls (writer 4x $0.76, checker-b 4x $0.13, checker-a 4x $0.13)"
+    "cost": "$0.77 for 9 model calls (writer 3x $0.55, checker-b 3x $0.10, checker-a 3x $0.12)"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-25-slot2/scam-004.mp4",
-  "episode": 4,
-  "youtubeId": "9qFEqnt1HqU",
   "cost": {
-    "usd": 1.0247,
-    "calls": 12,
-    "inputTokens": 39448,
-    "outputTokens": 20493,
+    "usd": 0.7656,
+    "calls": 9,
+    "inputTokens": 31446,
+    "outputTokens": 15529,
     "byRole": {
       "writer": {
-        "calls": 4,
-        "usd": 0.7617
+        "calls": 3,
+        "usd": 0.5487
       },
       "checker-b": {
-        "calls": 4,
-        "usd": 0.1307
+        "calls": 3,
+        "usd": 0.095
       },
       "checker-a": {
-        "calls": 4,
-        "usd": 0.1322
+        "calls": 3,
+        "usd": 0.1219
       }
     },
     "models": [
