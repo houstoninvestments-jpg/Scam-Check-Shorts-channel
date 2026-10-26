@@ -1,0 +1,59 @@
+name: Slot timer (Cloudflare)
+
+# Started by hand only. Deploys timer/ as a Cloudflare Worker that starts both channels' slots on time.
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "check = what the keys can do | deploy = put the timer live | test = use the timer's GitHub key to start one Scam or Not dry run"
+        type: choice
+        options: [check, deploy, test]
+        default: check
+
+permissions:
+  contents: read
+
+concurrency:
+  group: slot-timer
+  cancel-in-progress: false
+
+jobs:
+  timer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_TOKEN || secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: What the keys can do
+        run: |
+          note() { echo "::notice title=$1::$2"; }
+          [ -n "${{ secrets.CLOUDFLARE_WORKERS_TOKEN }}" ] && note "Cloudflare key" "using CLOUDFLARE_WORKERS_TOKEN" || note "Cloudflare key" "CLOUDFLARE_WORKERS_TOKEN not set; trying CLOUDFLARE_API_TOKEN"
+          code=$(curl -s -o /tmp/w.json -w "%{http_code}" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
+          [ "$code" = "200" ] && note "Cloudflare Workers" "the key can manage Workers" || note "Cloudflare Workers" "the key cannot manage Workers ($code: $(head -c 160 /tmp/w.json))"
+          if [ -z "$GH_DISPATCH_TOKEN" ]; then note "GitHub key" "GH_DISPATCH_TOKEN not set"; else
+            for r in houstoninvestments-jpg/Scam-Check-Shorts-channel houstoninvestments-jpg/congress-receipts; do
+              code=$(curl -s -o /tmp/g.json -w "%{http_code}" -H "Authorization: Bearer $GH_DISPATCH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/$r/actions/workflows/daily.yml")
+              note "GitHub key: $r" "$([ "$code" = "200" ] && echo "can see its daily job" || echo "cannot see its daily job ($code)")"
+            done
+          fi
+
+      - name: Deploy the timer
+        if: inputs.step == 'deploy'
+        working-directory: timer
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4.151.2 deploy 2>&1 | tail -5
+          printf '%s' "$GH_DISPATCH_TOKEN" | npx --yes wrangler@4.151.2 secret put GH_DISPATCH_TOKEN 2>&1 | tail -2
+          s=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/scamornot-timer/schedules" | python3 -c "import json,sys;print(', '.join(x['cron'] for x in json.load(sys.stdin)['result']['schedules']))")
+          echo "::notice title=Timer live::scamornot-timer runs at: $s (UTC)"
+
+      - name: Test the GitHub key by starting one Scam or Not dry run
+        if: inputs.step == 'test'
+        run: |
+          code=$(curl -s -o /tmp/d.txt -w "%{http_code}" -X POST -H "Authorization: Bearer $GH_DISPATCH_TOKEN" -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/houstoninvestments-jpg/Scam-Check-Shorts-channel/actions/workflows/daily.yml/dispatches -d '{"ref":"main","inputs":{"dry_run":"true"}}')
+          [ "$code" = "204" ] && echo "::notice title=GitHub key::can start the daily job (one dry run started; uploads nothing)" || { echo "::error title=GitHub key::refused ($code: $(head -c 200 /tmp/d.txt))"; exit 1; }

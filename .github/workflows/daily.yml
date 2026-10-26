@@ -21,6 +21,10 @@ on:
         description: "Run as this posting slot (1, 2 or 3). Empty = a manual run outside the slots"
         type: string
         default: ""
+      slot_date:
+        description: "With slot: the Pacific date it belongs to (YYYY-MM-DD). Set by the Cloudflare timer"
+        type: string
+        default: ""
       live_test:
         description: "Dry run with live sources and the real model: real checks and real cost, nothing uploaded"
         type: boolean
@@ -68,6 +72,7 @@ jobs:
     outputs:
       go: ${{ steps.slot.outputs.go }}
       slot: ${{ steps.slot.outputs.slot }}
+      slot_date: ${{ steps.slot.outputs.slot_date }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -77,7 +82,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Pick the slot
         id: slot
-        run: npx tsx src/cli.ts slot-gate ${{ github.event_name == 'schedule' && format('--schedule "{0}"', github.event.schedule) || '' }} ${{ inputs.slot != '' && format('--slot {0}', inputs.slot) || '' }}
+        run: npx tsx src/cli.ts slot-gate ${{ github.event_name == 'schedule' && format('--schedule "{0}"', github.event.schedule) || '' }} ${{ inputs.slot != '' && format('--slot {0}', inputs.slot) || '' }} ${{ inputs.slot_date != '' && format('--slot-date {0}', inputs.slot_date) || '' }}
 
   short:
     needs: gate
@@ -101,6 +106,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       KOKORO_DIR: ${{ github.workspace }}/models/kokoro
       SLOT: ${{ needs.gate.outputs.slot }}
+      SLOT_DATE: ${{ needs.gate.outputs.slot_date }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
@@ -204,7 +210,7 @@ jobs:
             npx tsx src/cli.ts daily --dry-run --voice kokoro $live ${SLOT:+--slot $SLOT}  # same free voice as live runs
           else
             echo "mode=live" >> "$GITHUB_OUTPUT"
-            npx tsx src/cli.ts daily ${SLOT:+--slot $SLOT}
+            npx tsx src/cli.ts daily ${SLOT:+--slot $SLOT} ${SLOT_DATE:+--slot-date $SLOT_DATE}
           fi
 
       - name: Learn from retention

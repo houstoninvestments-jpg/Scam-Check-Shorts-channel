@@ -28,6 +28,7 @@ export interface RunOptions {
   workDir?: string;
   skin?: SkinId; // test renders only: force a phone skin
   slot?: number; // which of the day's posting slots this run is (1-3); manual runs leave it empty
+  slotDate?: string; // the Pacific date the slot belongs to; with slot, a second start of the same slot exits
 }
 
 export interface RunReport {
@@ -61,6 +62,20 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
   const work = opts.workDir ?? path("work", date);
 
   try {
+    // Each slot runs once: the Cloudflare timer starts it on time; GitHub's own (often late) start of the same slot then exits.
+    if (!opts.dryRun && opts.slot && opts.slotDate) {
+      const file = process.env.SLOT_RUNS_FILE || path("data/slot-runs.json");
+      const runs = readJson<Record<string, Record<string, string>>>(file, {});
+      const before = runs[opts.slotDate]?.[String(opts.slot)];
+      if (before) {
+        step("slot", true, `slot ${opts.slot} for ${opts.slotDate} already started at ${before}`);
+        report.status = "skipped";
+        return report;
+      }
+      runs[opts.slotDate] = { ...runs[opts.slotDate], [String(opts.slot)]: new Date().toISOString() };
+      for (const d of Object.keys(runs).sort().slice(0, -14)) delete runs[d]; // two weeks is plenty
+      writeJson(file, runs);
+    }
     const ledger = loadLedger();
     // Up to shortsPerDay a day. A ceiling, not a quota: each slot posts only if a new scam passes both checks.
     const todays = ledger.episodes.filter((e) => e.date === date && (e.status === "published" || (opts.dryRun && e.status === "rendered")));

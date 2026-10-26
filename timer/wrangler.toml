@@ -1,0 +1,13 @@
+# Cloudflare Worker that starts both channels' posting slots on time. Deployed by .github/workflows/timer.yml.
+name = "scamornot-timer"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[triggers]
+# UTC. :20 covers Scam or Not's Pacific slots in summer and winter; :37 covers Congress Receipts.
+crons = ["20 * * * *", "37 * * * *"]
+
+[vars]
+# Off until Congress Receipts' own GitHub schedule is removed, so its slots never start twice.
+CONGRESS_ENABLED = "false"

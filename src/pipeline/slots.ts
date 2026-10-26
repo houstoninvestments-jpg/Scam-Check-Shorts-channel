@@ -17,12 +17,15 @@ export function scheduledInstant(cron: string, now: Date): Date {
   return at;
 }
 
-export function slotFor(cron: string, now = new Date(), slots = config().cadence.slots): { go: boolean; slot?: number; why: string } {
+/** The Pacific calendar date of an instant (the day a slot belongs to). */
+export const pacificDate = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles" }).format(d);
+
+export function slotFor(cron: string, now = new Date(), slots = config().cadence.slots): { go: boolean; slot?: number; slotDate?: string; why: string } {
   const at = scheduledInstant(cron, now);
   const clock = pacificClock(at);
   const hit = slots.find((s) => s.pacific === clock);
   return hit
-    ? { go: true, slot: hit.slot, why: `cron ${cron} = ${clock} Pacific: slot ${hit.slot}` }
+    ? { go: true, slot: hit.slot, slotDate: pacificDate(at), why: `cron ${cron} = ${clock} Pacific on ${pacificDate(at)}: slot ${hit.slot}` }
     : { go: false, why: `cron ${cron} = ${clock} Pacific today: not a slot (this is the other side of daylight saving)` };
 }
 

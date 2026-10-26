@@ -57,6 +57,7 @@ async function main() {
         voice: (arg("--voice") as "elevenlabs" | "kokoro" | undefined) ?? undefined,
         skin: dryRun ? skin : undefined,
         slot,
+        slotDate: arg("--slot-date"),
         workDir: dryRun && skin ? path("work", `skin-${skin}`) : slot ? path("work", `${(await import("./lib/util.js")).today(config().cadence.timezone)}-slot${slot}`) : undefined,
       });
       log(`result: ${report.status}${report.videoFile ? ` ${report.videoFile}` : ""}`);
@@ -187,11 +188,15 @@ async function main() {
     }
     case "slot-gate": {
       // Which posting slot a scheduled firing is. Writes go/slot for the workflow; manual runs pass --slot.
-      const { slotFor } = await import("./pipeline/slots.js");
+      // The Cloudflare timer starts slots on time with --slot and --slot-date; GitHub's own schedule is the backup.
+      const { pacificDate, slotFor } = await import("./pipeline/slots.js");
       const { appendFileSync } = await import("node:fs");
       const sched = arg("--schedule") ?? "";
-      const r = sched ? slotFor(sched) : { go: true, slot: arg("--slot") ? Number(arg("--slot")) : undefined, why: "started by hand" };
-      if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `go=${r.go}\nslot=${r.slot ?? ""}\n`);
+      const bySlot = arg("--slot") ? Number(arg("--slot")) : undefined;
+      const r = sched
+        ? slotFor(sched)
+        : { go: true, slot: bySlot, slotDate: bySlot ? (arg("--slot-date") ?? pacificDate(new Date())) : undefined, why: bySlot ? `slot ${bySlot} started by the timer or by hand` : "started by hand" };
+      if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `go=${r.go}\nslot=${r.slot ?? ""}\nslot_date=${r.slotDate ?? ""}\n`);
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Slot::${r.why}` : JSON.stringify(r));
       break;
     }

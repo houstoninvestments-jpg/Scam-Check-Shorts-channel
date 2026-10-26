@@ -141,3 +141,20 @@ describe("length cap and resuming a checked script", () => {
     expect(loadLedger().nextNumber).toBe(3); // number given back
   });
 });
+
+describe("each slot runs once", () => {
+  it("a second start of the same slot on the same Pacific date exits before doing anything", async () => {
+    const { runDaily } = await import("../src/pipeline/daily");
+    const t = mkdtempSync(join(tmpdir(), "once-"));
+    process.env.LEDGER_FILE = join(t, "ledger.json");
+    process.env.LAST_RUN_FILE = join(t, "last-run.json");
+    process.env.SLOT_RUNS_FILE = join(t, "slot-runs.json");
+    writeFileSync(process.env.SLOT_RUNS_FILE, JSON.stringify({ "2026-10-27": { "2": "2026-10-27T19:20:05Z" } }));
+    writeFileSync(process.env.LEDGER_FILE, JSON.stringify({ nextNumber: 6, episodes: [], skipped: [] }));
+    const llm: any = { mode: "fixture", calls: [], async json() { throw new Error("must not be called"); } };
+    const r = await runDaily({ dryRun: false, llm, slot: 2, slotDate: "2026-10-27", workDir: join(t, "w") });
+    expect(r.status).toBe("skipped");
+    expect(r.steps[0].detail).toMatch(/already started/);
+    delete process.env.SLOT_RUNS_FILE;
+  });
+});
