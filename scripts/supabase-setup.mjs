@@ -303,12 +303,12 @@ async function diagnose() {
   const events = await (await fetch("https://api.stripe.com/v1/events?type=checkout.session.completed&limit=3", { headers: sk })).json();
   note("Stripe events", (events.data ?? []).map((e) => `${e.id} at ${new Date(e.created * 1000).toISOString()} still pending: ${e.pending_webhooks}`).join(" ; ") || "none");
   const spec = await (await fetch(`${API}/api/v1-json`)).json();
-  const logPath = Object.keys(spec.paths ?? {}).find((p) => p.includes("logs.all"));
+  const logPath = "/v1/projects/{ref}/analytics/endpoints/logs"; // logs.all was removed (Supabase changelog 48235)
   if (logPath) {
     const q = "select timestamp, event_message from function_logs order by timestamp desc limit 15";
     const since = new Date(Date.now() - 3 * 3600_000).toISOString();
     const until = new Date().toISOString();
-    note("Logs endpoint", `${logPath} params: ${JSON.stringify((spec.paths[logPath].get?.parameters ?? []).map((x) => x.name ?? x.$ref))}`);
+    note("Logs endpoint", logPath);
     const logs = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q)}&iso_timestamp_start=${since}&iso_timestamp_end=${until}`).catch((e) => ({ error: String(e).slice(-400) }));
     note("Function logs", JSON.stringify(logs.result ?? logs).replace(/eyJ[\w-]+\.[\w-]+\.[\w-]+|sk_test_\w+|whsec_\w+/g, "[hidden]").slice(0, 1400));
     const q2 = "select timestamp, event_message from function_edge_logs order by timestamp desc limit 10";
