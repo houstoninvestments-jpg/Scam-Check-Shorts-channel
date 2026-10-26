@@ -1,56 +1,92 @@
 {
   "date": "2026-10-26",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [
-    "source bbb-scam-alerts failed: no articles found",
-    "source tx-ag failed: no articles found",
-    "no lead passed both checks today; skipped"
+    "source bbb-scam-alerts failed: Error: fetch failed for https://www.bbb.org/scamtracker: Error: HTTP 403 (not retried)",
+    "source tx-ag failed: no articles found"
   ],
   "errors": [],
   "steps": [
     {
       "step": "scout",
       "ok": true,
-      "detail": "3 leads, 4 dropped as repeats"
+      "detail": "4 leads, 3 dropped as repeats"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "3 leads already failed the checks today; not retried"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Attorney General Bonta: 103 Criminal Cases Filed in Statewid: reviews disagree or unsure (unsure / unsure)"
+      "detail": "Spot scammers impersonating well-known charities and sweepst: problems: The made-up charity name \"Hope Relief Fund\" is not from the source and may match or closely resemble a real nonprofit. Before publishing, check that no real charity uses this name, or switch to a clearly fictional one, so a real organization is not tied to a scam. (rewrite 1 of 2)"
     },
     {
       "step": "check",
-      "ok": false,
-      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+      "ok": true,
+      "detail": "Spot scammers impersonating well-known charities and sweepst: both reviews agree: scam, no problems"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Talking with parents and kids about deepfakes, online safety: reviews disagree or unsure (unsure / unsure)"
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 32.8s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-26-slot1/scam-005.mp4 (1080x1920, 32.85s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-26-slot1/scam-005-cover.jpg (221 KB), loop similarity 0.994315"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded x_oDuXnfQqA as public"
     }
   ],
   "summary": {
-    "cost": "$0.77 for 9 model calls (writer 3x $0.55, checker-b 3x $0.10, checker-a 3x $0.12)"
+    "scam": "Charity sweepstakes voicemail | sources: FTC Consumer Alerts 2026-10-26 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 32.8s",
+    "music": "tension bed on: G# with a minor tenth, 72 BPM; voice -23.4 LUFS, bed -43.4 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13499/8872 red px), phone screen untouched",
+    "title": "Scam No. 005: Charity Sweepstakes Voicemail Scam: You Won, Now Pay a Fee",
+    "hashtags": "#ScamOrNot #PrizeScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/005-charity-sweepstakes-voicemail/",
+    "upload": "x_oDuXnfQqA, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.40 for 6 model calls (writer 2x $0.30, checker-b 2x $0.05, checker-a 2x $0.05)"
   },
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-26-slot1/scam-005.mp4",
+  "episode": 5,
+  "youtubeId": "x_oDuXnfQqA",
   "cost": {
-    "usd": 0.7656,
-    "calls": 9,
-    "inputTokens": 31446,
-    "outputTokens": 15529,
+    "usd": 0.396,
+    "calls": 6,
+    "inputTokens": 20664,
+    "outputTokens": 6783,
     "byRole": {
       "writer": {
-        "calls": 3,
-        "usd": 0.5487
+        "calls": 2,
+        "usd": 0.2961
       },
       "checker-b": {
-        "calls": 3,
-        "usd": 0.095
+        "calls": 2,
+        "usd": 0.0468
       },
       "checker-a": {
-        "calls": 3,
-        "usd": 0.1219
+        "calls": 2,
+        "usd": 0.053
       }
     },
     "models": [

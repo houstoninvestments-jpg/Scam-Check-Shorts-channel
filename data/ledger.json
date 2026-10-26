@@ -1,5 +1,5 @@
 {
-  "nextNumber": 5,
+  "nextNumber": 6,
   "episodes": [
     {
       "number": 1,
@@ -414,6 +414,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "9qFEqnt1HqU",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 5,
+      "leadId": "b4107e3a84e0",
+      "date": "2026-10-26",
+      "skin": "voicemail",
+      "slot": 1,
+      "brands": [
+        "google"
+      ],
+      "cta": "soft",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Charity sweepstakes voicemail",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Transcript: Hi, this is Dana from the Example Charity Fund. Because you donated last year, you were entered in our donor sweepstakes, and you won the $25,000 grand prize! To release the funds, we just need a $299 processing fee and your Social Security number to verify you. Call us back today at (202) 555-0147. Congratulations!",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article, which describes calls from someone claiming to be with a charity you support, saying you won a sweepstakes and asking you to pay or give your Social Security number. The charity name is clearly fictional and does not refer to any real organization.",
+          "evidence": [
+            {
+              "quote": "these impersonators sometimes make you believe that you won a charity-sponsored sweepstakes because you’ve donated to that charity.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+            },
+            {
+              "quote": "Only scammers demand you pay or give them personal information like your Social Security number to get a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+            }
+          ]
+        },
+        "hook": "A voicemail says you won. Read it.",
+        "stampSay": "Won a prize? Then why pay?",
+        "flags": [
+          {
+            "label": "Pay to claim",
+            "say": "They want money before you get the prize, and that alone means scam.",
+            "target": {
+              "kind": "text",
+              "match": "$299 processing fee"
+            },
+            "evidence": {
+              "quote": "The moment someone tells you to pay to claim your prize, you know you’re dealing with a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+            }
+          },
+          {
+            "label": "Asks for your Social",
+            "say": "Only a scammer asks for your Social Security number to hand over a prize.",
+            "target": {
+              "kind": "text",
+              "match": "Social Security number to verify you"
+            },
+            "evidence": {
+              "quote": "Only scammers demand you pay or give them personal information like your Social Security number to get a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+            }
+          },
+          {
+            "label": "Faked caller ID",
+            "say": "The name and number on your screen can be faked, so do not trust them.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Scammers can fake caller ID. Don’t trust it, even if it shows a real government agency or company name or phone number.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search, skip the ads",
+          "say": "Search the charity name with the word scam, and scroll past the paid ads first.",
+          "evidence": {
+            "quote": "Search online for the name of the contest or company with words like “complaint,” “review,” or “scam” to see what others are saying. But don’t rely on the first search results you see. Sometimes imposters advertise on platforms like Google Search and Bing to lead you to false information. Scroll past the paid ads to help avoid these imposters.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes"
+          }
+        },
+        "title": "Charity Sweepstakes Voicemail Scam: You Won, Now Pay a Fee",
+        "description": "A voicemail says a charity you gave to picked you for a big prize. Then it asks for a fee and your Social Security number. Here is how to spot it and what to do instead.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "005-charity-sweepstakes-voicemail",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.396,
+      "renderAttempts": 1,
+      "music": "G# minor tenth 72 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994315,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "x_oDuXnfQqA",
       "youtubePrivacy": "public"
     }
   ],
