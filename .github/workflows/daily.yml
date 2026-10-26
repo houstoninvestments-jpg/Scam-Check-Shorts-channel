@@ -114,7 +114,8 @@ jobs:
 
       - name: Install
         run: |
-          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+          # Skip if already there; time-limited retries, since Ubuntu's mirror sometimes stalls.
+          if ! command -v ffmpeg >/dev/null; then for i in 1 2 3; do timeout 240 sudo apt-get update -q && timeout 300 sudo apt-get install -y -q ffmpeg && break; echo "ffmpeg install try $i stalled; retrying"; sleep 10; done; fi; command -v ffmpeg
           npm ci
           pip install -q -r requirements-voice.txt
 
