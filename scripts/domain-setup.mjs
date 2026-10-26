@@ -26,7 +26,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ---------- API helpers ----------
 async function call(base, auth, method, path, body) {
-  const res = await fetch(`${base}${path}`, { method, headers: { authorization: `Bearer ${auth}`, "content-type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
+  const res = await fetch(`${base}${path}`, { method, headers: { authorization: `Bearer ${(auth ?? "").trim()}`, "content-type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
   const text = await res.text();
   let j;
   try {
@@ -36,7 +36,8 @@ async function call(base, auth, method, path, body) {
   }
   return { ok: res.ok, status: res.status, j };
 }
-const cf = (method, path, body) => call("https://api.cloudflare.com/client/v4", process.env.CLOUDFLARE_API_TOKEN, method, path, body);
+// Pages calls use the site's deploy token; zone and DNS calls use the DNS token when there is one.
+const cf = (method, path, body) => call("https://api.cloudflare.com/client/v4", path.startsWith("/zones") ? process.env.CLOUDFLARE_DNS_TOKEN || process.env.CLOUDFLARE_API_TOKEN : process.env.CLOUDFLARE_API_TOKEN, method, path, body);
 const resend = (method, path, body) => call("https://api.resend.com", process.env.RESEND_API_KEY, method, path, body);
 const supa = (method, path, body) => call("https://api.supabase.com", process.env.SUPABASE_ACCESS_TOKEN, method, path, body);
 const sql = async (query) => {
@@ -64,7 +65,9 @@ async function check() {
   const pd = await cf("GET", `/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${PAGES_PROJECT}/domains`);
   out.pagesDomains = pd.ok ? `can manage (now: ${(pd.j.result ?? []).map((d) => `${d.name} ${d.status}`).join(", ") || "none"})` : `cannot (${cfErr(pd)})`;
   const rd = await resend("GET", "/domains");
-  out.resend = rd.ok ? `key works (domains: ${(rd.j.data ?? []).map((d) => `${d.name} ${d.status}`).join(", ") || "none"})` : `key refused (${rd.status})`;
+  const raw = process.env.RESEND_API_KEY ?? "";
+  const shape = `starts with re_: ${raw.trim().startsWith("re_")}, length ${raw.trim().length}, had spaces or line breaks: ${raw !== raw.trim()}`;
+  out.resend = rd.ok ? `key works (domains: ${(rd.j.data ?? []).map((d) => `${d.name} ${d.status}`).join(", ") || "none"})` : `key refused (${rd.status}: ${JSON.stringify(rd.j).slice(0, 200)}; ${shape})`;
   const sa = await supa("GET", `/v1/projects/${REF}/config/auth`);
   out.supabase = sa.ok ? `token works (custom email now: ${sa.j.smtp_host ? sa.j.smtp_host : "none"})` : `token refused (${sa.status})`;
   for (const [k, v] of Object.entries(out)) note(`Check: ${k}`, v);
