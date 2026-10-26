@@ -179,8 +179,16 @@ async function purchaseTest() {
     await p.waitForSelector("#email", { timeout: 45000 });
     await p.fill("#email", email);
     // Card first if Stripe shows a payment-method choice.
-    const cardTab = p.locator('[data-testid="card-accordion-item-button"], button:has-text("Card")').first();
-    if (await cardTab.isVisible().catch(() => false)) await cardTab.click();
+    // Card fields only appear after picking "Card" in the payment-method list.
+    if (!(await p.locator("#cardNumber").isVisible().catch(() => false))) {
+      for (const pick of [() => p.getByRole("radio", { name: /^card$/i }), () => p.getByRole("button", { name: /^card$/i }), () => p.getByText("Card", { exact: true }), () => p.locator('[data-testid="card-accordion-item-button"]')]) {
+        const el = pick().first();
+        if (await el.isVisible().catch(() => false)) {
+          await el.click().catch(() => {});
+          if (await p.locator("#cardNumber").waitFor({ timeout: 8000 }).then(() => true, () => false)) break;
+        }
+      }
+    }
     await p.fill("#cardNumber", "4242 4242 4242 4242");
     await p.fill("#cardExpiry", "12 / 34");
     await p.fill("#cardCvc", "123");
