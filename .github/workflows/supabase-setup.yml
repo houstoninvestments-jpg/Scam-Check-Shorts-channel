@@ -8,7 +8,7 @@ on:
       step:
         description: "setup = database, keys, functions | test = real signup on the live site, then delete it | stripe = Stripe TEST mode into Supabase | purchase-test = one test-card purchase, unlock, refund, clean up"
         type: choice
-        options: [setup, test, stripe, purchase-test]
+        options: [setup, test, stripe, purchase-test, diagnose]
         default: setup
 
 permissions:
@@ -70,6 +70,12 @@ jobs:
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
         run: npx tsx scripts/supabase-setup.mjs purchase-test
+
+      - name: Diagnose the webhook
+        if: inputs.step == 'diagnose'
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: npx tsx scripts/supabase-setup.mjs diagnose
 
       - name: Save config
         if: always()

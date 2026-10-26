@@ -293,8 +293,31 @@ async function purchaseTest() {
   }
 }
 
+// Why didn't a webhook land? Asks Stripe what it sent and Supabase what the function saw. Prints no secrets.
+async function diagnose() {
+  const sk = { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}` };
+  const unsigned = await fetch(`${URL_}/functions/v1/stripe-webhook`, { method: "POST", body: "{}" });
+  note("Function reachable", `unsigned call answered ${unsigned.status}: ${(await unsigned.text()).slice(0, 120)}`);
+  const hooks = await (await fetch("https://api.stripe.com/v1/webhook_endpoints?limit=5", { headers: sk })).json();
+  note("Stripe webhooks", (hooks.data ?? []).map((h) => `${h.url} ${h.status} [${h.enabled_events}]`).join(" ; ") || JSON.stringify(hooks).slice(0, 200));
+  const events = await (await fetch("https://api.stripe.com/v1/events?type=checkout.session.completed&limit=3", { headers: sk })).json();
+  note("Stripe events", (events.data ?? []).map((e) => `${e.id} at ${new Date(e.created * 1000).toISOString()} still pending: ${e.pending_webhooks}`).join(" ; ") || "none");
+  const spec = await (await fetch(`${API}/api/v1-json`)).json();
+  const logPath = Object.keys(spec.paths ?? {}).find((p) => p.includes("logs.all"));
+  if (logPath) {
+    const q = "select timestamp, event_message from function_logs order by timestamp desc limit 15";
+    const since = new Date(Date.now() - 3 * 3600_000).toISOString();
+    const logs = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q)}&iso_timestamp_start=${since}`).catch((e) => ({ error: String(e).slice(0, 200) }));
+    note("Function logs", JSON.stringify(logs.result ?? logs).replace(/eyJ[\w-]+\.[\w-]+\.[\w-]+|sk_test_\w+|whsec_\w+/g, "[hidden]").slice(0, 1400));
+    const q2 = "select timestamp, event_message from function_edge_logs order by timestamp desc limit 10";
+    const edge = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q2)}&iso_timestamp_start=${since}`).catch((e) => ({ error: String(e).slice(0, 200) }));
+    note("Function calls", JSON.stringify(edge.result ?? edge).slice(0, 1400));
+  } else note("Function logs", "no logs endpoint in the API description");
+}
+
 try {
-  if (mode === "setup") await setup();
+  if (mode === "diagnose") await diagnose();
+  else if (mode === "setup") await setup();
   else if (mode === "purchase-test") await purchaseTest();
   else if (mode === "functions") await functionsReport();
   else if (mode === "test") await test();
