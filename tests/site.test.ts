@@ -102,10 +102,10 @@ describe("website", () => {
     expect(r.problems).toEqual([]);
   });
 
-  it("keeps Family Pass off: no pages, no scripts", async () => {
+  it("with Family Pass off: no pages, no scripts", async () => {
     const { buildSite } = await import("../src/site/build");
+    config().familyPass.enabled = false;
     const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
-    expect(config().familyPass.enabled).toBe(false);
     expect(r.pages.some((p) => p.startsWith("family"))).toBe(false);
     expect(existsSync(join(dir, "assets/family.js"))).toBe(false);
   });
