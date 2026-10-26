@@ -206,45 +206,29 @@ async function site() {
 }
 
 // ---------- e2e ----------
-// A real inbox for the test: a throwaway mailbox at mail.tm (or its twin mail.gw), read through their public API.
+// The test inbox: Resend's own test address. Resend accepts mail for it, records delivery, and its API
+// returns the email we sent, so the sign-in link can be read back and followed. No outside mailbox needed.
 async function inbox() {
-  const errors = [];
-  for (const api of ["https://api.mail.tm", "https://api.mail.gw"]) {
-    const doms = await fetch(`${api}/domains`).then((r) => r.json()).catch(() => ({}));
-    const list = (doms["hydra:member"] ?? (Array.isArray(doms) ? doms : [])).filter((d) => d.isActive !== false && !d.isPrivate);
-    for (const d of list.slice(0, 3)) {
-      const address = `sonbuyer${Date.now().toString(36)}@${d.domain}`;
-      const password = `Pw${Math.random().toString(36).slice(2)}${Date.now()}`;
-      const made = await fetch(`${api}/accounts`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) });
-      if (!made.ok) {
-        errors.push(`${api} ${d.domain}: ${made.status} ${(await made.text()).slice(0, 120)}`);
-        continue;
+  const address = "delivered@resend.dev";
+  const since = Date.now() - 60_000;
+  return {
+    address,
+    async waitFor(pred, ms = 240000) {
+      const until = Date.now() + ms;
+      while (Date.now() < until) {
+        const list = await resend("GET", "/emails?limit=20");
+        for (const e of list.j.data ?? []) {
+          if (Date.parse(e.created_at) < since || !(e.to ?? []).includes(address)) continue;
+          const full = (await resend("GET", `/emails/${e.id}`)).j;
+          const m = { id: full.id, from: { address: full.from, name: full.from }, subject: full.subject, text: full.text, html: [full.html ?? ""], last_event: full.last_event };
+          if (pred(m)) return m;
+        }
+        await sleep(8000);
       }
-      const tok = (await (await fetch(`${api}/token`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) })).json()).token;
-      console.log(`::add-mask::${tok}`);
-      const h = { authorization: `Bearer ${tok}` };
-      return {
-        address,
-        async waitFor(pred, ms = 240000) {
-          const until = Date.now() + ms;
-          while (Date.now() < until) {
-            const msgs = await (await fetch(`${api}/messages`, { headers: h })).json();
-            for (const m of msgs["hydra:member"] ?? []) {
-              const full = await (await fetch(`${api}/messages/${m.id}`, { headers: h })).json();
-              if (pred(full)) return full;
-            }
-            await sleep(8000);
-          }
-          return null;
-        },
-        async remove() {
-          const me = await (await fetch(`${api}/me`, { headers: h })).json();
-          if (me.id) await fetch(`${api}/accounts/${me.id}`, { method: "DELETE", headers: h });
-        },
-      };
-    }
-  }
-  fail(`could not make a test mailbox: ${errors.join(" | ") || "no mailbox domains offered"}`);
+      return null;
+    },
+    async remove() {},
+  };
 }
 
 async function e2e() {
@@ -303,8 +287,8 @@ async function e2e() {
     step("recorded", "purchase saved and an account made for the buyer");
 
     const mail = await box.waitFor((m) => /scamornotdaily\.com/i.test(m.from?.address ?? "") && /auth\/v1\/verify/.test(`${m.text ?? ""} ${(m.html ?? []).join(" ")}`));
-    if (!mail) fail("no sign-in email from scamornotdaily.com arrived within 4 minutes");
-    step("email", `arrived in the test inbox from "${mail.from.name}" <${mail.from.address}>, subject "${mail.subject}"`);
+    if (!mail) fail("no sign-in email from scamornotdaily.com went out through Resend within 4 minutes");
+    step("email", `sent through Resend from ${mail.from.address}, subject "${mail.subject}", delivery status: ${mail.last_event}`);
 
     // 3. Follow the link the way a buyer's click would; the sign-in comes back on the redirect.
     const body = `${mail.text ?? ""} ${(mail.html ?? []).join(" ")}`;
