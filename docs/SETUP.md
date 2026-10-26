@@ -158,3 +158,38 @@ After that, a new token is needed first.
 Not verified from here: the Stripe screens in steps 2 and 3. They come from
 Stripe's docs and guides found by search (the test-mode keys page is
 `https://dashboard.stripe.com/test/apikeys`), not from a live screen.
+
+## 6. Email sender and scamornotdaily.com (AARON)
+
+Two keys, then Claude Code does the rest (DNS records, verifying the domain,
+Supabase sign-in emails, the site on scamornotdaily.com, and a test purchase).
+
+**A. Cloudflare DNS token**
+
+1. Open `https://dash.cloudflare.com/profile/api-tokens` (My Profile, API Tokens).
+2. Click **Create Token**.
+3. Next to **Edit zone DNS**, click **Use template**.
+4. Token name: `scamornot-dns`.
+5. Permissions: the first row is already `Zone` · `DNS` · `Edit`. Keep it.
+   Click **+ Add more** and set the new row to `Zone` · `Zone` · `Read`.
+6. Zone Resources: `Include` · `Specific zone` · `scamornotdaily.com`.
+7. Client IP Address Filtering: leave empty.
+8. TTL: leave empty (no end date).
+9. Click **Continue to summary**, then **Create Token**. Copy the token. It is
+   shown once.
+10. In this GitHub repo: Settings, Secrets and variables, Actions, New
+    repository secret. Name: `CLOUDFLARE_DNS_TOKEN`. Paste. Add secret.
+
+**B. Resend key with Full access**
+
+The saved `RESEND_API_KEY` is a "Sending access" key. Setup needs "Full access".
+
+1. In Resend, open **API Keys** in the sidebar.
+2. Click **Create API Key**. Name: `scamornot-setup`. Permission: **Full access**.
+   Add.
+3. Copy the key (shown once).
+4. In this GitHub repo: Settings, Secrets and variables, Actions. Click the
+   pencil next to `RESEND_API_KEY` (Update). Paste the new key. Update secret.
+
+Not verified from here: the Cloudflare and Resend screens. They come from
+Cloudflare's and Resend's docs found by search, not from a live screen.
