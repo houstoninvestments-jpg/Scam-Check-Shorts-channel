@@ -39,6 +39,12 @@ jobs:
           [ -n "$SUPABASE_ACCESS_TOKEN" ] || { echo "::error title=Missing secret::SUPABASE_ACCESS_TOKEN is not set"; exit 1; }
           echo "::notice title=Token::SUPABASE_ACCESS_TOKEN is set"
 
+      - name: Retired (the old test key belongs to a different Stripe account)
+        if: inputs.step == 'stripe' || inputs.step == 'purchase-test' || inputs.step == 'webhook-check' || inputs.step == 'refund-orphans' || inputs.step == 'diagnose'
+        run: |
+          echo "::error title=Retired::Stripe test steps are retired: STRIPE_SECRET_KEY belongs to a different Stripe account. The Family Pass is live in the Scam or Not account (stripe-live.yml)."
+          exit 1
+
       - name: Database, keys and function settings
         if: inputs.step == 'setup'
         run: npx tsx scripts/supabase-setup.mjs setup
@@ -62,19 +68,16 @@ jobs:
       - name: Stripe test mode
         if: inputs.step == 'stripe'
         env:
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
         run: npx tsx scripts/supabase-setup.mjs stripe
 
       - name: Test purchase and refund
         if: inputs.step == 'purchase-test'
         env:
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
         run: npx tsx scripts/supabase-setup.mjs purchase-test
 
       - name: Diagnose the webhook
         if: inputs.step == 'diagnose' || inputs.step == 'webhook-check' || inputs.step == 'refund-orphans'
         env:
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
         run: npx tsx scripts/supabase-setup.mjs ${{ inputs.step }}
 
       - name: Save config

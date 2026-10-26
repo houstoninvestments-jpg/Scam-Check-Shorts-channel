@@ -133,12 +133,14 @@ Anthropic keys come from `https://console.anthropic.com`.
   the round page. Nothing sends the daily email yet.
 - **Affiliate slot.** Apply to an identity-protection affiliate program. When
   approved, fill `affiliate` in `config/channel.json` and set `enabled: true`.
-- **Family Pass.** Off. Stripe is connected in test mode. A test-card purchase
-  went through end to end on 2026-10-26: paid, pass unlocked, refunded, access
-  ended. Before switching it on for real: an email sender for sign-in links,
-  then Stripe live mode.
+- **Family Pass.** LIVE since 2026-10-26 on `https://scamornotdaily.com/family/`, $19 once,
+  in the "Scam or Not" Stripe account with Managed Payments (Stripe is the seller
+  and handles sales tax). Sign-in emails come from hello@scamornotdaily.com.
+  Fire Drill stays hidden until it has its own web address.
+  Still to do (AARON): add a bank account for payouts in the Scam or Not Stripe
+  account (Settings, then Payouts).
 
-## 5. Stripe for the Family Pass (AARON) (done 2026-10-26, test mode)
+## 5. Stripe for the Family Pass (AARON) (test mode, retired: that key belongs to another Stripe account)
 
 Do this within 7 days of 2026-10-26, while the Supabase setup token still works.
 After that, a new token is needed first.

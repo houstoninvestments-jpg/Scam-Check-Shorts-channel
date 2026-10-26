@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 15
     env:
       STRIPE_LIVE_SECRET_KEY: ${{ secrets.STRIPE_LIVE_SECRET_KEY }}
-      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      STRIPE_SECRET_KEY: ${{ (inputs.step == 'check' || inputs.step == 'tidy-test') && secrets.STRIPE_SECRET_KEY || '' }}  # old test key, other account: only to find and tidy our old test objects
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       PROJECT_REF: gnzefjbxpqpjxfvribyg
       TAX_MODE: ${{ inputs.tax_mode }}
