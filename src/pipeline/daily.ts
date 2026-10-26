@@ -15,6 +15,7 @@ import { elevenlabsOn, synthesize, type VoiceResult } from "../voice/index.js";
 import { prepareTimeline, renderShort, probe, assertShort } from "../render/index.js";
 import { countdownRed, extractCover, loopSimilarity, readWindowChange } from "../render/cover.js";
 import { saveSiteCover, sourceShort } from "../render/covers.js";
+import { makeMusic } from "../render/music.js";
 import { categoryFor } from "../publish/tags.js";
 import { uploadRequest, publishShort, recheckLock, type Uploader } from "../publish/youtube.js";
 
@@ -240,7 +241,13 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       sourceName: sourceShort(ep.sources[0]?.name ?? ""),
       // Always set explicitly: an absent value would fall back to the template's sample settings.
       testLabel: opts.dryRun ? "TEST RENDER" : "",
+      music: false,
     };
+    if (cfg.music.enabled) {
+      const m = makeMusic(timeline, publicDir, cfg.music.belowVoiceDb);
+      props.music = true;
+      report.summary.music = `tension bed on: voice ${m.voiceLufs} LUFS, bed ${m.musicLufs} LUFS (${m.belowVoiceDb} dB under)`;
+    }
     writeJson(join(work, "props.json"), props);
     const videoFile = join(work, `scam-${pad3(number)}${opts.dryRun ? "-test" : ""}.mp4`);
     await renderShort(props, publicDir, videoFile);

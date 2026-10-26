@@ -33,6 +33,10 @@ on:
         description: "Instead of making a Short: re-render this saved Scam number with today's template and the real voice, as a labeled preview (nothing uploaded)"
         type: string
         default: ""
+      preview_music:
+        description: "Preview mode only: add the code-made tension music bed"
+        type: boolean
+        default: false
       release_number:
         description: "Instead of making a Short: make this hidden upload public if it is clean (Scam number, e.g. 1)"
         type: string
@@ -173,7 +177,8 @@ jobs:
             # (refs/previews/...), not on any branch, so it can be fetched without touching main.
             echo "mode=preview" >> "$GITHUB_OUTPUT"
             n=$(printf '%03d' "${{ inputs.preview_number }}")
-            npx tsx src/cli.ts rerender --number "${{ inputs.preview_number }}" --work work/preview
+            music=""; [ "${{ inputs.preview_music }}" = "true" ] && music="--music"
+            npx tsx src/cli.ts rerender --number "${{ inputs.preview_number }}" --work work/preview $music
             git config user.name "scam-or-not-bot"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             blob=$(git hash-object -w "work/preview/scam-$n-preview.mp4")

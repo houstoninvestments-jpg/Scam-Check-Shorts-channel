@@ -28,6 +28,7 @@ export interface ChannelConfig {
     dailyQuotaBudget: number;
   };
   scout: { maxAgeDays: number; minScore: number; dedupeSimilarity: number };
+  music: { enabled: boolean; belowVoiceDb: number };
 }
 
 let cached: ChannelConfig | undefined;

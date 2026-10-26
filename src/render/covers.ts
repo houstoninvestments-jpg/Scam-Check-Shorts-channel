@@ -53,6 +53,7 @@ export async function backfillCovers(episodes: Episode[] = loadLedger().episodes
       voiceLabel: "AI voice",
       sourceName: sourceShort(e.sources[0]?.name ?? ""),
       testLabel: "",
+      music: false,
     };
     const composition = await selectComposition({ serveUrl, id: "ScamShort", inputProps: props, browserExecutable });
     const png = join(publicDir, `cover-${e.number}.png`);

@@ -85,5 +85,9 @@
     "maxAgeDays": 45,
     "minScore": 0.15,
     "dedupeSimilarity": 0.55
+  },
+  "music": {
+    "enabled": false,
+    "belowVoiceDb": 20
   }
 }

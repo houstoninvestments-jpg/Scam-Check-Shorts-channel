@@ -211,6 +211,8 @@ export const ScamShort: React.FC<ShortProps> = (p) => {
             <Audio src={staticFile(b.audio!)} />
           </Sequence>
         ))}
+      {/* tension bed, made in code (src/render/music.ts); on only when config music.enabled */}
+      {p.music ? <Audio src={staticFile("music.wav")} /> : null}
       {/* soft tick on each number */}
       {[0, 1, 2].map((i) => (
         <Sequence key={`tick${i}`} from={read.from + i * fps} durationInFrames={10}>
