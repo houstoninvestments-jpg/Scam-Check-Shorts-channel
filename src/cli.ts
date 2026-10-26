@@ -181,7 +181,7 @@ async function main() {
       // Preview of a saved episode in today's template: --number 2 [--voice kokoro] [--work dir]
       const { rerender } = await import("./render/rerender.js");
       const r = await rerender(Number(arg("--number")), arg("--work") ?? path("work/rerender"), arg("--voice") as "kokoro" | undefined, flag("--music") || undefined);
-      const msg = `${r.voice}, ${(r.timeline.total / r.timeline.fps).toFixed(1)}s;${r.music ? ` music on: voice ${r.music.voiceLufs} LUFS, bed ${r.music.musicLufs} LUFS (${r.music.belowVoiceDb} dB under the voice);` : " no music;"} countdown red px ${r.countdownRed.join("/")}; phone screen changed ${(r.screenChange * 100).toFixed(2)}% during the countdown`;
+      const msg = `${r.voice}, ${(r.timeline.total / r.timeline.fps).toFixed(1)}s;${r.music ? ` music on (${r.music.params.key} with a ${r.music.params.thirdName}, ${r.music.params.bpm} BPM, pulse decay ${r.music.params.decay}): voice ${r.music.voiceLufs} LUFS, bed ${r.music.musicLufs} LUFS (${r.music.belowVoiceDb} dB under the voice);` : " no music;"} countdown red px ${r.countdownRed.join("/")}; phone screen changed ${(r.screenChange * 100).toFixed(2)}% during the countdown`;
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
       break;
     }

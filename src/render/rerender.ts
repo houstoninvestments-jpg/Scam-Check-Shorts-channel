@@ -34,7 +34,7 @@ export async function rerender(number: number, workDir: string, voice?: "elevenl
     testLabel: "PREVIEW",
     music: false,
   };
-  const music = withMusic ? makeMusic(timeline, publicDir, config().music.belowVoiceDb) : null;
+  const music = withMusic ? makeMusic(timeline, publicDir, config().music.belowVoiceDb, number) : null;
   props.music = !!music;
   const out = join(workDir, `scam-${String(number).padStart(3, "0")}-preview.mp4`);
   writeJson(join(workDir, "props.json"), props);

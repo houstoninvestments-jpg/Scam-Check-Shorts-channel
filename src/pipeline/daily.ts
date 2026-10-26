@@ -244,9 +244,9 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       music: false,
     };
     if (cfg.music.enabled) {
-      const m = makeMusic(timeline, publicDir, cfg.music.belowVoiceDb);
+      const m = makeMusic(timeline, publicDir, cfg.music.belowVoiceDb, number);
       props.music = true;
-      report.summary.music = `tension bed on: voice ${m.voiceLufs} LUFS, bed ${m.musicLufs} LUFS (${m.belowVoiceDb} dB under)`;
+      report.summary.music = `tension bed on: ${m.params.key} with a ${m.params.thirdName}, ${m.params.bpm} BPM; voice ${m.voiceLufs} LUFS, bed ${m.musicLufs} LUFS (${m.belowVoiceDb} dB under)`;
     }
     writeJson(join(work, "props.json"), props);
     const videoFile = join(work, `scam-${pad3(number)}${opts.dryRun ? "-test" : ""}.mp4`);
