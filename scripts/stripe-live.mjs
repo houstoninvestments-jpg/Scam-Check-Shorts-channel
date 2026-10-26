@@ -16,6 +16,10 @@ const HOOK_URL = `${SUPA}/functions/v1/stripe-webhook`;
 const SITE = "https://scamornotdaily.com";
 const PRODUCT = "Scam or Not Family Pass";
 const mode = process.argv[2];
+// "managed": Stripe's Managed Payments (Stripe is the seller and handles sales tax; needs a product tax code).
+// "standard": a normal Stripe checkout; sales tax is our own responsibility. Founder's choice.
+const TAX_MODE = process.env.TAX_MODE || "";
+const TAX_CODE = "txcd_10000000"; // Stripe: "General - Electronically Supplied Services"
 
 const note = (title, msg) => console.log(`::notice title=${title}::${String(msg).replace(/[\r\n]+/g, " ").slice(0, 1200)}`);
 const fail = (msg) => {
@@ -122,6 +126,7 @@ async function tidyTest() {
 
 // ---------- setup ----------
 async function setup() {
+  if (!["managed", "standard"].includes(TAX_MODE)) fail('choose how tax is handled first: tax_mode "managed" or "standard"');
   const a = await liveAccount();
   if (!/^scam or not$/i.test(accountName(a).trim()) || !a.charges_enabled) fail(`not the right account or it can't take payments yet ("${accountName(a)}", charges enabled ${a.charges_enabled})`);
   const cfg = JSON.parse(readFileSync("config/channel.json", "utf8"));
@@ -140,7 +145,11 @@ async function setup() {
     if (!r.ok) fail(`creating the price was refused: ${why(r)}`);
     price = r.j;
   }
-  note("Live product", `${product.id} "${PRODUCT}" at $${Number(price.unit_amount) / 100} one time`);
+  if (TAX_MODE === "managed" && product.tax_code !== TAX_CODE) {
+    const r = await stripe(LIVE, "POST", `products/${product.id}`, { tax_code: TAX_CODE });
+    if (!r.ok) fail(`setting the product's tax code was refused: ${why(r)}`);
+  }
+  note("Live product", `${product.id} "${PRODUCT}" at $${Number(price.unit_amount) / 100} one time; tax: ${TAX_MODE === "managed" ? `Managed Payments, tax code ${TAX_CODE}` : "standard checkout"}`);
 
   // Payment link that returns buyers to our domain.
   const ret = `${SITE}/family/app/?welcome=1`;
@@ -150,7 +159,7 @@ async function setup() {
     if (items.some((i) => i.price?.id === price.id) && l.after_completion?.redirect?.url === ret) link = l;
   }
   if (!link) {
-    const r = await stripe(LIVE, "POST", "payment_links", { "line_items[0][price]": price.id, "line_items[0][quantity]": "1", "after_completion[type]": "redirect", "after_completion[redirect][url]": ret });
+    const r = await stripe(LIVE, "POST", "payment_links", { "line_items[0][price]": price.id, "line_items[0][quantity]": "1", "after_completion[type]": "redirect", "after_completion[redirect][url]": ret, ...(TAX_MODE === "standard" ? { "managed_payments[enabled]": "false" } : {}) });
     if (!r.ok) fail(`creating the payment link was refused: ${why(r)}`);
     link = r.j;
   }

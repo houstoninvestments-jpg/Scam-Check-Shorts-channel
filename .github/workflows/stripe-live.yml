@@ -9,6 +9,11 @@ on:
         type: choice
         options: [check, tidy-test, setup, verify, app-test]
         default: check
+      tax_mode:
+        description: "setup only: managed = Stripe sells it and handles sales tax (extra fee) | standard = normal checkout, sales tax is ours"
+        type: choice
+        options: ["", managed, standard]
+        default: ""
 
 permissions:
   contents: write   # save the live payment link and the Family Pass switch
@@ -26,6 +31,7 @@ jobs:
       STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       PROJECT_REF: gnzefjbxpqpjxfvribyg
+      TAX_MODE: ${{ inputs.tax_mode }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
