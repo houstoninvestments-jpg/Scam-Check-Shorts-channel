@@ -68,11 +68,11 @@
     "blurb": "Placeholder. We have not picked a partner yet."
   },
   "familyPass": {
-    "enabled": false,
+    "enabled": true,
     "priceUsd": 19,
     "maxMembers": 6,
     "refundDays": 30,
-    "stripePaymentLink": "https://buy.stripe.com/test_bJe6oG4Pe8xtcrO4ak93y00"
+    "stripePaymentLink": "https://buy.stripe.com/7sY3cu5PM5sj7ik3BTafS00"
   },
   "youtube": {
     "categoryId": "27",
