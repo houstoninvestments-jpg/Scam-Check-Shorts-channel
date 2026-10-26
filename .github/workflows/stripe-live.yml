@@ -1,0 +1,47 @@
+name: Stripe live setup (one-off)
+
+# Started by hand only. Takes the Family Pass live in the "Scam or Not" Stripe account. Never charges anyone.
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "check = accounts, payouts, our test objects | tidy-test = remove our test objects from another account | setup = live product, link, webhook, secrets, Pass on | verify = live checkout loads at $19"
+        type: choice
+        options: [check, tidy-test, setup, verify]
+        default: check
+
+permissions:
+  contents: write   # save the live payment link and the Family Pass switch
+
+concurrency:
+  group: stripe-live
+  cancel-in-progress: false
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      STRIPE_LIVE_SECRET_KEY: ${{ secrets.STRIPE_LIVE_SECRET_KEY }}
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      PROJECT_REF: gnzefjbxpqpjxfvribyg
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Run step
+        run: npx tsx scripts/stripe-live.mjs ${{ inputs.step }}
+      - name: Save config
+        if: always() && inputs.step == 'setup'
+        run: |
+          git config user.name "scam-or-not-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/channel.json
+          if git diff --cached --quiet; then exit 0; fi
+          scripts/secret-scan.sh
+          git commit -q -m "Family Pass live: live payment link, switched on"
+          for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
