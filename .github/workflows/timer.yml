@@ -33,7 +33,7 @@ jobs:
           note() { echo "::notice title=$1::$2"; }
           [ -n "${{ secrets.CLOUDFLARE_WORKERS_TOKEN }}" ] && note "Cloudflare key" "using CLOUDFLARE_WORKERS_TOKEN" || note "Cloudflare key" "CLOUDFLARE_WORKERS_TOKEN not set; trying CLOUDFLARE_API_TOKEN"
           code=$(curl -s -o /tmp/w.json -w "%{http_code}" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
-          [ "$code" = "200" ] && note "Cloudflare Workers" "the key can manage Workers" || note "Cloudflare Workers" "the key cannot manage Workers ($code: $(head -c 160 /tmp/w.json))"
+          [ "$code" = "200" ] && note "Cloudflare Workers" "the key can see Workers (deploying also needs Workers Scripts: Edit)" || note "Cloudflare Workers" "the key cannot see Workers ($code: $(head -c 160 /tmp/w.json))"
           if [ -z "$GH_DISPATCH_TOKEN" ]; then note "GitHub key" "GH_DISPATCH_TOKEN not set"; else
             for r in houstoninvestments-jpg/Scam-Check-Shorts-channel houstoninvestments-jpg/congress-receipts; do
               code=$(curl -s -o /tmp/g.json -w "%{http_code}" -H "Authorization: Bearer $GH_DISPATCH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/$r/actions/workflows/daily.yml")

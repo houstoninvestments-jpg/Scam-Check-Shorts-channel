@@ -216,3 +216,21 @@ Receipts. It needs one GitHub key that can only start jobs in those two repos.
 
 Not verified from here: GitHub's token screen. The steps come from GitHub's docs
 found by search, not from a live screen.
+
+**Cloudflare key for the timer**
+
+The site's Cloudflare key can't create Workers, so the timer needs its own.
+
+1. Open `https://dash.cloudflare.com/profile/api-tokens`.
+2. Click **Create Token**.
+3. Next to **Edit Cloudflare Workers**, click **Use template**.
+4. Token name: `scamornot-timer-deploy`.
+5. Permissions: leave the template's rows as they are.
+6. Account Resources: `Include` · your account (the one that has scamornotdaily.com).
+7. Zone Resources: `Include` · `Specific zone` · `scamornotdaily.com`.
+8. Client IP Address Filtering: leave empty. TTL: leave empty.
+9. Click **Continue to summary**, then **Create Token**. Copy it (shown once).
+10. In the Scam-Check-Shorts-channel repo: Settings, Secrets and variables,
+    Actions, New repository secret. Name: `CLOUDFLARE_WORKERS_TOKEN`. Paste. Add secret.
+
+Not verified from here: Cloudflare's token screen. From Cloudflare's docs found by search.
