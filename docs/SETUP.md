@@ -133,10 +133,12 @@ Anthropic keys come from `https://console.anthropic.com`.
   the round page. Nothing sends the daily email yet.
 - **Affiliate slot.** Apply to an identity-protection affiliate program. When
   approved, fill `affiliate` in `config/channel.json` and set `enabled: true`.
-- **Family Pass.** Off. The database and edge functions are ready. It needs
-  Stripe, set up in test mode first (no real money). Steps below.
+- **Family Pass.** Off. Stripe is connected in test mode. A test-card purchase
+  went through end to end on 2026-10-26: paid, pass unlocked, refunded, access
+  ended. Before switching it on for real: an email sender for sign-in links,
+  then Stripe live mode.
 
-## 5. Stripe for the Family Pass (AARON)
+## 5. Stripe for the Family Pass (AARON) (done 2026-10-26, test mode)
 
 Do this within 7 days of 2026-10-26, while the Supabase setup token still works.
 After that, a new token is needed first.

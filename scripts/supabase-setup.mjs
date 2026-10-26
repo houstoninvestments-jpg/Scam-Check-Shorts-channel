@@ -347,8 +347,25 @@ async function webhookCheck() {
   note("Stripe webhook", "recreated with a new signing secret, stored in Supabase");
 }
 
+// Refund TEST payments for the Family Pass that never reached our database (from failed test runs).
+async function refundOrphans() {
+  const sk = { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`, "content-type": "application/x-www-form-urlencoded" };
+  if (!process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_")) fail("test key only");
+  const known = new Set((await sql("select stripe_payment_intent from public.purchases")).map((r) => r.stripe_payment_intent));
+  const pis = await (await fetch("https://api.stripe.com/v1/payment_intents?limit=20", { headers: sk })).json();
+  let n = 0;
+  for (const pi of (pis.data ?? []).filter((p) => p.status === "succeeded" && p.amount === 1900 && !p.livemode && !known.has(p.id))) {
+    const refunds = await (await fetch(`https://api.stripe.com/v1/refunds?payment_intent=${pi.id}`, { headers: sk })).json();
+    if (refunds.data?.length) continue;
+    const r = await (await fetch("https://api.stripe.com/v1/refunds", { method: "POST", headers: sk, body: new URLSearchParams({ payment_intent: pi.id }) })).json();
+    if (r.status) n++;
+  }
+  note("Leftover test payments", `${n} refunded`);
+}
+
 try {
   if (mode === "diagnose") await diagnose();
+  else if (mode === "refund-orphans") await refundOrphans();
   else if (mode === "webhook-check") await webhookCheck();
   else if (mode === "setup") await setup();
   else if (mode === "purchase-test") await purchaseTest();
