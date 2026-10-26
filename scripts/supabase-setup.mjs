@@ -178,31 +178,53 @@ async function purchaseTest() {
     await p.goto(link, { waitUntil: "domcontentloaded", timeout: 60000 });
     await p.waitForSelector("#email", { timeout: 45000 });
     await p.fill("#email", email);
-    // Card first if Stripe shows a payment-method choice.
-    // Card fields only appear after picking "Card" in the payment-method list.
-    if (!(await p.locator("#cardNumber").isVisible().catch(() => false))) {
-      for (const pick of [() => p.getByRole("radio", { name: /^card$/i }), () => p.getByRole("button", { name: /^card$/i }), () => p.getByText("Card", { exact: true }), () => p.locator('[data-testid="card-accordion-item-button"]')]) {
-        const el = pick().first();
-        if (await el.isVisible().catch(() => false)) {
-          await el.click().catch(() => {});
-          if (await p.locator("#cardNumber").waitFor({ timeout: 8000 }).then(() => true, () => false)) break;
+    // The card form can sit on the page or inside Stripe's embedded payment frame; look in every frame.
+    const inFrames = async (fn) => {
+      for (const f of p.frames()) if (await fn(f).catch(() => false)) return true;
+      return false;
+    };
+    const cardInput = (f) => f.locator('#cardNumber, input[name="number"], input[name="cardnumber"]').first();
+    if (!(await inFrames((f) => cardInput(f).isVisible()))) {
+      await inFrames(async (f) => {
+        for (const sel of ['[data-testid="card-accordion-item-button"]', 'button:has-text("Card")', '[role="radio"]:has-text("Card")', 'label:has-text("Card")', "text=Card"]) {
+          const el = f.locator(sel).first();
+          if (await el.isVisible().catch(() => false)) {
+            await el.click();
+            return true;
+          }
         }
-      }
+        return false;
+      });
+      await p.waitForTimeout(2500);
     }
-    await p.fill("#cardNumber", "4242 4242 4242 4242");
-    await p.fill("#cardExpiry", "12 / 34");
-    await p.fill("#cardCvc", "123");
-    await p.fill("#billingName", "Test Buyer");
-    const zip = p.locator("#billingPostalCode");
-    if (await zip.isVisible().catch(() => false)) await zip.fill("94107");
-    const country = p.locator("#billingCountry");
-    if (await country.isVisible().catch(() => false)) await country.selectOption("US").catch(() => {});
+    const fillAny = async (sels, value) => {
+      const ok = await inFrames(async (f) => {
+        for (const sel of sels) {
+          const el = f.locator(sel).first();
+          if (await el.isVisible().catch(() => false)) {
+            await el.fill(value);
+            return true;
+          }
+        }
+        return false;
+      });
+      if (!ok) throw new Error(`no field for ${sels[0]}`);
+    };
+    await fillAny(['#cardNumber', 'input[name="number"]', 'input[name="cardnumber"]'], "4242 4242 4242 4242");
+    await fillAny(['#cardExpiry', 'input[name="expiry"]', 'input[name="exp-date"]'], "12 / 34");
+    await fillAny(['#cardCvc', 'input[name="cvc"]'], "123");
+    await fillAny(['#billingName', 'input[name="name"]', 'input[name="billingName"]'], "Test Buyer").catch(() => {});
+    await fillAny(['#billingPostalCode', 'input[name="postalCode"]', 'input[name="postal"]'], "94107").catch(() => {});
     await p.click('button[type="submit"], .SubmitButton');
     await p.waitForURL((u) => !u.hostname.endsWith("stripe.com"), { timeout: 60000 });
     step("paid", `test card accepted on Stripe's checkout page; sent back to ${new URL(p.url()).origin}${new URL(p.url()).pathname}`);
     } catch (e) {
       // No screenshots reach us from here, so say what the page showed.
-      const fields = await p.$$eval("input, select, button", (els) => els.map((e) => e.id || e.getAttribute("name") || e.textContent?.trim()).filter(Boolean).slice(0, 40)).catch(() => []);
+      const fields = [];
+      for (const f of p.frames()) {
+        const names = await f.$$eval("input, select, button, [role=radio]", (els) => els.map((e) => e.getAttribute("data-testid") || e.id || e.getAttribute("name") || e.textContent?.trim()).filter(Boolean).slice(0, 25)).catch(() => []);
+        fields.push(`[${new URL(f.url() || "about:blank").hostname}: ${names.join(",")}]`);
+      }
       const text = (await p.innerText("body").catch(() => "")).replace(/\s+/g, " ").slice(0, 400);
       fail(`checkout step failed: ${String(e?.message ?? e).slice(0, 200)} | page: ${p.url()} | fields: ${fields.join(",")} | text: ${text}`);
     }
