@@ -128,12 +128,31 @@ Anthropic keys come from `https://console.anthropic.com`.
 
 ## Later, only when wanted
 
-- **Email signups.** The signup box stays hidden until a free Supabase project
-  exists. It should be its own new organization, not an existing one. Then
-  apply `supabase/migrations/` and set two repo **variables** (not secrets):
-  `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
+- **Email signups.** Done. The free Supabase project `gnzefjbxpqpjxfvribyg`
+  (its own organization) holds the signup list. The box is on the home page and
+  the round page. Nothing sends the daily email yet.
 - **Affiliate slot.** Apply to an identity-protection affiliate program. When
   approved, fill `affiliate` in `config/channel.json` and set `enabled: true`.
-- **Family Pass.** Off. Turning it on needs the Supabase project above, a
-  Stripe test key, `npx tsx src/cli.ts stripe-setup`, the edge functions in
-  `supabase/functions/`, and a second free address for Fire Drill.
+- **Family Pass.** Off. The database and edge functions are ready. It needs
+  Stripe, set up in test mode first (no real money). Steps below.
+
+## 5. Stripe for the Family Pass (AARON)
+
+Do this within 7 days of 2026-10-26, while the Supabase setup token still works.
+After that, a new token is needed first.
+
+1. Make a Stripe account at `https://dashboard.stripe.com/register`.
+2. Turn on test mode (the "Test mode" switch in the Dashboard).
+3. Go to Developers, then API keys. Under "Standard keys", reveal and copy the
+   **Secret key**. It starts with `sk_test_`. Do not use a key that starts with
+   `sk_live_`.
+4. In this GitHub repo: Settings, Secrets and variables, Actions, New repository
+   secret. Name it `STRIPE_SECRET_KEY`. Paste the key. Add secret.
+5. Tell Claude Code it's in. It runs the "Supabase setup (one-off)" workflow
+   with step `stripe`. That creates the $19 product, the payment link and the
+   webhook, and stores the key and the webhook secret in Supabase. Nothing is
+   charged, and the Family Pass stays off until you decide to turn it on.
+
+Not verified from here: the Stripe screens in steps 2 and 3. They come from
+Stripe's docs and guides found by search (the test-mode keys page is
+`https://dashboard.stripe.com/test/apikeys`), not from a live screen.

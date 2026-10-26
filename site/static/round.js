@@ -96,7 +96,7 @@
     app.appendChild(btn);
     var signupOn = window.SON && SON.supabaseUrl && SON.supabaseKey;
     var again = el("a", "btn", signupOn ? "Get tomorrow's round by email" : "See past scams");
-    again.href = root + (signupOn ? "#signup" : "scams/");
+    again.href = signupOn ? "#signup" : root + "scams/";
     app.appendChild(again);
     try { localStorage.setItem("round-" + round.date, String(caught)); } catch (e) {}
     if (window.SON_onRoundDone) window.SON_onRoundDone(round, caught);

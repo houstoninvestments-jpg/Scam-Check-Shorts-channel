@@ -13,9 +13,9 @@
     fetch(SON.supabaseUrl + "/rest/v1/round_signups", {
       method: "POST",
       headers: { apikey: SON.supabaseKey, "content-type": "application/json", prefer: "return=minimal" },
-      body: JSON.stringify({ email: email, source: "link-page" })
+      body: JSON.stringify({ email: email, source: form.getAttribute("data-source") || "link-page" })
     }).then(function (r) {
-      if (r.ok || r.status === 409) { msg.textContent = "You're in. Watch for tomorrow's round."; form.reset(); }
+      if (r.ok || r.status === 409) { msg.textContent = "You're in. We'll email you when the daily round starts."; form.reset(); }
       else msg.textContent = "Something went wrong. Please try again later.";
     }).catch(function () { msg.textContent = "Something went wrong. Please try again later."; });
   });

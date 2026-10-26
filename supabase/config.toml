@@ -1,0 +1,6 @@
+# Settings the Supabase CLI reads when deploying the edge functions.
+project_id = "scam-or-not"
+
+[functions.stripe-webhook]
+# Stripe signs its calls instead of sending a Supabase sign-in; the function checks that signature itself.
+verify_jwt = false

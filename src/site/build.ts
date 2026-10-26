@@ -63,15 +63,7 @@ ${eps.length > 12 ? `<p><a href="scams/">See every scam</a></p>` : ""}
 
 <p class="never">${esc(c.channel.never)}</p>
 
-<section id="signup" class="hidden">
-<h2>Get the daily round by email</h2>
-<p>Free. One short email a day. Leave anytime.</p>
-<form id="signup-form">
-<input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
-<button class="btn light" type="submit">Send me the daily round</button>
-<p id="signup-msg" class="small" role="status"></p>
-</form>
-</section>
+${signupSection("home")}
 
 <div class="card">
 <p><span class="paid">${esc(aff.label)}</span></p>
@@ -98,13 +90,30 @@ ${
   });
 }
 
+/**
+ * The email signup box. Hidden until the database is set up (signup.js shows it).
+ * Nothing sends the daily email yet, so the box promises only what is true.
+ */
+function signupSection(source: string) {
+  return `<section id="signup" class="hidden">
+<h2>Get the daily round by email</h2>
+<p>Free. Leave anytime. We'll start sending once our daily email is ready.</p>
+<form id="signup-form" data-source="${source}">
+<input type="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
+<button class="btn light" type="submit">Sign me up</button>
+<p id="signup-msg" class="small" role="status"></p>
+</form>
+</section>`;
+}
+
 function roundPage() {
   const c = config();
   const body = `
 <h1 id="round-title">Today's round</h1>
 <p class="lede">Real or scam? Three messages. Trust your gut, then see why.</p>
 <div id="round" data-root="../"><p>Loading...</p></div>
-<p class="small">Real messages in the round are typical safe messages. We write them without real names or links.</p>`;
+<p class="small">Real messages in the round are typical safe messages. We write them without real names or links.</p>
+${signupSection("round-page")}`;
   return page({
     title: "Daily round: real or scam?",
     description: "Three real-world messages. Can you tell which ones are scams?",
@@ -112,7 +121,7 @@ function roundPage() {
     root: "../",
     canonical: `${c.site.baseUrl}/round/`,
     image: defaultImage(),
-    scripts: `<script src="../assets/config.js"></script><script src="../assets/round.js"></script>${c.familyPass.enabled ? `<script type="module" src="../assets/round-family.js"></script>` : ""}`,
+    scripts: `<script src="../assets/config.js"></script><script src="../assets/round.js"></script><script src="../assets/signup.js"></script>${c.familyPass.enabled ? `<script type="module" src="../assets/round-family.js"></script>` : ""}`,
   });
 }
 
