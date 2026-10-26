@@ -292,7 +292,10 @@ async function e2e() {
 
     // 3. Follow the link the way a buyer's click would; the sign-in comes back on the redirect.
     const body = `${mail.text ?? ""} ${(mail.html ?? []).join(" ")}`;
-    const url = body.match(/https:\/\/[^\s"'<>]+auth\/v1\/verify[^\s"'<>]+/)[0].replace(/&amp;/g, "&");
+    // Prefer the link in the HTML (an href), and never take the brackets plain-text emails put around links.
+    const html = (mail.html ?? []).join(" ");
+    const href = html.match(/href="(https:\/\/[^"]+auth\/v1\/verify[^"]+)"/)?.[1];
+    const url = (href ?? body.match(/https:\/\/[^\s"'<>\[\]()]+auth\/v1\/verify[^\s"'<>\[\]()]+/)[0]).replace(/&amp;/g, "&");
     const hop = await fetch(url, { redirect: "manual" });
     const loc = hop.headers.get("location") ?? "";
     const tokenMatch = loc.match(/access_token=([^&]+)/);
