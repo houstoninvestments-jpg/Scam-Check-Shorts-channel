@@ -72,7 +72,7 @@
     "priceUsd": 19,
     "maxMembers": 6,
     "refundDays": 30,
-    "stripePaymentLink": ""
+    "stripePaymentLink": "https://buy.stripe.com/test_bJe6oG4Pe8xtcrO4ak93y00"
   },
   "youtube": {
     "categoryId": "27",
