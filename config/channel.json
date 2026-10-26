@@ -10,9 +10,18 @@
   "cadence": {
     "shortsPerDay": 3,
     "slots": [
-      { "slot": 1, "pacific": "07:20" },
-      { "slot": 2, "pacific": "12:20" },
-      { "slot": 3, "pacific": "17:20" }
+      {
+        "slot": 1,
+        "pacific": "07:20"
+      },
+      {
+        "slot": 2,
+        "pacific": "12:20"
+      },
+      {
+        "slot": 3,
+        "pacific": "17:20"
+      }
     ],
     "timezone": "America/Chicago"
   },
@@ -48,8 +57,8 @@
     "fireDrillBaseUrl": ""
   },
   "supabase": {
-    "url": "",
-    "publishableKey": ""
+    "url": "https://gnzefjbxpqpjxfvribyg.supabase.co",
+    "publishableKey": "sb_publishable_xdV49AevfL5kwXsP-1hseA_5LRxrO2n"
   },
   "affiliate": {
     "enabled": false,
