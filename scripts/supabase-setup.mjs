@@ -152,8 +152,105 @@ async function stripe() {
   note("Stripe test mode", `product, $${cfg.familyPass.priceUsd} price, payment link and webhook created; key and webhook secret stored in Supabase; Family Pass still off`);
 }
 
+// One full Family Pass purchase in Stripe TEST mode: pay with Stripe's test card on the real checkout page,
+// check the webhook recorded it and the pass unlocks, refund it through our refund function, check access ends,
+// then delete the test buyer. The service key is only held in memory and masked in the log.
+async function purchaseTest() {
+  const cfg = JSON.parse(readFileSync("config/channel.json", "utf8"));
+  const link = cfg.familyPass.stripePaymentLink;
+  if (!/^https:\/\/buy\.stripe\.com\/test_/.test(link)) fail(`payment link is not a Stripe TEST link: ${link || "none"}`);
+  const pub = cfg.supabase.publishableKey;
+  const keys = await mgmt("GET", `/v1/projects/${REF}/api-keys?reveal=true`);
+  const service = (keys.find((k) => k.name === "service_role") ?? keys.find((k) => k.type === "secret"))?.api_key;
+  if (!service) fail("no service key found");
+  console.log(`::add-mask::${service}`);
+  const admin = { apikey: service, authorization: `Bearer ${service}`, "content-type": "application/json" };
+  const email = `son-pass-test+${Date.now()}@example.com`;
+  const step = (t, m) => note(`Purchase test: ${t}`, m);
+
+  // 1. Pay on Stripe's hosted checkout page with the 4242 test card.
+  const { chromium } = await import("playwright-core");
+  const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome" });
+  try {
+    const p = await browser.newPage();
+    try {
+    await p.goto(link, { waitUntil: "networkidle" });
+    await p.fill("#email", email);
+    // Card first if Stripe shows a payment-method choice.
+    const cardTab = p.locator('[data-testid="card-accordion-item-button"], button:has-text("Card")').first();
+    if (await cardTab.isVisible().catch(() => false)) await cardTab.click();
+    await p.fill("#cardNumber", "4242 4242 4242 4242");
+    await p.fill("#cardExpiry", "12 / 34");
+    await p.fill("#cardCvc", "123");
+    await p.fill("#billingName", "Test Buyer");
+    const zip = p.locator("#billingPostalCode");
+    if (await zip.isVisible().catch(() => false)) await zip.fill("94107");
+    const country = p.locator("#billingCountry");
+    if (await country.isVisible().catch(() => false)) await country.selectOption("US").catch(() => {});
+    await p.click('button[type="submit"], .SubmitButton');
+    await p.waitForURL((u) => !u.hostname.endsWith("stripe.com"), { timeout: 60000 });
+    step("paid", `test card accepted on Stripe's checkout page; sent back to ${new URL(p.url()).origin}${new URL(p.url()).pathname}`);
+    } catch (e) {
+      // No screenshots reach us from here, so say what the page showed.
+      const fields = await p.$$eval("input, select, button", (els) => els.map((e) => e.id || e.getAttribute("name") || e.textContent?.trim()).filter(Boolean).slice(0, 40)).catch(() => []);
+      const text = (await p.innerText("body").catch(() => "")).replace(/\s+/g, " ").slice(0, 400);
+      fail(`checkout step failed: ${String(e?.message ?? e).slice(0, 200)} | page: ${p.url()} | fields: ${fields.join(",")} | text: ${text}`);
+    }
+  } finally {
+    await browser.close();
+  }
+
+  // 2. The webhook should record the purchase and create the buyer's account within a few seconds.
+  let row;
+  for (let i = 0; i < 20 && !row?.user_id; i++) {
+    await new Promise((r) => setTimeout(r, 3000));
+    [row] = await sql(`select id, user_id, amount_cents, livemode, stripe_payment_intent, refunded_at from public.purchases where email = '${email}'`);
+  }
+  if (!row) fail("the webhook never recorded the purchase");
+  step("recorded", `purchase saved: $${row.amount_cents / 100}, test mode: ${!row.livemode}, account linked: ${!!row.user_id}`);
+  if (!row.user_id) fail("purchase saved but no account was linked to it (the buyer would not get access)");
+
+  try {
+    // 3. Sign in as the buyer (a one-time link made with the admin key, used straight away).
+    const gen = await (await fetch(`${URL_}/auth/v1/admin/generate_link`, { method: "POST", headers: admin, body: JSON.stringify({ type: "magiclink", email }) })).json();
+    const tokenHash = gen.hashed_token ?? gen.properties?.hashed_token;
+    const session = await (await fetch(`${URL_}/auth/v1/verify`, { method: "POST", headers: { apikey: pub, "content-type": "application/json" }, body: JSON.stringify({ type: "magiclink", token_hash: tokenHash }) })).json();
+    if (!session.access_token) fail(`could not sign in as the test buyer: ${JSON.stringify(session).slice(0, 200)}`);
+    console.log(`::add-mask::${session.access_token}`);
+    const buyer = { apikey: pub, authorization: `Bearer ${session.access_token}`, "content-type": "application/json" };
+    const rpc = async (fn, body = {}) => {
+      const r = await fetch(`${URL_}/rest/v1/rpc/${fn}`, { method: "POST", headers: buyer, body: JSON.stringify(body) });
+      return { status: r.status, body: await r.json().catch(() => null) };
+    };
+
+    // 4. The pass unlocks: has_pass is true and a family group can be started.
+    const before = await rpc("has_pass");
+    const fam = await rpc("create_family", { family_name: "Test family" });
+    if (before.body !== true || fam.status !== 200) fail(`pass did not unlock (has_pass ${JSON.stringify(before.body)}, create_family ${fam.status})`);
+    step("unlocked", "the buyer has the pass and could start a family group");
+
+    // 5. Refund through our own refund function, as the buyer would from the site.
+    const ref = await fetch(`${URL_}/functions/v1/family-refund`, { method: "POST", headers: buyer, body: "{}" });
+    const refBody = await ref.json().catch(() => ({}));
+    if (!ref.ok) fail(`refund function said ${ref.status}: ${JSON.stringify(refBody)}`);
+    const after = await rpc("has_pass");
+    const [r2] = await sql(`select refunded_at from public.purchases where id = ${row.id}`);
+    const stripeRefunds = await (await fetch(`https://api.stripe.com/v1/refunds?payment_intent=${row.stripe_payment_intent}`, { headers: { authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}` } })).json();
+    const refund = stripeRefunds.data?.[0];
+    if (after.body !== false || !r2.refunded_at || !refund) fail(`refund incomplete (has_pass ${JSON.stringify(after.body)}, refunded_at ${r2.refunded_at}, Stripe refund ${refund?.status})`);
+    step("refunded", `Stripe refund ${refund.status} for $${refund.amount / 100}; access ended (has_pass false)`);
+  } finally {
+    // 6. Clean up: the test buyer's account (its family goes with it) and the purchase row.
+    await fetch(`${URL_}/auth/v1/admin/users/${row.user_id}`, { method: "DELETE", headers: admin });
+    await sql(`delete from public.purchases where email = '${email}'`);
+    const [left] = await sql(`select (select count(*) from public.purchases where email like 'son-pass-test+%')::int as p, (select count(*) from auth.users where email like 'son-pass-test+%')::int as u`);
+    step("cleanup", `test buyer and purchase deleted (left: ${left.p} purchases, ${left.u} accounts)`);
+  }
+}
+
 try {
   if (mode === "setup") await setup();
+  else if (mode === "purchase-test") await purchaseTest();
   else if (mode === "functions") await functionsReport();
   else if (mode === "test") await test();
   else if (mode === "stripe") await stripe();
