@@ -206,37 +206,45 @@ async function site() {
 }
 
 // ---------- e2e ----------
-// A real inbox for the test: a throwaway mailbox at mail.tm, read through its public API.
+// A real inbox for the test: a throwaway mailbox at mail.tm (or its twin mail.gw), read through their public API.
 async function inbox() {
-  const doms = await (await fetch("https://api.mail.tm/domains")).json();
-  const dom = (doms["hydra:member"] ?? doms)[0]?.domain;
-  if (!dom) fail("no test mailbox domain available");
-  const address = `son-buyer-${Date.now()}@${dom}`;
-  const password = `pw-${Math.random().toString(36).slice(2)}-${Date.now()}`;
-  const made = await fetch("https://api.mail.tm/accounts", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) });
-  if (!made.ok) fail(`could not make a test mailbox (${made.status})`);
-  const tok = (await (await fetch("https://api.mail.tm/token", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) })).json()).token;
-  console.log(`::add-mask::${tok}`);
-  const h = { authorization: `Bearer ${tok}` };
-  return {
-    address,
-    async waitFor(pred, ms = 240000) {
-      const until = Date.now() + ms;
-      while (Date.now() < until) {
-        const list = await (await fetch("https://api.mail.tm/messages", { headers: h })).json();
-        for (const m of list["hydra:member"] ?? []) {
-          const full = await (await fetch(`https://api.mail.tm/messages/${m.id}`, { headers: h })).json();
-          if (pred(full)) return full;
-        }
-        await sleep(8000);
+  const errors = [];
+  for (const api of ["https://api.mail.tm", "https://api.mail.gw"]) {
+    const doms = await fetch(`${api}/domains`).then((r) => r.json()).catch(() => ({}));
+    const list = (doms["hydra:member"] ?? (Array.isArray(doms) ? doms : [])).filter((d) => d.isActive !== false && !d.isPrivate);
+    for (const d of list.slice(0, 3)) {
+      const address = `sonbuyer${Date.now().toString(36)}@${d.domain}`;
+      const password = `Pw${Math.random().toString(36).slice(2)}${Date.now()}`;
+      const made = await fetch(`${api}/accounts`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) });
+      if (!made.ok) {
+        errors.push(`${api} ${d.domain}: ${made.status} ${(await made.text()).slice(0, 120)}`);
+        continue;
       }
-      return null;
-    },
-    async remove() {
-      const me = await (await fetch("https://api.mail.tm/me", { headers: h })).json();
-      if (me.id) await fetch(`https://api.mail.tm/accounts/${me.id}`, { method: "DELETE", headers: h });
-    },
-  };
+      const tok = (await (await fetch(`${api}/token`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ address, password }) })).json()).token;
+      console.log(`::add-mask::${tok}`);
+      const h = { authorization: `Bearer ${tok}` };
+      return {
+        address,
+        async waitFor(pred, ms = 240000) {
+          const until = Date.now() + ms;
+          while (Date.now() < until) {
+            const msgs = await (await fetch(`${api}/messages`, { headers: h })).json();
+            for (const m of msgs["hydra:member"] ?? []) {
+              const full = await (await fetch(`${api}/messages/${m.id}`, { headers: h })).json();
+              if (pred(full)) return full;
+            }
+            await sleep(8000);
+          }
+          return null;
+        },
+        async remove() {
+          const me = await (await fetch(`${api}/me`, { headers: h })).json();
+          if (me.id) await fetch(`${api}/accounts/${me.id}`, { method: "DELETE", headers: h });
+        },
+      };
+    }
+  }
+  fail(`could not make a test mailbox: ${errors.join(" | ") || "no mailbox domains offered"}`);
 }
 
 async function e2e() {
