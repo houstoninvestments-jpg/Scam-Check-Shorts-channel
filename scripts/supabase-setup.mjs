@@ -305,13 +305,14 @@ async function diagnose() {
   const spec = await (await fetch(`${API}/api/v1-json`)).json();
   const logPath = "/v1/projects/{ref}/analytics/endpoints/logs"; // logs.all was removed (Supabase changelog 48235)
   if (logPath) {
-    const q = "select timestamp, event_message from function_logs order by timestamp desc limit 15";
+    // One unified "logs" table (ClickHouse SQL), filtered by source.
+    const q = "select timestamp, source_name, event_message from logs where source_name like '%function%' and event_message not like '%booted%' order by timestamp desc limit 25";
     const since = new Date(Date.now() - 3 * 3600_000).toISOString();
     const until = new Date().toISOString();
     note("Logs endpoint", logPath);
     const logs = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q)}&iso_timestamp_start=${since}&iso_timestamp_end=${until}`).catch((e) => ({ error: String(e).slice(-400) }));
     note("Function logs", JSON.stringify(logs.result ?? logs).replace(/eyJ[\w-]+\.[\w-]+\.[\w-]+|sk_test_\w+|whsec_\w+/g, "[hidden]").slice(0, 1400));
-    const q2 = "select timestamp, event_message from function_edge_logs order by timestamp desc limit 10";
+    const q2 = "select source_name, count() as n from logs group by source_name";
     const edge = await mgmt("GET", `${logPath.replace("{ref}", REF)}?sql=${encodeURIComponent(q2)}&iso_timestamp_start=${since}&iso_timestamp_end=${until}`).catch((e) => ({ error: String(e).slice(-400) }));
     note("Function calls", JSON.stringify(edge.result ?? edge).slice(0, 1400));
   } else note("Function logs", "no logs endpoint in the API description");
