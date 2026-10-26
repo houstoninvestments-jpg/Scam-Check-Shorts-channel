@@ -256,6 +256,11 @@ jobs:
             else echo "::error title=Live check::$base/$page answered $code"; exit 1; fi
           done
           echo "::notice title=Live check::$base answered 200 for:$ok"
+          # The pages.dev address must keep working after the move to our own domain.
+          pd="https://${{ steps.site.outputs.project }}.pages.dev"
+          if [ "$pd" != "$base" ]; then
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$pd/") && [ "$code" = "200" ] && echo "::notice title=Old address::$pd still answers" || { echo "::error title=Old address::$pd answered $code"; exit 1; }
+          fi
           if curl -s "$base/" | grep -q 'class="stage"' && curl -s "$base/assets/site.css" | grep -q -- '--bg:#0A0C0F'; then
             echo "::notice title=Look::home page has the phone, the stamp and the brand colors"
           else echo "::error title=Look::home page is not showing the new look"; exit 1; fi

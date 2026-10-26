@@ -76,9 +76,15 @@ export async function resolveCloudflareProject(api: ReturnType<typeof cloudflare
 }
 
 function done(project: string, tried: string[]) {
-  writeJson(SAVED(), { project, address: `https://${project}.pages.dev` });
+  writeJson(SAVED(), { ...readJson<object>(SAVED(), {}), project, address: `https://${project}.pages.dev` });
   return { project, baseUrl: `https://${project}.pages.dev`, tried };
 }
+
+/** Our own domain on the Pages site, once connected (data/site-target.json customDomain). The pages.dev address keeps working. */
+export const customBase = () => {
+  const d = readJson<{ customDomain?: string }>(SAVED(), {}).customDomain;
+  return d ? `https://${d}` : undefined;
+};
 
 export async function pickSiteTarget(env = process.env, fetchImpl: typeof fetch = fetch): Promise<SiteTarget> {
   const token = env.CLOUDFLARE_API_TOKEN?.trim();
@@ -86,11 +92,11 @@ export async function pickSiteTarget(env = process.env, fetchImpl: typeof fetch 
   if (token && account) {
     try {
       const r = await resolveCloudflareProject(cloudflareApi(token, account, fetchImpl));
-      return { kind: "cloudflare", baseUrl: r.baseUrl, project: r.project };
+      return { kind: "cloudflare", baseUrl: customBase() ?? r.baseUrl, project: r.project };
     } catch (e) {
       // A Cloudflare hiccup must not stop the day's video: reuse the last address that worked.
       const saved = readJson<{ project?: string }>(SAVED(), {});
-      if (saved.project) return { kind: "cloudflare", baseUrl: `https://${saved.project}.pages.dev`, project: saved.project };
+      if (saved.project) return { kind: "cloudflare", baseUrl: customBase() ?? `https://${saved.project}.pages.dev`, project: saved.project };
       throw e;
     }
   }
