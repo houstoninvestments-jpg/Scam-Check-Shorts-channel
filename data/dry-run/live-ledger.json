@@ -1,5 +1,5 @@
 {
-  "nextNumber": 8,
+  "nextNumber": 9,
   "episodes": [
     {
       "number": 1,
@@ -715,6 +715,104 @@
       "renderAttempts": 1,
       "music": "D fifth 75 BPM, 20 dB under the voice",
       "loopSimilarity": 0.994336,
+      "voice": "AI voice (Kokoro open model)"
+    },
+    {
+      "number": 8,
+      "leadId": "d67141a1964f",
+      "date": "2026-10-27",
+      "skin": "android",
+      "brands": [
+        "paypal"
+      ],
+      "cta": "soft",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake ESTA application site",
+        "message": {
+          "sender": "esta-cbp-dhs.example",
+          "subject": "",
+          "body": "Complete your ESTA application today. Fee: $89. Full refund if not approved. Pay by bank transfer. Start your application now.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article on ESTA lookalike sites, which describes copycat sites with similar names that overcharge, promise refunds, and ask for other payment methods. Shown as a lookalike website page in a phone browser; the sender field holds the fake web address shown in the address bar. The address uses a fictional .example domain that cannot resolve and names no real business.",
+          "evidence": [
+            {
+              "quote": "they might come across ESTA lookalike sites trying to trick people into overpaying for the application",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            },
+            {
+              "quote": "Scammers have copycat websites that will likely overcharge you and might not even submit your paperwork",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          ]
+        },
+        "hook": "A visiting friend could land on this site today.",
+        "stampSay": "This site just wants extra money.",
+        "flags": [
+          {
+            "label": "Lookalike web address",
+            "say": "The address looks close to the real one, so check it very carefully.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Lookalike sites often have similar names, so look closely at the URL.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          },
+          {
+            "label": "Charges way more",
+            "say": "A site that charges more or promises a refund is not the real one.",
+            "target": {
+              "kind": "text",
+              "match": "Fee: $89"
+            },
+            "evidence": {
+              "quote": "Any website that charges you more to apply — or says you can get a refund — isn’t the real site.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          },
+          {
+            "label": "Odd payment method",
+            "say": "Being asked to pay a different way is a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "Pay by bank transfer"
+            },
+            "evidence": {
+              "quote": "If someone charges you more or asks you to pay a different way, that’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Use the official site",
+          "say": "Apply only through the official ESTA website or app, and nowhere else.",
+          "evidence": {
+            "quote": "The only place to apply is through the ESTA website or app.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+          }
+        },
+        "title": "Fake ESTA travel application sites charge you extra",
+        "description": "Visitors to the U.S. may come across lookalike ESTA sites. These sites will likely overcharge you and may not even file the application. Here is how to spot one and where to apply instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "008-fake-esta-application-site",
+      "status": "rendered",
+      "category": "impostor",
+      "costUsd": 0.6038,
+      "renderAttempts": 1,
+      "music": "C fifth 78 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994941,
       "voice": "AI voice (Kokoro open model)"
     }
   ],
