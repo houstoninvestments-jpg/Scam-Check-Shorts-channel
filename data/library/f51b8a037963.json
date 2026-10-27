@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/how-spot-captcha-scam",
+  "title": "How to spot a CAPTCHA scam",
+  "publishedAt": "2026-06-08T08:00:00.000Z",
+  "fetchedAt": "2026-10-27T18:22:04.269Z",
+  "text": "The FTC is getting reports about a new phishing scam that looks a lot like the CAPTCHA requests you might be used to seeing. Real CAPTCHAs give you image- or text-based tasks to prove you’re not a robot — something like typing letters and numbers exactly as they appear, or matching pictures of things like fire hydrants or traffic lights. Here’s how the fake CAPTCHA requests happen…and how you could wind up installing malware on your own device.\nYou get an unexpected CAPTCHA request while browsing a website. The screen looks a lot like a regular CAPTCHA, asking you to verify you’re human. But the message says to type a series of commands — something like “Windows + R,” then “Ctrl + V,” and then “Enter”. The screen might say “security verification,” but you’re actually following the steps to paste and run hidden malware on your device. Once it’s there, scammers can quickly steal your email account login data, mobile banking credentials, or any other information they can get access to.\nReal CAPTCHAs won’t ask you to run commands on your device. If you notice something downloading to your device after responding to a CAPTCHA, act quickly to remove the malware and protect yourself:\nDisconnect from the internet. This stops scammers from accessing your online shopping or banking accounts.\nRun a security scan to remove the malware. Keep your software and apps up to date to catch viruses.\nChange your passwords and enable two-factor authentication (using a different device) in case the malware already gave a hacker access to your accounts.\nIf you spot a CAPTCHA or pop-up that you think is trying to spread malware, report it to the FTC at ReportFraud.ftc.gov.",
+  "capture": "page"
+}

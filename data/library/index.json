@@ -1,0 +1,2201 @@
+{
+  "refreshedAt": "2026-10-27T18:22:04.269Z",
+  "entries": [
+    {
+      "id": "917322099b66",
+      "url": "https://consumer.ftc.gov/articles/avoiding-and-reporting-gift-card-scams",
+      "title": "Avoiding and Reporting Gift Card Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 8587
+    },
+    {
+      "id": "11779fec8b55",
+      "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams",
+      "title": "Fake Prize, Sweepstakes, and Lottery Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 7294
+    },
+    {
+      "id": "b1a91c7cd724",
+      "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam",
+      "title": "How To Avoid a Government Impersonation Scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 11442
+    },
+    {
+      "id": "58c389ff1512",
+      "url": "https://consumer.ftc.gov/articles/how-avoid-scam",
+      "title": "How To Avoid a Scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3660
+    },
+    {
+      "id": "f02038c03827",
+      "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams",
+      "title": "How To Recognize and Avoid Phishing Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6566
+    },
+    {
+      "id": "eda7ad9900a4",
+      "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages",
+      "title": "How to Recognize and Report Spam Text Messages",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2791
+    },
+    {
+      "id": "825bf7fec597",
+      "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams",
+      "title": "How To Spot, Avoid, and Report Tech Support Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6189
+    },
+    {
+      "id": "7767c4e23848",
+      "url": "https://consumer.ftc.gov/articles/job-scams",
+      "title": "Job Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 9049
+    },
+    {
+      "id": "d87af371199f",
+      "url": "https://consumer.ftc.gov/articles/rental-listing-scams",
+      "title": "Rental Listing Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6240
+    },
+    {
+      "id": "203ee778e38c",
+      "url": "https://consumer.ftc.gov/articles/scammers-pretend-be-your-utility-company",
+      "title": "Scammers Pretend To Be Your Utility Company",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3722
+    },
+    {
+      "id": "bb355a9edff0",
+      "url": "https://consumer.ftc.gov/articles/what-do-if-you-were-scammed",
+      "title": "What To Do if You Were Scammed",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 7305
+    },
+    {
+      "id": "319cd8df2198",
+      "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams",
+      "title": "What To Know About Cryptocurrency and Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 12008
+    },
+    {
+      "id": "a4ed1895a521",
+      "url": "https://consumer.ftc.gov/articles/what-know-about-romance-scams",
+      "title": "What To Know About Romance Scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Advice",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3821
+    },
+    {
+      "id": "b895b1378163",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/11/give-charity-not-scam",
+      "title": "Give to a charity, not a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1694
+    },
+    {
+      "id": "1b419951ba42",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/11/random-text-offering-you-job-its-probably-scam",
+      "title": "That random text offering you a job? It’s probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1504
+    },
+    {
+      "id": "943a124ec970",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/11/task-scams-create-illusion-making-money",
+      "title": "Task scams create the illusion of making money",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1637
+    },
+    {
+      "id": "22631ead3f4d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/another-round-refunds-way-fortnite-gamers-charged-unwanted-items",
+      "title": "Another round of refunds on the way for Fortnite gamers charged for unwanted items",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1174
+    },
+    {
+      "id": "d03dae88c4d1",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media",
+      "title": "Detect immigration scams that start on social media",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1850
+    },
+    {
+      "id": "cf93ad87834f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams",
+      "title": "Getting a pet? Avoid scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1679
+    },
+    {
+      "id": "674c59a7cabd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/looking-ahead-new-year",
+      "title": "Looking ahead to the new year",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1287
+    },
+    {
+      "id": "e3d2fe9cacbe",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/looking-american-flag-thats-made-usa-heres-what-know",
+      "title": "Looking for an American flag that’s Made in the USA? Here’s what to know",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1489
+    },
+    {
+      "id": "a90d9a84df42",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/low-down-health-insurance-ads-during-open-season",
+      "title": "The low-down on health insurance ads during open season",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1625
+    },
+    {
+      "id": "79920b4b30cd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/phishing-scams-can-be-hard-spot",
+      "title": "Phishing scams can be hard to spot",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1663
+    },
+    {
+      "id": "585668a5fffd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/scammers-are-delivering-phishing-messages-holiday-season",
+      "title": "Scammers are delivering phishing messages this holiday season",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1811
+    },
+    {
+      "id": "3641786b9866",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/stay-ahead-scammers-2025",
+      "title": "Stay ahead of scammers in 2025",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1809
+    },
+    {
+      "id": "ad54b6963d6f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/tis-season-taking-scammers",
+      "title": "’Tis the season of taking for scammers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1505
+    },
+    {
+      "id": "951d6e53b955",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/you-heard-correctly-scammers-are-committing-hospice-fraud",
+      "title": "You heard that correctly: Scammers are committing hospice fraud",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1734
+    },
+    {
+      "id": "a9c5b73e3866",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail",
+      "title": "Dealing with spam texts, emails, and junk mail",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1767
+    },
+    {
+      "id": "9b50e400ea4f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/four-ways-avoid-scams-after-weather-related-disaster",
+      "title": "Four ways to avoid scams after a weather-related disaster",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1590
+    },
+    {
+      "id": "bd80744db490",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/got-package-you-didnt-order-its-probably-scam",
+      "title": "Got a package you didn’t order? It’s probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1715
+    },
+    {
+      "id": "05a4229b87c9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/got-text-about-unpaid-tolls-its-probably-scam",
+      "title": "Got a text about unpaid tolls? It’s probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1364
+    },
+    {
+      "id": "37205413df97",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/scam-alert-qr-code-unexpected-package",
+      "title": "Scam alert: QR code on an unexpected package",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1873
+    },
+    {
+      "id": "d94a1debd9c4",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/start-planning-national-consumer-protection-week-2025",
+      "title": "Start planning for National Consumer Protection Week 2025",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1042
+    },
+    {
+      "id": "b1b98cac7fc6",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/very-picture-public-service",
+      "title": "The very picture of public service",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2551
+    },
+    {
+      "id": "051b45e8c22e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/fake-check-scam-targets-online-car-sellers",
+      "title": "Fake check scam targets online car sellers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1623
+    },
+    {
+      "id": "6d75f6e53006",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/have-problem-something-you-bought",
+      "title": "Have a problem with something you bought?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1293
+    },
+    {
+      "id": "bdc56ff7b908",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/looking-love-watch-out-scammers",
+      "title": "Looking for love? Watch out for scammers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1483
+    },
+    {
+      "id": "9183b49320d6",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/scammers-impersonate-ftc-officials-including-chairman-andrew-ferguson",
+      "title": "Scammers impersonate FTC officials, including Chairman Andrew Ferguson",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2165
+    },
+    {
+      "id": "9f21e9bc18b7",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/sign-over-portion-your-va-benefits-nope-thats-scam",
+      "title": "Sign over a portion of your VA benefits? Nope, that’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1854
+    },
+    {
+      "id": "c77b6d3c4208",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/02/welcome-ncpw-2025",
+      "title": "Welcome to NCPW 2025",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1707
+    },
+    {
+      "id": "6b8424f64375",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it",
+      "title": "Asked to pay to claim a million-dollar prize? Don’t bet on it",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1768
+    },
+    {
+      "id": "84f73dc5366a",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/call-or-email-saying-you-missed-jury-duty-and-need-pay-its-scam",
+      "title": "That call or email saying you missed jury duty and need to pay? It’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1594
+    },
+    {
+      "id": "42f0be0444a9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams",
+      "title": "Getting the word out about FTC imposter scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2472
+    },
+    {
+      "id": "d73cda5fadfb",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/top-scams-2024",
+      "title": "Top scams of 2024",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2128
+    },
+    {
+      "id": "f00e53130824",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam",
+      "title": "What are the signs of a scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1667
+    },
+    {
+      "id": "587055f53492",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/discounted-phone-tv-or-internet-services-if-you-pay-gift-card-no-its-scam",
+      "title": "Discounted phone, TV, or internet services if you pay with a gift card? No, it’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1528
+    },
+    {
+      "id": "d0cc1d4fab8d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/dont-pay-get-your-employer-identification-number-ein",
+      "title": "Don’t pay to get your Employer Identification Number (EIN)",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1387
+    },
+    {
+      "id": "b76699475ad3",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/help-ftc-fight-impersonation-scams",
+      "title": "Help the FTC fight impersonation scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1894
+    },
+    {
+      "id": "a76eb9dceb16",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/online-search-results-good-bad-scammy",
+      "title": "Online search results: The good, the bad, and the scammy",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1559
+    },
+    {
+      "id": "b2b17c2ce20e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams",
+      "title": "Protect yourself from phishing scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1704
+    },
+    {
+      "id": "bd657d566c1b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/recovering-after-weather-emergencies-south-great-lakes",
+      "title": "Recovering after weather emergencies from the South to the Great Lakes",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1582
+    },
+    {
+      "id": "f7b7fe3ad6df",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/refund-checks-are-mail-eligible-publishers-clearing-house-customers",
+      "title": "Refund checks are in the mail for eligible Publishers Clearing House customers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1122
+    },
+    {
+      "id": "5d35c58e2068",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/scammers-impersonate-social-security-administration",
+      "title": "Scammers impersonate the Social Security Administration",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1867
+    },
+    {
+      "id": "7e7c47088ba9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/seemingly-urgent-security-messages-could-lead-tech-support-scams",
+      "title": "Seemingly urgent security messages could lead to tech support scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1696
+    },
+    {
+      "id": "8bfca5da003b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/think-text-message-usps-it-could-be-scam",
+      "title": "Think that text message is from USPS? It could be a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1549
+    },
+    {
+      "id": "09d6ddf05efa",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/unexpected-text-scam",
+      "title": "Is that unexpected text a scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1856
+    },
+    {
+      "id": "d13be38dda14",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-gift-card-scams-mothers-day",
+      "title": "Avoid gift card scams this Mother’s Day",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1783
+    },
+    {
+      "id": "2fe59354d8f2",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales",
+      "title": "Avoid online JOANN impersonators and their fake sales",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1807
+    },
+    {
+      "id": "b4e80b9f1975",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/can-you-spot-investment-scam-social-media",
+      "title": "Can you spot an investment scam on social media?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1901
+    },
+    {
+      "id": "a4033d8d2e64",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/college-students-avoid-scammers-while-you-job-hunt",
+      "title": "College students: Avoid scammers while you job hunt",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1614
+    },
+    {
+      "id": "3c4c2fc56ae0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/getting-calls-debt-collector-you-have-rights",
+      "title": "Getting calls from a debt collector? You have rights",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1254
+    },
+    {
+      "id": "f0edec252f5a",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/no-ftc-agents-badge-numbers-arent-calling-you",
+      "title": "No, FTC “agents” with badge numbers aren’t calling you",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1878
+    },
+    {
+      "id": "d7f1970106e2",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/notice-mail-about-your-property-heres-what-know",
+      "title": "Notice in the mail about your property? Here’s what to know",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1655
+    },
+    {
+      "id": "be767d9a49fa",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/spotting-student-loan-scams",
+      "title": "Spotting student loan scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 886
+    },
+    {
+      "id": "042106fad888",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/are-you-looking-treatment-opioid-addiction-or-dependence-avoid-search-scam",
+      "title": "Are you looking for treatment for opioid addiction or dependence? Avoid a search scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1641
+    },
+    {
+      "id": "17a3912e3246",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/did-new-online-friend-ask-money-odds-are-its-scam",
+      "title": "Did a new online friend ask for money? Odds are it’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1608
+    },
+    {
+      "id": "6d9b4555ecd0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/dont-pay-prize-scam",
+      "title": "Don’t pay for a prize (scam)",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1680
+    },
+    {
+      "id": "fb08532ba255",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/how-avoid-travel-website-scams",
+      "title": "How to avoid travel website scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1810
+    },
+    {
+      "id": "650dc213139e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/how-avoid-work-home-job-scams",
+      "title": "How to avoid work-from-home job scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1365
+    },
+    {
+      "id": "be969cfa7ac6",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/it-health-insurance-or-medical-discount-plan",
+      "title": "Is it health insurance or a medical discount plan?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1244
+    },
+    {
+      "id": "2e1da236025d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/job-seeking-servicemembers-avoid-scams-while-you-search",
+      "title": "Job-seeking servicemembers: Avoid scams while you search",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1655
+    },
+    {
+      "id": "7dde15849b1d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/scammers-are-impersonating-local-law-enforcement",
+      "title": "Scammers are impersonating local law enforcement",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1560
+    },
+    {
+      "id": "09508634d918",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/scammers-posing-spca-animal-welfare-staff",
+      "title": "Scammers posing as SPCA and animal welfare staff",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1354
+    },
+    {
+      "id": "6fa5e4520b14",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search",
+      "title": "Seeking treatment for addiction? Some things to know before you search",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1497
+    },
+    {
+      "id": "f196de0e4302",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/student-loan-scammers-wont-offer-relief",
+      "title": "Student loan scammers won’t offer relief",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1718
+    },
+    {
+      "id": "6330554cf0e1",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/successfully-scoring-summer-concert-tickets",
+      "title": "Successfully scoring summer concert tickets",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1209
+    },
+    {
+      "id": "d906b7a464dc",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/welcome-military-consumer-month-2025",
+      "title": "Welcome to Military Consumer Month 2025",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1746
+    },
+    {
+      "id": "36775736874e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam",
+      "title": "Yes, going to the DMV is the only way to avoid a REAL ID scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1563
+    },
+    {
+      "id": "8416f19c401a",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/are-you-really-out-cloud-storage-or-message-scam",
+      "title": "Are you really out of Cloud storage or is that message a scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1257
+    },
+    {
+      "id": "bfe3b3a2232c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/help-people-affected-flooding-texas-not-scammer",
+      "title": "Help the people affected by flooding in Texas — not a scammer",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1628
+    },
+    {
+      "id": "97fe2be4b535",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/helping-your-military-kids-navigate-online-world",
+      "title": "Helping your military kids navigate the online world",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2008
+    },
+    {
+      "id": "437b62a42501",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/job-scammers-are-looking-hire-you",
+      "title": "Job scammers are looking to hire you",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1781
+    },
+    {
+      "id": "36f48f5d0cc7",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/new-job-how-spot-boss-imposter-scams",
+      "title": "New job? How to spot boss imposter scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1572
+    },
+    {
+      "id": "5e58b8455b34",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/real-government-agents-arent-asking-you-buy-deliver-gold-bars",
+      "title": "Real government agents aren’t asking you to buy and deliver gold bars",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1620
+    },
+    {
+      "id": "724c4ab2584e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/scammy-texts-offering-refunds-amazon-purchases",
+      "title": "Scammy texts offering “refunds” for Amazon purchases",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1502
+    },
+    {
+      "id": "ca567f93783a",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/spot-avoid-fema-impersonators",
+      "title": "Spot and avoid FEMA impersonators",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1748
+    },
+    {
+      "id": "4be69906bc89",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/spot-scams-while-getting-out-debt",
+      "title": "Spot scams while getting out of debt",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1659
+    },
+    {
+      "id": "d462805c70ab",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/text-about-overdue-traffic-ticket-probably-scam",
+      "title": "That text about an overdue traffic ticket is probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1561
+    },
+    {
+      "id": "0f1c4c2813fe",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/07/veterans-caregivers-recognize-va-benefits-overpayment-scams",
+      "title": "Veterans and caregivers: Recognize VA benefits overpayment scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1738
+    },
+    {
+      "id": "de9b75b94ee0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/business-and-government-impersonators-go-after-older-adults-life-savings",
+      "title": "Business and government impersonators go after older adults’ life savings",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2573
+    },
+    {
+      "id": "d4c84e4b483d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/five-ways-help-you-cut-down-unwanted-calls",
+      "title": "Five ways to help you cut down on unwanted calls",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1546
+    },
+    {
+      "id": "e4d6157d54f8",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/how-avoid-scams-when-looking-drug-treatment",
+      "title": "How to avoid scams when looking for drug treatment",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1482
+    },
+    {
+      "id": "a2dd67195fcc",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/how-spot-avoid-task-scams",
+      "title": "How to spot and avoid task scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1683
+    },
+    {
+      "id": "bb1aecf3a5ee",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/looking-health-insurance-make-sure-thats-what-youre-getting",
+      "title": "Looking for health insurance? Make sure that’s what you’re getting",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1943
+    },
+    {
+      "id": "10998516b8dd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/plan-avoid-scams-national-preparedness-month",
+      "title": "Plan to avoid scams this National Preparedness Month",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1672
+    },
+    {
+      "id": "2b23f13d7288",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/scammers-are-using-fake-websites-twist-jury-duty-scams",
+      "title": "Scammers are using fake websites in a twist on jury duty scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1535
+    },
+    {
+      "id": "e7b7b577bd1c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/social-media-ad-super-low-prices-well-known-brands-could-be-scam",
+      "title": "That social media ad with super low prices on well-known brands could be a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1676
+    },
+    {
+      "id": "18eafe8ac1d9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/social-media-trend-thats-actually-bank-fraud",
+      "title": "The social media trend that’s actually bank fraud",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 997
+    },
+    {
+      "id": "bcaa97eef4fd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/08/when-investment-fraud-happens-familiar-places",
+      "title": "When investment fraud happens in familiar places",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1853
+    },
+    {
+      "id": "864b56c480a5",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/ignore-unexpected-calls-about-loans-you-didnt-apply",
+      "title": "Ignore unexpected calls about loans you didn’t apply for",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1869
+    },
+    {
+      "id": "397ff4a4e9f1",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams",
+      "title": "This Medicare Open Enrollment season, learn how to protect yourself from scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1807
+    },
+    {
+      "id": "355e580d3a03",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/no-thats-not-ftc-commissioner-phone",
+      "title": "No, that’s not an FTC commissioner on the phone",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1279
+    },
+    {
+      "id": "44cb6f9acfd9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/scammers-are-impersonating-united-states-patent-and-trademark-office",
+      "title": "Scammers are impersonating the United States Patent and Trademark Office",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1827
+    },
+    {
+      "id": "b78218dbacef",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/thinking-about-selling-your-timeshare-key-steps-avoid-scams",
+      "title": "Thinking about selling your timeshare? Key steps to avoid scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1754
+    },
+    {
+      "id": "55e527497e5e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/when-sharing-your-info-online-leads-unwanted-and-unlawful-telemarketing-calls",
+      "title": "When sharing your info online leads to unwanted and unlawful telemarketing calls",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1941
+    },
+    {
+      "id": "4dbea36dbdf0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/whos-eligible-refund-amazon",
+      "title": "Who’s eligible for a refund from Amazon?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1807
+    },
+    {
+      "id": "9286e6c1ce7b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/you-donate-find-out-where-money-going",
+      "title": "Before you donate, find out where the money is going",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1492
+    },
+    {
+      "id": "83b1da6b1647",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/11/agent-told-me-stay-internet-it-scam",
+      "title": "An “agent” told me to stay off the internet. Is it a scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1667
+    },
+    {
+      "id": "6be528d7f91b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/11/donate-charities-not-scammers-giving-tuesday",
+      "title": "Donate to charities (not scammers) on Giving Tuesday",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1938
+    },
+    {
+      "id": "0c393a92c256",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/11/help-kids-protect-their-devices",
+      "title": "Help kids protect their devices",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1378
+    },
+    {
+      "id": "957597dd6e4e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/11/how-avoid-online-shopping-scam-holiday-season",
+      "title": "How to avoid an online shopping scam this holiday season",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1700
+    },
+    {
+      "id": "a072f10d7bbb",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/11/use-action-plan-avoid-scams",
+      "title": "Use this action plan to avoid scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1587
+    },
+    {
+      "id": "c8392b2a9076",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/ftc-warns-businesses-about-fake-reviews",
+      "title": "FTC warns businesses about fake reviews",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1583
+    },
+    {
+      "id": "a6e493b560f9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/how-avoid-health-insurance-scams-open-enrollment-season",
+      "title": "How to avoid health insurance scams this open enrollment season",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1875
+    },
+    {
+      "id": "29678431c227",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/lights-camera-scam-spot-virtual-casting-call-scams",
+      "title": "Lights, camera, scam! Spot virtual casting call scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1652
+    },
+    {
+      "id": "f17aa95c4cea",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/national-veterans-golden-age-games-are-free-no-matter-what-scammers-say",
+      "title": "The National Veterans Golden Age Games are free, no matter what scammers say",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1480
+    },
+    {
+      "id": "984ce81777b8",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/scammers-are-impersonating-ftc-chief-privacy-officer-john-krebs",
+      "title": "Scammers are impersonating FTC Chief Privacy Officer John Krebs",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1621
+    },
+    {
+      "id": "bae4499d8a88",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2025/12/stolen-funds-holidays-spot-military-bank-scam",
+      "title": "Stolen funds for the holidays: Spot this military bank scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1628
+    },
+    {
+      "id": "fc29e0abc71e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/avoid-weather-related-utility-scams-after-recent-winter-storm",
+      "title": "Avoid weather-related utility scams after the recent winter storm",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1768
+    },
+    {
+      "id": "0b6e836d8cef",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/can-you-spot-fake-loan-text-scam",
+      "title": "Can you spot a fake loan text scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1529
+    },
+    {
+      "id": "8f2ad38c56cb",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/data-privacy-day-and-every-day-protect-your-small-business",
+      "title": "On Data Privacy Day (and every day): Protect your small business",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1546
+    },
+    {
+      "id": "ff5d8a30c96c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/hang-unexpected-calls-saying-you-owe-back-taxes-those-are-scams",
+      "title": "Hang up on unexpected calls saying you owe back taxes. Those are scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1849
+    },
+    {
+      "id": "bda1f5a70692",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/how-handle-unexpected-calls-claim-your-money-risk",
+      "title": "How to handle unexpected calls that claim your money is at risk",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1746
+    },
+    {
+      "id": "202683df47de",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/identity-theft-awareness-week-starts-today",
+      "title": "Identity Theft Awareness Week starts today",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3117
+    },
+    {
+      "id": "23d898fc8d93",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/no-thats-not-your-boss-asking-you-buy-gift-cards",
+      "title": "No, that’s not your boss asking you to buy gift cards",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1547
+    },
+    {
+      "id": "b05c9843cf27",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/text-or-email-about-your-tax-refund-scam",
+      "title": "That text or email about your “tax refund” is a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1665
+    },
+    {
+      "id": "7afc5a7c59be",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/01/traveling-olympics-italy-heres-how-avoid-scam",
+      "title": "Traveling to the Olympics in Italy? Here’s how to avoid a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1773
+    },
+    {
+      "id": "803d2c9a715c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/debt-collection-know-your-rights-avoid-scams",
+      "title": "Debt collection: Know your rights, avoid scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1776
+    },
+    {
+      "id": "2e77466f1f46",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/got-letter-about-unemployment-benefits-you-didnt-file-thats-identity-theft",
+      "title": "Got a letter about unemployment benefits you didn’t file? That’s identity theft",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1812
+    },
+    {
+      "id": "8b934b80eb35",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam",
+      "title": "How to avoid a side hustle scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1757
+    },
+    {
+      "id": "0dd0a54de346",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/its-time-start-planning-ncpw-2026",
+      "title": "It’s time to start planning for NCPW 2026",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1266
+    },
+    {
+      "id": "8b3ecf91d0ca",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/planning-your-finances-year-come-here-are-some-tools-can-help",
+      "title": "Planning your finances for the year to come? Here are some tools that can help",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1214
+    },
+    {
+      "id": "564156a88ef0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person",
+      "title": "Why can’t that new love interest meet in person?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1535
+    },
+    {
+      "id": "24c1c5d1ad0b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-government-grant-scams-offer-free-money-personal-expenses",
+      "title": "How to avoid government grant scams that offer free money for personal expenses",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1957
+    },
+    {
+      "id": "d67141a1964f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta",
+      "title": "How to avoid scams while applying for ESTA",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1778
+    },
+    {
+      "id": "afded3102cee",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-handle-unexpected-calls-about-unclaimed-funds",
+      "title": "How to handle unexpected calls about unclaimed funds",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1713
+    },
+    {
+      "id": "af8c83186278",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-make-your-world-cup-experience-scam-free",
+      "title": "How to make your World Cup experience scam free",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2527
+    },
+    {
+      "id": "b6acfcf094f9",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-scammers-are-using-iran-conflict-try-steal-your-money-and-information",
+      "title": "How scammers are using the Iran conflict to try to steal your money and information",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1789
+    },
+    {
+      "id": "1618f5931f3f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/looking-debt-relief-heres-how-avoid-scam",
+      "title": "Looking for debt relief? Here’s how to avoid a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1667
+    },
+    {
+      "id": "ac89f38ed562",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/random-call-saying-youve-won-prize-scam",
+      "title": "That random call saying “you’ve won a prize” is a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1608
+    },
+    {
+      "id": "eead04f0bd91",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/welcome-ncpw-2026",
+      "title": "Welcome to NCPW 2026",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1543
+    },
+    {
+      "id": "0e6be864da00",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/could-mortgage-relief-offer-be-scam",
+      "title": "Could that mortgage relief offer be a scam?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1776
+    },
+    {
+      "id": "19d3cbf08032",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/did-you-buy-tickets-stubhub-between-may-12-14-last-year",
+      "title": "Did you buy tickets on StubHub between May 12-14 last year?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 895
+    },
+    {
+      "id": "1214ee8f4248",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer",
+      "title": "Got a text about expiring reward points? Look closer",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1360
+    },
+    {
+      "id": "12f6603e84d7",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams",
+      "title": "How to spot and avoid business coaching scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1687
+    },
+    {
+      "id": "cc72d105e23c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-top-scams-started-social-media",
+      "title": "How to spot the top scams that started on social media",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1992
+    },
+    {
+      "id": "71aa780d0fb0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam",
+      "title": "That job offer text is probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1603
+    },
+    {
+      "id": "6b281cdb039b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them",
+      "title": "With people losing big to investment scams, learn how to spot and avoid them",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1833
+    },
+    {
+      "id": "f65b4af5fb61",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/say-no-thanks-unexpected-offers-lower-your-credit-card-interest-rate",
+      "title": "Say “no, thanks” to unexpected offers to lower your credit card interest rate",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1724
+    },
+    {
+      "id": "331427d0bccb",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam",
+      "title": "That text about a traffic violation is probably a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1633
+    },
+    {
+      "id": "d46bb4a9c7fc",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/asked-enter-your-email-address-and-password-open-party-invite-thats-scam",
+      "title": "Asked to enter your email address and password to open a party invite? That’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1833
+    },
+    {
+      "id": "de65338672f5",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/fake-check-scam-targets-childcare-providers",
+      "title": "Fake check scam targets childcare providers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1684
+    },
+    {
+      "id": "75eeb874595b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you",
+      "title": "How are scammers trying to reach you?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1771
+    },
+    {
+      "id": "d2f841ecaf69",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/medicare-fraud-affects-everyone-so-heres-what-know-and-do",
+      "title": "Medicare fraud affects everyone, so here’s what to know and do",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1729
+    },
+    {
+      "id": "e76fd1167023",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/month-pass-it-help-someone-you-know-avoid-scam",
+      "title": "This month, Pass It On to help someone you know avoid a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1730
+    },
+    {
+      "id": "94741076cc3a",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/new-trends-reports-imposter-scams",
+      "title": "New trends in reports of imposter scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1882
+    },
+    {
+      "id": "94c8a1fd9e07",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/run-small-business-pay-your-bills-not-scammers",
+      "title": "Run a small business? Pay your bills, not scammers",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1676
+    },
+    {
+      "id": "ce91fb223cd0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/what-know-after-canvas-cyberattack",
+      "title": "What to know after the Canvas cyberattack",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1019
+    },
+    {
+      "id": "0b8da6bcb33c",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/what-will-ftcs-enforcement-take-it-down-act-mean-you",
+      "title": "What will the FTC’s enforcement of the TAKE IT DOWN Act mean for you?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2206
+    },
+    {
+      "id": "a4e70dad66a8",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/animal-lovers-learn-spot-and-avoid-breed-pet-scams",
+      "title": "Animal lovers: learn to spot and avoid this breed of pet scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1599
+    },
+    {
+      "id": "a7eb9c75afa5",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/help-fight-imposter-scams-world-elder-abuse-awareness-day",
+      "title": "Help fight imposter scams this World Elder Abuse Awareness Day",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1706
+    },
+    {
+      "id": "8b83c7ec478b",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/how-avoid-travel-scam-summer",
+      "title": "How to avoid a travel scam this summer",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1758
+    },
+    {
+      "id": "f51b8a037963",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/how-spot-captcha-scam",
+      "title": "How to spot a CAPTCHA scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1676
+    },
+    {
+      "id": "3188fd566c82",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/ignore-calls-texts-and-emails-threatening-arrest-you-missing-jury-duty",
+      "title": "Ignore calls, texts, and emails threatening to arrest you for missing jury duty",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1619
+    },
+    {
+      "id": "ecdad0dbb396",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/real-ftc-employee-wont-text-you-their-photo-id-verify-their-identity",
+      "title": "A real FTC employee won’t text you their photo ID to “verify” their identity",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2003
+    },
+    {
+      "id": "e7ea7c131782",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/06/searching-health-insurance-keep-scrolling-avoid-government-impersonators",
+      "title": "Searching for health insurance? Keep scrolling to avoid government impersonators",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1627
+    },
+    {
+      "id": "8424ff5301bc",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/can-you-spot-debt-relief-scams-target-military",
+      "title": "Can you spot debt relief scams that target the military?",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1927
+    },
+    {
+      "id": "1aae089141fd",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move",
+      "title": "How to spot fake rental listings during a military move",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1766
+    },
+    {
+      "id": "0127a44bbaa1",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/looking-substance-use-disorder-clinic-scroll-past-paid-ads",
+      "title": "Looking for a substance use disorder clinic? Scroll past paid ads",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1526
+    },
+    {
+      "id": "4086af9b7973",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/talk-your-friends-and-family-fight-fraud",
+      "title": "Talk to your friends and family to fight fraud",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1760
+    },
+    {
+      "id": "4b6bb77ce3e7",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/unclaimed-life-insurance-money-its-scam",
+      "title": "Unclaimed life insurance money? It’s a scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1689
+    },
+    {
+      "id": "b4f3040c3555",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/veterans-dont-pay-apply-va-benefits",
+      "title": "Veterans: Don’t pay to apply for VA benefits",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1764
+    },
+    {
+      "id": "8d99807b1db6",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/veterans-heres-help-protect-your-small-business",
+      "title": "Veterans: Here’s help to protect your small business",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1759
+    },
+    {
+      "id": "b1f958fc68c8",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/way-spot-scams-how-someone-asks-you-pay",
+      "title": "A way to spot scams: how someone asks you to pay",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1479
+    },
+    {
+      "id": "1d302eed3c08",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/are-ads-social-media-vetted-or-checked-scams-heres-what-know",
+      "title": "Are ads on social media vetted or checked for scams? Here’s what to know",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1704
+    },
+    {
+      "id": "f5df81d370c5",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/how-spot-investment-training-scams-social-media",
+      "title": "How to spot investment training scams on social media",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1788
+    },
+    {
+      "id": "aaa516fad4b1",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/how-spot-postcard-scam-targeting-veterans",
+      "title": "How to spot a postcard scam targeting veterans",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1751
+    },
+    {
+      "id": "863ac6ff4665",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/searching-online-bill-pay-impersonators",
+      "title": "Searching online: bill pay impersonators",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1352
+    },
+    {
+      "id": "5cc4ae88377d",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/struggling-tax-debt-heres-what-know",
+      "title": "Struggling with tax debt? Here’s what to know",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1493
+    },
+    {
+      "id": "635d36e69b18",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/unexpected-package-you-got-could-be-brushing-scam",
+      "title": "That unexpected package you got could be a brushing scam",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1690
+    },
+    {
+      "id": "15c3c6c86795",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/when-donating-support-those-need-not-scammer",
+      "title": "When donating, support those in need, not a scammer",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1819
+    },
+    {
+      "id": "16e407a358be",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/youville-helping-kids-build-online-safety-skills-summer-and-school-year",
+      "title": "Youville: Helping kids build online safety skills this summer and school year",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1732
+    },
+    {
+      "id": "2194d7d723df",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/scammers-are-impersonating-farm-equipment-businesses",
+      "title": "Scammers are impersonating farm equipment businesses",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1831
+    },
+    {
+      "id": "0e5b456e9f78",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/scammers-are-spoofing-car-dealership-websites-what-you-need-know",
+      "title": "Scammers are spoofing car dealership websites: What you need to know",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1773
+    },
+    {
+      "id": "0ff71b1d80c2",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/see-qr-code-parked-somewhere-dont-scan-ityet",
+      "title": "See a QR code parked somewhere? Don’t scan it…yet!",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1613
+    },
+    {
+      "id": "a7de4e141776",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/was-your-intimate-image-shared-online-without-your-consent-heres-what-do",
+      "title": "Was your intimate image shared online without your consent? Here’s what to do",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2638
+    },
+    {
+      "id": "d9173078427e",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/09/what-know-ahead-open-enrollment-avoid-health-insurance-scams",
+      "title": "What to know ahead of Open Enrollment to avoid health insurance scams",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1890
+    },
+    {
+      "id": "0383d4e2ab4f",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/did-someone-share-explicit-image-your-child-online-take-these-steps",
+      "title": "Did someone share an explicit image of your child online? Take these steps",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1877
+    },
+    {
+      "id": "3c29af3c3dae",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/ftc-not-calling-deactivate-your-phone-number",
+      "title": "The FTC is not calling to deactivate your phone number",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1754
+    },
+    {
+      "id": "b4107e3a84e0",
+      "url": "https://consumer.ftc.gov/consumer-alerts/2026/10/spot-scammers-impersonating-well-known-charities-and-sweepstakes",
+      "title": "Spot scammers impersonating well-known charities and sweepstakes",
+      "kind": "ftc",
+      "name": "FTC Consumer Alerts",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1784
+    },
+    {
+      "id": "b814c2d67445",
+      "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/",
+      "title": "New Foldable iPhone Scam: Don’t Click on That Preorder Link",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5668
+    },
+    {
+      "id": "1f3555c67a10",
+      "url": "https://www.aarp.org/money/scams-fraud/bank-impersonation-fake-text-messages-emails-calls/",
+      "title": "Is That a Real Fraud Alert from Your Bank or a Scam?",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 8774
+    },
+    {
+      "id": "90d365d4b497",
+      "url": "https://www.aarp.org/money/scams-fraud/crooks-celebrities-impostors/",
+      "title": "Think Blake Shelton or Kevin Costner Is Really Messaging You? Think Again",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 7419
+    },
+    {
+      "id": "808fb26b1d59",
+      "url": "https://www.aarp.org/money/scams-fraud/debt-relief/",
+      "title": "Debt-Relief Scams Steal From People Desperate for Financial Help",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 9333
+    },
+    {
+      "id": "014236f7718c",
+      "url": "https://www.aarp.org/money/scams-fraud/fake-online-tech-support/",
+      "title": "Tech Support Scams Are Rampant",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 10149
+    },
+    {
+      "id": "2ee272fb6b43",
+      "url": "https://www.aarp.org/money/scams-fraud/fake-supplements-products/",
+      "title": "Fake Dementia Treatments and Other Bogus Health Products Abound Online",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 11454
+    },
+    {
+      "id": "4e5c212459ff",
+      "url": "https://www.aarp.org/money/scams-fraud/fraud-victim-support-group/",
+      "title": "Fraud Victim Support Group",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1846
+    },
+    {
+      "id": "5abeec836fc3",
+      "url": "https://www.aarp.org/money/scams-fraud/fraud-wars-fake-client/",
+      "title": "Fraud Wars Video: A Real Estate Agent’s ‘Client’ Ends Up Stealing Her Savings",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3023
+    },
+    {
+      "id": "8969f6c16870",
+      "url": "https://www.aarp.org/money/scams-fraud/fraud-wars-fbi-impostor/",
+      "title": "AARP’s ‘Fraud Wars’ Episode 1: Judith Boivin Had $600,000 Stolen in an FBI Impostor Scam",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 9083
+    },
+    {
+      "id": "21e29999de56",
+      "url": "https://www.aarp.org/money/scams-fraud/fraud-wars-kitboga-youtube/",
+      "title": "‘Fraud Wars’ Video: YouTube Star Kitboga Fights Scammers With Humor",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6111
+    },
+    {
+      "id": "abf189bf9ed2",
+      "url": "https://www.aarp.org/money/scams-fraud/fraud-wars-survivor-stories/",
+      "title": "AARP’s Fraud Wars",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3270
+    },
+    {
+      "id": "251ff2729865",
+      "url": "https://www.aarp.org/money/scams-fraud/government-impostor-frauds/",
+      "title": "Government Impostor Scams Are on the Rise",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 8682
+    },
+    {
+      "id": "c9aae972922a",
+      "url": "https://www.aarp.org/money/scams-fraud/hacked-email-account/",
+      "title": "How to Prevent Your Email From Getting Hacked — and What to Do If It Happens to You",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 9568
+    },
+    {
+      "id": "99b532e6ded0",
+      "url": "https://www.aarp.org/money/scams-fraud/identity-theft/",
+      "title": "Identity Theft and Fraud Can Be Devastating. Here’s How to Avoid It",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3988
+    },
+    {
+      "id": "05cae50224b0",
+      "url": "https://www.aarp.org/money/scams-fraud/investment/",
+      "title": "How to Spot Investment Fraud",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3392
+    },
+    {
+      "id": "8e0e5ee21a8f",
+      "url": "https://www.aarp.org/money/scams-fraud/lost-pet/",
+      "title": "Lost-Pet Scams Target Panicked Animal Lovers",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 11846
+    },
+    {
+      "id": "ed41f4240f1c",
+      "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/",
+      "title": "AARP’s Message to Stay Safe From Scams: Pause. Reflect. Protect.",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2720
+    },
+    {
+      "id": "ffbc483c040b",
+      "url": "https://www.aarp.org/money/scams-fraud/recovery-scams/",
+      "title": "Recovery Scams: Fraud Victims Hit Again by Scammers Promising to Recover Stolen Cash",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2657
+    },
+    {
+      "id": "bea11842bfbe",
+      "url": "https://www.aarp.org/money/scams-fraud/romance/",
+      "title": "Looking for Love? Here’s How to Avoid Romance Scams Online",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2410
+    },
+    {
+      "id": "728499bfaad1",
+      "url": "https://www.aarp.org/money/scams-fraud/sweepstakes/",
+      "title": "Warning Signs of Sweepstakes and Lottery Scams",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 7931
+    },
+    {
+      "id": "d991dabf32c8",
+      "url": "https://www.aarp.org/money/scams-fraud/trending-scams/",
+      "title": "Overview: Trending Scams",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1009
+    },
+    {
+      "id": "3b7bcf5d818a",
+      "url": "https://www.aarp.org/money/scams-fraud/victims-pay-taxes-on-stolen-money/",
+      "title": "Change May Be Coming for Scam Victims Who Are Required to Pay Taxes on Their Stolen Money",
+      "kind": "aarp",
+      "name": "AARP Fraud Watch Network",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2998
+    },
+    {
+      "id": "cbf4a9999e17",
+      "url": "https://www.fcc.gov/consumers/scam-alert/bank-impersonation-scams",
+      "title": "Bank Impersonation Scams",
+      "kind": "gov",
+      "name": "FCC",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3729
+    },
+    {
+      "id": "1a45a5d7020d",
+      "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services",
+      "title": "Scammers Offering Discounted Cable and Streaming Services",
+      "kind": "gov",
+      "name": "FCC",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2235
+    },
+    {
+      "id": "70c57e263c69",
+      "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters",
+      "title": "How to Spot FCC Imposters",
+      "kind": "gov",
+      "name": "FCC",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3222
+    },
+    {
+      "id": "73fa56e942d3",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260309",
+      "title": "Internet Crime Complaint Center (IC3) | Criminals Impersonating City and County Officials in Phishing Emails for Planning and Zoning Permits",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3171
+    },
+    {
+      "id": "55d5c71016d7",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260320",
+      "title": "Internet Crime Complaint Center (IC3) | Russian Intelligence Services Target Commercial Messaging Application Accounts",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5193
+    },
+    {
+      "id": "e6c3dbf00f17",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260430",
+      "title": "Internet Crime Complaint Center (IC3) | Cyber-Enabled Strategic Cargo Theft Surging",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6234
+    },
+    {
+      "id": "b5edde951d57",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260515-2",
+      "title": "Internet Crime Complaint Center (IC3) | IC3 Cryptocurrency Kiosk Complaint Data By State",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 4436
+    },
+    {
+      "id": "f4a687b0e8ee",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260521",
+      "title": "Internet Crime Complaint Center (IC3) | Kali365 Phishing-as-a-Service Kit Hijacks Microsoft 365 Access Tokens",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2845
+    },
+    {
+      "id": "c96a41bba9ea",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260527",
+      "title": "Internet Crime Complaint Center (IC3) | Threat Actors Spoofing FIFA Websites in Advance of the 2026 World Cup",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5176
+    },
+    {
+      "id": "794fa0906199",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260603",
+      "title": "Internet Crime Complaint Center (IC3) | Emerging Hospice Fraud Targeting Medicare Recipients",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2121
+    },
+    {
+      "id": "801e2bb9a6f4",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260615",
+      "title": "Internet Crime Complaint Center (IC3) | Scammers Use Couriers to Collect Cash in Cryptocurrency Investment Scams",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5424
+    },
+    {
+      "id": "de675275f203",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260616",
+      "title": "Internet Crime Complaint Center (IC3) | Protect Your Property from Illegal Sales Through Parcel Owner Impersonation",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2462
+    },
+    {
+      "id": "7cbccc9b969e",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260618",
+      "title": "Internet Crime Complaint Center (IC3) | Cyber Criminals Redirecting Users to Fraudulent Websites with Malicious Traffic Distribution Systems",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5311
+    },
+    {
+      "id": "2e312afd1a9a",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260626",
+      "title": "Internet Crime Complaint Center (IC3) | Russian Intelligence Services Continue to Target Commercial Messaging Applications",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5658
+    },
+    {
+      "id": "ffc3d7afe953",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260720",
+      "title": "Internet Crime Complaint Center (IC3) | FBI Warns of Scammers Impersonating the IC3",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 8320
+    },
+    {
+      "id": "997fe92a6346",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260901",
+      "title": "Internet Crime Complaint Center (IC3) | Malicious Cyber Actors Gain Access to Victim Accounts Through Consent Phishing",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2872
+    },
+    {
+      "id": "85dbf20ef762",
+      "url": "https://www.ic3.gov/PSA/2026/PSA260917",
+      "title": "Internet Crime Complaint Center (IC3) | Scammers Impersonating Law Enforcement and Government Officials in Fraud Schemes",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5888
+    },
+    {
+      "id": "597798b89fc7",
+      "url": "https://www.ic3.gov/PSA/2026/PSA261013",
+      "title": "Internet Crime Complaint Center (IC3) | North Korean IT Workers Expanding Use of Facilitators, Broadening Recruitment",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 12729
+    },
+    {
+      "id": "294b8160ae55",
+      "url": "https://www.ic3.gov/PSA/2026/PSA261015-2",
+      "title": "Internet Crime Complaint Center (IC3) | FBI Warns Voters on Election Crimes Ahead of the November 2026 Midterm Election",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2951
+    },
+    {
+      "id": "223484d5ba32",
+      "url": "https://www.ic3.gov/PSA/2026/PSA261015-3",
+      "title": "Internet Crime Complaint Center (IC3) | Scammers Exploit 2026 U.S. Midterm Election to Perpetrate Multiple Fraud Schemes",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3857
+    },
+    {
+      "id": "4d63332fced7",
+      "url": "https://www.ic3.gov/PSA/2026/PSA261016",
+      "title": "Internet Crime Complaint Center (IC3) | Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6875
+    },
+    {
+      "id": "3fd78ee1d584",
+      "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster",
+      "title": "How to avoid fraud and scams after a disaster",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2044
+    },
+    {
+      "id": "a391a456b960",
+      "url": "https://www.irs.gov/newsroom/irs-alerts-businesses-tax-exempt-groups-of-warning-signs-for-misleading-employee-retention-scams-simple-steps-can-avoid-improperly-filing-claims",
+      "title": "IRS alerts businesses, tax-exempt groups of warning signs for misleading Employee Retention scams; simple steps can avoid improperly filing claims",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 8546
+    },
+    {
+      "id": "4f3942632cec",
+      "url": "https://www.irs.gov/newsroom/irs-joins-effort-to-fight-charity-fraud-during-international-recognition-week",
+      "title": "IRS joins effort to fight charity fraud during international recognition week",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2629
+    },
+    {
+      "id": "e5be4814450b",
+      "url": "https://www.irs.gov/newsroom/irs-reminds-car-dealers-and-sellers-to-be-aware-of-phishing-scams",
+      "title": "IRS reminds car dealers and sellers to be aware of phishing scams",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 3516
+    },
+    {
+      "id": "4a3cbe121a09",
+      "url": "https://www.irs.gov/newsroom/irs-security-summit-partners-warn-taxpayers-of-new-scam-unusual-delivery-service-mailing-tries-to-trick-people-into-sending-photos-bank-account-information",
+      "title": "IRS, Security Summit partners warn taxpayers of new scam; unusual delivery service mailing tries to trick people into sending photos, bank account information",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 5271
+    },
+    {
+      "id": "447c4d5b8883",
+      "url": "https://www.irs.gov/newsroom/irs-warns-against-scams-targeting-seniors-joins-other-federal-agencies-to-recognize-special-awareness-day",
+      "title": "IRS warns against scams targeting seniors; joins other federal agencies to recognize special awareness day",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6876
+    },
+    {
+      "id": "2fe110c5d2a7",
+      "url": "https://www.irs.gov/newsroom/irs-warns-taxpayers-they-may-be-scam-victims-if-they-filed-for-big-refunds-misleading-advice-leads-to-false-claims-for-fuel-tax-credit-sick-and-family-leave-credit-household-employment-taxes",
+      "title": "IRS warns taxpayers they may be scam victims if they filed for big refunds; misleading advice leads to false claims for Fuel Tax Credit, Sick and Family Leave Credit, household employment taxes",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6943
+    },
+    {
+      "id": "3329fd93a668",
+      "url": "https://www.irs.gov/newsroom/people-should-donate-carefully-after-a-disaster-to-avoid-scams",
+      "title": "People should donate carefully after a disaster to avoid scams",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 1819
+    },
+    {
+      "id": "f6f09167756f",
+      "url": "https://www.irs.gov/newsroom/tax-scams-consumer-alerts",
+      "title": "Recognize tax scams and fraud",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 7184
+    },
+    {
+      "id": "4769efb619c0",
+      "url": "https://www.irs.gov/newsroom/taxpayers-shouldnt-let-gift-card-scammers-ruin-the-holidays",
+      "title": "Taxpayers shouldn’t let gift card scammers ruin the holidays",
+      "kind": "gov",
+      "name": "IRS",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 2618
+    },
+    {
+      "id": "1c33a893621e",
+      "url": "https://www.ssa.gov/scam/",
+      "title": "Protect Yourself from Scams (En español)",
+      "kind": "gov",
+      "name": "Social Security",
+      "fetchedAt": "2026-10-27T18:22:04.269Z",
+      "chars": 6655
+    }
+  ]
+}

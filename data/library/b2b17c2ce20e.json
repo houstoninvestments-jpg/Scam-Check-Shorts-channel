@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams",
+  "title": "Protect yourself from phishing scams",
+  "publishedAt": "2025-06-04T15:00:00.000Z",
+  "fetchedAt": "2026-10-27T18:22:04.269Z",
+  "text": "Do you feel like you’re getting more emails from strangers than messages from people you actually know? These unexpected messages are often phishing scams trying to steal your money and personal information. FTC data shows that email was the top method scammers used to contact people in 2024. To help you avoid these scams, here’s what to know.\nScammers send phishing emails pretending to be companies you might know and trust — like a bank or utility company. Their goal: get you to click links or open attachments. They might say there’s an overdue invoice, or that you need to confirm your credit card or bank account number to fix a problem. These are scams. Not only is the scammer trying to steal your money, but if you give them information like your Social Security number or date of birth, they could try to steal your identity.\nTo help protect yourself from phishing scams:\nDon’t click links or download attachments in unexpected messages. If you think the message could be legit, contact the company or bank using a phone number, email, or website you know is real.\nUse filters. Popular email providers (like Gmail or Yahoo Mail) have strong spam filters turned on by default. But if any spam gets into your inbox, mark it as spam or junk.\nProtect your accounts by using two-factor authentication. Requiring two or more credentials to log in makes it harder for scammers to get into your account, even if they get your username and password.\nIf you got a phishing message:\nForward phishing emails to the Anti-Phishing Working Group at reportphishing@apwg.org.\nReport the phishing attempt to the FTC at ReportFraud.ftc.gov.\nThen, once you’ve checked it out and reported it, delete the message.",
+  "capture": "page"
+}

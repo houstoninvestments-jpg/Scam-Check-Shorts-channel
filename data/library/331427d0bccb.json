@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/text-about-traffic-violation-probably-scam",
+  "title": "That text about a traffic violation is probably a scam",
+  "publishedAt": "2026-04-14T10:00:00.000Z",
+  "fetchedAt": "2026-10-27T18:22:04.269Z",
+  "text": "Did you get a text with a picture of what looks like an official notice of a traffic hearing? You’re not alone. The FTC has seen a spike in reports about this text scam in the last month. It’s just the latest story of how scammers are trying to separate people from their money. Here’s how this scam works — and how to avoid it.\nIt starts with a text message with a QR code. The message says you need to scan it to pay for a traffic violation to avoid court. The text might look official with a seal from whatever state it claims to be from and a (fake) case number. It’ll tell you when your (fake) hearing is scheduled — date and time — and will give you two options: go to the (fake) hearing, or pay the fine now. More on that in a minute.\nScammers want you to act quickly, so the text will also list bad things that can happen if you don’t respond now: default judgements, fines, enforcement actions. All stuff to scare you into (supposedly) making it all go away by scanning the included QR code to settle your (fake) unpaid balance. If you scan it, they’ll try to steal personal information (like your Social Security or credit card number), download malware on your phone, and steal your money.\nIf you get a text like this, don’t respond, and don’t scan the QR code. If you think the message might be real, check the court’s website for case information or call the court directly — but use a website or phone number you know is correct, not info from the text message.\nAlready paid or gave your information to a scammer? Read What To Do if You Were Scammed to find out what to do next. And tell the FTC at ReportFraud.ftc.gov.",
+  "capture": "page"
+}

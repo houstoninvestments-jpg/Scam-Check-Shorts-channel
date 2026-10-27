@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/phishing-scams-can-be-hard-spot",
+  "title": "Phishing scams can be hard to spot",
+  "publishedAt": "2024-12-11T09:00:44.000Z",
+  "fetchedAt": "2026-10-27T18:22:04.269Z",
+  "text": "Scammers love a good disguise. One day they show up texting you about a delivery you missed, the next they say you need to sort an issue with your Netflix account. Here’s how to avoid these phishing scams.\nPhishing emails and text messages often tell a story to trick you into clicking on a link or opening an attachment. Maybe it’s an unexpected email or text message pretending to be from a company you know or trust, like a utility company asking you to make a payment. Or maybe it’s an unexpected party invitation that looks like it’s from a friend or family member.\nDon’t click on links or download attachments in these messages. It might lead to a request for personal information, like your Social Security, credit card, or bank account number — and identity theft. Or, the link or attachment could download harmful malware onto your device.\nHow can you spot these scams? If you get an email or text message that asks you to click on a link or open an attachment, ask yourself: Do I have an account with the company or know the person who contacted me?\nIf the answer is “No,” it’s likely a phishing scam. While real companies might communicate with you by email, legitimate companies won’t unexpectedly email or text with a link to update your payment or account information. For other signs of phishing, check out How to recognize phishing.\nIf the answer is “Yes,” contact the company using a phone number or website you know is real — not the information in the email. Or contact your friend directly on a separate email or text string to confirm it’s really them. They’ll understand if you’re suspicious about that unexpected invitation to click a link.",
+  "capture": "page"
+}

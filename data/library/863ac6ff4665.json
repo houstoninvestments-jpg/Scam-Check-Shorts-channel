@@ -1,0 +1,10 @@
+{
+  "kind": "ftc",
+  "name": "FTC Consumer Alerts",
+  "url": "https://consumer.ftc.gov/consumer-alerts/2026/08/searching-online-bill-pay-impersonators",
+  "title": "Searching online: bill pay impersonators",
+  "publishedAt": "2026-08-17T11:30:00.000Z",
+  "fetchedAt": "2026-10-27T18:22:04.269Z",
+  "text": "Planning to pay a bill online? Before you start searching for a company’s payment site, know that dishonest companies sometimes use paid search ads to trick you into paying them instead of the company or agency you’re looking for. Here’s how it happens.\nYou need to pay a bill, so you search online using a search engine such as Google Search or Bing for the company’s payment site.\nIn this example from FTC v. Doxo, Inc., the top result looked like it belonged to a well-known lab company. But it’s a paid search text ad that will take you to another company’s site.\nWhen you click on the link and go to the company’s site, you don’t realize it doesn’t have a relationship with the lab company. And when you go to pay your bill, the company may add additional fees you didn’t expect.\nAccording to the FTC’s complaint, Doxo — using search engines, such as Google Search or Bing — mispresented that it was an official payment channel for companies and agencies including Labcorp, AT&T, and state toll authorities.\nSo how can you make sure you’re going to the real payment site?\nScroll past the paid search results to help make sure you have the right website or contact info.\nType the company’s website address (if you know it) directly into your browser to find the right payment site.\nSpot a bad business practice? Tell the FTC at ReportFraud.ftc.gov.",
+  "capture": "page"
+}
