@@ -1,5 +1,5 @@
 {
-  "nextNumber": 7,
+  "nextNumber": 8,
   "episodes": [
     {
       "number": 1,
@@ -615,6 +615,106 @@
       "renderAttempts": 1,
       "music": "G# tritone 76 BPM, 20 dB under the voice",
       "loopSimilarity": 0.994817,
+      "voice": "AI voice (Kokoro open model)"
+    },
+    {
+      "number": 7,
+      "leadId": "8b934b80eb35",
+      "date": "2026-10-27",
+      "skin": "imessage",
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Fake side hustle job text",
+        "message": {
+          "sender": "+1 (202) 555-0147",
+          "subject": "",
+          "body": "Hi! Your profile was picked for a work from home data entry role. Flexible hours, $950 a week for minimal work. Spots are limited, so accept today or the offer is gone. To start, pay the $45 training fee here: start-now-jobs.example/apply",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article, which describes out-of-the-blue texts offering data entry work from home, promises of a flexible schedule and high pay for minimal work, pressure to accept immediately, and demands to pay for training up front.",
+          "evidence": [
+            {
+              "quote": "Scammers might text, message you on social media, or email you out of the blue offering a gig — reshipping packages, doing data entry, or some other task you can do from home.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            },
+            {
+              "quote": "They often try to lure you in by promising a flexible schedule or a high salary.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            },
+            {
+              "quote": "Scammers demand payment up front.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            }
+          ]
+        },
+        "hook": "Job texts like this are going around.",
+        "stampSay": "There is no job here.",
+        "flags": [
+          {
+            "label": "Big money, little work",
+            "say": "Scammers promise big money for little effort, and that is the bait here.",
+            "target": {
+              "kind": "text",
+              "match": "minimal work"
+            },
+            "evidence": {
+              "quote": "Scammers promise big money for little effort.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            }
+          },
+          {
+            "label": "Take it now",
+            "say": "If someone says the gig vanishes unless you accept right away, walk away.",
+            "target": {
+              "kind": "text",
+              "match": "accept today or the offer is gone"
+            },
+            "evidence": {
+              "quote": "If someone insists a gig will disappear if you don’t accept it immediately, walk away.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            }
+          },
+          {
+            "label": "Pay to start",
+            "say": "No real gig makes you pay for training or anything else to get the job.",
+            "target": {
+              "kind": "text",
+              "match": "$45 training fee"
+            },
+            "evidence": {
+              "quote": "No legitimate gig will make you pay for expenses, training, or anything else to get the job.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ask someone you trust",
+          "say": "Before you accept any gig, talk it over with someone you trust.",
+          "evidence": {
+            "quote": "Talk to someone you trust about the opportunity — before accepting a gig.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
+          }
+        },
+        "title": "Fake side hustle text asks you to pay before you start",
+        "description": "A text offers easy work from home with big pay, then asks for a training fee. We show the three signs it is a scam. Then the one safe move to make instead.",
+        "category": "job"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "007-fake-side-hustle-job-text",
+      "status": "rendered",
+      "category": "job",
+      "costUsd": 0.3323,
+      "renderAttempts": 1,
+      "music": "D fifth 75 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994336,
       "voice": "AI voice (Kokoro open model)"
     }
   ],
