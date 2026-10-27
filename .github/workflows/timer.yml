@@ -45,6 +45,14 @@ jobs:
         if: inputs.step == 'deploy'
         working-directory: timer
         run: |
+          # Cloudflare only schedules Workers on accounts that have a workers.dev address (code 10063),
+          # even ones like this that never use it. Make one if the account has none.
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain"
+          have=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api" | python3 -c "import json,sys;print((json.load(sys.stdin).get('result') or {}).get('subdomain') or '')")
+          if [ -z "$have" ]; then
+            r=$(curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "content-type: application/json" "$api" -d '{"subdomain":"scamornot"}')
+            echo "::notice title=workers.dev address::$(echo "$r" | python3 -c "import json,sys;j=json.load(sys.stdin);print('created scamornot.workers.dev' if j.get('success') else 'not created: '+str(j.get('errors'))[:300])")"
+          else echo "::notice title=workers.dev address::already $have.workers.dev"; fi
           set -o pipefail
           if ! npx --yes wrangler@4.151.2 deploy > /tmp/deploy.log 2>&1; then
             echo "::error title=Deploy::$(grep -v '^\s*$' /tmp/deploy.log | tail -12 | tr '\n' ' ' | cut -c1-1500)"; exit 1
