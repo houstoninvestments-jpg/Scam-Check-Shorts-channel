@@ -2,7 +2,7 @@
 name = "scamornot-timer"
 main = "worker.js"
 compatibility_date = "2026-10-01"
-workers_dev = true
+workers_dev = false # no web address needed: it only runs on its schedule
 
 [triggers]
 # UTC. :20 covers Scam or Not's Pacific slots in summer and winter; :37 covers Congress Receipts.

@@ -56,8 +56,8 @@ jobs:
           fi
           s=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/scamornot-timer/schedules" | python3 -c "import json,sys;print(', '.join(x['cron'] for x in json.load(sys.stdin)['result']['schedules']))")
           echo "::notice title=Timer live::scamornot-timer runs at: $s (UTC)"
-          # The Worker's read-only status page lists what it will start in the next 24 hours.
-          [ -n "$url" ] && sleep 10 && curl -s "$url" | head -12 | tr '\n' '|' | sed 's/^/::notice title=Next starts::/' && echo
+          # Next starts for both channels, worked out by the Worker's own code.
+          node next.mjs
 
       - name: Test the GitHub key by starting one Scam or Not dry run
         if: inputs.step == 'test'
