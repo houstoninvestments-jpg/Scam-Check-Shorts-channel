@@ -1,5 +1,5 @@
 {
-  "nextNumber": 6,
+  "nextNumber": 7,
   "episodes": [
     {
       "number": 1,
@@ -519,6 +519,108 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "x_oDuXnfQqA",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 6,
+      "leadId": "4d63332fced7",
+      "date": "2026-10-27",
+      "skin": "email",
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake login check email",
+        "message": {
+          "sender": "Election Portal <noreply@election-portal.example>",
+          "subject": "Please verify your login",
+          "body": "Your login for the county election portal needs a check. Please verify your login now: https://portal-verify.example/login\n\nThank you,\nPortal Team",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FBI IC3 PSA), which describes phishing emails that closely resemble legitimate communications, push targets to click malicious links, and try to get them to disclose login credentials. The exact wording, sender name and portal name are invented for this example.",
+          "evidence": [
+            {
+              "quote": "Malicious cyber actors may attempt to disrupt the 2026 U.S. midterm elections using phishing and smishing techniques to steal user data, including login credentials and sensitive information.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            },
+            {
+              "quote": "In recent years, these actors have crafted increasingly sophisticated phishing and smishing campaigns that closely resemble legitimate communications, making it difficult for targets to distinguish fraudulent messages.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          ]
+        },
+        "hook": "This email wants your password. Would you tap this?",
+        "stampSay": "This one is after your login.",
+        "flags": [
+          {
+            "label": "Looks like real mail",
+            "say": "These fakes are built to look like real messages, so they are hard to spot.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "In recent years, these actors have crafted increasingly sophisticated phishing and smishing campaigns that closely resemble legitimate communications, making it difficult for targets to distinguish fraudulent messages.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          },
+          {
+            "label": "Asks for login",
+            "say": "The whole point is to trick you into giving up your login details.",
+            "target": {
+              "kind": "text",
+              "match": "verify your login now"
+            },
+            "evidence": {
+              "quote": "Such precautions are critical to remaining vigilant for phishing and smishing attempts that try to manipulate the recipient into disclosing sensitive information, such as login credentials or financial information, or that install malware on their devices.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          },
+          {
+            "label": "Link to tap",
+            "say": "That link is the trap, and real-sounding words make clicking it more likely.",
+            "target": {
+              "kind": "text",
+              "match": "https://portal-verify.example/login"
+            },
+            "evidence": {
+              "quote": "SI allows malicious cyber actors to create language that appears genuine, using native languages and common vernacular, making it more likely for potential victims to click malicious links or inadvertently expose information through direct interaction with threat actors.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Confirm another way",
+          "say": "Before you share any login, confirm the request through a separate channel you trust.",
+          "evidence": {
+            "quote": "Employees should confirm, if possible, requests for sensitive information through secondary channels.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+          }
+        },
+        "title": "Fake login check email aimed at election workers",
+        "description": "A fake email asks you to verify your login on a work portal. It looks real, but the link is built to grab your details. Here are three signs to watch for and the one safe move.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA261016",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "006-fake-login-check-email",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4798,
+      "renderAttempts": 1,
+      "music": "G# tritone 76 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995088,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "3V9jjUV4c1E",
       "youtubePrivacy": "public"
     }
   ],

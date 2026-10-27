@@ -1,35 +1,93 @@
 {
   "date": "2026-10-27",
-  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [
-    "source bbb-scam-alerts failed: Error: fetch failed for https://www.bbb.org/scamtracker: Error: HTTP 403 (not retried)",
-    "source tx-ag failed: no articles found",
-    "no lead passed both checks today; skipped"
-  ],
+  "status": "published",
+  "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "scout",
       "ok": true,
-      "detail": "3 leads, 4 dropped as repeats"
+      "detail": "2 leads, 2 dropped (repeats or pages that can't make a video)"
     },
     {
       "step": "same day",
       "ok": true,
-      "detail": "3 leads already failed the checks today; not retried"
+      "detail": "1 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Internet Crime Complaint Center (IC3) | Cyber Threat Actors : problems: Flag 3 ('Link to tap') uses target.kind \"link\", which the template does not support. Only \"text\", \"sender\" and \"attachment\" exist, so this flag will circle nothing or break the render. It should be kind \"text\" with match set to the URL, \"https://portal-verify.example/login\". (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Internet Crime Complaint Center (IC3) | Cyber Threat Actors : both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 33.6s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006.mp4 (1080x1920, 33.58s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006-cover.jpg (178 KB), loop similarity 0.995088"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded 3V9jjUV4c1E as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake login check email | sources: FBI Internet Crime Complaint Center (IC3)  (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 33.6s",
+    "music": "tension bed on: G# with a tritone, 76 BPM; voice -23.3 LUFS, bed -43.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13480/8867 red px), phone screen untouched",
+    "title": "Scam No. 006: Fake login check email aimed at election workers",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/006-fake-login-check-email/",
+    "upload": "3V9jjUV4c1E, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.48 for 6 model calls (writer 2x $0.35, checker-b 2x $0.06, checker-a 2x $0.07)"
   },
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006.mp4",
+  "episode": 6,
+  "youtubeId": "3V9jjUV4c1E",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.4798,
+    "calls": 6,
+    "inputTokens": 28984,
+    "outputTokens": 7746,
+    "byRole": {
+      "writer": {
+        "calls": 2,
+        "usd": 0.3483
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0625
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0691
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }
