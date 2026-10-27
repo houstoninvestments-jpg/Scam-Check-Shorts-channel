@@ -185,5 +185,18 @@
       "claude-fable-5-1",
       "claude-opus-5-5"
     ]
+  },
+  {
+    "at": "2026-10-27T14:21:51.258Z",
+    "date": "2026-10-27",
+    "slot": 1,
+    "status": "skipped",
+    "episode": null,
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 ]
