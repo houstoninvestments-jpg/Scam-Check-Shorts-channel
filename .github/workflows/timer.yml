@@ -58,11 +58,10 @@ jobs:
             echo "::error title=Deploy::$(grep -v '^\s*$' /tmp/deploy.log | tail -12 | tr '\n' ' ' | cut -c1-1500)"; exit 1
           fi
           tail -5 /tmp/deploy.log
-          url=$(grep -oE 'https://scamornot-timer\.[a-z0-9-]+\.workers\.dev' /tmp/deploy.log | head -1)
           if ! printf '%s' "$GH_DISPATCH_TOKEN" | npx --yes wrangler@4.151.2 secret put GH_DISPATCH_TOKEN > /tmp/secret.log 2>&1; then
             echo "::error title=Secret::$(tail -6 /tmp/secret.log | tr '\n' ' ' | cut -c1-800)"; exit 1
           fi
-          s=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/scamornot-timer/schedules" | python3 -c "import json,sys;print(', '.join(x['cron'] for x in json.load(sys.stdin)['result']['schedules']))")
+          s=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/scamornot-timer/schedules" | python3 -c "import json,sys;j=json.load(sys.stdin);print(', '.join(x['cron'] for x in (j.get('result') or {}).get('schedules',[])) or 'none: '+str(j.get('errors'))[:200])" || true)
           echo "::notice title=Timer live::scamornot-timer runs at: $s (UTC)"
           # Next starts for both channels, worked out by the Worker's own code.
           node next.mjs
