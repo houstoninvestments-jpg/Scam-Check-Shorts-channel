@@ -5,6 +5,7 @@ import { config } from "../lib/config.js";
 import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
 import { log, pad3, path, readJson, slugify, today, writeJson } from "../lib/util.js";
 import type { LLM } from "../llm/client.js";
+import { libraryLeads } from "../scout/library.js";
 import { scout, scoutFromFixtures, updateSourceHealth } from "../scout/index.js";
 import { write } from "../writer/index.js";
 import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
@@ -27,6 +28,7 @@ export interface RunOptions {
   voice?: "elevenlabs" | "kokoro";
   workDir?: string;
   skin?: SkinId; // test renders only: force a phone skin
+  library?: boolean; // fall back to the evergreen library when fresh leads fail (default: on for live sources, off for fixtures)
   slot?: number; // which of the day's posting slots this run is (1-3); manual runs leave it empty
   slotDate?: string; // the Pacific date the slot belongs to; with slot, a second start of the same slot exits
 }
@@ -126,13 +128,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       const found = opts.fixtureSources ? scoutFromFixtures(opts.fixtureSources) : await scout();
       if (!opts.fixtureSources && !opts.dryRun) updateSourceHealth(found.results); // test runs never touch source health
       for (const r of found.results.filter((r) => !r.ok)) report.warnings.push(`source ${r.id} failed: ${r.error}`);
-      step("scout", found.leads.length > 0, `${found.leads.length} leads, ${found.dropped.length} dropped as repeats`);
-      if (!found.leads.length) {
-        // Normal on a thin day: the ceiling is not a quota. Health still flags a long dry spell.
-        report.status = "skipped";
-        report.warnings.push("no new scam in any source for this slot; skipped");
-        return report;
-      }
+      step("scout", found.leads.length > 0, `${found.leads.length} leads, ${found.dropped.length} dropped (repeats or pages that can't make a video)`);
 
       // 2-3. Write and check, lead by lead, until one passes. Unsure means skip, never escalate.
       const hooks = loadHooks();
@@ -142,55 +138,66 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       const failedToday = new Set(ledger.skipped.filter((s) => s.date === date).map((s) => s.leadId));
       const fresh = found.leads.filter((l) => !failedToday.has(l.id));
       if (fresh.length < found.leads.length) step("same day", true, `${found.leads.length - fresh.length} leads already failed the checks today; not retried`);
-      let tried = 0;
-      for (const lead of fresh) {
-        if (tried >= 6) break;
-        // Same-day variety, decided before any model call: a free skin, and a different scam type or brand.
-        const skin = opts.skin ?? chooseSkin(lead.channel, ledger.episodes, usedSkins);
-        if (!skin) {
-          step("same day", true, `${lead.title.slice(0, 60)}: its screen style already ran today; waits for another day`);
-          continue;
+      // Write and check leads from one pool, at most `cap` written, until one passes both reviews.
+      const tryLeads = async (pool: Lead[], cap: number) => {
+        let tried = 0;
+        for (const lead of pool) {
+          if (tried >= cap) return;
+          // Same-day variety, decided before any model call: a free skin, and a different scam type or brand.
+          const skin = opts.skin ?? chooseSkin(lead.channel, ledger.episodes, usedSkins);
+          if (!skin) {
+            step("same day", true, `${lead.title.slice(0, 60)}: its screen style already ran today; waits for another day`);
+            continue;
+          }
+          const guess = leadMark(lead);
+          if (sameDayClash(guess, todayMarks)) {
+            step("same day", true, `${lead.title.slice(0, 60)}: same type (${guess.category}${guess.brands.length ? `, ${guess.brands.join("/")}` : ""}) as an earlier video today; waits for another day`);
+            continue;
+          }
+          tried++;
+          const hook = pickHook(hooks, recentHooks);
+          let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
+          const mark: DayMark = { category: categoryFor(script, lead.title).id, brands: guess.brands };
+          if (sameDayClash(mark, todayMarks)) {
+            step("same day", true, `${lead.title.slice(0, 60)}: written as ${mark.category}, same as an earlier video today; not checked, waits for another day`);
+            // Remembered for today only, so the next slot doesn't pay to write it again. Tomorrow it is fair game.
+            ledger.skipped.push({ leadId: lead.id, date, reason: `same type as an earlier video today (${mark.category})` });
+            continue;
+          }
+          let mech = mechanicalCheck(script, lead);
+          if (!mech.ok) {
+            // one rewrite with the exact failures, then move on
+            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems));
+            mech = mechanicalCheck(script, lead);
+          }
+          let verdict = await check(opts.llm, script, lead);
+          // Both reviews say it IS a scam but list fixable problems: up to two rewrites with those exact
+          // problems, each followed by both reviews from scratch. Any doubt that it's a scam = skip.
+          for (let round = 1; round <= 2; round++) {
+            const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
+            if (!fixable) break;
+            step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewrite ${round} of 2)`);
+            const problems = [...(verdict.a?.problems ?? []), ...(verdict.b?.problems ?? [])];
+            if ((verdict.a?.confidence ?? 1) < 0.8 || (verdict.b?.confidence ?? 1) < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
+            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems, script));
+            verdict = await check(opts.llm, script, lead);
+          }
+          step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
+          if (verdict.pass) {
+            report.summary.scam = `${script.scamName} | sources: ${lead.docs.map((d) => `${d.name} ${d.publishedAt?.slice(0, 10) ?? ""} (${d.capture})`).join("; ")} | checks: ${verdict.reason}`;
+            chosen = { lead, script, hookId: hook.id, skin, mark };
+            return;
+          }
+          ledger.skipped.push({ leadId: lead.id, date, reason: verdict.reason });
         }
-        const guess = leadMark(lead);
-        if (sameDayClash(guess, todayMarks)) {
-          step("same day", true, `${lead.title.slice(0, 60)}: same type (${guess.category}${guess.brands.length ? `, ${guess.brands.join("/")}` : ""}) as an earlier video today; waits for another day`);
-          continue;
-        }
-        tried++;
-        const hook = pickHook(hooks, recentHooks);
-        let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
-        const mark: DayMark = { category: categoryFor(script, lead.title).id, brands: guess.brands };
-        if (sameDayClash(mark, todayMarks)) {
-          step("same day", true, `${lead.title.slice(0, 60)}: written as ${mark.category}, same as an earlier video today; not checked, waits for another day`);
-          // Remembered for today only, so the next slot doesn't pay to write it again. Tomorrow it is fair game.
-          ledger.skipped.push({ leadId: lead.id, date, reason: `same type as an earlier video today (${mark.category})` });
-          continue;
-        }
-        let mech = mechanicalCheck(script, lead);
-        if (!mech.ok) {
-          // one rewrite with the exact failures, then move on
-          script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems));
-          mech = mechanicalCheck(script, lead);
-        }
-        let verdict = await check(opts.llm, script, lead);
-        // Both reviews say it IS a scam but list fixable problems: up to two rewrites with those exact
-        // problems, each followed by both reviews from scratch. Any doubt that it's a scam = skip.
-        for (let round = 1; round <= 2; round++) {
-          const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
-          if (!fixable) break;
-          step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewrite ${round} of 2)`);
-          const problems = [...(verdict.a?.problems ?? []), ...(verdict.b?.problems ?? [])];
-          if ((verdict.a?.confidence ?? 1) < 0.8 || (verdict.b?.confidence ?? 1) < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
-          script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems, script));
-          verdict = await check(opts.llm, script, lead);
-        }
-        step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
-        if (verdict.pass) {
-          report.summary.scam = `${script.scamName} | sources: ${lead.docs.map((d) => `${d.name} ${d.publishedAt?.slice(0, 10) ?? ""} (${d.capture})`).join("; ")} | checks: ${verdict.reason}`;
-          chosen = { lead, script, hookId: hook.id, skin, mark };
-          break;
-        }
-        ledger.skipped.push({ leadId: lead.id, date, reason: verdict.reason });
+      };
+      await tryLeads(fresh, 6);
+      // Fresh leads didn't pass: fall back to the evergreen library of officially documented scams.
+      // Same gates: quotes checked word for word, both reviews must agree. Fixture (test) runs skip it.
+      if (!chosen && (opts.library ?? !opts.fixtureSources)) {
+        const pool = libraryLeads(ledger, date, cfg.scout.dedupeSimilarity).filter((l) => !failedToday.has(l.id));
+        step("library", pool.length > 0, `fresh leads didn't pass; trying the evergreen library (${pool.length} pages not yet on the channel)`);
+        await tryLeads(pool, 4);
       }
       if (!chosen) {
         saveLedger(ledger);

@@ -81,6 +81,15 @@ async function main() {
       for (const l of out.leads.slice(0, 10)) console.log(l.score.toFixed(3), l.channel, l.title, l.docs[0].url);
       break;
     }
+    case "library-refresh": {
+      // Build or top up the evergreen library of officially documented scams (only when stale or short).
+      const { refreshLibrary } = await import("./scout/library.js");
+      const out = await refreshLibrary(undefined, { force: flag("--force") });
+      for (const n of out.notes) log(n);
+      log(`library: ${out.entries} entries${out.refreshed ? `, ${out.added} new` : ""}`);
+      if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Library::${out.entries} entries${out.refreshed ? ` (${out.added} new) | ${out.notes.join(" | ").replace(/[\r\n]+/g, " ").slice(0, 900)}` : " (fresh, not refetched)"}`);
+      break;
+    }
     case "site": {
       // --test-preview builds from the dry-run ledger, for local checks only. Never deploy that output.
       const preview = flag("--test-preview");

@@ -24,6 +24,13 @@ export function sourceShort(name: string) {
   if (/ftc/i.test(name)) return "FTC";
   if (/bbb/i.test(name)) return "BBB";
   if (/attorney general/i.test(name)) return "state attorney general";
+  if (/fbi|ic3/i.test(name)) return "FBI";
+  if (/postal|usps|uspis/i.test(name)) return "Postal Inspection Service";
+  if (/\birs\b/i.test(name)) return "IRS";
+  if (/social security|\bssa\b/i.test(name)) return "Social Security";
+  if (/cfpb|consumer financial/i.test(name)) return "CFPB";
+  if (/\bfcc\b/i.test(name)) return "FCC";
+  if (/aarp/i.test(name)) return "AARP";
   return "community";
 }
 

@@ -1,5 +1,5 @@
 {
-  "_note": "Scout sources. Each list page is scanned for article links that match linkPattern. 'verified' flips to true once a live run has pulled at least one article from it (see data/source-health.json).",
+  "_note": "Scout sources. Each list page is scanned for article links that match linkPattern. 'verified' flips to true once a live run has pulled at least one article from it (see data/source-health.json). BBB was dropped (it blocks our requests; we don't work around blocks). Texas AG was replaced by FBI IC3 alerts (its news page returned no articles).",
   "sources": [
     {
       "id": "ftc-alerts",
@@ -11,17 +11,6 @@
       "base": "https://consumer.ftc.gov",
       "maxArticles": 8,
       "weight": 1.0
-    },
-    {
-      "id": "bbb-scam-alerts",
-      "kind": "bbb",
-      "name": "BBB Scam Tracker and Scam Alerts",
-      "type": "html-list",
-      "listUrl": "https://www.bbb.org/scamtracker",
-      "linkPattern": "/article/(scams|news-releases)/[0-9]+-[a-z0-9-]+",
-      "base": "https://www.bbb.org",
-      "maxArticles": 6,
-      "weight": 0.9
     },
     {
       "id": "ny-ag",
@@ -46,15 +35,15 @@
       "weight": 0.8
     },
     {
-      "id": "tx-ag",
-      "kind": "ag",
-      "name": "Texas Attorney General",
+      "id": "fbi-ic3-psa",
+      "kind": "gov",
+      "name": "FBI Internet Crime Complaint Center (IC3)",
       "type": "html-list",
-      "listUrl": "https://www.texasattorneygeneral.gov/news",
-      "linkPattern": "/news/releases/[a-z0-9-]*(scam|fraud|impersonat|text|phish)[a-z0-9-]*",
-      "base": "https://www.texasattorneygeneral.gov",
+      "listUrl": "https://www.ic3.gov/PSA",
+      "linkPattern": "/PSA/20\\d{2}/PSA\\d{6}",
+      "base": "https://www.ic3.gov",
       "maxArticles": 4,
-      "weight": 0.8
+      "weight": 0.9
     },
     {
       "id": "reddit-scams",

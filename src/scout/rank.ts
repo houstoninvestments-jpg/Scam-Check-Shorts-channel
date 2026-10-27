@@ -27,7 +27,23 @@ const docKey = (d: SourceDoc) => tokens(`${d.title} ${d.text.slice(0, 600)}`);
 
 /** Is this page actually about a scam? Agencies also post recalls, settlements, and tips. */
 export function isScamDoc(d: SourceDoc) {
-  return /\bscam|fraud|phish|impersonat|fake|smish|con artist/i.test(`${d.title} ${d.text.slice(0, 1500)}`);
+  return /\bscam|fraud|phish|impersonat|fake|smish|con artist/i.test(`${d.title} ${d.text.slice(0, 1500)}`) && !skipReason(d);
+}
+
+/**
+ * Pages that mention scams but can't make a video: case roundups and enforcement news (no message to show),
+ * and general safety guides (no single scam). Dropped before any model sees them.
+ */
+export function skipReason(d: SourceDoc): string | undefined {
+  const title = d.title.toLowerCase();
+  if (/\b\d+\s+(criminal\s+)?(cases|charges|defendants|arrests)\b|\bsentenced\b|\bpleads? guilty\b|\bindicted\b|\bconvicted\b|\bsettle(ment|s|d)?\b|\blawsuit\b|\bsues\b|\bjudgment\b|\bsecures?\b[^.]*\$|\brecovers?\b[^.]*\$|\bannounces? (arrest|charges)\b|\bshuts? down\b/.test(title))
+    return "case or enforcement news";
+  if (/\bparent(s|ing)?\b|\bback[- ]to[- ]school\b|\bsafety tips\b|\bways to (stay safe|protect)\b|\bawareness month\b|\bcybersecurity tips\b|\bholiday (shopping|safety) tips\b|\bnewsletter\b|\bweek in review\b/.test(title))
+    return "general safety guide";
+  // A video needs a message people actually get.
+  if (!/\btext(s|ed| message)?\b|\bemail|\bcall(s|er|ed)?\b|voicemail|\bmessage|\bdm\b|\bqr\b|\blink\b|website|\bad(s|vert)?\b|\bpost(s|ing)?\b|\bletter\b|\bpop-?up|\bapp\b/i.test(`${d.title} ${d.text.slice(0, 2500)}`))
+    return "no message to show";
+  return undefined;
 }
 
 export function detectChannel(d: SourceDoc): Channel {

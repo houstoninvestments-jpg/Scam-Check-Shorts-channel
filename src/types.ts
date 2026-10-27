@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-export const SourceKind = z.enum(["ftc", "bbb", "ag", "reddit"]);
+export const SourceKind = z.enum(["ftc", "bbb", "ag", "gov", "aarp", "reddit"]);
 export type SourceKind = z.infer<typeof SourceKind>;
 
 /** A source is "authoritative" when it may back a red flag or safe move. */
-export const AUTHORITATIVE: SourceKind[] = ["ftc", "bbb", "ag"];
+export const AUTHORITATIVE: SourceKind[] = ["ftc", "bbb", "ag", "gov", "aarp"]; // gov: FBI IC3, USPIS, IRS, SSA, CFPB, FCC
 
 export interface SourceDoc {
   kind: SourceKind;

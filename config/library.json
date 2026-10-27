@@ -1,0 +1,33 @@
+{
+  "_note": "Evergreen library: official pages that document scams people get right now. Built and topped up by `npx tsx src/cli.ts library-refresh` in GitHub Actions. Each page is kept whole (capture 'page') so every quote can be checked word for word. A page that blocks us is skipped, never worked around.",
+  "minEntries": 60,
+  "refreshDays": 7,
+  "maxAgeYears": 3,
+  "lists": [
+    { "kind": "ftc", "name": "FTC Consumer Alerts", "base": "https://consumer.ftc.gov", "pattern": "/consumer-alerts/20\\d{2}/\\d{2}/[a-z0-9-]+", "pages": ["https://consumer.ftc.gov/consumer-alerts", "https://consumer.ftc.gov/consumer-alerts?page=1", "https://consumer.ftc.gov/consumer-alerts?page=2", "https://consumer.ftc.gov/consumer-alerts?page=3", "https://consumer.ftc.gov/consumer-alerts?page=4", "https://consumer.ftc.gov/consumer-alerts?page=5", "https://consumer.ftc.gov/consumer-alerts?page=6", "https://consumer.ftc.gov/consumer-alerts?page=7", "https://consumer.ftc.gov/consumer-alerts?page=8", "https://consumer.ftc.gov/consumer-alerts?page=9", "https://consumer.ftc.gov/consumer-alerts?page=10", "https://consumer.ftc.gov/consumer-alerts?page=11"] },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "base": "https://consumer.ftc.gov", "pattern": "/articles/[a-z0-9-]+", "pages": ["https://consumer.ftc.gov/features/scam-alerts", "https://consumer.ftc.gov/scams"] },
+    { "kind": "gov", "name": "FBI Internet Crime Complaint Center (IC3)", "base": "https://www.ic3.gov", "pattern": "/PSA/20\\d{2}/PSA\\d{6}", "pages": ["https://www.ic3.gov/PSA"] },
+    { "kind": "gov", "name": "U.S. Postal Inspection Service", "base": "https://www.uspis.gov", "pattern": "/scams/[a-z0-9-]+", "pages": ["https://www.uspis.gov/scams"] },
+    { "kind": "gov", "name": "IRS", "base": "https://www.irs.gov", "pattern": "/newsroom/[a-z0-9-]*(scam|fraud|phish|impersonat)[a-z0-9-]*", "pages": ["https://www.irs.gov/newsroom/tax-scams-consumer-alerts"] },
+    { "kind": "gov", "name": "CFPB", "base": "https://www.consumerfinance.gov", "pattern": "/(about-us/blog|consumer-tools/fraud)/[a-z0-9-]*(scam|fraud)[a-z0-9-]*/", "pages": ["https://www.consumerfinance.gov/consumer-tools/fraud/", "https://www.consumerfinance.gov/about-us/blog/"] },
+    { "kind": "gov", "name": "FCC", "base": "https://www.fcc.gov", "pattern": "/consumers/scam-alert/[a-z0-9-]+", "pages": ["https://www.fcc.gov/scam-glossary", "https://www.fcc.gov/consumers/scam-alerts"] },
+    { "kind": "aarp", "name": "AARP Fraud Watch Network", "base": "https://www.aarp.org", "pattern": "/money/scams-fraud/(info-20\\d{2}/)?[a-z0-9-]+(\\.html)?", "pages": ["https://www.aarp.org/money/scams-fraud/"] }
+  ],
+  "pages": [
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/what-know-about-romance-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/job-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/fake-checks" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/avoiding-and-reporting-gift-card-scams" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/scams-against-older-adults" },
+    { "kind": "ftc", "name": "FTC Consumer Advice", "url": "https://consumer.ftc.gov/articles/family-emergency-scams" },
+    { "kind": "gov", "name": "Social Security", "url": "https://www.ssa.gov/scam/" },
+    { "kind": "gov", "name": "IRS", "url": "https://www.irs.gov/newsroom/tax-scams-consumer-alerts" },
+    { "kind": "gov", "name": "U.S. Postal Inspection Service", "url": "https://www.uspis.gov/news/scam-article/smishing-scams" }
+  ]
+}

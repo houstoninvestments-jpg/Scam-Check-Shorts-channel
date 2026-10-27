@@ -175,6 +175,14 @@ jobs:
           github-token: ${{ github.token }}
           path: work/release/control
 
+      - name: Top up the evergreen scam library
+        # Official pages (FTC, FBI IC3, USPIS, IRS, SSA, CFPB, FCC, AARP) used when fresh leads don't pass.
+        # Refetches only when older than a week or under 60 pages; saved with the ledger below.
+        if: ${{ inputs.preview_number == '' && inputs.release_number == '' }}
+        continue-on-error: true
+        timeout-minutes: 15
+        run: npx tsx src/cli.ts library-refresh
+
       - name: Make the Short
         id: run
         run: |
