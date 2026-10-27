@@ -612,6 +612,21 @@
       "leadId": "b51e443cfe3d",
       "date": "2026-10-26",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "e5d3f689169c",
+      "date": "2026-10-27",
+      "reason": "reviews disagree or unsure (unsure / not_scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-27",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "b51e443cfe3d",
+      "date": "2026-10-27",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "firstUploadCheck": {

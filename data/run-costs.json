@@ -156,5 +156,34 @@
     "outputTokens": 0,
     "byRole": {},
     "models": []
+  },
+  {
+    "at": "2026-10-27T05:21:30.407Z",
+    "date": "2026-10-27",
+    "slot": 3,
+    "status": "skipped",
+    "episode": null,
+    "usd": 1.0147,
+    "calls": 10,
+    "inputTokens": 34422,
+    "outputTokens": 20167,
+    "byRole": {
+      "writer": {
+        "calls": 4,
+        "usd": 0.7894
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.103
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.1223
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 ]

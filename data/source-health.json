@@ -2,33 +2,33 @@
   "ftc-alerts": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-26T23:09:08.670Z"
+    "lastOk": "2026-10-27T05:18:09.020Z"
   },
   "bbb-scam-alerts": {
-    "consecutiveFailures": 3,
+    "consecutiveFailures": 4,
     "verified": false,
     "lastError": "Error: fetch failed for https://www.bbb.org/scamtracker: Error: HTTP 403 (not retried)",
-    "lastFailDay": "2026-10-26"
+    "lastFailDay": "2026-10-27"
   },
   "ny-ag": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-26T23:09:08.670Z"
+    "lastOk": "2026-10-27T05:18:09.020Z"
   },
   "ca-ag": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-26T23:09:08.670Z"
+    "lastOk": "2026-10-27T05:18:09.020Z"
   },
   "tx-ag": {
-    "consecutiveFailures": 3,
+    "consecutiveFailures": 4,
     "verified": false,
     "lastError": "no articles found",
-    "lastFailDay": "2026-10-26"
+    "lastFailDay": "2026-10-27"
   },
   "reddit-scams": {
     "consecutiveFailures": 0,
     "verified": true,
-    "lastOk": "2026-10-26T23:09:08.670Z"
+    "lastOk": "2026-10-27T05:18:09.020Z"
   }
 }
