@@ -1,5 +1,6 @@
 {
   "date": "2026-10-27",
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -8,7 +9,7 @@
     {
       "step": "scout",
       "ok": true,
-      "detail": "2 leads, 2 dropped (repeats or pages that can't make a video)"
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
     },
     {
       "step": "same day",
@@ -16,29 +17,34 @@
       "detail": "1 leads already failed the checks today; not retried"
     },
     {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (239 pages not yet on the channel)"
+    },
+    {
       "step": "check",
       "ok": false,
-      "detail": "Internet Crime Complaint Center (IC3) | Cyber Threat Actors : problems: Flag 3 ('Link to tap') uses target.kind \"link\", which the template does not support. Only \"text\", \"sender\" and \"attachment\" exist, so this flag will circle nothing or break the render. It should be kind \"text\" with match set to the URL, \"https://portal-verify.example/login\". (rewrite 1 of 2)"
+      "detail": "How to avoid a side hustle scam: problems: The hook \"This job text is going around right now\" says this specific message is circulating. The message is recreated, and the source only says scammers 'might text' offering gigs. Nothing in the source shows this exact text, or a current wave of it, is going around. Reword the hook so it describes the scam type, not this message as a real circulating text. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Internet Crime Complaint Center (IC3) | Cyber Threat Actors : both reviews agree: scam, no problems"
+      "detail": "How to avoid a side hustle scam: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 33.6s"
+      "detail": "AI voice (Kokoro open model), 29.7s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006.mp4 (1080x1920, 33.58s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007.mp4 (1080x1920, 29.72s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006-cover.jpg (178 KB), loop similarity 0.995088"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007-cover.jpg (196 KB), loop similarity 0.994605"
     },
     {
       "step": "thumbnail",
@@ -48,41 +54,41 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded 3V9jjUV4c1E as public"
+      "detail": "uploaded OmRwCbn4erE as public"
     }
   ],
   "summary": {
-    "scam": "Fake login check email | sources: FBI Internet Crime Complaint Center (IC3)  (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 33.6s",
-    "music": "tension bed on: G# with a tritone, 76 BPM; voice -23.3 LUFS, bed -43.3 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13480/8867 red px), phone screen untouched",
-    "title": "Scam No. 006: Fake login check email aimed at election workers",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/006-fake-login-check-email/",
-    "upload": "3V9jjUV4c1E, public, not locked",
+    "scam": "Fake side hustle job text | sources: FTC Consumer Alerts 2026-02-24 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 29.7s",
+    "music": "tension bed on: D with a fifth, 75 BPM; voice -23.2 LUFS, bed -43.2 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13659/13487/8873 red px), phone screen untouched",
+    "title": "Scam No. 007: The side hustle text that makes you pay to start",
+    "hashtags": "#ScamOrNot #JobScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/007-fake-side-hustle-job-text/",
+    "upload": "OmRwCbn4erE, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.48 for 6 model calls (writer 2x $0.35, checker-b 2x $0.06, checker-a 2x $0.07)"
+    "cost": "$0.33 for 6 model calls (writer 2x $0.25, checker-a 2x $0.04, checker-b 2x $0.04)"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27/scam-006.mp4",
-  "episode": 6,
-  "youtubeId": "3V9jjUV4c1E",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007.mp4",
+  "episode": 7,
+  "youtubeId": "OmRwCbn4erE",
   "cost": {
-    "usd": 0.4798,
+    "usd": 0.3304,
     "calls": 6,
-    "inputTokens": 28984,
-    "outputTokens": 7746,
+    "inputTokens": 19797,
+    "outputTokens": 4971,
     "byRole": {
       "writer": {
         "calls": 2,
-        "usd": 0.3483
-      },
-      "checker-b": {
-        "calls": 2,
-        "usd": 0.0625
+        "usd": 0.2531
       },
       "checker-a": {
         "calls": 2,
-        "usd": 0.0691
+        "usd": 0.0399
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0375
       }
     },
     "models": [
