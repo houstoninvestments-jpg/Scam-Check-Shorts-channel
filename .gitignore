@@ -33,5 +33,8 @@ __pycache__/
 .DS_Store
 *.log
 
-# Dry-run state and test renders stay local
-data/dry-run/
+# Dry-run state and test renders stay local, except the live-test ledger copy: live-source test runs
+# on the same day must remember each other, or a second test could pick the same scam again.
+data/dry-run/*
+!data/dry-run/live-ledger.json
+!data/dry-run/live-ledger.day
