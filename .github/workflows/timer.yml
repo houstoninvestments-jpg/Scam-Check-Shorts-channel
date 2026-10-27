@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       step:
-        description: "check = what the keys can do | deploy = put the timer live | test = use the timer's GitHub key to start one Scam or Not dry run"
+        description: "check = what the keys can do | deploy = put the timer live | test = use the timer's GitHub key to start one Scam or Not dry run | verify = list both channels' recent starts"
         type: choice
-        options: [check, deploy, test]
+        options: [check, deploy, test, verify]
         default: check
 
 permissions:
@@ -72,3 +72,13 @@ jobs:
           code=$(curl -s -o /tmp/d.txt -w "%{http_code}" -X POST -H "Authorization: Bearer $GH_DISPATCH_TOKEN" -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/houstoninvestments-jpg/Scam-Check-Shorts-channel/actions/workflows/daily.yml/dispatches -d '{"ref":"main","inputs":{"dry_run":"true"}}')
           [ "$code" = "204" ] && echo "::notice title=GitHub key::can start the daily job (one dry run started; uploads nothing)" || { echo "::error title=GitHub key::refused ($code: $(head -c 200 /tmp/d.txt))"; exit 1; }
+
+      - name: Recent starts in both channels
+        if: inputs.step == 'verify'
+        run: |
+          for r in houstoninvestments-jpg/Scam-Check-Shorts-channel houstoninvestments-jpg/congress-receipts; do
+            runs=$(curl -s -H "Authorization: Bearer $GH_DISPATCH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/$r/actions/workflows/daily.yml/runs?per_page=4" \
+              | python3 -c "import json,sys;print(' | '.join(f\"{x['created_at']} {x['event']} {x['conclusion'] or x['status']}\" for x in json.load(sys.stdin).get('workflow_runs',[])))")
+            echo "::notice title=Recent starts: ${r#*/}::$runs"
+          done
+
