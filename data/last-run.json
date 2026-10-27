@@ -1,99 +1,26 @@
 {
   "date": "2026-10-27",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
-      "step": "scout",
+      "step": "slot",
       "ok": true,
-      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (239 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How to avoid a side hustle scam: problems: The hook \"This job text is going around right now\" says this specific message is circulating. The message is recreated, and the source only says scammers 'might text' offering gigs. Nothing in the source shows this exact text, or a current wave of it, is going around. Reword the hook so it describes the scam type, not this message as a real circulating text. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "How to avoid a side hustle scam: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 29.7s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007.mp4 (1080x1920, 29.72s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007-cover.jpg (196 KB), loop similarity 0.994605"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded OmRwCbn4erE as public"
+      "detail": "slot 1 for 2026-10-27 already started at 2026-10-27T14:21:45.835Z"
     }
   ],
   "summary": {
-    "scam": "Fake side hustle job text | sources: FTC Consumer Alerts 2026-02-24 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 29.7s",
-    "music": "tension bed on: D with a fifth, 75 BPM; voice -23.2 LUFS, bed -43.2 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13659/13487/8873 red px), phone screen untouched",
-    "title": "Scam No. 007: The side hustle text that makes you pay to start",
-    "hashtags": "#ScamOrNot #JobScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/007-fake-side-hustle-job-text/",
-    "upload": "OmRwCbn4erE, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.33 for 6 model calls (writer 2x $0.25, checker-a 2x $0.04, checker-b 2x $0.04)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot2/scam-007.mp4",
-  "episode": 7,
-  "youtubeId": "OmRwCbn4erE",
   "cost": {
-    "usd": 0.3304,
-    "calls": 6,
-    "inputTokens": 19797,
-    "outputTokens": 4971,
-    "byRole": {
-      "writer": {
-        "calls": 2,
-        "usd": 0.2531
-      },
-      "checker-a": {
-        "calls": 2,
-        "usd": 0.0399
-      },
-      "checker-b": {
-        "calls": 2,
-        "usd": 0.0375
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
