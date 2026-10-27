@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "skipped",
   "warnings": [],
@@ -9,7 +9,7 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-10-27 already started at 2026-10-27T14:21:45.835Z"
+      "detail": "slot 2 for 2026-10-27 already started at 2026-10-27T19:21:39.065Z"
     }
   ],
   "summary": {
