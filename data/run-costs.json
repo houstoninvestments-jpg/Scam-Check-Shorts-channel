@@ -395,5 +395,18 @@
     "outputTokens": 0,
     "byRole": {},
     "models": []
+  },
+  {
+    "at": "2026-10-28T23:15:10.890Z",
+    "date": "2026-10-28",
+    "slot": 2,
+    "status": "skipped",
+    "episode": null,
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 ]
