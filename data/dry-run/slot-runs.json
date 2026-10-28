@@ -4,7 +4,11 @@
       "attempts": [
         {
           "startedAt": "2026-10-28T00:29:59.120Z",
-          "runId": "40609053518"
+          "runId": "40609053518",
+          "endedAt": "2026-10-28T00:31:11.919Z",
+          "ok": false,
+          "why": "test: forced miss (nothing written, nothing uploaded)",
+          "tried": []
         }
       ]
     }
