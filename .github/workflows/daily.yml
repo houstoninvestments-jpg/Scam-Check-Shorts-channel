@@ -306,6 +306,14 @@ jobs:
           if curl -s "$base/assets/round.js" | grep -q 'Copied!'; then
             echo "::notice title=Share button::live round page copies on computers and opens the share sheet on phones"
           else echo "::error title=Share button::live round page has the old share button"; exit 1; fi
+          # Impact (Aura's affiliate platform) site verification: exact line, inside the served <head>, cache-busted.
+          tag="<meta name='impact-site-verification' value='d36828b8-5d33-47f5-aa4b-4c745b49646b'>"
+          for i in 1 2 3 4 5 6; do
+            head=$(curl -s -H "Cache-Control: no-cache" -H "Pragma: no-cache" "$base/?cb=$(date +%s%N)" | sed -n '/<head>/,/<\/head>/p')
+            printf '%s' "$head" | grep -qF "$tag" && break; sleep 10
+          done
+          if printf '%s' "$head" | grep -qF "$tag"; then echo "::notice title=Impact verification::served in the homepage <head>: $(printf '%s' "$head" | grep -F "$tag")"
+          else echo "::error title=Impact verification::the line is not in the served homepage <head>"; exit 1; fi
 
       - name: Evidence files from the live site
         if: always() && inputs.extra == 'evidence' && steps.cloudflare.outcome == 'success'
