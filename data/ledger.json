@@ -1,5 +1,5 @@
 {
-  "nextNumber": 8,
+  "nextNumber": 9,
   "episodes": [
     {
       "number": 1,
@@ -728,6 +728,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "OmRwCbn4erE",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 8,
+      "leadId": "d67141a1964f",
+      "date": "2026-10-27",
+      "skin": "android",
+      "slot": 3,
+      "brands": [
+        "paypal"
+      ],
+      "cta": "soft",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Lookalike travel permit site",
+        "message": {
+          "sender": "esta-usa-apply.example",
+          "subject": "",
+          "body": "Apply for your U.S. travel authorization online.\n\nesta-usa-apply.example\n\nProcessing fee: $89\nFull refund if not approved.\nPay by bank transfer.\n\nStart your application",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated as a lookalike web page from Source 1 (FTC Consumer Alerts), which describes ESTA lookalike sites with similar names that overcharge, promise refunds, or ask you to pay a different way. Shown as a page a traveler comes across while applying, not as a message sent to them.",
+          "evidence": [
+            {
+              "quote": "they might come across ESTA lookalike sites trying to trick people into overpaying for the application",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            },
+            {
+              "quote": "Scammers have copycat websites that will likely overcharge you and might not even submit your paperwork",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          ]
+        },
+        "hook": "Someone you love may land on this today.",
+        "stampSay": "A copycat site, not the real one.",
+        "flags": [
+          {
+            "label": "Lookalike web address",
+            "say": "The address looks close to the real one, so check every letter.",
+            "target": {
+              "kind": "text",
+              "match": "esta-usa-apply.example"
+            },
+            "evidence": {
+              "quote": "Lookalike sites often have similar names, so look closely at the URL.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          },
+          {
+            "label": "Charges too much",
+            "say": "A site that charges more than the real fee is not the real site.",
+            "target": {
+              "kind": "text",
+              "match": "Processing fee: $89"
+            },
+            "evidence": {
+              "quote": "Any website that charges you more to apply — or says you can get a refund — isn’t the real site.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          },
+          {
+            "label": "Promises a refund",
+            "say": "The real fee has no refunds, so a refund offer gives it away.",
+            "target": {
+              "kind": "text",
+              "match": "Full refund if not approved."
+            },
+            "evidence": {
+              "quote": "The ESTA application fee is nonrefundable.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Use the official site",
+          "say": "Go to the official ESTA website or app yourself and apply only there.",
+          "evidence": {
+            "quote": "The only place to apply is through the ESTA website or app.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
+          }
+        },
+        "title": "Fake travel permit website charges visitors extra fees",
+        "description": "Copycat websites trick visitors into overpaying for a U.S. travel permit. They use lookalike names, charge too much, and promise refunds. Here is how to spot one and where to apply instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "008-lookalike-travel-permit-site",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4065,
+      "renderAttempts": 1,
+      "music": "C fifth 78 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995093,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "xOQwIu7c33I",
       "youtubePrivacy": "public"
     }
   ],

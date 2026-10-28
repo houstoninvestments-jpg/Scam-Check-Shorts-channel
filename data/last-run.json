@@ -1,26 +1,104 @@
 {
   "date": "2026-10-27",
-  "slot": 2,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
-      "step": "slot",
+      "step": "scout",
       "ok": true,
-      "detail": "slot 2 for 2026-10-27 already started at 2026-10-27T19:21:39.065Z"
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (238 pages not yet on the channel)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "Are ads on social media vetted or checked for scams? Here’s : same type (impostor) as an earlier video today; waits for another day"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to avoid scams while applying for ESTA: problems: Flag 'Lookalike web address' uses target.kind \"link\" with an empty match. The template only defines \"text\", \"sender\" and \"attachment\", and only sender and attachment have empty matches by design. As written, this flag will circle nothing. It should be kind \"text\" with match \"esta-usa-apply.example\" so the lookalike address in the body is actually highlighted. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "How to avoid scams while applying for ESTA: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 32.0s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot3/scam-008.mp4 (1080x1920, 32.04s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot3/scam-008-cover.jpg (169 KB), loop similarity 0.995093"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded xOQwIu7c33I as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Lookalike travel permit site | sources: FTC Consumer Alerts 2026-03-11 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 32.0s",
+    "music": "tension bed on: C with a fifth, 78 BPM; voice -23.6 LUFS, bed -43.6 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13479/8875 red px), phone screen untouched",
+    "title": "Scam No. 008: Fake travel permit website charges visitors extra fees",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/008-lookalike-travel-permit-site/",
+    "upload": "xOQwIu7c33I, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.41 for 6 model calls (writer 2x $0.31, checker-b 2x $0.04, checker-a 2x $0.05)"
   },
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-27-slot3/scam-008.mp4",
+  "episode": 8,
+  "youtubeId": "xOQwIu7c33I",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.4065,
+    "calls": 6,
+    "inputTokens": 19673,
+    "outputTokens": 6956,
+    "byRole": {
+      "writer": {
+        "calls": 2,
+        "usd": 0.3145
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0421
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0499
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

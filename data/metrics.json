@@ -4,10 +4,32 @@
     "number": 2,
     "hookVariant": "would-you-tap",
     "cta": "soft",
-    "views": 13,
-    "averageViewPercentage": 104.98,
+    "views": 15,
+    "averageViewPercentage": 89.83,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-10-27T05:21:31.881Z"
+    "measuredAt": "2026-10-28T00:25:02.092Z"
+  },
+  "XVZ7AbUa-wU": {
+    "videoId": "XVZ7AbUa-wU",
+    "number": 3,
+    "hookVariant": "going-around",
+    "cta": "direct",
+    "views": 2,
+    "averageViewPercentage": 53.290000000000006,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-10-28T00:25:02.092Z"
+  },
+  "9qFEqnt1HqU": {
+    "videoId": "9qFEqnt1HqU",
+    "number": 4,
+    "hookVariant": "someone-you-love",
+    "cta": "none",
+    "views": 7,
+    "averageViewPercentage": 55.69,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-10-28T00:25:02.092Z"
   }
 }
