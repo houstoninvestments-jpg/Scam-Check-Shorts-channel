@@ -16,6 +16,9 @@ const pad3 = (n: number) => String(n).padStart(3, "0");
 /** Site-wide preview card for the link page, the daily round and the index pages. */
 const defaultImage = (): ShareImage => ({ url: `${config().site.baseUrl}/og/default.png`, alt: "Scam or Not: one real scam text a day. Real or scam?" });
 
+/** Impact (Aura's affiliate platform) site verification. Homepage only, exactly as Impact gave it: keep it byte for byte. */
+export const IMPACT_SITE_VERIFICATION = "<meta name='impact-site-verification' value='d36828b8-5d33-47f5-aa4b-4c745b49646b'>";
+
 function out(dir: string, rel: string, content: string) {
   const f = join(dir, rel);
   mkdirSync(dirname(f), { recursive: true });
@@ -86,6 +89,7 @@ ${
     root: "",
     canonical: `${c.site.baseUrl}/`,
     image: defaultImage(),
+    extraHead: IMPACT_SITE_VERIFICATION,
     scripts: `<script src="assets/config.js"></script><script src="assets/signup.js"></script>`,
   });
 }

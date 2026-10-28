@@ -39,6 +39,14 @@ describe("website", () => {
     resetConfigCache();
   });
 
+  it("keeps Impact's site verification line, character for character, inside the homepage head", async () => {
+    const { buildSite } = await import("../src/site/build");
+    await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
+    const html = readFileSync(join(dir, "index.html"), "utf8");
+    const head = html.slice(html.indexOf("<head>"), html.indexOf("</head>"));
+    expect(head).toContain("<meta name='impact-site-verification' value='d36828b8-5d33-47f5-aa4b-4c745b49646b'>");
+  });
+
   it("builds a page per scam, titled with the exact scam text, linking to the link page", async () => {
     const { buildSite } = await import("../src/site/build");
     const r = await buildSite({ dir, fireDrillDir: fd, date: "2026-10-22" });
