@@ -78,7 +78,21 @@
       "attempts": [
         {
           "startedAt": "2026-10-28T19:21:42.581Z",
-          "runId": "40753477573"
+          "runId": "40753477573",
+          "endedAt": "2026-10-28T19:28:34.904Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (235 pages not yet on the channel)",
+            "Held back: Give to a charity, not a scam: its screen style already ran today; waits for another day",
+            "Held back: How To Avoid a Scam: its screen style already ran today; waits for another day",
+            "Did not pass the checks: How to spot a CAPTCHA scam: problems: The message is framed as a text from the phone number (202) 555-0147, but Source 1 describes a fake CAPTCHA that appears while browsing a website. The provenanceNote admits this, but viewers only see a phone message from a sender, which teaches the wrong delivery channel. It should be shown as a browser pop-up, or the hook and lines should say it appears on a website. (rewrite 1 of 2)",
+            "Did not pass the checks: How to spot a CAPTCHA scam: problems: The safe move is incomplete. For when something starts downloading after the check, Source 1 lists three steps in order: disconnect from the internet, run a security scan to remove the malware, then change passwords and turn on two-factor from a different device. The script gives only the last step. Viewers could think changing passwords is enough while the malware stays active and connected. At minimum, add 'disconnect from the internet' and 'run a security scan', which the same source supports. (rewrite 2 of 2)",
+            "Did not pass the checks: How to spot a CAPTCHA scam: problems: The hook \"Would you tap this pop-up while browsing?\" and the phone-screen framing suggest a mobile tap threat. The source describes keyboard commands (Windows + R, Ctrl + V, Enter), which only work on a Windows computer, and tapping is not the risky action. Viewers could misjudge where and how this attack works.",
+            "Passed the checks: How to avoid fraud and scams after a disaster: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "nextNumber": 10,
+  "nextNumber": 11,
   "episodes": [
     {
       "number": 1,
@@ -941,6 +941,109 @@
       },
       "youtubeId": "q9YJmWdzpyc",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 10,
+      "leadId": "3fd78ee1d584",
+      "date": "2026-10-28",
+      "skin": "email",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake disaster charity email",
+        "message": {
+          "sender": "Storm Relief Fund <donate@storm-relief-fund.example>",
+          "subject": "Families lost everything in the storm. Please help today.",
+          "body": "Dear friend,\n\nThousands of families lost their homes in this week's storm. They need food, water and shelter right now.\n\nYour gift can reach them today. Give now at storm-relief-fund.example.\n\nTo speed up your gift, reply with your card number and bank account details so we can confirm it.\n\nThank you for your kindness.\n\nStorm Relief Fund Team",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (IRS, How to avoid fraud and scams after a disaster), which describes unsolicited emails from thieves posing as charities, bogus sites with names like real charities, and requests for personal financial information.",
+          "evidence": [
+            {
+              "quote": "These disaster scams normally start with unsolicited contact. The scammer contacts their possible victim by telephone, social media, email or in-person.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            },
+            {
+              "quote": "Some thieves pretend they are from a charity. They do this to get money or private information from well-intentioned taxpayers.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          ]
+        },
+        "hook": "Would you tap this storm relief email?",
+        "stampSay": "A fake charity, not real help.",
+        "flags": [
+          {
+            "label": "Came out of nowhere",
+            "say": "You never asked for this email, and that is how these scams usually start.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "These disaster scams normally start with unsolicited contact.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          },
+          {
+            "label": "Copycat charity name",
+            "say": "The site uses a name that sounds like a real charity to get your money.",
+            "target": {
+              "kind": "text",
+              "match": "storm-relief-fund.example"
+            },
+            "evidence": {
+              "quote": "Bogus websites use names like legitimate charities. They do this scam to trick people to send money or provide personal financial information.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          },
+          {
+            "label": "Wants your bank info",
+            "say": "Never hand your card or bank numbers to someone asking you for a donation.",
+            "target": {
+              "kind": "text",
+              "match": "card number and bank account details"
+            },
+            "evidence": {
+              "quote": "Donors should not give out personal financial information to anyone who solicits a contribution.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check the charity first",
+          "say": "Look up the charity with the IRS search tool before you give a single dollar.",
+          "evidence": {
+            "quote": "The Tax Exempt Organization Search helps users find or verify qualified charities.",
+            "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+          }
+        },
+        "title": "Fake disaster charity email asks for your bank details",
+        "description": "After a storm or flood, thieves send emails posing as charities. This one asks for your card and bank numbers. Here are three red flags and the one thing to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster",
+          "name": "IRS",
+          "capture": "page"
+        }
+      ],
+      "slug": "010-fake-disaster-charity-email",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 1.1133,
+      "renderAttempts": 1,
+      "music": "C# fifth 71 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.995772,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "fWmyC9nODaQ",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1058,6 +1161,11 @@
       "leadId": "2e1da236025d",
       "date": "2026-10-28",
       "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "f51b8a037963",
+      "date": "2026-10-28",
+      "reason": "problems: The hook \"Would you tap this pop-up while browsing?\" and the phone-screen framing suggest a mobile tap threat. The source describes keyboard commands (Windows + R, Ctrl + V, Enter), which only work on a Windows computer, and tapping is not the risky action. Viewers could misjudge where and how this attack works."
     }
   ],
   "firstUploadCheck": {

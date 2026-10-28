@@ -1,6 +1,6 @@
 {
   "date": "2026-10-28",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -9,7 +9,7 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-10-28: first start"
+      "detail": "slot 2 for 2026-10-28: first start"
     },
     {
       "step": "scout",
@@ -17,49 +17,59 @@
       "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
     },
     {
       "step": "library",
       "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (237 pages not yet on the channel)"
+      "detail": "fresh leads didn't pass; trying the evergreen library (235 pages not yet on the channel)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "Give to a charity, not a scam: its screen style already ran today; waits for another day"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "How To Avoid a Scam: its screen style already ran today; waits for another day"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Job-seeking servicemembers: Avoid scams while you search: problems: The message names \"Prime Staffing Group\" as the recruiter's company. That name is not from the source and may match a real staffing firm, which would wrongly tie a real company to a scam. Use a clearly fictional name or none. (rewrite 1 of 2)"
+      "detail": "How to spot a CAPTCHA scam: problems: The message is framed as a text from the phone number (202) 555-0147, but Source 1 describes a fake CAPTCHA that appears while browsing a website. The provenanceNote admits this, but viewers only see a phone message from a sender, which teaches the wrong delivery channel. It should be shown as a browser pop-up, or the hook and lines should say it appears on a website. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Job-seeking servicemembers: Avoid scams while you search: problems: The safe move tells viewers to look up 'the company name,' but the recreated message names no company, only 'a hiring agency.' A viewer has nothing to search. The source's related advice, 'If you can't find the company online, steer clear,' is left out, and that is the advice that fits this message. Either add a company name to the message or add that line to the safe move. (rewrite 2 of 2)"
+      "detail": "How to spot a CAPTCHA scam: problems: The safe move is incomplete. For when something starts downloading after the check, Source 1 lists three steps in order: disconnect from the internet, run a security scan to remove the malware, then change passwords and turn on two-factor from a different device. The script gives only the last step. Viewers could think changing passwords is enough while the malware stays active and connected. At minimum, add 'disconnect from the internet' and 'run a security scan', which the same source supports. (rewrite 2 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Job-seeking servicemembers: Avoid scams while you search: reviews disagree or unsure (unsure / scam)"
+      "detail": "How to spot a CAPTCHA scam: problems: The hook \"Would you tap this pop-up while browsing?\" and the phone-screen framing suggest a mobile tap threat. The source describes keyboard commands (Windows + R, Ctrl + V, Enter), which only work on a Windows computer, and tapping is not the risky action. Viewers could misjudge where and how this attack works."
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Scammers Offering Discounted Cable and Streaming Services: both reviews agree: scam, no problems"
+      "detail": "How to avoid fraud and scams after a disaster: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 30.4s"
+      "detail": "AI voice (Kokoro open model), 33.4s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009.mp4 (1080x1920, 30.44s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot2/scam-010.mp4 (1080x1920, 33.41s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009-cover.jpg (212 KB), loop similarity 0.994464"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot2/scam-010-cover.jpg (223 KB), loop similarity 0.995772"
     },
     {
       "step": "thumbnail",
@@ -69,43 +79,43 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded q9YJmWdzpyc as public"
+      "detail": "uploaded fWmyC9nODaQ as public"
     }
   ],
   "summary": {
-    "scam": "Fake cable discount voicemail | sources: FCC  (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 30.4s",
-    "music": "tension bed on: C with a minor tenth, 77 BPM; voice -23.2 LUFS, bed -43.3 LUFS (20.1 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13475/8872 red px), phone screen untouched",
-    "title": "Scam No. 009: Voicemail says your cable discount expires today. It's a scam",
+    "scam": "Fake disaster charity email | sources: IRS  (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 33.4s",
+    "music": "tension bed on: C# with a fifth, 71 BPM; voice -23.6 LUFS, bed -43.7 LUFS (20.1 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13661/13470/8887 red px), phone screen untouched",
+    "title": "Scam No. 010: Fake disaster charity email asks for your bank details",
     "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/009-fake-cable-discount-voicemail/",
-    "upload": "q9YJmWdzpyc, public, not locked",
+    "page": "https://scamornotdaily.com/scam/010-fake-disaster-charity-email/",
+    "upload": "fWmyC9nODaQ, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.09 for 15 model calls (writer 5x $0.83, checker-b 5x $0.13, checker-a 5x $0.14)"
+    "cost": "$1.11 for 13 model calls (writer 5x $0.90, checker-b 4x $0.10, checker-a 4x $0.11)"
   },
-  "runId": "40705020583",
+  "runId": "40753477573",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009.mp4",
-  "episode": 9,
-  "youtubeId": "q9YJmWdzpyc",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot2/scam-010.mp4",
+  "episode": 10,
+  "youtubeId": "fWmyC9nODaQ",
   "cost": {
-    "usd": 1.0948,
-    "calls": 15,
-    "inputTokens": 49542,
-    "outputTokens": 20053,
+    "usd": 1.1133,
+    "calls": 13,
+    "inputTokens": 43797,
+    "outputTokens": 19769,
     "byRole": {
       "writer": {
         "calls": 5,
-        "usd": 0.8259
+        "usd": 0.9045
       },
       "checker-b": {
-        "calls": 5,
-        "usd": 0.1279
+        "calls": 4,
+        "usd": 0.1012
       },
       "checker-a": {
-        "calls": 5,
-        "usd": 0.141
+        "calls": 4,
+        "usd": 0.1075
       }
     },
     "models": [
