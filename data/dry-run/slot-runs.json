@@ -12,8 +12,17 @@
         },
         {
           "startedAt": "2026-10-28T00:31:57.445Z",
-          "runId": "40609277533"
+          "runId": "40609277533",
+          "endedAt": "2026-10-28T00:33:25.264Z",
+          "ok": false,
+          "why": "test: forced miss (nothing written, nothing uploaded)",
+          "tried": [
+            "Evergreen library: retry: would try 244 evergreen library pages before fresh leads"
+          ]
         }
+      ],
+      "alerted": [
+        "missed twice"
       ]
     }
   }
