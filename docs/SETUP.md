@@ -234,3 +234,23 @@ The site's Cloudflare key can't create Workers, so the timer needs its own.
     Actions, New repository secret. Name: `CLOUDFLARE_WORKERS_TOKEN`. Paste. Add secret.
 
 Not verified from here: Cloudflare's token screen. From Cloudflare's docs found by search.
+
+## 8. Missed-slot alerts (AARON)
+
+A slot that ends without posting is retried once, right away, with the evergreen library first.
+If the retry misses too, one email goes out: which slot, why, and what was tried. The same kind of
+email goes out if a slot has not started 30 minutes after its time, if a miss's retry never started,
+or if a start never finished. Each alert is sent once.
+
+The email goes through Resend (the `RESEND_API_KEY` secret already set) from
+alerts@ the site's domain. The address it goes to is one GitHub Actions secret:
+
+- Name: `ALERT_EMAIL`
+- Value: the one address that should get the alerts (just the address, nothing else)
+
+Until `ALERT_EMAIL` is set, alerts go to the contact address already on the site's privacy page
+(`channel.contactEmail` in config/channel.json). The address is never printed in run logs.
+
+Test without uploading anything: run **Daily Short** with dry_run on, slot `1`, slot_date today
+(YYYY-MM-DD, Pacific), and extra `fake-miss`. The first run misses, starts its retry, and the retry's
+miss sends one email marked TEST.

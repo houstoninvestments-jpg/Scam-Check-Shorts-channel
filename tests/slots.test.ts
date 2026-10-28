@@ -154,7 +154,7 @@ describe("each slot runs once", () => {
     const llm: any = { mode: "fixture", calls: [], async json() { throw new Error("must not be called"); } };
     const r = await runDaily({ dryRun: false, llm, slot: 2, slotDate: "2026-10-27", workDir: join(t, "w") });
     expect(r.status).toBe("skipped");
-    expect(r.steps[0].detail).toMatch(/already started/);
+    expect(r.steps[0].detail).toMatch(/this start exits/);
     delete process.env.SLOT_RUNS_FILE;
   });
 });

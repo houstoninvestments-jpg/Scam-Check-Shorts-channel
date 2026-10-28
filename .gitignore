@@ -38,3 +38,4 @@ __pycache__/
 data/dry-run/*
 !data/dry-run/live-ledger.json
 !data/dry-run/live-ledger.day
+!data/dry-run/slot-runs.json

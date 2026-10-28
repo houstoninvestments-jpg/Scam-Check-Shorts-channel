@@ -6,6 +6,7 @@ import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
 import { log, pad3, path, readJson, slugify, today, writeJson } from "../lib/util.js";
 import type { LLM } from "../llm/client.js";
 import { libraryLeads } from "../scout/library.js";
+import { loadSlotRuns, saveSlotRuns, slotRunsFile, slotStart } from "./slotwatch.js";
 import { scout, scoutFromFixtures, updateSourceHealth } from "../scout/index.js";
 import { write } from "../writer/index.js";
 import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
@@ -30,7 +31,8 @@ export interface RunOptions {
   skin?: SkinId; // test renders only: force a phone skin
   library?: boolean; // fall back to the evergreen library when fresh leads fail (default: on for live sources, off for fixtures)
   slot?: number; // which of the day's posting slots this run is (1-3); manual runs leave it empty
-  slotDate?: string; // the Pacific date the slot belongs to; with slot, a second start of the same slot exits
+  slotDate?: string; // the Pacific date the slot belongs to; with slot, a second start exits (or retries after a miss)
+  fakeMiss?: boolean; // test runs only: end the slot as a miss before anything is written, to check the retry and alert
 }
 
 export interface RunReport {
@@ -46,6 +48,10 @@ export interface RunReport {
   steps: { step: string; ok: boolean; detail: string }[];
   /** One line per thing a person would check, posted as notes on the GitHub run. */
   summary: Record<string, string>;
+  /** Which try of its slot this run was (1, or 2 for the retry after a miss). */
+  attempt?: number;
+  /** The GitHub run that wrote this report, so the slot's end step knows it is reading its own. */
+  runId?: string;
   /** Model cost of this run at list prices, whether or not it posted. */
   cost?: ReturnType<typeof costSummary>;
 }
@@ -56,7 +62,7 @@ export const PUBLISHABLE_CAPTURES = new Set(["page", "feed"]);
 export async function runDaily(opts: RunOptions): Promise<RunReport> {
   const cfg = config();
   const date = today(cfg.cadence.timezone);
-  const report: RunReport = { date, slot: opts.slot, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [], summary: {} };
+  const report: RunReport = { date, slot: opts.slot, dryRun: opts.dryRun, status: "failed", warnings: [], errors: [], steps: [], summary: {}, runId: process.env.GITHUB_RUN_ID };
   const step = (s: string, ok: boolean, detail: string) => {
     report.steps.push({ step: s, ok, detail });
     log(`${ok ? "ok  " : "FAIL"} ${s}: ${detail}`);
@@ -64,19 +70,39 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
   const work = opts.workDir ?? path("work", date);
 
   try {
-    // Each slot runs once: the Cloudflare timer starts it on time; GitHub's own (often late) start of the same slot then exits.
-    if (!opts.dryRun && opts.slot && opts.slotDate) {
-      const file = process.env.SLOT_RUNS_FILE || path("data/slot-runs.json");
-      const runs = readJson<Record<string, Record<string, string>>>(file, {});
-      const before = runs[opts.slotDate]?.[String(opts.slot)];
-      if (before) {
-        step("slot", true, `slot ${opts.slot} for ${opts.slotDate} already started at ${before}`);
+    // Each slot runs once, plus one retry after a miss: the Cloudflare timer starts it on time; GitHub's
+    // own (often late) start of the same slot then exits, or becomes the retry if the first try missed.
+    // Test runs keep their own record (data/dry-run/slot-runs.json).
+    let libraryFirst = false;
+    if (opts.slot && opts.slotDate) {
+      const file = slotRunsFile(opts.dryRun);
+      const runs = loadSlotRuns(file);
+      const gate = slotStart(runs[opts.slotDate]?.[String(opts.slot)], new Date(), process.env.GITHUB_RUN_ID);
+      if (!gate.go) {
+        step("slot", true, `slot ${opts.slot} for ${opts.slotDate}: ${gate.why}; this start exits`);
         report.status = "skipped";
         return report;
       }
-      runs[opts.slotDate] = { ...runs[opts.slotDate], [String(opts.slot)]: new Date().toISOString() };
-      for (const d of Object.keys(runs).sort().slice(0, -14)) delete runs[d]; // two weeks is plenty
-      writeJson(file, runs);
+      if (!gate.recorded) {
+        runs[opts.slotDate] ??= {};
+        const entry = (runs[opts.slotDate][String(opts.slot)] ??= { attempts: [] });
+        entry.attempts.push({ startedAt: new Date().toISOString(), runId: process.env.GITHUB_RUN_ID });
+        saveSlotRuns(file, runs);
+      }
+      report.attempt = gate.attempt;
+      libraryFirst = gate.attempt === 2;
+      step("slot", true, `slot ${opts.slot} for ${opts.slotDate}: ${gate.why}`);
+    }
+    if (opts.fakeMiss) {
+      // Test only: end the slot as a miss before anything is written or spent, so the retry and the email can be checked.
+      if (!opts.dryRun) throw new Error("a forced miss is for test runs only");
+      if (libraryFirst) {
+        const ledger = loadLedger();
+        step("library first", true, `retry: would try ${libraryLeads(ledger, date, cfg.scout.dedupeSimilarity).length} evergreen library pages before fresh leads`);
+      }
+      report.status = "skipped";
+      report.warnings.push("test: forced miss (nothing written, nothing uploaded)");
+      return report;
     }
     const ledger = loadLedger();
     // Up to shortsPerDay a day. A ceiling, not a quota: each slot posts only if a new scam passes both checks.
@@ -191,13 +217,21 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
           ledger.skipped.push({ leadId: lead.id, date, reason: verdict.reason });
         }
       };
-      await tryLeads(fresh, 6);
-      // Fresh leads didn't pass: fall back to the evergreen library of officially documented scams.
-      // Same gates: quotes checked word for word, both reviews must agree. Fixture (test) runs skip it.
-      if (!chosen && (opts.library ?? !opts.fixtureSources)) {
+      // The evergreen library of officially documented scams. Same gates: quotes checked word for word,
+      // both reviews must agree. Fixture (test) runs skip it unless asked.
+      const useLibrary = opts.library ?? !opts.fixtureSources;
+      const tryLibrary = async (why: string) => {
         const pool = libraryLeads(ledger, date, cfg.scout.dedupeSimilarity).filter((l) => !failedToday.has(l.id));
-        step("library", pool.length > 0, `fresh leads didn't pass; trying the evergreen library (${pool.length} pages not yet on the channel)`);
+        step("library", pool.length > 0, `${why}; trying the evergreen library (${pool.length} pages not yet on the channel)`);
         await tryLeads(pool, 4);
+      };
+      if (libraryFirst && useLibrary) {
+        // A retry after a miss: the library first (fresh leads already failed this slot), then fresh ones.
+        await tryLibrary("retry after a miss");
+        if (!chosen) await tryLeads(fresh, 6);
+      } else {
+        await tryLeads(fresh, 6);
+        if (!chosen && useLibrary) await tryLibrary("fresh leads didn't pass");
       }
       if (!chosen) {
         saveLedger(ledger);

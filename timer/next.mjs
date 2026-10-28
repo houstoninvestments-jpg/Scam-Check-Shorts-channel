@@ -8,6 +8,6 @@ const out = [];
 const t0 = Math.ceil(Date.now() / 60000) * 60000;
 for (let m = 0; m < 24 * 60; m++) {
   const at = new Date(t0 + m * 60000);
-  for (const j of plan(at, { CONGRESS_ENABLED: congress })) out.push(`${pacific(at)} Pacific: ${j.repo.split("/")[1]}${j.inputs.slot ? ` slot ${j.inputs.slot}` : ""}`);
+  for (const j of plan(at, { CONGRESS_ENABLED: congress })) out.push(`${pacific(at)} Pacific: ${j.repo.split("/")[1]}${j.inputs.slot ? ` slot ${j.inputs.slot}` : ""}${j.workflow === "slot-watch.yml" ? " slot watch" : ""}`);
 }
 console.log(process.env.GITHUB_ACTIONS ? `::notice title=Next starts::${out.join(" | ")}` : out.join("\n"));

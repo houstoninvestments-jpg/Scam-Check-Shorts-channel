@@ -58,6 +58,7 @@ async function main() {
         skin: dryRun ? skin : undefined,
         slot,
         slotDate: arg("--slot-date"),
+        fakeMiss: flag("--fake-miss"),
         workDir: dryRun && skin ? path("work", `skin-${skin}`) : slot ? path("work", `${(await import("./lib/util.js")).today(config().cadence.timezone)}-slot${slot}`) : undefined,
       });
       log(`result: ${report.status}${report.videoFile ? ` ${report.videoFile}` : ""}`);
@@ -193,6 +194,67 @@ async function main() {
       const r = await rerender(Number(arg("--number")), arg("--work") ?? path("work/rerender"), arg("--voice") as "kokoro" | undefined, flag("--music") || undefined);
       const msg = `${r.voice}, ${(r.timeline.total / r.timeline.fps).toFixed(1)}s;${r.music ? ` music on (${r.music.params.key} with a ${r.music.params.thirdName}, ${r.music.params.bpm} BPM, pulse decay ${r.music.params.decay}): voice ${r.music.voiceLufs} LUFS, bed ${r.music.musicLufs} LUFS (${r.music.belowVoiceDb} dB under the voice);` : " no music;"} countdown red px ${r.countdownRed.join("/")}; phone screen changed ${(r.screenChange * 100).toFixed(2)}% during the countdown`;
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
+      break;
+    }
+    case "slot-begin": {
+      // Top of a slot's job: save the start now (pushed by the workflow) so the 30-minute watch can see it.
+      const sw = await import("./pipeline/slotwatch.js");
+      const slot = process.env.SLOT;
+      const date = process.env.SLOT_DATE;
+      if (!slot || !date) break;
+      const file = sw.slotRunsFile(flag("--dry-run"));
+      const runs = sw.loadSlotRuns(file);
+      const gate = sw.slotStart(runs[date]?.[slot], new Date(), process.env.GITHUB_RUN_ID);
+      if (gate.go && !gate.recorded) {
+        runs[date] ??= {};
+        (runs[date][slot] ??= { attempts: [] }).attempts.push({ startedAt: new Date().toISOString(), runId: process.env.GITHUB_RUN_ID });
+        sw.saveSlotRuns(file, runs);
+      }
+      const msg = `slot ${slot} for ${date}: ${gate.go ? `${gate.why} (try ${gate.attempt ?? 1} of 2)` : `${gate.why}; this start exits`}`;
+      console.log(process.env.GITHUB_ACTIONS ? `::notice title=Slot start::${msg}` : msg);
+      break;
+    }
+    case "slot-end": {
+      // Bottom of a slot's job (always runs): record how the slot ended. A miss is retried once; a second miss emails.
+      const { slotEnd } = await import("./pipeline/slotwatch.js");
+      const { readJson } = await import("./lib/util.js");
+      const { appendFileSync } = await import("node:fs");
+      const say = (title: string, msg: string) => console.log(process.env.GITHUB_ACTIONS ? `::notice title=${title}::${msg}` : `${title}: ${msg}`);
+      if (!process.env.SLOT || !process.env.SLOT_DATE) break;
+      const dry = flag("--dry-run");
+      const r = await slotEnd({
+        slot: Number(process.env.SLOT),
+        date: process.env.SLOT_DATE,
+        dryRun: dry,
+        runId: process.env.GITHUB_RUN_ID,
+        jobStatus: arg("--job-status") ?? "unknown",
+        report: readJson<import("./pipeline/daily.js").RunReport | undefined>(path(dry ? "data/dry-run/last-run.json" : "data/last-run.json"), undefined),
+        runUrl: process.env.GITHUB_RUN_ID ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` : undefined,
+      });
+      say("Slot end", r.detail);
+      if (r.action === "retry" && process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, "retry=true\n");
+      if (r.alert) say("Alert email", `${r.sent?.sent ? "" : "NOT SENT: "}${r.alert.subject} | ${r.sent?.detail}`);
+      if (r.alert && !r.sent?.sent) process.exitCode = 1;
+      break;
+    }
+    case "slot-watch": {
+      // Every slot must start within 30 minutes of its time; a miss must get its retry; a start must finish.
+      const sw = await import("./pipeline/slotwatch.js");
+      const { readJson, writeJson } = await import("./lib/util.js");
+      const say = (title: string, msg: string) => console.log(process.env.GITHUB_ACTIONS ? `::notice title=${title}::${msg}` : `${title}: ${msg}`);
+      const runs = sw.loadSlotRuns(sw.slotRunsFile(false));
+      const sent = readJson<import("./pipeline/slotwatch.js").SentAlerts>(sw.slotAlertsFile(), {});
+      const due = sw.watchSlots(runs, new Date(), sent);
+      if (!due.length) say("Slot watch", "every slot due in the last 12 hours has started (and any miss got its retry)");
+      for (const d of due) {
+        const res = flag("--no-send") ? { sent: false, detail: "check only, not sent" } : await sw.sendAlert(d.alert);
+        if (res.sent) ((sent[d.date] ??= {})[String(d.slot)] ??= []).push(d.alert.kind);
+        say("Alert email", `${res.sent ? "" : "NOT SENT: "}${d.alert.subject} | ${res.detail}`);
+        if (!res.sent && !flag("--no-send")) process.exitCode = 1;
+      }
+      const before = JSON.stringify(sent);
+      for (const k of Object.keys(sent).sort().slice(0, -14)) delete sent[k];
+      if (due.length || JSON.stringify(sent) !== before) writeJson(sw.slotAlertsFile(), sent);
       break;
     }
     case "slot-gate": {

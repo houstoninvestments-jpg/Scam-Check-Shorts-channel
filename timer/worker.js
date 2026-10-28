@@ -1,8 +1,10 @@
 // Cloudflare Worker that starts each channel's posting slots on time (GitHub's own schedule runs hours late).
 // It only asks GitHub to start the daily job. It holds one GitHub key (GH_DISPATCH_TOKEN) that can do
-// nothing but start Actions jobs in these two repos.
+// nothing but start Actions jobs in these two repos. 35 minutes after each Scam or Not slot it also starts
+// the slot watch, which emails if that slot never started.
 
 const SCAM = { repo: "houstoninvestments-jpg/Scam-Check-Shorts-channel", workflow: "daily.yml" };
+const WATCH = { repo: SCAM.repo, workflow: "slot-watch.yml" };
 const CONGRESS = { repo: "houstoninvestments-jpg/congress-receipts", workflow: "daily.yml" };
 
 // Scam or Not: 7:20am, 12:20pm and 5:20pm Pacific, through daylight saving changes.
@@ -19,6 +21,11 @@ export function plan(at, env = {}) {
     const clock = pacific(at, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
     const slot = SCAM_SLOTS[clock];
     if (slot) jobs.push({ ...SCAM, inputs: { slot: String(slot), slot_date: pacific(at) } });
+  }
+  if (at.getUTCMinutes() === 55) {
+    // 35 minutes after each Scam or Not slot: the watch emails if the slot never started.
+    const clock = pacific(at, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    if (SCAM_SLOTS[clock.replace(/:55$/, ":20")]) jobs.push({ ...WATCH, inputs: {} });
   }
   if (at.getUTCMinutes() === 37 && CONGRESS_UTC_HOURS.includes(at.getUTCHours()) && env.CONGRESS_ENABLED === "true") {
     jobs.push({ ...CONGRESS, inputs: {} });

@@ -5,8 +5,9 @@ compatibility_date = "2026-10-01"
 workers_dev = false # no web address needed: it only runs on its schedule
 
 [triggers]
-# UTC. :20 covers Scam or Not's Pacific slots in summer and winter; :37 covers Congress Receipts.
-crons = ["20 * * * *", "37 * * * *"]
+# UTC. :20 covers Scam or Not's Pacific slots in summer and winter; :37 covers Congress Receipts;
+# :55 starts Scam or Not's slot watch 35 minutes after each slot.
+crons = ["20 * * * *", "37 * * * *", "55 * * * *"]
 
 [vars]
 # On: Congress Receipts' own GitHub schedule was removed (its commit d50dbd1), so the timer is its only starter.

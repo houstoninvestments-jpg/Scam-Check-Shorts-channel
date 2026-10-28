@@ -1,0 +1,51 @@
+name: Slot watch
+
+# Emails (through Resend, to the ALERT_EMAIL secret) when a Scam or Not slot has not started 30 minutes
+# after its time, when a missed slot's retry never started, or when a start never finished.
+# Each alert is sent once. The Cloudflare timer starts this 35 minutes after each slot; GitHub's own
+# schedule below is the backup (45 minutes after each slot, summer and winter).
+on:
+  schedule:
+    - cron: "5 15,16,20,21,1,2 * * *"
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: "List what would be emailed, send nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # remember which alerts went out (data/slot-alerts.json)
+
+concurrency:
+  group: slot-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+
+      - name: Check every slot due in the last 12 hours
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: npx tsx src/cli.ts slot-watch ${{ inputs.check_only && '--no-send' || '' }}
+
+      - name: Remember the alerts sent
+        if: always()
+        run: |
+          git config user.name "scam-or-not-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          [ -f data/slot-alerts.json ] && git add data/slot-alerts.json
+          if git diff --cached --quiet; then exit 0; fi
+          scripts/secret-scan.sh
+          git commit -q -m "Slot watch: alert sent"
+          for i in 1 2 3 4; do git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done

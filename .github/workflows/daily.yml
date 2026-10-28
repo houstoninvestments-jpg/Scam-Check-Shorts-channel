@@ -29,10 +29,11 @@ on:
         description: "Dry run with live sources and the real model: real checks and real cost, nothing uploaded"
         type: boolean
         default: false
-      evidence:
-        description: "Also save screenshots of the live privacy, home and terms pages (for Google's API audit form)"
-        type: boolean
-        default: false
+      extra:
+        description: "evidence = also save screenshots of the live privacy, home and terms pages (Google's API audit form) | fake-miss = test only, with dry_run and slot: end the slot as a miss to check the retry and the alert email"
+        type: choice
+        options: [none, evidence, fake-miss]
+        default: none
       preview_number:
         description: "Instead of making a Short: re-render this saved Scam number with today's template and the real voice, as a labeled preview (nothing uploaded)"
         type: string
@@ -59,11 +60,7 @@ permissions:
   pages: write      # publish the website
   id-token: write   # required by the Pages deploy action
   issues: write     # health check opens an issue only when something breaks
-  actions: read     # release mode reads the video file kept by an earlier run
-
-concurrency:
-  group: daily-short
-  cancel-in-progress: false
+  actions: write    # release mode reads an earlier run's video file; a missed slot starts its one retry
 
 jobs:
   gate:
@@ -89,6 +86,11 @@ jobs:
     if: needs.gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    # One Short at a time. Only this job queues: the off-season twin of a slot exits at the gate without
+    # taking a place in line (GitHub keeps one waiting run per group, so it could bump a waiting retry).
+    concurrency:
+      group: daily-short
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -122,11 +124,28 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-voice.txt
 
+      - name: Node packages
+        run: npm ci
+
+      - name: Save the slot start
+        # Pushed right away, so the 30-minute watch (slot-watch.yml) sees the slot started even while it is still running.
+        if: env.SLOT != '' && inputs.preview_number == '' && inputs.release_number == ''
+        run: |
+          # Same test-or-live choice as "Make the Short" below: test runs keep their own slot record.
+          dry=""; if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then dry="--dry-run"; fi
+          npx tsx src/cli.ts slot-begin $dry
+          git config user.name "scam-or-not-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in data/slot-runs.json data/dry-run/slot-runs.json; do [ -f "$f" ] && git add "$f"; done
+          if git diff --cached --quiet; then exit 0; fi
+          scripts/secret-scan.sh
+          git commit -q -m "Slot $SLOT started ($SLOT_DATE)"
+          for i in 1 2 3 4; do git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
+
       - name: Install
         run: |
           # Skip if already there; time-limited retries, since Ubuntu's mirror sometimes stalls.
           if ! command -v ffmpeg >/dev/null; then for i in 1 2 3; do timeout 240 sudo apt-get update -q && timeout 300 sudo apt-get install -y -q ffmpeg && break; echo "ffmpeg install try $i stalled; retrying"; sleep 10; done; fi; command -v ffmpeg
-          npm ci
           pip install -q -r requirements-voice.txt
 
       - name: Free voice model (fallback)
@@ -215,7 +234,8 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "$YOUTUBE_REFRESH_TOKEN" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
             echo "mode=dry" >> "$GITHUB_OUTPUT"
             live=""; [ "${{ inputs.live_test }}" = "true" ] && live="--live-scout --live-llm"
-            npx tsx src/cli.ts daily --dry-run --voice kokoro $live ${SLOT:+--slot $SLOT}  # same free voice as live runs
+            miss=""; [ "${{ inputs.extra }}" = "fake-miss" ] && miss="--fake-miss"
+            npx tsx src/cli.ts daily --dry-run --voice kokoro $live $miss ${SLOT:+--slot $SLOT} ${SLOT_DATE:+--slot-date $SLOT_DATE}  # same free voice as live runs
           else
             echo "mode=live" >> "$GITHUB_OUTPUT"
             npx tsx src/cli.ts daily ${SLOT:+--slot $SLOT} ${SLOT_DATE:+--slot-date $SLOT_DATE}
@@ -288,7 +308,7 @@ jobs:
           else echo "::error title=Share button::live round page has the old share button"; exit 1; fi
 
       - name: Evidence files from the live site
-        if: always() && inputs.evidence && steps.cloudflare.outcome == 'success'
+        if: always() && inputs.extra == 'evidence' && steps.cloudflare.outcome == 'success'
         run: npx tsx src/cli.ts evidence --base "${{ steps.site.outputs.base_url }}" --out docs/evidence
 
       - name: Forward the old GitHub Pages address to Cloudflare
@@ -307,6 +327,15 @@ jobs:
         continue-on-error: true
         uses: actions/deploy-pages@v4
 
+      - name: Slot outcome
+        # Posted, or why not. A first miss is retried once (next step); a second miss sends one email.
+        id: slotend
+        if: always() && env.SLOT != '' && inputs.preview_number == '' && inputs.release_number == ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: npx tsx src/cli.ts slot-end --job-status "${{ job.status }}" ${{ (inputs.dry_run || steps.run.outputs.mode == 'dry') && '--dry-run' || '' }}
+
       - name: Save ledger and stats
         # Dry runs save too, so the chosen website address (data/site-target.json) is kept.
         if: always()
@@ -318,6 +347,16 @@ jobs:
           scripts/secret-scan.sh
           git commit -q -m "Daily run $(date -u +%F)${SLOT:+ slot $SLOT}"
           for i in 1 2 3 4; do git pull -q --rebase origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
+
+      - name: Retry the slot once
+        # Starts after the save above, so the retry sees this miss. It waits its turn behind this run.
+        if: always() && steps.slotend.outputs.retry == 'true'
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/actions/workflows/daily.yml/dispatches" -f ref=main \
+            -f "inputs[slot]=$SLOT" -f "inputs[slot_date]=$SLOT_DATE" \
+            -f "inputs[dry_run]=${{ inputs.dry_run || steps.run.outputs.mode == 'dry' }}" -f "inputs[live_test]=${{ inputs.live_test == true }}" \
+            -f "inputs[extra]=${{ inputs.extra == 'fake-miss' && 'fake-miss' || 'none' }}"
+          echo "::notice title=Retry::slot $SLOT for $SLOT_DATE started again (library first)"
 
       - name: Health check
         if: always()
