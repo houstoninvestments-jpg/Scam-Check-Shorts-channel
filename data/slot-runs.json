@@ -58,7 +58,19 @@
       "attempts": [
         {
           "startedAt": "2026-10-28T14:21:46.096Z",
-          "runId": "40705020583"
+          "runId": "40705020583",
+          "endedAt": "2026-10-28T14:28:09.426Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (237 pages not yet on the channel)",
+            "Did not pass the checks: Job-seeking servicemembers: Avoid scams while you search: problems: The message names \"Prime Staffing Group\" as the recruiter's company. That name is not from the source and may match a real staffing firm, which would wrongly tie a real company to a scam. Use a clearly fictional name or none. (rewrite 1 of 2)",
+            "Did not pass the checks: Job-seeking servicemembers: Avoid scams while you search: problems: The safe move tells viewers to look up 'the company name,' but the recreated message names no company, only 'a hiring agency.' A viewer has nothing to search. The source's related advice, 'If you can't find the company online, steer clear,' is left out, and that is the advice that fits this message. Either add a company name to the message or add that line to the safe move. (rewrite 2 of 2)",
+            "Did not pass the checks: Job-seeking servicemembers: Avoid scams while you search: reviews disagree or unsure (unsure / scam)",
+            "Passed the checks: Scammers Offering Discounted Cable and Streaming Services: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

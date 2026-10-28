@@ -1,27 +1,116 @@
 {
   "date": "2026-10-28",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-10-27: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-10-28: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (237 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Job-seeking servicemembers: Avoid scams while you search: problems: The message names \"Prime Staffing Group\" as the recruiter's company. That name is not from the source and may match a real staffing firm, which would wrongly tie a real company to a scam. Use a clearly fictional name or none. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Job-seeking servicemembers: Avoid scams while you search: problems: The safe move tells viewers to look up 'the company name,' but the recreated message names no company, only 'a hiring agency.' A viewer has nothing to search. The source's related advice, 'If you can't find the company online, steer clear,' is left out, and that is the advice that fits this message. Either add a company name to the message or add that line to the safe move. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Job-seeking servicemembers: Avoid scams while you search: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Scammers Offering Discounted Cable and Streaming Services: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 30.4s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009.mp4 (1080x1920, 30.44s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009-cover.jpg (212 KB), loop similarity 0.994464"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded q9YJmWdzpyc as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake cable discount voicemail | sources: FCC  (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 30.4s",
+    "music": "tension bed on: C with a minor tenth, 77 BPM; voice -23.2 LUFS, bed -43.3 LUFS (20.1 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13475/8872 red px), phone screen untouched",
+    "title": "Scam No. 009: Voicemail says your cable discount expires today. It's a scam",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/009-fake-cable-discount-voicemail/",
+    "upload": "q9YJmWdzpyc, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.09 for 15 model calls (writer 5x $0.83, checker-b 5x $0.13, checker-a 5x $0.14)"
   },
-  "runId": "40640860823",
+  "runId": "40705020583",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot1/scam-009.mp4",
+  "episode": 9,
+  "youtubeId": "q9YJmWdzpyc",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 1.0948,
+    "calls": 15,
+    "inputTokens": 49542,
+    "outputTokens": 20053,
+    "byRole": {
+      "writer": {
+        "calls": 5,
+        "usd": 0.8259
+      },
+      "checker-b": {
+        "calls": 5,
+        "usd": 0.1279
+      },
+      "checker-a": {
+        "calls": 5,
+        "usd": 0.141
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

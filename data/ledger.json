@@ -1,5 +1,5 @@
 {
-  "nextNumber": 9,
+  "nextNumber": 10,
   "episodes": [
     {
       "number": 1,
@@ -834,6 +834,113 @@
       },
       "youtubeId": "xOQwIu7c33I",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 9,
+      "leadId": "1a45a5d7020d",
+      "date": "2026-10-28",
+      "skin": "voicemail",
+      "slot": 1,
+      "brands": [
+        "comcast",
+        "xfinity",
+        "spectrum"
+      ],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake cable discount voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "Hello. This is Cable Services. We're reviewing your account, and it appears your 50% discount on your monthly bill is set to expire today. To confirm and secure your savings, call the number displayed on your caller ID immediately. This offer cannot be extended. Thank you.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FCC audio transcript of the voicemail; the real company name was replaced with a generic one and a fictional number was used.",
+          "evidence": [
+            {
+              "quote": "Consumers are reporting robocalls and voicemails claiming a \"50% discount on your monthly bill is set to expire.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            },
+            {
+              "quote": "The calls urge them to \"call the number displayed on your caller ID immediately.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          ]
+        },
+        "hook": "A voicemail says your discount ends today. Read it.",
+        "stampSay": "Scam. Here's how you can tell.",
+        "flags": [
+          {
+            "label": "Ends today",
+            "say": "Pressure to act quickly is a sure sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "set to expire today"
+            },
+            "evidence": {
+              "quote": "Pressure to act quickly and only accepting gift cards as payment are sure signs of scam.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          },
+          {
+            "label": "Call this number back",
+            "say": "They want you to ring back the number that just called you.",
+            "target": {
+              "kind": "text",
+              "match": "call the number displayed on your caller ID immediately"
+            },
+            "evidence": {
+              "quote": "The calls urge them to \"call the number displayed on your caller ID immediately.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          },
+          {
+            "label": "Half off bait",
+            "say": "They'll claim you must prepay months of service with a gift card.",
+            "target": {
+              "kind": "text",
+              "match": "50% discount on your monthly bill"
+            },
+            "evidence": {
+              "quote": "The scammer will also claim the only way to secure the discount is to prepay for multiple months of service using a gift card.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Use the number on your bill",
+          "say": "Call or email your provider using the official number printed on your bill.",
+          "evidence": {
+            "quote": "call or email your service provider at the official customer service number or email address listed on your bill",
+            "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+          }
+        },
+        "title": "Voicemail says your cable discount expires today. It's a scam",
+        "description": "A voicemail claims your cable bill discount ends today and tells you to call back right away. Call back, and they push you to prepay with gift cards. Use the number on your real bill instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services",
+          "name": "FCC",
+          "capture": "page"
+        }
+      ],
+      "slug": "009-fake-cable-discount-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 1.0948,
+      "renderAttempts": 1,
+      "music": "C minor tenth 77 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.994464,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "q9YJmWdzpyc",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -941,6 +1048,16 @@
       "leadId": "b51e443cfe3d",
       "date": "2026-10-27",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-28",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "2e1da236025d",
+      "date": "2026-10-28",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
   "firstUploadCheck": {
