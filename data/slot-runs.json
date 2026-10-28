@@ -1,11 +1,66 @@
 {
   "2026-10-26": {
-    "2": "2026-10-26T23:08:55.906Z",
-    "3": "2026-10-27T05:18:00.068Z"
+    "2": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-26T23:08:55.906Z",
+          "endedAt": "2026-10-26T23:08:55.906Z",
+          "ok": true,
+          "why": "older record, outcome not kept"
+        }
+      ]
+    },
+    "3": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-27T05:18:00.068Z",
+          "endedAt": "2026-10-27T05:18:00.068Z",
+          "ok": true,
+          "why": "older record, outcome not kept"
+        }
+      ]
+    }
   },
   "2026-10-27": {
-    "1": "2026-10-27T14:21:45.835Z",
-    "2": "2026-10-27T19:21:39.065Z",
-    "3": "2026-10-28T00:22:29.624Z"
+    "1": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-27T14:21:45.835Z",
+          "endedAt": "2026-10-27T14:21:45.835Z",
+          "ok": true,
+          "why": "older record, outcome not kept"
+        }
+      ]
+    },
+    "2": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-27T19:21:39.065Z",
+          "endedAt": "2026-10-27T19:21:39.065Z",
+          "ok": true,
+          "why": "older record, outcome not kept"
+        }
+      ]
+    },
+    "3": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-28T00:22:29.624Z",
+          "endedAt": "2026-10-28T00:22:29.624Z",
+          "ok": true,
+          "why": "older record, outcome not kept"
+        }
+      ]
+    }
+  },
+  "2026-10-28": {
+    "1": {
+      "attempts": [
+        {
+          "startedAt": "2026-10-28T14:21:46.096Z",
+          "runId": "40705020583"
+        }
+      ]
+    }
   }
 }
