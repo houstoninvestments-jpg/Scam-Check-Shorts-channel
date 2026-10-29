@@ -1,27 +1,106 @@
 {
   "date": "2026-10-29",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-10-28: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-10-29: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (231 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to spot and avoid business coaching scams: problems: Delivery channel is not in the source: Source 1 describes coaching scams promoted through ads, not text messages. The title ('The business coaching text'), the description ('A text offers...'), and the hook present this as a text that viewers will receive. This is low risk because the message is marked as recreated, but the text-message framing is an extrapolation the source does not support. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "How to spot and avoid business coaching scams: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 26.1s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012.mp4 (1080x1920, 26.07s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012-cover.jpg (168 KB), loop similarity 0.99505"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded GFus5qEV30A as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake business coaching offer | sources: FTC Consumer Alerts 2026-05-18 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 26.1s",
+    "music": "tension bed on: G# with a fifth, 74 BPM; voice -23.1 LUFS, bed -43 LUFS (19.9 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13484/8860 red px), phone screen untouched",
+    "title": "Scam No. 012: The business coaching ad that promises easy money",
+    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/012-fake-business-coaching-offer/",
+    "upload": "GFus5qEV30A, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.80 for 10 model calls (writer 4x $0.64, checker-b 3x $0.08, checker-a 3x $0.08)"
   },
-  "runId": "40826622819",
+  "runId": "40890553548",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012.mp4",
+  "episode": 12,
+  "youtubeId": "GFus5qEV30A",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.8002,
+    "calls": 10,
+    "inputTokens": 31375,
+    "outputTokens": 14536,
+    "byRole": {
+      "writer": {
+        "calls": 4,
+        "usd": 0.64
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0782
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.0821
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

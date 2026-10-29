@@ -122,7 +122,17 @@
       "attempts": [
         {
           "startedAt": "2026-10-29T14:21:39.715Z",
-          "runId": "40890553548"
+          "runId": "40890553548",
+          "endedAt": "2026-10-29T14:26:52.081Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (231 pages not yet on the channel)",
+            "Did not pass the checks: How to spot and avoid business coaching scams: problems: Delivery channel is not in the source: Source 1 describes coaching scams promoted through ads, not text messages. The title ('The business coaching text'), the description ('A text offers...'), and the hook present this as a text that viewers will receive. This is low risk because the message is marked as recreated, but the text-message framing is an extrapolation the source does not support. (rewrite 1 of 2)",
+            "Passed the checks: How to spot and avoid business coaching scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

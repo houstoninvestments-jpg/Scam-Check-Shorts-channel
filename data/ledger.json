@@ -1,5 +1,5 @@
 {
-  "nextNumber": 12,
+  "nextNumber": 13,
   "episodes": [
     {
       "number": 1,
@@ -1150,6 +1150,109 @@
       },
       "youtubeId": "nJsiJTLD8gM",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 12,
+      "leadId": "12f6603e84d7",
+      "date": "2026-10-29",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake business coaching offer",
+        "message": {
+          "sender": "Wealth Coaching",
+          "subject": "",
+          "body": "Hi! Our proven system to make money in crypto gives you guaranteed income with little work. Spots close tonight. Don't risk losing out. Enroll for $97: coach-pro.example/start",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC Consumer Alerts), which describes coaching scam ads that promise guaranteed income, a proven system to make money, and pressure to act now or risk losing out.",
+          "evidence": [
+            {
+              "quote": "But if they promise guaranteed income, large returns for little work, or say they have a “proven system to make money,” it’s likely a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            },
+            {
+              "quote": "Scammers will pressure you to get involved now or “risk losing out.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "This coach wants your money.",
+        "flags": [
+          {
+            "label": "Guaranteed income",
+            "say": "No one can promise you big money with no risk.",
+            "target": {
+              "kind": "text",
+              "match": "guaranteed income"
+            },
+            "evidence": {
+              "quote": "No one can guarantee you’ll make lots of money with little to no risk.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          },
+          {
+            "label": "Proven system claim",
+            "say": "A so-called proven system is a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "proven system"
+            },
+            "evidence": {
+              "quote": "or say they have a “proven system to make money,” it’s likely a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          },
+          {
+            "label": "Pressure to act now",
+            "say": "Scammers push you to join right now.",
+            "target": {
+              "kind": "text",
+              "match": "Don't risk losing out."
+            },
+            "evidence": {
+              "quote": "Scammers will pressure you to get involved now or “risk losing out.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ask someone you trust",
+          "say": "Slow down and get a second opinion from someone you trust.",
+          "evidence": {
+            "quote": "Take your time and talk to someone you trust.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+          }
+        },
+        "title": "The business coaching ad that promises easy money",
+        "description": "An ad offers a coaching program with guaranteed income and a proven system. It pushes you to pay before you miss out. Here are three signs it is a scam and what to do instead.",
+        "category": ""
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "012-fake-business-coaching-offer",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.8002,
+      "renderAttempts": 1,
+      "music": "G# fifth 74 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.99505,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "GFus5qEV30A",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1277,6 +1380,11 @@
       "leadId": "b4f3040c3555",
       "date": "2026-10-28",
       "reason": "same type as an earlier video today (impostor)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-29",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "firstUploadCheck": {
