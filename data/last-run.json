@@ -1,116 +1,27 @@
 {
   "date": "2026-10-29",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-10-29: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (230 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Detect immigration scams that start on social media: problems: The title and description call it a 'text', but the source only says scammers 'contact you' after you like or comment on a post. It does not say how they make contact. The message is labeled recreated, so the risk of misleading viewers is low, but the channel is an assumption. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Detect immigration scams that start on social media: problems: provenanceNote gives the exact date 'Dec 26, 2024' and the title 'Detect immigration scams that start on social media'. The source only shows 2024/12 in the URL and never states the day or the full article title. Either verify both against the live page or cite it only as an FTC Consumer Alert from December 2024. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Detect immigration scams that start on social media: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 31.0s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013.mp4 (1080x1920, 30.98s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013-cover.jpg (186 KB), loop similarity 0.99454"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded PDWg4vsuruE as public"
+      "detail": "slot 1 for 2026-10-29: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake immigration lawyer message | sources: FTC Consumer Alerts 2024-12-26 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 31.0s",
-    "music": "tension bed on: B with a minor tenth, 68 BPM; voice -23.5 LUFS, bed -43.6 LUFS (20.1 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13488/8733 red px), phone screen untouched",
-    "title": "Scam No. 013: The fake immigration lawyer message that starts on social media",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/013-fake-immigration-lawyer-message/",
-    "upload": "PDWg4vsuruE, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.82 for 12 model calls (writer 4x $0.61, checker-b 4x $0.10, checker-a 4x $0.11)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "40939257702",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013.mp4",
-  "episode": 13,
-  "youtubeId": "PDWg4vsuruE",
+  "runId": "40942557655",
   "cost": {
-    "usd": 0.8173,
-    "calls": 12,
-    "inputTokens": 40969,
-    "outputTokens": 14318,
-    "byRole": {
-      "writer": {
-        "calls": 4,
-        "usd": 0.6118
-      },
-      "checker-b": {
-        "calls": 4,
-        "usd": 0.0996
-      },
-      "checker-a": {
-        "calls": 4,
-        "usd": 0.1059
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
