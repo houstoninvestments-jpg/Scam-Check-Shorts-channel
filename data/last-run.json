@@ -1,6 +1,6 @@
 {
   "date": "2026-10-29",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -9,47 +9,57 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-10-29: first start"
+      "detail": "slot 2 for 2026-10-29: first start"
     },
     {
       "step": "scout",
       "ok": true,
-      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
     },
     {
       "step": "library",
       "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (231 pages not yet on the channel)"
+      "detail": "fresh leads didn't pass; trying the evergreen library (230 pages not yet on the channel)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "How to spot and avoid business coaching scams: problems: Delivery channel is not in the source: Source 1 describes coaching scams promoted through ads, not text messages. The title ('The business coaching text'), the description ('A text offers...'), and the hook present this as a text that viewers will receive. This is low risk because the message is marked as recreated, but the text-message framing is an extrapolation the source does not support. (rewrite 1 of 2)"
+      "detail": "Detect immigration scams that start on social media: problems: The title and description call it a 'text', but the source only says scammers 'contact you' after you like or comment on a post. It does not say how they make contact. The message is labeled recreated, so the risk of misleading viewers is low, but the channel is an assumption. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Detect immigration scams that start on social media: problems: provenanceNote gives the exact date 'Dec 26, 2024' and the title 'Detect immigration scams that start on social media'. The source only shows 2024/12 in the URL and never states the day or the full article title. Either verify both against the live page or cite it only as an FTC Consumer Alert from December 2024. (rewrite 2 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "How to spot and avoid business coaching scams: both reviews agree: scam, no problems"
+      "detail": "Detect immigration scams that start on social media: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 26.1s"
+      "detail": "AI voice (Kokoro open model), 31.0s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012.mp4 (1080x1920, 26.07s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013.mp4 (1080x1920, 30.98s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012-cover.jpg (168 KB), loop similarity 0.99505"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013-cover.jpg (186 KB), loop similarity 0.99454"
     },
     {
       "step": "thumbnail",
@@ -59,43 +69,43 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded GFus5qEV30A as public"
+      "detail": "uploaded PDWg4vsuruE as public"
     }
   ],
   "summary": {
-    "scam": "Fake business coaching offer | sources: FTC Consumer Alerts 2026-05-18 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 26.1s",
-    "music": "tension bed on: G# with a fifth, 74 BPM; voice -23.1 LUFS, bed -43 LUFS (19.9 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13484/8860 red px), phone screen untouched",
-    "title": "Scam No. 012: The business coaching ad that promises easy money",
-    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/012-fake-business-coaching-offer/",
-    "upload": "GFus5qEV30A, public, not locked",
+    "scam": "Fake immigration lawyer message | sources: FTC Consumer Alerts 2024-12-26 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 31.0s",
+    "music": "tension bed on: B with a minor tenth, 68 BPM; voice -23.5 LUFS, bed -43.6 LUFS (20.1 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13488/8733 red px), phone screen untouched",
+    "title": "Scam No. 013: The fake immigration lawyer message that starts on social media",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/013-fake-immigration-lawyer-message/",
+    "upload": "PDWg4vsuruE, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.80 for 10 model calls (writer 4x $0.64, checker-b 3x $0.08, checker-a 3x $0.08)"
+    "cost": "$0.82 for 12 model calls (writer 4x $0.61, checker-b 4x $0.10, checker-a 4x $0.11)"
   },
-  "runId": "40890553548",
+  "runId": "40939257702",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot1/scam-012.mp4",
-  "episode": 12,
-  "youtubeId": "GFus5qEV30A",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot2/scam-013.mp4",
+  "episode": 13,
+  "youtubeId": "PDWg4vsuruE",
   "cost": {
-    "usd": 0.8002,
-    "calls": 10,
-    "inputTokens": 31375,
-    "outputTokens": 14536,
+    "usd": 0.8173,
+    "calls": 12,
+    "inputTokens": 40969,
+    "outputTokens": 14318,
     "byRole": {
       "writer": {
         "calls": 4,
-        "usd": 0.64
+        "usd": 0.6118
       },
       "checker-b": {
-        "calls": 3,
-        "usd": 0.0782
+        "calls": 4,
+        "usd": 0.0996
       },
       "checker-a": {
-        "calls": 3,
-        "usd": 0.0821
+        "calls": 4,
+        "usd": 0.1059
       }
     },
     "models": [

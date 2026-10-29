@@ -1,5 +1,5 @@
 {
-  "nextNumber": 13,
+  "nextNumber": 14,
   "episodes": [
     {
       "number": 1,
@@ -1253,6 +1253,117 @@
       },
       "youtubeId": "GFus5qEV30A",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 13,
+      "leadId": "d03dae88c4d1",
+      "date": "2026-10-29",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [
+        "zelle",
+        "facebook",
+        "whatsapp"
+      ],
+      "cta": "none",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake immigration lawyer message",
+        "message": {
+          "sender": "+1 (202) 555-0131",
+          "subject": "",
+          "body": "Hi! Thanks for liking our post. Our law office guarantees your work permit or green card. Send the fee today by payment app and we will book your virtual immigration appointment on video chat. Reply YES to start.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from an FTC Consumer Alert from December 2024, which describes the guarantee, the payment request, and the fake virtual appointment.",
+          "evidence": [
+            {
+              "quote": "Scammers are impersonating attorneys and law firms, offering immigration services on social media.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            },
+            {
+              "quote": "If you press like or leave a comment, they’ll contact you and guarantee you’ll get a work permit, green card, or citizenship — but it’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            },
+            {
+              "quote": "Next, they ask you to send them money using Western Union or Zelle. In return, they say they’ll supposedly get you an appointment with U.S. Citizenship and Immigration Services (USCIS).",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          ]
+        },
+        "hook": "You get a few seconds. Read it.",
+        "stampSay": "Scam. That guarantee gives it away.",
+        "flags": [
+          {
+            "label": "Guaranteed green card",
+            "say": "Promising a green card up front is how this scam works.",
+            "target": {
+              "kind": "text",
+              "match": "guarantees your work permit or green card"
+            },
+            "evidence": {
+              "quote": "they’ll contact you and guarantee you’ll get a work permit, green card, or citizenship — but it’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          },
+          {
+            "label": "Pay by app first",
+            "say": "Next they push you to send money through an app.",
+            "target": {
+              "kind": "text",
+              "match": "Send the fee today by payment app"
+            },
+            "evidence": {
+              "quote": "Next, they ask you to send them money using Western Union or Zelle.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          },
+          {
+            "label": "Video chat appointment",
+            "say": "Real appointments arrive by mail or your official account, never on messenger apps.",
+            "target": {
+              "kind": "text",
+              "match": "virtual immigration appointment on video chat"
+            },
+            "evidence": {
+              "quote": "Some immigration proceedings are now virtual, but applicants get their appointments by mail or through their MyUSCIS account, never on messenger apps.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check the real .gov site",
+          "say": "Go to the official government site yourself and check your case status there.",
+          "evidence": {
+            "quote": "Go to USCIS.gov for legitimate immigration information. If you have a pending application or petition, check your case status online.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+          }
+        },
+        "title": "The fake immigration lawyer message that starts on social media",
+        "description": "A message promises a guaranteed green card or work permit after you like a post. Then it asks for money through an app and offers a fake video appointment. Here is how to spot it and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "013-fake-immigration-lawyer-message",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.8173,
+      "renderAttempts": 1,
+      "music": "B minor tenth 68 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.99454,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "PDWg4vsuruE",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1385,6 +1496,11 @@
       "leadId": "0383d4e2ab4f",
       "date": "2026-10-29",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-29",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
   "firstUploadCheck": {

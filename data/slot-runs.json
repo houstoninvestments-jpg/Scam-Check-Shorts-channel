@@ -140,7 +140,19 @@
       "attempts": [
         {
           "startedAt": "2026-10-29T19:21:39.445Z",
-          "runId": "40939257702"
+          "runId": "40939257702",
+          "endedAt": "2026-10-29T19:26:32.395Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (230 pages not yet on the channel)",
+            "Did not pass the checks: Detect immigration scams that start on social media: problems: The title and description call it a 'text', but the source only says scammers 'contact you' after you like or comment on a post. It does not say how they make contact. The message is labeled recreated, so the risk of misleading viewers is low, but the channel is an assumption. (rewrite 1 of 2)",
+            "Did not pass the checks: Detect immigration scams that start on social media: problems: provenanceNote gives the exact date 'Dec 26, 2024' and the title 'Detect immigration scams that start on social media'. The source only shows 2024/12 in the URL and never states the day or the full article title. Either verify both against the live page or cite it only as an FTC Consumer Alert from December 2024. (rewrite 2 of 2)",
+            "Passed the checks: Detect immigration scams that start on social media: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
