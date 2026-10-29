@@ -1,5 +1,5 @@
 {
-  "nextNumber": 11,
+  "nextNumber": 12,
   "episodes": [
     {
       "number": 1,
@@ -1044,6 +1044,112 @@
       },
       "youtubeId": "fWmyC9nODaQ",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 11,
+      "leadId": "ed41f4240f1c",
+      "date": "2026-10-28",
+      "skin": "imessage",
+      "slot": 3,
+      "brands": [
+        "facebook",
+        "linkedin"
+      ],
+      "cta": "soft",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Fake grandchild in trouble text",
+        "message": {
+          "sender": "+1 (202) 555-0142",
+          "subject": "",
+          "body": "Grandma it's me. I'm in jail across the country and I need your help. Please send money right now. I'll explain later.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the grandparent scam example in Source 1 (AARP Fraud Watch Network): a grandchild saying he is in jail across the country, needs help, and needs money sent immediately. Source 1 describes this as a phone call; the text version here is an illustration.",
+          "evidence": [
+            {
+              "quote": "Have you heard of the tech support scam? What about the toll road scam? The grandparent scam?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            },
+            {
+              "quote": "Is your grandson calling you late at night (unexpected contact), saying he’s in jail across the country and needs your help (prompting a surge of emotion from you: I must help him!)? Does he say he needs you to send money immediately (creating a sense of urgency)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          ]
+        },
+        "hook": "Picture this landing on your phone tonight.",
+        "stampSay": "That is a scam. Here is why.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "A message you did not expect is the first warning sign.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Ultimately, we arrived at three elements common to most scams: unexpected contact, a surge of emotion and a sense of urgency.",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          },
+          {
+            "label": "Pulls your heart",
+            "say": "The jail story is made to stir a rush of feeling.",
+            "target": {
+              "kind": "text",
+              "match": "in jail across the country"
+            },
+            "evidence": {
+              "quote": "saying he’s in jail across the country and needs your help (prompting a surge of emotion from you: I must help him!)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          },
+          {
+            "label": "Money right now",
+            "say": "Pushing you to send money fast is the third big sign.",
+            "target": {
+              "kind": "text",
+              "match": "send money right now"
+            },
+            "evidence": {
+              "quote": "Does he say he needs you to send money immediately (creating a sense of urgency)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Stop and check",
+          "say": "End the chat, take your time, and check the story on your own first.",
+          "evidence": {
+            "quote": "Ending the communication and taking time to independently verify details can stop many scams before money is lost.",
+            "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+          }
+        },
+        "title": "Grandchild in trouble scam: three red flags to spot",
+        "description": "Here is what the grandparent scam could look like as a message on your phone. We show the three signs that give it away. Then we share the one safe move to make instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/",
+          "name": "AARP Fraud Watch Network",
+          "capture": "page"
+        }
+      ],
+      "slug": "011-fake-grandchild-in-trouble-text",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.708,
+      "renderAttempts": 1,
+      "music": "D fifth 76 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994971,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "nJsiJTLD8gM",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1166,6 +1272,11 @@
       "leadId": "f51b8a037963",
       "date": "2026-10-28",
       "reason": "problems: The hook \"Would you tap this pop-up while browsing?\" and the phone-screen framing suggest a mobile tap threat. The source describes keyboard commands (Windows + R, Ctrl + V, Enter), which only work on a Windows computer, and tapping is not the risky action. Viewers could misjudge where and how this attack works."
+    },
+    {
+      "leadId": "b4f3040c3555",
+      "date": "2026-10-28",
+      "reason": "same type as an earlier video today (impostor)"
     }
   ],
   "firstUploadCheck": {

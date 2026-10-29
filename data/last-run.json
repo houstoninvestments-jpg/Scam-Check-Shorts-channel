@@ -1,27 +1,116 @@
 {
   "date": "2026-10-28",
-  "slot": 2,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-10-28: already posted (or the day was full); this start exits"
+      "detail": "slot 3 for 2026-10-28: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (233 pages not yet on the channel)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "Veterans: Don’t pay to apply for VA benefits: written as impostor, same as an earlier video today; not checked, waits for another day"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "No, FTC “agents” with badge numbers aren’t calling you: its screen style already ran today; waits for another day"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "AARP’s Message to Stay Safe From Scams: Pause. Reflect. Prot: problems: Hook 'This text is going around right now' is not supported. The message is recreated, and Source 1 gives no evidence that this text, or any text version, is currently circulating. It presents a hypothetical example to teach the active pause. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "AARP’s Message to Stay Safe From Scams: Pause. Reflect. Prot: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 29.0s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot3/scam-011.mp4 (1080x1920, 29.04s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot3/scam-011-cover.jpg (147 KB), loop similarity 0.994971"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded nJsiJTLD8gM as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake grandchild in trouble text | sources: AARP Fraud Watch Network  (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 29.0s",
+    "music": "tension bed on: D with a fifth, 76 BPM; voice -23.3 LUFS, bed -43.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13623/13502/8727 red px), phone screen untouched",
+    "title": "Scam No. 011: Grandchild in trouble scam: three red flags to spot",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/011-fake-grandchild-in-trouble-text/",
+    "upload": "nJsiJTLD8gM, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.71 for 8 model calls (writer 4x $0.62, checker-b 2x $0.04, checker-a 2x $0.05)"
   },
-  "runId": "40785885145",
+  "runId": "40793454375",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-28-slot3/scam-011.mp4",
+  "episode": 11,
+  "youtubeId": "nJsiJTLD8gM",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.708,
+    "calls": 8,
+    "inputTokens": 28350,
+    "outputTokens": 11168,
+    "byRole": {
+      "writer": {
+        "calls": 4,
+        "usd": 0.6188
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0429
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0464
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

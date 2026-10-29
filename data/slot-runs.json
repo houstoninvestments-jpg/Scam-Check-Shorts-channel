@@ -100,7 +100,19 @@
       "attempts": [
         {
           "startedAt": "2026-10-29T00:21:37.848Z",
-          "runId": "40793454375"
+          "runId": "40793454375",
+          "endedAt": "2026-10-29T00:26:45.687Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (233 pages not yet on the channel)",
+            "Held back: Veterans: Don’t pay to apply for VA benefits: written as impostor, same as an earlier video today; not checked, waits for another day",
+            "Held back: No, FTC “agents” with badge numbers aren’t calling you: its screen style already ran today; waits for another day",
+            "Did not pass the checks: AARP’s Message to Stay Safe From Scams: Pause. Reflect. Prot: problems: Hook 'This text is going around right now' is not supported. The message is recreated, and Source 1 gives no evidence that this text, or any text version, is currently circulating. It presents a hypothetical example to teach the active pause. (rewrite 1 of 2)",
+            "Passed the checks: AARP’s Message to Stay Safe From Scams: Pause. Reflect. Prot: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
