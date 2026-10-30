@@ -1,27 +1,121 @@
 {
   "date": "2026-10-30",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-10-29: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-10-30: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Seeing lots of ads for health insurance plans during open en: problems: The hook \"This voicemail is going around right now\" presents a recreated message as a real voicemail that is currently circulating. The source describes no specific message, and the provenance is \"recreated\", so this misleads viewers. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (227 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "New Foldable iPhone Scam: Don’t Click on That Preorder Link: problems: The hook \"This email is going around right now.\" is unsupported. The source describes a fake website. It never says this scam is sent by email or is currently circulating that way. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "New Foldable iPhone Scam: Don’t Click on That Preorder Link: problems: safeMove.say states as plain fact that 'Phones with up-to-date software are protected from this.' The source attributes this to Apple ('Apple says...'). It also covers only the reported DarkSword attacks on iPhones, not the page as a whole. Dropping the attribution and widening it to 'this' overstates the guarantee. Keep the 'Apple says' framing or soften the wording. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "New Foldable iPhone Scam: Don’t Click on That Preorder Link: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 38.9s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot1/scam-015.mp4 (1080x1920, 38.91s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot1/scam-015-cover.jpg (207 KB), loop similarity 0.995091"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded McZQ_QbnNsY as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake foldable phone preorder page | sources: AARP Fraud Watch Network  (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 38.9s",
+    "music": "tension bed on: G with a minor tenth, 77 BPM; voice -24.1 LUFS, bed -44.1 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13625/13479/8732 red px), phone screen untouched",
+    "title": "Scam No. 015: Fake foldable phone preorder page offers a $500 voucher",
+    "hashtags": "#ScamOrNot #PrizeScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/015-fake-foldable-phone-preorder-page/",
+    "upload": "McZQ_QbnNsY, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.77 for 19 model calls (writer 7x $1.35, checker-a 6x $0.22, checker-b 6x $0.20)"
   },
-  "runId": "41011687192",
+  "runId": "41071064773",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot1/scam-015.mp4",
+  "episode": 15,
+  "youtubeId": "McZQ_QbnNsY",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 1.7735,
+    "calls": 19,
+    "inputTokens": 77523,
+    "outputTokens": 32631,
+    "byRole": {
+      "writer": {
+        "calls": 7,
+        "usd": 1.3513
+      },
+      "checker-a": {
+        "calls": 6,
+        "usd": 0.2189
+      },
+      "checker-b": {
+        "calls": 6,
+        "usd": 0.2033
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

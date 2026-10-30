@@ -1,5 +1,5 @@
 {
-  "nextNumber": 15,
+  "nextNumber": 16,
   "episodes": [
     {
       "number": 1,
@@ -1471,6 +1471,118 @@
       },
       "youtubeId": "z3_NndRRsdY",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 15,
+      "leadId": "b814c2d67445",
+      "date": "2026-10-30",
+      "skin": "email",
+      "slot": 1,
+      "brands": [
+        "apple",
+        "google",
+        "facebook",
+        "linkedin"
+      ],
+      "cta": "direct",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Fake foldable phone preorder page",
+        "message": {
+          "sender": "Phone Preorders <offers@fold-preorder.example>",
+          "subject": "Early access: reserve the new foldable phone and get a $500 voucher",
+          "body": "Early access is open.\n\nReserve the new foldable phone before anyone else and get a $500 voucher plus free coverage.\n\nOffer ends in 09:59\n\nPick your color and reserve now:\nhttps://fold-preorder.example/reserve\n\nEnter your name, email and phone number to hold your spot.\n\n© 2025 All rights reserved.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the AARP Fraud Watch Network article, which describes a fake preorder website promising a $500 voucher and free coverage, a countdown clock, and a form asking for name, email and phone number. The source does not say how people reach the site; the email format here is only a way to show a link to that page on screen. Brand names were replaced with generic ones and the link uses a fake example domain.",
+          "evidence": [
+            {
+              "quote": "The fraudulent site promises a $500 voucher and free AppleCare+ coverage to lure shoppers into reserving an iPhone Duo.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            },
+            {
+              "quote": "A countdown clock pressures visitors to act quickly.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            },
+            {
+              "quote": "The page asks for a name, email address and phone number.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          ]
+        },
+        "hook": "A fake foldable phone preorder page is out there.",
+        "stampSay": "That preorder link is a trap.",
+        "flags": [
+          {
+            "label": "Free voucher bait",
+            "say": "A link promising a free or deeply discounted phone is probably after your personal information.",
+            "target": {
+              "kind": "text",
+              "match": "$500 voucher"
+            },
+            "evidence": {
+              "quote": "Don't click on links that promise a free phone or deeply discounted one. They are probably after nothing but your personal and financial information",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          },
+          {
+            "label": "Countdown pressure",
+            "say": "That countdown clock is there to pressure you into acting quickly.",
+            "target": {
+              "kind": "text",
+              "match": "Offer ends in 09:59"
+            },
+            "evidence": {
+              "quote": "A countdown clock pressures visitors to act quickly.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          },
+          {
+            "label": "Link attacks old iPhones",
+            "say": "Just opening that page on an iPhone missing security updates could let criminals break in.",
+            "target": {
+              "kind": "text",
+              "match": "https://fold-preorder.example/reserve"
+            },
+            "evidence": {
+              "quote": "Simply opening the page on an iPhone that is missing security updates could allow criminals to break into the device.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Update your iPhone",
+          "say": "Apple says updated iPhones are protected against the reported attacks, so make sure yours is updated.",
+          "evidence": {
+            "quote": "Apple says updated iPhones are protected against the reported attacks.",
+            "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+          }
+        },
+        "title": "Fake foldable phone preorder page offers a $500 voucher",
+        "description": "A fake website offers early orders for a new foldable phone, plus a $500 voucher. A security company says opening it on one maker's phones with old software could allow a break-in. Here are three red flags and the safe move.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/",
+          "name": "AARP Fraud Watch Network",
+          "capture": "page"
+        }
+      ],
+      "slug": "015-fake-foldable-phone-preorder-page",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 1.7735,
+      "renderAttempts": 1,
+      "music": "G minor tenth 77 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995091,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "McZQ_QbnNsY",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1613,6 +1725,16 @@
       "leadId": "864b56c480a5",
       "date": "2026-10-29",
       "reason": "same type as an earlier video today (text)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-30",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-30",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "firstUploadCheck": {

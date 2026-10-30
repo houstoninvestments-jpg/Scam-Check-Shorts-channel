@@ -189,7 +189,20 @@
       "attempts": [
         {
           "startedAt": "2026-10-30T14:21:41.259Z",
-          "runId": "41071064773"
+          "runId": "41071064773",
+          "endedAt": "2026-10-30T14:31:11.356Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: problems: The hook \"This voicemail is going around right now\" presents a recreated message as a real voicemail that is currently circulating. The source describes no specific message, and the provenance is \"recreated\", so this misleads viewers. (rewrite 1 of 2)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Did not pass the checks: Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (227 pages not yet on the channel)",
+            "Did not pass the checks: New Foldable iPhone Scam: Don’t Click on That Preorder Link: problems: The hook \"This email is going around right now.\" is unsupported. The source describes a fake website. It never says this scam is sent by email or is currently circulating that way. (rewrite 1 of 2)",
+            "Did not pass the checks: New Foldable iPhone Scam: Don’t Click on That Preorder Link: problems: safeMove.say states as plain fact that 'Phones with up-to-date software are protected from this.' The source attributes this to Apple ('Apple says...'). It also covers only the reported DarkSword attacks on iPhones, not the page as a whole. Dropping the attribution and widening it to 'this' overstates the guarantee. Keep the 'Apple says' framing or soften the wording. (rewrite 2 of 2)",
+            "Passed the checks: New Foldable iPhone Scam: Don’t Click on That Preorder Link: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
