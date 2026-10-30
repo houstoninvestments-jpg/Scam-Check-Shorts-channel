@@ -1,5 +1,5 @@
 {
-  "nextNumber": 14,
+  "nextNumber": 15,
   "episodes": [
     {
       "number": 1,
@@ -1364,6 +1364,113 @@
       },
       "youtubeId": "PDWg4vsuruE",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 14,
+      "leadId": "ffc3d7afe953",
+      "date": "2026-10-29",
+      "skin": "voicemail",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake fraud recovery voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "Transcript: Hello, this is Agent Daniel Reed with the Federal Fraud Recovery Unit. Good news. We have recovered the funds you lost in a recent scam. To release your refund today, you need to pay a small processing fee and confirm your bank details. Call us back at (202) 555-0142 or visit recover-funds.example now. This offer is time sensitive.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FBI IC3 PSA (Source 1), which describes scammers contacting people by phone call, claiming to have recovered lost funds, using urgency, and asking for payment or financial data.",
+          "evidence": [
+            {
+              "quote": "Some individuals received an email or a phone call, while others were approached, or observed an advertisement via social media or forums.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            },
+            {
+              "quote": "Almost all complainants indicated the scammers claimed to have recovered the victim's lost funds or offered to assist in recovering funds.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            },
+            {
+              "quote": "Scammers rely on fear, urgency, and high-tech tricks like AI-generated video and caller ID spoofing to appear legitimate.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          ]
+        },
+        "hook": "They found your lost money? Would you call back?",
+        "stampSay": "It's a trick to rob you twice.",
+        "flags": [
+          {
+            "label": "Found your lost money",
+            "say": "Scammers claim they got your money back, but it's a ruse to scam you again.",
+            "target": {
+              "kind": "text",
+              "match": "We have recovered the funds you lost"
+            },
+            "evidence": {
+              "quote": "Almost all complainants indicated the scammers claimed to have recovered the victim's lost funds or offered to assist in recovering funds. However, the claim is a ruse to revictimize those who have already lost money to scams.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          },
+          {
+            "label": "Act now pressure",
+            "say": "Scammers lean on fear and urgency to look legitimate.",
+            "target": {
+              "kind": "text",
+              "match": "This offer is time sensitive"
+            },
+            "evidence": {
+              "quote": "Scammers rely on fear, urgency, and high-tech tricks like AI-generated video and caller ID spoofing to appear legitimate.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          },
+          {
+            "label": "Pay a fee first",
+            "say": "Don't send money to someone you have only met over the phone.",
+            "target": {
+              "kind": "text",
+              "match": "pay a small processing fee"
+            },
+            "evidence": {
+              "quote": "Do not send money, gift cards, cryptocurrency, or other assets to people you do not know or have met only online or over the phone.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Type www.ic3.gov yourself",
+          "say": "Type www.ic3.gov straight into your browser's address bar instead of searching for it.",
+          "evidence": {
+            "quote": "When navigating to IC3's official website, type www.ic3.gov directly into the address bar located at the top of your Internet browser, rather than using a search engine.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+          }
+        },
+        "title": "Fake fraud recovery voicemail: the found your lost money scam",
+        "description": "A voicemail says an agent recovered money you lost to a scam. All you have to do is pay a small fee first. Here is how to spot the trick and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA260720",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "014-fake-fraud-recovery-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.9656,
+      "renderAttempts": 1,
+      "music": "C fifth 79 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.995405,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "z3_NndRRsdY",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1501,6 +1608,11 @@
       "leadId": "3c42d8b5b4ee",
       "date": "2026-10-29",
       "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "864b56c480a5",
+      "date": "2026-10-29",
+      "reason": "same type as an earlier video today (text)"
     }
   ],
   "firstUploadCheck": {
