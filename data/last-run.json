@@ -1,151 +1,27 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "slot": 3,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-10-29: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "2 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (229 pages not yet on the channel)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Scammers Pretend To Be Your Utility Company: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Ignore unexpected calls about loans you didn’t apply for: written as text, same as an earlier video today; not checked, waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Change May Be Coming for Scam Victims Who Are Required to Pa: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Is it health insurance or a medical discount plan?: same type (text) as an earlier video today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "What will the FTC’s enforcement of the TAKE IT DOWN Act mean: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Seeking treatment for addiction? Some things to know before : its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Don’t pay to get your Employer Identification Number (EIN): its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Why can’t that new love interest meet in person?: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Internet Crime Complaint Center (IC3) | FBI Warns of Scammer: problems: The recreated voicemail says the caller is from a made-up 'Federal Fraud Recovery Unit', not IC3. But the 'A phone call' and 'Pay a fee first' flags rely on IC3-specific rules ('The real crime complaint center never contacts you directly…', 'The real complaint center never asks for payment…'). Since the message never claims to be IC3, these flags don't connect to what's on screen. The 'A phone call' line could also lead viewers to think any call from federal law enforcement is fake, yet Source 1 says 'individuals will be contacted by FBI employees from local field offices or other law enforcement officers' when more information is needed. Fix: have the voicemail claim to be from the FBI/IC3 about the viewer's complaint, which matches the impersonation the PSA describes, or reword the flags so they don't depend on the caller being IC3. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Internet Crime Complaint Center (IC3) | FBI Warns of Scammer: problems: safeMove says to 'type the official complaint site address' but never names it. The source specifically says to type www.ic3.gov and to check that it ends in .gov. Without the address, viewers can't act on the tip and may end up searching for it, which is the risky behavior the source warns against (sponsored results are often imitators). The spoken line or label should name ic3.gov. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Internet Crime Complaint Center (IC3) | FBI Warns of Scammer: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 33.8s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot3/scam-014.mp4 (1080x1920, 33.84s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot3/scam-014-cover.jpg (219 KB), loop similarity 0.995405"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded z3_NndRRsdY as public"
+      "detail": "slot 3 for 2026-10-29: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake fraud recovery voicemail | sources: FBI Internet Crime Complaint Center (IC3)  (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 33.8s",
-    "music": "tension bed on: C with a fifth, 79 BPM; voice -23.5 LUFS, bed -43.4 LUFS (19.9 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13486/8733 red px), phone screen untouched",
-    "title": "Scam No. 014: Fake fraud recovery voicemail: the found your lost money scam",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/014-fake-fraud-recovery-voicemail/",
-    "upload": "z3_NndRRsdY, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.97 for 10 model calls (writer 4x $0.73, checker-b 3x $0.11, checker-a 3x $0.12)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "40979111392",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-29-slot3/scam-014.mp4",
-  "episode": 14,
-  "youtubeId": "z3_NndRRsdY",
+  "runId": "41011687192",
   "cost": {
-    "usd": 0.9656,
-    "calls": 10,
-    "inputTokens": 53552,
-    "outputTokens": 15650,
-    "byRole": {
-      "writer": {
-        "calls": 4,
-        "usd": 0.7306
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.1103
-      },
-      "checker-a": {
-        "calls": 3,
-        "usd": 0.1246
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
