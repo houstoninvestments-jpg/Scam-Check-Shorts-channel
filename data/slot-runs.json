@@ -210,7 +210,18 @@
       "attempts": [
         {
           "startedAt": "2026-10-30T19:21:37.045Z",
-          "runId": "41114503041"
+          "runId": "41114503041",
+          "endedAt": "2026-10-30T19:26:02.930Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 2 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (226 pages not yet on the channel)",
+            "Did not pass the checks: Protect Yourself from Scams (En español): problems: stampSay \"Fake badge, fake officer, real scam.\" is not backed by the message. The recreated message contains no badge: hasQr is false and there is no picture or attachment. The source does mention scammers sending pictures of badges, but this message shows none, so viewers are told about a badge they cannot see. Drop \"fake badge\" or add a badge image to the recreation. (rewrite 1 of 2)",
+            "Did not pass the checks: Protect Yourself from Scams (En español): problems: The safe-move line 'talk to someone you trust before you reply' could suggest that replying is fine after checking with someone. The source also says 'Hang up or ignore the message' and that Social Security 'will never ask for sensitive or personal information through social media, email, or text message.' The line should not imply that replying with details is ever okay. (rewrite 2 of 2)",
+            "Passed the checks: Protect Yourself from Scams (En español): both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

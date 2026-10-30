@@ -1,5 +1,5 @@
 {
-  "nextNumber": 16,
+  "nextNumber": 17,
   "episodes": [
     {
       "number": 1,
@@ -1582,6 +1582,117 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "McZQ_QbnNsY",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 16,
+      "leadId": "1c33a893621e",
+      "date": "2026-10-30",
+      "skin": "dm",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake government officer DM",
+        "message": {
+          "sender": "Officer Daniel Reyes · Federal Benefits Office",
+          "subject": "",
+          "body": "Hello. This is Officer Daniel Reyes with the Federal Benefits Office. Your benefits number has been flagged for suspicious activity and will be suspended in 24 hours. To keep your account active, reply now with your full name, date of birth, and benefits number. Case ID 48-2291. Questions? Call (202) 555-0147. Do not share this message with anyone.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the scam tactics described on the Social Security scam page (ssa.gov/scam): a direct message on social media from someone posing as a government employee, a threat to suspend your number or account, pressure to act right away, a request for personal information, and a demand for secrecy. The officer name, office name, case ID and phone number are all made up. 'Officer Daniel Reyes' is an invented name and is not a real SSA or OIG employee.",
+          "evidence": [
+            {
+              "quote": "Direct message you on social media, asking for personal information or money.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Threaten to suspend your Social Security number or account.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Scammers pretend to be from an agency or organization you know to gain your trust.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Demand secrecy.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          ]
+        },
+        "hook": "Someone you love may get this message today.",
+        "stampSay": "Fake officer, real scam.",
+        "flags": [
+          {
+            "label": "Stranger in your DMs",
+            "say": "Scammers slide into your messages and ask for your details or money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Direct message you on social media, asking for personal information or money.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          },
+          {
+            "label": "Suspend threat",
+            "say": "Scammers scare you by saying your number or account will be cut off.",
+            "target": {
+              "kind": "text",
+              "match": "will be suspended in 24 hours"
+            },
+            "evidence": {
+              "quote": "Threaten to suspend your Social Security number or account.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          },
+          {
+            "label": "Told to stay quiet",
+            "say": "Scammers tell you to keep it secret.",
+            "target": {
+              "kind": "text",
+              "match": "Do not share this message with anyone"
+            },
+            "evidence": {
+              "quote": "Demand secrecy.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ignore the message",
+          "say": "Don't answer it, and don't tap any links or attachments it sends.",
+          "evidence": {
+            "quote": "Hang up or ignore the message. Do not click on links or attachments.",
+            "url": "https://www.ssa.gov/scam/"
+          }
+        },
+        "title": "Fake government officer DM says your benefits will be suspended",
+        "description": "A stranger messages you claiming to be a government officer. They say your benefits will be cut off unless you reply with personal details. Here is how to spot it and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.ssa.gov/scam/",
+          "name": "Social Security",
+          "capture": "page"
+        }
+      ],
+      "slug": "016-fake-government-officer-dm",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.8718,
+      "renderAttempts": 1,
+      "music": "A# tritone 80 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.992834,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "GB14MOUi94Q",
       "youtubePrivacy": "public"
     }
   ],
