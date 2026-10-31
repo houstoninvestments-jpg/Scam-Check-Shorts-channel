@@ -1,5 +1,5 @@
 {
-  "nextNumber": 19,
+  "nextNumber": 20,
   "episodes": [
     {
       "number": 1,
@@ -1907,6 +1907,109 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "rcjXyZ9fmEc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 19,
+      "leadId": "397ff4a4e9f1",
+      "date": "2026-10-31",
+      "skin": "voicemail",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Fake 'new Medicare card' voicemail",
+        "message": {
+          "sender": "(202) 555-0143 · Medicare Card Services",
+          "subject": "",
+          "body": "Hello, this is a message from Medicare Card Services. Our records show your Medicare card is out of date and a new card must be issued before the enrollment deadline. To avoid a gap in your coverage, call us back right away at (202) 555-0143 and have your card number and a payment method ready. Thank you.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alert (Source 1), which describes scammers impersonating Medicare, contacting people unexpectedly, claiming they need a new or updated Medicare card, and asking for Medicare, bank, or card numbers. The caller name and phone number are fictional.",
+          "evidence": [
+            {
+              "quote": "scammers often impersonate Medicare and contact you unexpectedly. They might sound professional and even have some of your personal information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            },
+            {
+              "quote": "They’ll say you need a “new” or “updated” Medicare card and ask for your Medicare, bank account, or credit card number.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          ]
+        },
+        "hook": "It sounds official. Listen closer.",
+        "stampSay": "Nobody from Medicare left that message.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "Real Medicare won't call out of nowhere asking for your numbers or money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "And true Medicare representatives won’t call, text, or email you out of the blue to ask for your numbers or a payment.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          },
+          {
+            "label": "New card pitch",
+            "say": "Real Medicare cards are free and come in the mail on their own.",
+            "target": {
+              "kind": "text",
+              "match": "a new card must be issued"
+            },
+            "evidence": {
+              "quote": "But real Medicare cards are free and mailed to you automatically.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          },
+          {
+            "label": "Wants your numbers",
+            "say": "Medicare only verifies info when you contact them first, and never charges for a card.",
+            "target": {
+              "kind": "text",
+              "match": "have your card number and a payment method ready"
+            },
+            "evidence": {
+              "quote": "Medicare will only ask you to verify information if you contact them first, and they won’t try to sell you anything or tell you to pay for your Medicare card.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Hang up, call Medicare",
+          "say": "Don't trust the caller ID; hang up and call 1-800-MEDICARE yourself to check.",
+          "evidence": {
+            "quote": "Don’t rely on your caller ID. It might show Medicare’s name or phone number, but caller ID can be faked. To check it out, hang up and call 1-800-MEDICARE (1-800-633-4227).",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+          }
+        },
+        "title": "The fake 'new Medicare card' voicemail scam",
+        "description": "A voicemail says your health card is out of date and you must call back with your card number and payment. Here are three signs it is a scam, and the one safe thing to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "019-fake-new-medicare-card-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4356,
+      "renderAttempts": 1,
+      "music": "D fifth 68 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994525,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "poeHl2DEHC8",
       "youtubePrivacy": "public"
     }
   ],

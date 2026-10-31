@@ -269,7 +269,17 @@
       "attempts": [
         {
           "startedAt": "2026-10-31T19:21:36.392Z",
-          "runId": "41233785017"
+          "runId": "41233785017",
+          "endedAt": "2026-10-31T19:25:40.218Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 2 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (221 pages not yet on the channel)",
+            "Did not pass the checks: This Medicare Open Enrollment season, learn how to protect y: problems: Safe move: the spoken line opens with \"Don't trust the caller ID,\" but its quoted evidence only covers \"hang up and call 1-800-MEDICARE.\" The source does say \"Don't rely on your caller ID... caller ID can be faked,\" so the quote should be expanded to include that sentence. (rewrite 1 of 2)",
+            "Passed the checks: This Medicare Open Enrollment season, learn how to protect y: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

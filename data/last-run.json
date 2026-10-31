@@ -1,27 +1,106 @@
 {
   "date": "2026-10-31",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-10-31: already posted (or the day was full); this start exits"
+      "detail": "slot 2 for 2026-10-31: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "2 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (221 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "This Medicare Open Enrollment season, learn how to protect y: problems: Safe move: the spoken line opens with \"Don't trust the caller ID,\" but its quoted evidence only covers \"hang up and call 1-800-MEDICARE.\" The source does say \"Don't rely on your caller ID... caller ID can be faked,\" so the quote should be expanded to include that sentence. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "This Medicare Open Enrollment season, learn how to protect y: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 35.7s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot2/scam-019.mp4 (1080x1920, 35.71s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot2/scam-019-cover.jpg (226 KB), loop similarity 0.994525"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded poeHl2DEHC8 as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake 'new Medicare card' voicemail | sources: FTC Consumer Alerts 2025-09-30 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 35.7s",
+    "music": "tension bed on: D with a fifth, 68 BPM; voice -23.8 LUFS, bed -43.8 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13489/8732 red px), phone screen untouched",
+    "title": "Scam No. 019: The fake 'new Medicare card' voicemail scam",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/019-fake-new-medicare-card-voicemail/",
+    "upload": "poeHl2DEHC8, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.44 for 6 model calls (writer 2x $0.33, checker-b 2x $0.05, checker-a 2x $0.06)"
   },
-  "runId": "41230416692",
+  "runId": "41233785017",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot2/scam-019.mp4",
+  "episode": 19,
+  "youtubeId": "poeHl2DEHC8",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.4356,
+    "calls": 6,
+    "inputTokens": 20812,
+    "outputTokens": 7613,
+    "byRole": {
+      "writer": {
+        "calls": 2,
+        "usd": 0.3335
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0454
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0567
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }
