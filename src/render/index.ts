@@ -7,6 +7,7 @@ import type { ShortProps } from "../../remotion/props.js";
 import { env, log, path } from "../lib/util.js";
 import type { VoiceResult } from "../voice/index.js";
 import { MAX_SECONDS, buildTimeline, type Timeline } from "./timeline.js";
+import { resolveTsFromJs } from "./bundler.js";
 
 /** Short synthetic sound effects, made with ffmpeg so no audio files need licensing. */
 export function makeSfx(dir: string) {
@@ -41,7 +42,7 @@ function browserExecutable(): string | undefined {
 const bundles = new Map<string, string>();
 
 export async function renderShort(props: ShortProps, publicDir: string, outFile: string): Promise<string> {
-  if (!bundles.has(publicDir)) bundles.set(publicDir, await bundle({ entryPoint: path("remotion/index.ts"), publicDir }));
+  if (!bundles.has(publicDir)) bundles.set(publicDir, await bundle({ entryPoint: path("remotion/index.ts"), publicDir, webpackOverride: resolveTsFromJs }));
   const bundled = bundles.get(publicDir)!;
   const browser = browserExecutable();
   const composition = await selectComposition({ serveUrl: bundled, id: "ScamShort", inputProps: props, browserExecutable: browser });

@@ -9,6 +9,7 @@ import { config } from "../lib/config.js";
 import { loadLedger } from "../lib/ledger.js";
 import { log, pad3, path } from "../lib/util.js";
 import { buildTimeline } from "./timeline.js";
+import { resolveTsFromJs } from "./bundler.js";
 
 /** Small copies of each video's cover frame for the website's case-file cards. Kept in the repo. */
 export const coverFile = (n: number) => path("data/covers", `${pad3(n)}.jpg`);
@@ -44,7 +45,7 @@ export async function backfillCovers(episodes: Episode[] = loadLedger().episodes
   const publicDir = path("work/cover-backfill");
   mkdirSync(publicDir, { recursive: true });
   copyFileSync(path("node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"), join(publicDir, "inter.woff2"));
-  const serveUrl = await bundle({ entryPoint: path("remotion/index.ts"), publicDir });
+  const serveUrl = await bundle({ entryPoint: path("remotion/index.ts"), publicDir, webpackOverride: resolveTsFromJs });
   const local = "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell";
   const browserExecutable = process.env.REMOTION_BROWSER ?? (existsSync(local) ? local : undefined);
   const segs = Object.fromEntries(["hook", "ask", "stamp", "flag1", "flag2", "flag3", "safe", "closer"].map((id) => [id, { id, text: "", file: "", duration: 2 }]));

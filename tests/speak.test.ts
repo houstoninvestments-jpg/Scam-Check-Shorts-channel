@@ -39,3 +39,12 @@ describe("the voice reads numbers as words", () => {
     expect(c.map((x: any) => x.text).join(" ")).toBe("They want $4.99 now");
   });
 });
+
+describe("the video bundler", () => {
+  it("resolves our .js imports to .ts files (the captions import the spoken-words code)", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { resolveTsFromJs } = await import("../src/render/bundler");
+    expect((resolveTsFromJs({ resolve: {} }) as any).resolve.extensionAlias[".js"]).toContain(".ts");
+    for (const f of ["src/render/index.ts", "src/render/covers.ts"]) expect(readFileSync(f, "utf8")).toMatch(/bundle\(\{[^}]*webpackOverride: resolveTsFromJs/);
+  });
+});
