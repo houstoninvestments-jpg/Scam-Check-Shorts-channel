@@ -1,5 +1,5 @@
 {
-  "nextNumber": 9,
+  "nextNumber": 21,
   "episodes": [
     {
       "number": 1,
@@ -530,75 +530,75 @@
       "cta": "direct",
       "hookVariant": "would-you-tap",
       "script": {
-        "scamName": "Fake election office login email",
+        "scamName": "Fake login check email",
         "message": {
-          "sender": "County Election Office <security@county-elections.example>",
-          "subject": "Action needed: confirm your login",
-          "body": "Hello,\n\nWe are updating security on the voter records system before the midterm elections. To keep your access, please confirm your login details.\n\nConfirm your login: https://voter-portal-login.example/verify\n\nThank you,\nCounty Election Office IT Team",
+          "sender": "Election Portal <noreply@election-portal.example>",
+          "subject": "Please verify your login",
+          "body": "Your login for the county election portal needs a check. Please verify your login now: https://portal-verify.example/login\n\nThank you,\nPortal Team",
           "hasQr": false,
           "provenance": "recreated",
-          "provenanceNote": "Recreated from the FBI IC3 PSA, which describes phishing emails that closely resemble legitimate communications and try to get election and campaign officials to disclose login credentials.",
+          "provenanceNote": "Recreated from Source 1 (FBI IC3 PSA), which describes phishing emails that closely resemble legitimate communications, push targets to click malicious links, and try to get them to disclose login credentials. The exact wording, sender name and portal name are invented for this example.",
           "evidence": [
             {
-              "quote": "these actors have crafted increasingly sophisticated phishing and smishing campaigns that closely resemble legitimate communications, making it difficult for targets to distinguish fraudulent messages",
+              "quote": "Malicious cyber actors may attempt to disrupt the 2026 U.S. midterm elections using phishing and smishing techniques to steal user data, including login credentials and sensitive information.",
               "url": "https://www.ic3.gov/PSA/2026/PSA261016"
             },
             {
-              "quote": "Malicious cyber actors may attempt to disrupt the 2026 U.S. midterm elections using phishing and smishing techniques to steal user data, including login credentials and sensitive information.",
+              "quote": "In recent years, these actors have crafted increasingly sophisticated phishing and smishing campaigns that closely resemble legitimate communications, making it difficult for targets to distinguish fraudulent messages.",
               "url": "https://www.ic3.gov/PSA/2026/PSA261016"
             }
           ]
         },
-        "hook": "Would you tap this election office email?",
-        "stampSay": "A fake made to steal your login.",
+        "hook": "This email wants your password. Would you tap this?",
+        "stampSay": "This one is after your login.",
         "flags": [
           {
-            "label": "Wants your login",
-            "say": "Phishing messages try to trick you into handing over your login details.",
-            "target": {
-              "kind": "text",
-              "match": "please confirm your login details"
-            },
-            "evidence": {
-              "quote": "phishing and smishing attempts that try to manipulate the recipient into disclosing sensitive information, such as login credentials or financial information",
-              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
-            }
-          },
-          {
-            "label": "No typos, still fake",
-            "say": "Scammers now use smart tools to write messages that sound real and natural.",
-            "target": {
-              "kind": "text",
-              "match": "We are updating security on the voter records system"
-            },
-            "evidence": {
-              "quote": "SI allows malicious cyber actors to create language that appears genuine, using native languages and common vernacular, making it more likely for potential victims to click malicious links",
-              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
-            }
-          },
-          {
-            "label": "Out of the blue",
-            "say": "Be careful when a request for login details shows up that you never asked for.",
+            "label": "Looks like real mail",
+            "say": "These fakes are built to look like real messages, so they are hard to spot.",
             "target": {
               "kind": "sender",
               "match": ""
             },
             "evidence": {
-              "quote": "Advise employees to be cautious when providing sensitive information — such as login credentials — electronically or over the phone, particularly if unsolicited or anomalous.",
+              "quote": "In recent years, these actors have crafted increasingly sophisticated phishing and smishing campaigns that closely resemble legitimate communications, making it difficult for targets to distinguish fraudulent messages.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          },
+          {
+            "label": "Asks for login",
+            "say": "The whole point is to trick you into giving up your login details.",
+            "target": {
+              "kind": "text",
+              "match": "verify your login now"
+            },
+            "evidence": {
+              "quote": "Such precautions are critical to remaining vigilant for phishing and smishing attempts that try to manipulate the recipient into disclosing sensitive information, such as login credentials or financial information, or that install malware on their devices.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA261016"
+            }
+          },
+          {
+            "label": "Link to tap",
+            "say": "That link is the trap, and real-sounding words make clicking it more likely.",
+            "target": {
+              "kind": "text",
+              "match": "https://portal-verify.example/login"
+            },
+            "evidence": {
+              "quote": "SI allows malicious cyber actors to create language that appears genuine, using native languages and common vernacular, making it more likely for potential victims to click malicious links or inadvertently expose information through direct interaction with threat actors.",
               "url": "https://www.ic3.gov/PSA/2026/PSA261016"
             }
           }
         ],
         "safeMove": {
-          "label": "Check another way",
-          "say": "Confirm any request for login details through a separate channel before you share anything.",
+          "label": "Confirm another way",
+          "say": "Before you share any login, confirm the request through a separate channel you trust.",
           "evidence": {
             "quote": "Employees should confirm, if possible, requests for sensitive information through secondary channels.",
             "url": "https://www.ic3.gov/PSA/2026/PSA261016"
           }
         },
-        "title": "The Fake Election Office Email That Steals Your Login",
-        "description": "A polished email claims to be from an election office and asks you to confirm your login. It looks real, but it is built to steal your details. Here is how to spot it and what to do instead.",
+        "title": "Fake login check email aimed at election workers",
+        "description": "A fake email asks you to verify your login on a work portal. It looks real, but the link is built to grab your details. Here are three signs to watch for and the one safe move.",
         "category": "impostor"
       },
       "sources": [
@@ -608,32 +608,39 @@
           "capture": "page"
         }
       ],
-      "slug": "006-fake-election-office-login-email",
-      "status": "rendered",
+      "slug": "006-fake-login-check-email",
+      "status": "published",
       "category": "impostor",
-      "costUsd": 0.2479,
+      "costUsd": 0.4798,
       "renderAttempts": 1,
       "music": "G# tritone 76 BPM, 20 dB under the voice",
-      "loopSimilarity": 0.994817,
-      "voice": "AI voice (Kokoro open model)"
+      "loopSimilarity": 0.995088,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "3V9jjUV4c1E",
+      "youtubePrivacy": "public"
     },
     {
       "number": 7,
       "leadId": "8b934b80eb35",
       "date": "2026-10-27",
       "skin": "imessage",
+      "slot": 2,
       "brands": [],
       "cta": "none",
       "hookVariant": "going-around",
       "script": {
         "scamName": "Fake side hustle job text",
         "message": {
-          "sender": "+1 (202) 555-0147",
+          "sender": "(202) 555-0142",
           "subject": "",
-          "body": "Hi! Your profile was picked for a work from home data entry role. Flexible hours, $950 a week for minimal work. Spots are limited, so accept today or the offer is gone. To start, pay the $45 training fee here: start-now-jobs.example/apply",
+          "body": "Hi! We saw your resume and have a remote data entry gig open. Flexible hours, up to $900 a week for minimal work. Only 2 spots left, so reply YES today or lose it. A small $45 training fee is required to start. Details: quick-gigs.example",
           "hasQr": false,
           "provenance": "recreated",
-          "provenanceNote": "Recreated from the FTC Consumer Alerts article, which describes out-of-the-blue texts offering data entry work from home, promises of a flexible schedule and high pay for minimal work, pressure to accept immediately, and demands to pay for training up front.",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article 'How to avoid a side hustle scam', which describes out-of-the-blue texts offering data entry gigs, promises of flexible schedules and high pay, pressure to accept immediately, and demands for up-front payment for training.",
           "evidence": [
             {
               "quote": "Scammers might text, message you on social media, or email you out of the blue offering a gig — reshipping packages, doing data entry, or some other task you can do from home.",
@@ -650,11 +657,11 @@
           ]
         },
         "hook": "Job texts like this are going around.",
-        "stampSay": "There is no job here.",
+        "stampSay": "That gig does not exist.",
         "flags": [
           {
             "label": "Big money, little work",
-            "say": "Scammers promise big money for little effort, and that is the bait here.",
+            "say": "Scammers promise big money for almost no effort.",
             "target": {
               "kind": "text",
               "match": "minimal work"
@@ -666,10 +673,10 @@
           },
           {
             "label": "Take it now",
-            "say": "If someone says the gig vanishes unless you accept right away, walk away.",
+            "say": "When they say the gig vanishes unless you accept right away, walk away.",
             "target": {
               "kind": "text",
-              "match": "accept today or the offer is gone"
+              "match": "reply YES today or lose it"
             },
             "evidence": {
               "quote": "If someone insists a gig will disappear if you don’t accept it immediately, walk away.",
@@ -678,7 +685,7 @@
           },
           {
             "label": "Pay to start",
-            "say": "No real gig makes you pay for training or anything else to get the job.",
+            "say": "A real gig never makes you pay for training to get the job.",
             "target": {
               "kind": "text",
               "match": "$45 training fee"
@@ -691,14 +698,14 @@
         ],
         "safeMove": {
           "label": "Ask someone you trust",
-          "say": "Before you accept any gig, talk it over with someone you trust.",
+          "say": "Before you say yes to any gig, talk it over with someone you trust.",
           "evidence": {
             "quote": "Talk to someone you trust about the opportunity — before accepting a gig.",
             "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/how-avoid-side-hustle-scam"
           }
         },
-        "title": "Fake side hustle text asks you to pay before you start",
-        "description": "A text offers easy work from home with big pay, then asks for a training fee. We show the three signs it is a scam. Then the one safe move to make instead.",
+        "title": "The side hustle text that makes you pay to start",
+        "description": "A text offers easy remote work with big pay, but there is no job. It pushes you to answer today and asks for a training fee. Here are the three signs, and the one thing to do instead.",
         "category": "job"
       },
       "sources": [
@@ -709,33 +716,40 @@
         }
       ],
       "slug": "007-fake-side-hustle-job-text",
-      "status": "rendered",
+      "status": "published",
       "category": "job",
-      "costUsd": 0.3323,
+      "costUsd": 0.3304,
       "renderAttempts": 1,
       "music": "D fifth 75 BPM, 20 dB under the voice",
-      "loopSimilarity": 0.994336,
-      "voice": "AI voice (Kokoro open model)"
+      "loopSimilarity": 0.994605,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "OmRwCbn4erE",
+      "youtubePrivacy": "public"
     },
     {
       "number": 8,
       "leadId": "d67141a1964f",
       "date": "2026-10-27",
       "skin": "android",
+      "slot": 3,
       "brands": [
         "paypal"
       ],
       "cta": "soft",
       "hookVariant": "someone-you-love",
       "script": {
-        "scamName": "Fake ESTA application site",
+        "scamName": "Lookalike travel permit site",
         "message": {
-          "sender": "esta-cbp-dhs.example",
+          "sender": "esta-usa-apply.example",
           "subject": "",
-          "body": "Complete your ESTA application today. Fee: $89. Full refund if not approved. Pay by bank transfer. Start your application now.",
+          "body": "Apply for your U.S. travel authorization online.\n\nesta-usa-apply.example\n\nProcessing fee: $89\nFull refund if not approved.\nPay by bank transfer.\n\nStart your application",
           "hasQr": false,
           "provenance": "recreated",
-          "provenanceNote": "Recreated from the FTC Consumer Alerts article on ESTA lookalike sites, which describes copycat sites with similar names that overcharge, promise refunds, and ask for other payment methods. Shown as a lookalike website page in a phone browser; the sender field holds the fake web address shown in the address bar. The address uses a fictional .example domain that cannot resolve and names no real business.",
+          "provenanceNote": "Recreated as a lookalike web page from Source 1 (FTC Consumer Alerts), which describes ESTA lookalike sites with similar names that overcharge, promise refunds, or ask you to pay a different way. Shown as a page a traveler comes across while applying, not as a message sent to them.",
           "evidence": [
             {
               "quote": "they might come across ESTA lookalike sites trying to trick people into overpaying for the application",
@@ -747,15 +761,15 @@
             }
           ]
         },
-        "hook": "A visiting friend could land on this site today.",
-        "stampSay": "This site just wants extra money.",
+        "hook": "Someone you love may land on this today.",
+        "stampSay": "A copycat site, not the real one.",
         "flags": [
           {
             "label": "Lookalike web address",
-            "say": "The address looks close to the real one, so check it very carefully.",
+            "say": "The address looks close to the real one, so check every letter.",
             "target": {
-              "kind": "sender",
-              "match": ""
+              "kind": "text",
+              "match": "esta-usa-apply.example"
             },
             "evidence": {
               "quote": "Lookalike sites often have similar names, so look closely at the URL.",
@@ -763,11 +777,11 @@
             }
           },
           {
-            "label": "Charges way more",
-            "say": "A site that charges more or promises a refund is not the real one.",
+            "label": "Charges too much",
+            "say": "A site that charges more than the real fee is not the real site.",
             "target": {
               "kind": "text",
-              "match": "Fee: $89"
+              "match": "Processing fee: $89"
             },
             "evidence": {
               "quote": "Any website that charges you more to apply — or says you can get a refund — isn’t the real site.",
@@ -775,28 +789,28 @@
             }
           },
           {
-            "label": "Odd payment method",
-            "say": "Being asked to pay a different way is a sign of a scam.",
+            "label": "Promises a refund",
+            "say": "The real fee has no refunds, so a refund offer gives it away.",
             "target": {
               "kind": "text",
-              "match": "Pay by bank transfer"
+              "match": "Full refund if not approved."
             },
             "evidence": {
-              "quote": "If someone charges you more or asks you to pay a different way, that’s a scam.",
+              "quote": "The ESTA application fee is nonrefundable.",
               "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
             }
           }
         ],
         "safeMove": {
           "label": "Use the official site",
-          "say": "Apply only through the official ESTA website or app, and nowhere else.",
+          "say": "Go to the official ESTA website or app yourself and apply only there.",
           "evidence": {
             "quote": "The only place to apply is through the ESTA website or app.",
             "url": "https://consumer.ftc.gov/consumer-alerts/2026/03/how-avoid-scams-while-applying-esta"
           }
         },
-        "title": "Fake ESTA travel application sites charge you extra",
-        "description": "Visitors to the U.S. may come across lookalike ESTA sites. These sites will likely overcharge you and may not even file the application. Here is how to spot one and where to apply instead.",
+        "title": "Fake travel permit website charges visitors extra fees",
+        "description": "Copycat websites trick visitors into overpaying for a U.S. travel permit. They use lookalike names, charge too much, and promise refunds. Here is how to spot one and where to apply instead.",
         "category": "impostor"
       },
       "sources": [
@@ -806,14 +820,1294 @@
           "capture": "page"
         }
       ],
-      "slug": "008-fake-esta-application-site",
-      "status": "rendered",
+      "slug": "008-lookalike-travel-permit-site",
+      "status": "published",
       "category": "impostor",
-      "costUsd": 0.6038,
+      "costUsd": 0.4065,
       "renderAttempts": 1,
       "music": "C fifth 78 BPM, 20 dB under the voice",
-      "loopSimilarity": 0.994941,
-      "voice": "AI voice (Kokoro open model)"
+      "loopSimilarity": 0.995093,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "xOQwIu7c33I",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 9,
+      "leadId": "1a45a5d7020d",
+      "date": "2026-10-28",
+      "skin": "voicemail",
+      "slot": 1,
+      "brands": [
+        "comcast",
+        "xfinity",
+        "spectrum"
+      ],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake cable discount voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "Hello. This is Cable Services. We're reviewing your account, and it appears your 50% discount on your monthly bill is set to expire today. To confirm and secure your savings, call the number displayed on your caller ID immediately. This offer cannot be extended. Thank you.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FCC audio transcript of the voicemail; the real company name was replaced with a generic one and a fictional number was used.",
+          "evidence": [
+            {
+              "quote": "Consumers are reporting robocalls and voicemails claiming a \"50% discount on your monthly bill is set to expire.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            },
+            {
+              "quote": "The calls urge them to \"call the number displayed on your caller ID immediately.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          ]
+        },
+        "hook": "A voicemail says your discount ends today. Read it.",
+        "stampSay": "Scam. Here's how you can tell.",
+        "flags": [
+          {
+            "label": "Ends today",
+            "say": "Pressure to act quickly is a sure sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "set to expire today"
+            },
+            "evidence": {
+              "quote": "Pressure to act quickly and only accepting gift cards as payment are sure signs of scam.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          },
+          {
+            "label": "Call this number back",
+            "say": "They want you to ring back the number that just called you.",
+            "target": {
+              "kind": "text",
+              "match": "call the number displayed on your caller ID immediately"
+            },
+            "evidence": {
+              "quote": "The calls urge them to \"call the number displayed on your caller ID immediately.\"",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          },
+          {
+            "label": "Half off bait",
+            "say": "They'll claim you must prepay months of service with a gift card.",
+            "target": {
+              "kind": "text",
+              "match": "50% discount on your monthly bill"
+            },
+            "evidence": {
+              "quote": "The scammer will also claim the only way to secure the discount is to prepay for multiple months of service using a gift card.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Use the number on your bill",
+          "say": "Call or email your provider using the official number printed on your bill.",
+          "evidence": {
+            "quote": "call or email your service provider at the official customer service number or email address listed on your bill",
+            "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services"
+          }
+        },
+        "title": "Voicemail says your cable discount expires today. It's a scam",
+        "description": "A voicemail claims your cable bill discount ends today and tells you to call back right away. Call back, and they push you to prepay with gift cards. Use the number on your real bill instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.fcc.gov/consumers/scam-alert/discounted-cable-streaming-services",
+          "name": "FCC",
+          "capture": "page"
+        }
+      ],
+      "slug": "009-fake-cable-discount-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 1.0948,
+      "renderAttempts": 1,
+      "music": "C minor tenth 77 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.994464,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "q9YJmWdzpyc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 10,
+      "leadId": "3fd78ee1d584",
+      "date": "2026-10-28",
+      "skin": "email",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake disaster charity email",
+        "message": {
+          "sender": "Storm Relief Fund <donate@storm-relief-fund.example>",
+          "subject": "Families lost everything in the storm. Please help today.",
+          "body": "Dear friend,\n\nThousands of families lost their homes in this week's storm. They need food, water and shelter right now.\n\nYour gift can reach them today. Give now at storm-relief-fund.example.\n\nTo speed up your gift, reply with your card number and bank account details so we can confirm it.\n\nThank you for your kindness.\n\nStorm Relief Fund Team",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (IRS, How to avoid fraud and scams after a disaster), which describes unsolicited emails from thieves posing as charities, bogus sites with names like real charities, and requests for personal financial information.",
+          "evidence": [
+            {
+              "quote": "These disaster scams normally start with unsolicited contact. The scammer contacts their possible victim by telephone, social media, email or in-person.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            },
+            {
+              "quote": "Some thieves pretend they are from a charity. They do this to get money or private information from well-intentioned taxpayers.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          ]
+        },
+        "hook": "Would you tap this storm relief email?",
+        "stampSay": "A fake charity, not real help.",
+        "flags": [
+          {
+            "label": "Came out of nowhere",
+            "say": "You never asked for this email, and that is how these scams usually start.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "These disaster scams normally start with unsolicited contact.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          },
+          {
+            "label": "Copycat charity name",
+            "say": "The site uses a name that sounds like a real charity to get your money.",
+            "target": {
+              "kind": "text",
+              "match": "storm-relief-fund.example"
+            },
+            "evidence": {
+              "quote": "Bogus websites use names like legitimate charities. They do this scam to trick people to send money or provide personal financial information.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          },
+          {
+            "label": "Wants your bank info",
+            "say": "Never hand your card or bank numbers to someone asking you for a donation.",
+            "target": {
+              "kind": "text",
+              "match": "card number and bank account details"
+            },
+            "evidence": {
+              "quote": "Donors should not give out personal financial information to anyone who solicits a contribution.",
+              "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check the charity first",
+          "say": "Look up the charity with the IRS search tool before you give a single dollar.",
+          "evidence": {
+            "quote": "The Tax Exempt Organization Search helps users find or verify qualified charities.",
+            "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster"
+          }
+        },
+        "title": "Fake disaster charity email asks for your bank details",
+        "description": "After a storm or flood, thieves send emails posing as charities. This one asks for your card and bank numbers. Here are three red flags and the one thing to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.irs.gov/newsroom/how-to-avoid-fraud-and-scams-after-a-disaster",
+          "name": "IRS",
+          "capture": "page"
+        }
+      ],
+      "slug": "010-fake-disaster-charity-email",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 1.1133,
+      "renderAttempts": 1,
+      "music": "C# fifth 71 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.995772,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "fWmyC9nODaQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 11,
+      "leadId": "ed41f4240f1c",
+      "date": "2026-10-28",
+      "skin": "imessage",
+      "slot": 3,
+      "brands": [
+        "facebook",
+        "linkedin"
+      ],
+      "cta": "soft",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Fake grandchild in trouble text",
+        "message": {
+          "sender": "+1 (202) 555-0142",
+          "subject": "",
+          "body": "Grandma it's me. I'm in jail across the country and I need your help. Please send money right now. I'll explain later.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the grandparent scam example in Source 1 (AARP Fraud Watch Network): a grandchild saying he is in jail across the country, needs help, and needs money sent immediately. Source 1 describes this as a phone call; the text version here is an illustration.",
+          "evidence": [
+            {
+              "quote": "Have you heard of the tech support scam? What about the toll road scam? The grandparent scam?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            },
+            {
+              "quote": "Is your grandson calling you late at night (unexpected contact), saying he’s in jail across the country and needs your help (prompting a surge of emotion from you: I must help him!)? Does he say he needs you to send money immediately (creating a sense of urgency)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          ]
+        },
+        "hook": "Picture this landing on your phone tonight.",
+        "stampSay": "That is a scam. Here is why.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "A message you did not expect is the first warning sign.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Ultimately, we arrived at three elements common to most scams: unexpected contact, a surge of emotion and a sense of urgency.",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          },
+          {
+            "label": "Pulls your heart",
+            "say": "The jail story is made to stir a rush of feeling.",
+            "target": {
+              "kind": "text",
+              "match": "in jail across the country"
+            },
+            "evidence": {
+              "quote": "saying he’s in jail across the country and needs your help (prompting a surge of emotion from you: I must help him!)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          },
+          {
+            "label": "Money right now",
+            "say": "Pushing you to send money fast is the third big sign.",
+            "target": {
+              "kind": "text",
+              "match": "send money right now"
+            },
+            "evidence": {
+              "quote": "Does he say he needs you to send money immediately (creating a sense of urgency)?",
+              "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Stop and check",
+          "say": "End the chat, take your time, and check the story on your own first.",
+          "evidence": {
+            "quote": "Ending the communication and taking time to independently verify details can stop many scams before money is lost.",
+            "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/"
+          }
+        },
+        "title": "Grandchild in trouble scam: three red flags to spot",
+        "description": "Here is what the grandparent scam could look like as a message on your phone. We show the three signs that give it away. Then we share the one safe move to make instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.aarp.org/money/scams-fraud/pause-reflect-protect/",
+          "name": "AARP Fraud Watch Network",
+          "capture": "page"
+        }
+      ],
+      "slug": "011-fake-grandchild-in-trouble-text",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.708,
+      "renderAttempts": 1,
+      "music": "D fifth 76 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994971,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "nJsiJTLD8gM",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 12,
+      "leadId": "12f6603e84d7",
+      "date": "2026-10-29",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake business coaching offer",
+        "message": {
+          "sender": "Wealth Coaching",
+          "subject": "",
+          "body": "Hi! Our proven system to make money in crypto gives you guaranteed income with little work. Spots close tonight. Don't risk losing out. Enroll for $97: coach-pro.example/start",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC Consumer Alerts), which describes coaching scam ads that promise guaranteed income, a proven system to make money, and pressure to act now or risk losing out.",
+          "evidence": [
+            {
+              "quote": "But if they promise guaranteed income, large returns for little work, or say they have a “proven system to make money,” it’s likely a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            },
+            {
+              "quote": "Scammers will pressure you to get involved now or “risk losing out.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "This coach wants your money.",
+        "flags": [
+          {
+            "label": "Guaranteed income",
+            "say": "No one can promise you big money with no risk.",
+            "target": {
+              "kind": "text",
+              "match": "guaranteed income"
+            },
+            "evidence": {
+              "quote": "No one can guarantee you’ll make lots of money with little to no risk.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          },
+          {
+            "label": "Proven system claim",
+            "say": "A so-called proven system is a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "proven system"
+            },
+            "evidence": {
+              "quote": "or say they have a “proven system to make money,” it’s likely a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          },
+          {
+            "label": "Pressure to act now",
+            "say": "Scammers push you to join right now.",
+            "target": {
+              "kind": "text",
+              "match": "Don't risk losing out."
+            },
+            "evidence": {
+              "quote": "Scammers will pressure you to get involved now or “risk losing out.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ask someone you trust",
+          "say": "Slow down and get a second opinion from someone you trust.",
+          "evidence": {
+            "quote": "Take your time and talk to someone you trust.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams"
+          }
+        },
+        "title": "The business coaching ad that promises easy money",
+        "description": "An ad offers a coaching program with guaranteed income and a proven system. It pushes you to pay before you miss out. Here are three signs it is a scam and what to do instead.",
+        "category": ""
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/how-spot-and-avoid-business-coaching-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "012-fake-business-coaching-offer",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.8002,
+      "renderAttempts": 1,
+      "music": "G# fifth 74 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.99505,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "GFus5qEV30A",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 13,
+      "leadId": "d03dae88c4d1",
+      "date": "2026-10-29",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [
+        "zelle",
+        "facebook",
+        "whatsapp"
+      ],
+      "cta": "none",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake immigration lawyer message",
+        "message": {
+          "sender": "+1 (202) 555-0131",
+          "subject": "",
+          "body": "Hi! Thanks for liking our post. Our law office guarantees your work permit or green card. Send the fee today by payment app and we will book your virtual immigration appointment on video chat. Reply YES to start.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from an FTC Consumer Alert from December 2024, which describes the guarantee, the payment request, and the fake virtual appointment.",
+          "evidence": [
+            {
+              "quote": "Scammers are impersonating attorneys and law firms, offering immigration services on social media.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            },
+            {
+              "quote": "If you press like or leave a comment, they’ll contact you and guarantee you’ll get a work permit, green card, or citizenship — but it’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            },
+            {
+              "quote": "Next, they ask you to send them money using Western Union or Zelle. In return, they say they’ll supposedly get you an appointment with U.S. Citizenship and Immigration Services (USCIS).",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          ]
+        },
+        "hook": "You get a few seconds. Read it.",
+        "stampSay": "Scam. That guarantee gives it away.",
+        "flags": [
+          {
+            "label": "Guaranteed green card",
+            "say": "Promising a green card up front is how this scam works.",
+            "target": {
+              "kind": "text",
+              "match": "guarantees your work permit or green card"
+            },
+            "evidence": {
+              "quote": "they’ll contact you and guarantee you’ll get a work permit, green card, or citizenship — but it’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          },
+          {
+            "label": "Pay by app first",
+            "say": "Next they push you to send money through an app.",
+            "target": {
+              "kind": "text",
+              "match": "Send the fee today by payment app"
+            },
+            "evidence": {
+              "quote": "Next, they ask you to send them money using Western Union or Zelle.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          },
+          {
+            "label": "Video chat appointment",
+            "say": "Real appointments arrive by mail or your official account, never on messenger apps.",
+            "target": {
+              "kind": "text",
+              "match": "virtual immigration appointment on video chat"
+            },
+            "evidence": {
+              "quote": "Some immigration proceedings are now virtual, but applicants get their appointments by mail or through their MyUSCIS account, never on messenger apps.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check the real .gov site",
+          "say": "Go to the official government site yourself and check your case status there.",
+          "evidence": {
+            "quote": "Go to USCIS.gov for legitimate immigration information. If you have a pending application or petition, check your case status online.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media"
+          }
+        },
+        "title": "The fake immigration lawyer message that starts on social media",
+        "description": "A message promises a guaranteed green card or work permit after you like a post. Then it asks for money through an app and offers a fake video appointment. Here is how to spot it and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/detect-immigration-scams-start-social-media",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "013-fake-immigration-lawyer-message",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.8173,
+      "renderAttempts": 1,
+      "music": "B minor tenth 68 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.99454,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "PDWg4vsuruE",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 14,
+      "leadId": "ffc3d7afe953",
+      "date": "2026-10-29",
+      "skin": "voicemail",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake fraud recovery voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "Transcript: Hello, this is Agent Daniel Reed with the Federal Fraud Recovery Unit. Good news. We have recovered the funds you lost in a recent scam. To release your refund today, you need to pay a small processing fee and confirm your bank details. Call us back at (202) 555-0142 or visit recover-funds.example now. This offer is time sensitive.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FBI IC3 PSA (Source 1), which describes scammers contacting people by phone call, claiming to have recovered lost funds, using urgency, and asking for payment or financial data.",
+          "evidence": [
+            {
+              "quote": "Some individuals received an email or a phone call, while others were approached, or observed an advertisement via social media or forums.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            },
+            {
+              "quote": "Almost all complainants indicated the scammers claimed to have recovered the victim's lost funds or offered to assist in recovering funds.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            },
+            {
+              "quote": "Scammers rely on fear, urgency, and high-tech tricks like AI-generated video and caller ID spoofing to appear legitimate.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          ]
+        },
+        "hook": "They found your lost money? Would you call back?",
+        "stampSay": "It's a trick to rob you twice.",
+        "flags": [
+          {
+            "label": "Found your lost money",
+            "say": "Scammers claim they got your money back, but it's a ruse to scam you again.",
+            "target": {
+              "kind": "text",
+              "match": "We have recovered the funds you lost"
+            },
+            "evidence": {
+              "quote": "Almost all complainants indicated the scammers claimed to have recovered the victim's lost funds or offered to assist in recovering funds. However, the claim is a ruse to revictimize those who have already lost money to scams.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          },
+          {
+            "label": "Act now pressure",
+            "say": "Scammers lean on fear and urgency to look legitimate.",
+            "target": {
+              "kind": "text",
+              "match": "This offer is time sensitive"
+            },
+            "evidence": {
+              "quote": "Scammers rely on fear, urgency, and high-tech tricks like AI-generated video and caller ID spoofing to appear legitimate.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          },
+          {
+            "label": "Pay a fee first",
+            "say": "Don't send money to someone you have only met over the phone.",
+            "target": {
+              "kind": "text",
+              "match": "pay a small processing fee"
+            },
+            "evidence": {
+              "quote": "Do not send money, gift cards, cryptocurrency, or other assets to people you do not know or have met only online or over the phone.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Type www.ic3.gov yourself",
+          "say": "Type www.ic3.gov straight into your browser's address bar instead of searching for it.",
+          "evidence": {
+            "quote": "When navigating to IC3's official website, type www.ic3.gov directly into the address bar located at the top of your Internet browser, rather than using a search engine.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA260720"
+          }
+        },
+        "title": "Fake fraud recovery voicemail: the found your lost money scam",
+        "description": "A voicemail says an agent recovered money you lost to a scam. All you have to do is pay a small fee first. Here is how to spot the trick and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA260720",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "014-fake-fraud-recovery-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.9656,
+      "renderAttempts": 1,
+      "music": "C fifth 79 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.995405,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "z3_NndRRsdY",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 15,
+      "leadId": "b814c2d67445",
+      "date": "2026-10-30",
+      "skin": "email",
+      "slot": 1,
+      "brands": [
+        "apple",
+        "google",
+        "facebook",
+        "linkedin"
+      ],
+      "cta": "direct",
+      "hookVariant": "going-around",
+      "script": {
+        "scamName": "Fake foldable phone preorder page",
+        "message": {
+          "sender": "Phone Preorders <offers@fold-preorder.example>",
+          "subject": "Early access: reserve the new foldable phone and get a $500 voucher",
+          "body": "Early access is open.\n\nReserve the new foldable phone before anyone else and get a $500 voucher plus free coverage.\n\nOffer ends in 09:59\n\nPick your color and reserve now:\nhttps://fold-preorder.example/reserve\n\nEnter your name, email and phone number to hold your spot.\n\n© 2025 All rights reserved.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the AARP Fraud Watch Network article, which describes a fake preorder website promising a $500 voucher and free coverage, a countdown clock, and a form asking for name, email and phone number. The source does not say how people reach the site; the email format here is only a way to show a link to that page on screen. Brand names were replaced with generic ones and the link uses a fake example domain.",
+          "evidence": [
+            {
+              "quote": "The fraudulent site promises a $500 voucher and free AppleCare+ coverage to lure shoppers into reserving an iPhone Duo.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            },
+            {
+              "quote": "A countdown clock pressures visitors to act quickly.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            },
+            {
+              "quote": "The page asks for a name, email address and phone number.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          ]
+        },
+        "hook": "A fake foldable phone preorder page is out there.",
+        "stampSay": "That preorder link is a trap.",
+        "flags": [
+          {
+            "label": "Free voucher bait",
+            "say": "A link promising a free or deeply discounted phone is probably after your personal information.",
+            "target": {
+              "kind": "text",
+              "match": "$500 voucher"
+            },
+            "evidence": {
+              "quote": "Don't click on links that promise a free phone or deeply discounted one. They are probably after nothing but your personal and financial information",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          },
+          {
+            "label": "Countdown pressure",
+            "say": "That countdown clock is there to pressure you into acting quickly.",
+            "target": {
+              "kind": "text",
+              "match": "Offer ends in 09:59"
+            },
+            "evidence": {
+              "quote": "A countdown clock pressures visitors to act quickly.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          },
+          {
+            "label": "Link attacks old iPhones",
+            "say": "Just opening that page on an iPhone missing security updates could let criminals break in.",
+            "target": {
+              "kind": "text",
+              "match": "https://fold-preorder.example/reserve"
+            },
+            "evidence": {
+              "quote": "Simply opening the page on an iPhone that is missing security updates could allow criminals to break into the device.",
+              "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Update your iPhone",
+          "say": "Apple says updated iPhones are protected against the reported attacks, so make sure yours is updated.",
+          "evidence": {
+            "quote": "Apple says updated iPhones are protected against the reported attacks.",
+            "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/"
+          }
+        },
+        "title": "Fake foldable phone preorder page offers a $500 voucher",
+        "description": "A fake website offers early orders for a new foldable phone, plus a $500 voucher. A security company says opening it on one maker's phones with old software could allow a break-in. Here are three red flags and the safe move.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://www.aarp.org/money/scams-fraud/apple-iphone-duo-offer/",
+          "name": "AARP Fraud Watch Network",
+          "capture": "page"
+        }
+      ],
+      "slug": "015-fake-foldable-phone-preorder-page",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 1.7735,
+      "renderAttempts": 1,
+      "music": "G minor tenth 77 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995091,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "McZQ_QbnNsY",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 16,
+      "leadId": "1c33a893621e",
+      "date": "2026-10-30",
+      "skin": "dm",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake government officer DM",
+        "message": {
+          "sender": "Officer Daniel Reyes · Federal Benefits Office",
+          "subject": "",
+          "body": "Hello. This is Officer Daniel Reyes with the Federal Benefits Office. Your benefits number has been flagged for suspicious activity and will be suspended in 24 hours. To keep your account active, reply now with your full name, date of birth, and benefits number. Case ID 48-2291. Questions? Call (202) 555-0147. Do not share this message with anyone.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the scam tactics described on the Social Security scam page (ssa.gov/scam): a direct message on social media from someone posing as a government employee, a threat to suspend your number or account, pressure to act right away, a request for personal information, and a demand for secrecy. The officer name, office name, case ID and phone number are all made up. 'Officer Daniel Reyes' is an invented name and is not a real SSA or OIG employee.",
+          "evidence": [
+            {
+              "quote": "Direct message you on social media, asking for personal information or money.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Threaten to suspend your Social Security number or account.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Scammers pretend to be from an agency or organization you know to gain your trust.",
+              "url": "https://www.ssa.gov/scam/"
+            },
+            {
+              "quote": "Demand secrecy.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          ]
+        },
+        "hook": "Someone you love may get this message today.",
+        "stampSay": "Fake officer, real scam.",
+        "flags": [
+          {
+            "label": "Stranger in your DMs",
+            "say": "Scammers slide into your messages and ask for your details or money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Direct message you on social media, asking for personal information or money.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          },
+          {
+            "label": "Suspend threat",
+            "say": "Scammers scare you by saying your number or account will be cut off.",
+            "target": {
+              "kind": "text",
+              "match": "will be suspended in 24 hours"
+            },
+            "evidence": {
+              "quote": "Threaten to suspend your Social Security number or account.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          },
+          {
+            "label": "Told to stay quiet",
+            "say": "Scammers tell you to keep it secret.",
+            "target": {
+              "kind": "text",
+              "match": "Do not share this message with anyone"
+            },
+            "evidence": {
+              "quote": "Demand secrecy.",
+              "url": "https://www.ssa.gov/scam/"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ignore the message",
+          "say": "Don't answer it, and don't tap any links or attachments it sends.",
+          "evidence": {
+            "quote": "Hang up or ignore the message. Do not click on links or attachments.",
+            "url": "https://www.ssa.gov/scam/"
+          }
+        },
+        "title": "Fake government officer DM says your benefits will be suspended",
+        "description": "A stranger messages you claiming to be a government officer. They say your benefits will be cut off unless you reply with personal details. Here is how to spot it and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://www.ssa.gov/scam/",
+          "name": "Social Security",
+          "capture": "page"
+        }
+      ],
+      "slug": "016-fake-government-officer-dm",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.8718,
+      "renderAttempts": 1,
+      "music": "A# tritone 80 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.992834,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "GB14MOUi94Q",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 17,
+      "leadId": "6b8424f64375",
+      "date": "2026-10-30",
+      "skin": "android",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Million-dollar prize text with a fee",
+        "message": {
+          "sender": "(202) 555-0163",
+          "subject": "",
+          "body": "Prize Center: Congratulations! Your number was selected for a $1,000,000 cash prize. To release your funds, pay the tax and handling fee with gift cards and confirm your bank account at claim-prize.example/win. Reply CLAIM now.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alert describing prize messages that promise a million-dollar prize, ask for a small fee for taxes or handling, and ask for payment by gift cards or for bank account details.",
+          "evidence": [
+            {
+              "quote": "But if your million-dollar cash prize letter comes with instructions to pay a small fee — maybe for taxes, reporting, or handling — it’s not luck. It’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            },
+            {
+              "quote": "call, text, email, or message you on social media to say you’re eligible for prize money. But they’ll say you have to send them money first",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            },
+            {
+              "quote": "There’s no reason to give your bank account or Social Security number to claim a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          ]
+        },
+        "hook": "A million-dollar text. Take a few seconds. Read it.",
+        "stampSay": "No prize. Just a fee that vanishes.",
+        "flags": [
+          {
+            "label": "Pay to claim",
+            "say": "Pay that fee and your money is gone, and there is no prize.",
+            "target": {
+              "kind": "text",
+              "match": "pay the tax and handling fee"
+            },
+            "evidence": {
+              "quote": "If you pay, you’ll lose your money and find out there’s no prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          },
+          {
+            "label": "Gift cards only",
+            "say": "Only a scammer insists you pay with gift cards to get a prize.",
+            "target": {
+              "kind": "text",
+              "match": "with gift cards"
+            },
+            "evidence": {
+              "quote": "only a scammer will insist you pay by wiring money through a company like Western Union or MoneyGram, using a payment app like Apple Pay, CashApp, PayPal, or Zelle, sending cash, or paying with gift cards or cryptocurrency to get your prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          },
+          {
+            "label": "Wants bank details",
+            "say": "There is no reason to give your bank account to claim a prize.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your bank account"
+            },
+            "evidence": {
+              "quote": "There’s no reason to give your bank account or Social Security number to claim a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search the name first",
+          "say": "Search the contest name online with the word scam before you reply or pay anything.",
+          "evidence": {
+            "quote": "Search online and see what you find about the contest or company. Type the name with terms like “review,” “complaint,” or “scam.”",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+          }
+        },
+        "title": "The prize text that makes you pay a fee to claim your win",
+        "description": "A text says you won a million dollars, but you must pay a fee first. Real prizes do not cost money to claim. Here are three signs it is a scam and one safe move.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "017-million-dollar-prize-text-with-a-fee",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.2344,
+      "renderAttempts": 1,
+      "music": "G# tritone 68 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994751,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "Gf6-efhPvjc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 18,
+      "leadId": "eda7ad9900a4",
+      "date": "2026-10-31",
+      "skin": "imessage",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake package delivery text",
+        "message": {
+          "sender": "+1 (202) 555-0147",
+          "subject": "",
+          "body": "Delivery Services: We tried to deliver your package today but there is a problem with your payment information. Tap the link to learn more: track-parcel.example/update",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes fake package delivery notifications, false claims of a payment information problem, and links sent by text to learn more about the issue.",
+          "evidence": [
+            {
+              "quote": "send you a package delivery notification — but it’s fake",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            },
+            {
+              "quote": "claim there’s a problem with your payment information — but there isn’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            },
+            {
+              "quote": "Or they might tell you to click on a link to learn more about the issue.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          ]
+        },
+        "hook": "A package text just landed. Would you tap this?",
+        "stampSay": "No package. Just a trap.",
+        "flags": [
+          {
+            "label": "Fake delivery notice",
+            "say": "Scammers send package alerts like this, and the delivery is made up.",
+            "target": {
+              "kind": "text",
+              "match": "We tried to deliver your package"
+            },
+            "evidence": {
+              "quote": "send you a package delivery notification — but it’s fake",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          },
+          {
+            "label": "Made-up payment problem",
+            "say": "They claim your payment info has a problem when nothing is wrong.",
+            "target": {
+              "kind": "text",
+              "match": "problem with your payment information"
+            },
+            "evidence": {
+              "quote": "claim there’s a problem with your payment information — but there isn’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          },
+          {
+            "label": "Link to fake site",
+            "say": "That link can lead to a lookalike site that steals your login.",
+            "target": {
+              "kind": "text",
+              "match": "track-parcel.example/update"
+            },
+            "evidence": {
+              "quote": "Some links might take you to a spoofed website that looks real but isn’t. If you log in, the scammers then might steal your username and password.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check with the real company",
+          "say": "If you think it might be real, contact the company using a number you know is real.",
+          "evidence": {
+            "quote": "If you think the message might be real, contact the company using a phone number or website you know is real.",
+            "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+          }
+        },
+        "title": "The fake package delivery text, and the three signs it is a scam",
+        "description": "A text says your package is stuck because of a payment problem. We show three signs it is fake and what to do instead. Share it with someone who orders online.",
+        "category": "package"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "018-fake-package-delivery-text",
+      "status": "published",
+      "category": "package",
+      "costUsd": 1.6011,
+      "renderAttempts": 1,
+      "music": "C minor tenth 78 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994702,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "rcjXyZ9fmEc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 19,
+      "leadId": "397ff4a4e9f1",
+      "date": "2026-10-31",
+      "skin": "voicemail",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Fake 'new Medicare card' voicemail",
+        "message": {
+          "sender": "(202) 555-0143 · Medicare Card Services",
+          "subject": "",
+          "body": "Hello, this is a message from Medicare Card Services. Our records show your Medicare card is out of date and a new card must be issued before the enrollment deadline. To avoid a gap in your coverage, call us back right away at (202) 555-0143 and have your card number and a payment method ready. Thank you.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alert (Source 1), which describes scammers impersonating Medicare, contacting people unexpectedly, claiming they need a new or updated Medicare card, and asking for Medicare, bank, or card numbers. The caller name and phone number are fictional.",
+          "evidence": [
+            {
+              "quote": "scammers often impersonate Medicare and contact you unexpectedly. They might sound professional and even have some of your personal information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            },
+            {
+              "quote": "They’ll say you need a “new” or “updated” Medicare card and ask for your Medicare, bank account, or credit card number.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          ]
+        },
+        "hook": "It sounds official. Listen closer.",
+        "stampSay": "Nobody from Medicare left that message.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "Real Medicare won't call out of nowhere asking for your numbers or money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "And true Medicare representatives won’t call, text, or email you out of the blue to ask for your numbers or a payment.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          },
+          {
+            "label": "New card pitch",
+            "say": "Real Medicare cards are free and come in the mail on their own.",
+            "target": {
+              "kind": "text",
+              "match": "a new card must be issued"
+            },
+            "evidence": {
+              "quote": "But real Medicare cards are free and mailed to you automatically.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          },
+          {
+            "label": "Wants your numbers",
+            "say": "Medicare only verifies info when you contact them first, and never charges for a card.",
+            "target": {
+              "kind": "text",
+              "match": "have your card number and a payment method ready"
+            },
+            "evidence": {
+              "quote": "Medicare will only ask you to verify information if you contact them first, and they won’t try to sell you anything or tell you to pay for your Medicare card.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Hang up, call Medicare",
+          "say": "Don't trust the caller ID; hang up and call 1-800-MEDICARE yourself to check.",
+          "evidence": {
+            "quote": "Don’t rely on your caller ID. It might show Medicare’s name or phone number, but caller ID can be faked. To check it out, hang up and call 1-800-MEDICARE (1-800-633-4227).",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams"
+          }
+        },
+        "title": "The fake 'new Medicare card' voicemail scam",
+        "description": "A voicemail says your health card is out of date and you must call back with your card number and payment. Here are three signs it is a scam, and the one safe thing to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/09/medicare-open-enrollment-season-learn-how-protect-yourself-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "019-fake-new-medicare-card-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4356,
+      "renderAttempts": 1,
+      "music": "D fifth 68 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994525,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "poeHl2DEHC8",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 20,
+      "leadId": "11779fec8b55",
+      "date": "2026-10-31",
+      "skin": "email",
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake prize email with a fee",
+        "message": {
+          "sender": "Sweepstakes Claims Office <claims@prize-claims.example>",
+          "subject": "You are our iPad winner!",
+          "body": "Congratulations! You have been selected as the winner of a brand new iPad. To release your prize, a processing fee of $49 must be paid within 24 hours. Click here to pay and confirm your bank account details: prize-claims.example/claim. Act now, this offer expires today.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC Consumer Advice), which describes prize emails about an iPad, demands for processing fees and account information, and act-now pressure.",
+          "evidence": [
+            {
+              "quote": "Or they might say you won something expensive, like an iPad or a new car from your local dealership.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            },
+            {
+              "quote": "they ask you to pay money or give them your account information to get the prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            },
+            {
+              "quote": "They tell you it’s a limited time offer and you have to “act now” to claim your prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love gets this email today.",
+        "stampSay": "Real prizes are free.",
+        "flags": [
+          {
+            "label": "Pay to get prize",
+            "say": "A real prize is free, so a fee to collect it means scam.",
+            "target": {
+              "kind": "text",
+              "match": "processing fee of $49"
+            },
+            "evidence": {
+              "quote": "If you have to pay to get your prize, it’s a scam. Real prizes are free.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          },
+          {
+            "label": "Asks for bank info",
+            "say": "There is no reason to hand over your bank account number to claim a prize.",
+            "target": {
+              "kind": "text",
+              "match": "bank account details"
+            },
+            "evidence": {
+              "quote": "There’s absolutely no reason to ever give your bank account or credit card number, or personal information like your Social Security number, to claim any prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          },
+          {
+            "label": "Rush to act",
+            "say": "Scammers push you to hurry so you have no time to think.",
+            "target": {
+              "kind": "text",
+              "match": "Act now"
+            },
+            "evidence": {
+              "quote": "They don’t want you to have time to think about what’s really happening.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Delete, don't click",
+          "say": "Delete the email without clicking any link, and do not reply.",
+          "evidence": {
+            "quote": "Delete any messages without clicking links, and don’t respond.",
+            "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+          }
+        },
+        "title": "You Won a Prize Email: Why the Fee Gives the Scam Away",
+        "description": "A prize email says you won a tablet, but you must pay a fee and share your bank details first. Real prizes are free, so any fee means it is a scam. Here are three signs to spot and the one safe move to make.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "020-fake-prize-email-with-a-fee",
+      "status": "checked",
+      "category": "prize",
+      "costUsd": 0.2347,
+      "renderAttempts": 1
     }
   ],
   "skipped": [
@@ -920,6 +2214,71 @@
     {
       "leadId": "b51e443cfe3d",
       "date": "2026-10-27",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-28",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "2e1da236025d",
+      "date": "2026-10-28",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "f51b8a037963",
+      "date": "2026-10-28",
+      "reason": "problems: The hook \"Would you tap this pop-up while browsing?\" and the phone-screen framing suggest a mobile tap threat. The source describes keyboard commands (Windows + R, Ctrl + V, Enter), which only work on a Windows computer, and tapping is not the risky action. Viewers could misjudge where and how this attack works."
+    },
+    {
+      "leadId": "b4f3040c3555",
+      "date": "2026-10-28",
+      "reason": "same type as an earlier video today (impostor)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-29",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-29",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "864b56c480a5",
+      "date": "2026-10-29",
+      "reason": "same type as an earlier video today (text)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-30",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-30",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "d73cda5fadfb",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "6d75f6e53006",
+      "date": "2026-10-31",
       "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
