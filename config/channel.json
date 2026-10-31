@@ -35,9 +35,9 @@
     "elevenlabsVoiceId": "",
     "elevenlabsModel": "eleven_multilingual_v2",
     "monthlyCreditBudget": 90000,
-    "kokoroVoice": "am_michael",
+    "kokoroVoice": "af_heart",
     "kokoroLang": "en-us",
-    "speed": 0.95
+    "speed": 1.1
   },
   "ctaStates": [
     "none",

@@ -2,7 +2,7 @@
 
 Usage: python kokoro_tts.py job.json
 job = {"model": ".../kokoro-v1.0.int8.onnx", "voices": ".../voices-v1.0.bin",
-       "voice": "am_michael", "lang": "en-us", "speed": 0.95, "out_dir": "...", "lines": [{"id": "hook", "text": "..."}]}
+       "voice": "af_heart", "lang": "en-us", "speed": 1.1, "out_dir": "...", "lines": [{"id": "hook", "text": "..."}]}
 Prints {"segments": [{"id", "file", "duration"}]} as JSON.
 """
 import json

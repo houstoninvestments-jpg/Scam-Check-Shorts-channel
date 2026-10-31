@@ -114,7 +114,7 @@ YOUTUBE_CLIENT_SECRET
 YOUTUBE_REFRESH_TOKEN
 ```
 
-The voice is the free Kokoro model (`am_michael`) and needs no key. Two
+The voice is the free Kokoro model (`af_heart`, speed 1.1) and needs no key. Two
 ElevenLabs secrets may stay set; they are unused while `voice.provider` in
 `config/channel.json` is `"kokoro"`:
 

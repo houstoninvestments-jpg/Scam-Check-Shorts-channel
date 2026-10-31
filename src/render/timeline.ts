@@ -1,3 +1,4 @@
+import { speakable } from "../voice/speak.js";
 import type { VoiceSegment, Word } from "../voice/index.js";
 
 export const FPS = 30;
@@ -54,7 +55,8 @@ export function captionChunks(seg: VoiceSegment, startSec: number, maxWords = 4)
       : (() => {
           // No timings (open-model voice): spread words by their length across the line.
           const ws = seg.text.split(/\s+/).filter(Boolean);
-          const weight = ws.map((w) => w.length + 2);
+          // Weighted by how long each word takes to say: "$4.99" is said as five words.
+          const weight = ws.map((w) => speakable(w).length + 2);
           const totalW = weight.reduce((a, b) => a + b, 0);
           let t = 0;
           return ws.map((w, i) => {

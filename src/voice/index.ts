@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { config } from "../lib/config.js";
 import { env, log, path, readJson, writeJson } from "../lib/util.js";
+import { speakable } from "./speak.js";
 
 export interface Word {
   word: string;
@@ -91,7 +92,7 @@ async function elevenlabs(lines: Line[], outDir: string, fetchImpl: typeof fetch
       method: "POST",
       headers: { "xi-api-key": key, "content-type": "application/json" },
       body: JSON.stringify({
-        text: line.text,
+        text: speakable(line.text),
         model_id: config().voice.elevenlabsModel,
         voice_settings: { stability: 0.5, similarity_boost: 0.75, speed: config().voice.speed },
       }),
@@ -100,7 +101,9 @@ async function elevenlabs(lines: Line[], outDir: string, fetchImpl: typeof fetch
     const body = (await res.json()) as { audio_base64: string; alignment: Parameters<typeof wordsFromAlignment>[0] };
     const file = join(outDir, `${line.id}.mp3`);
     writeFileSync(file, Buffer.from(body.audio_base64, "base64"));
-    const words = wordsFromAlignment(body.alignment);
+    // Word timings match the spoken words; when numbers were spelled out they no longer match the
+    // on-screen words, so the captions fall back to spreading the written words over the line.
+    const words = speakable(line.text) === line.text ? wordsFromAlignment(body.alignment) : undefined;
     const duration = body.alignment.character_end_times_seconds.at(-1) ?? 0;
     segments.push({ id: line.id, text: line.text, file, duration, words });
   }
@@ -124,7 +127,7 @@ function kokoro(lines: Line[], outDir: string): VoiceResult {
       lang: config().voice.kokoroLang ?? "en-us",
       speed: config().voice.speed,
       out_dir: outDir,
-      lines,
+      lines: lines.map((l) => ({ ...l, text: speakable(l.text) })), // the voice reads numbers as words
     }),
   );
   const out = execFileSync(python, ["-I", path("src/voice/kokoro_tts.py"), job], { encoding: "utf8", maxBuffer: 1 << 24 });

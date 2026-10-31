@@ -11,8 +11,8 @@ describe("voice choice", () => {
     const { config, resetConfigCache } = await import("../src/lib/config");
     resetConfigCache();
     expect(config().voice.provider).toBe("kokoro");
-    expect(config().voice.kokoroVoice).toBe("am_michael");
-    expect(config().voice.speed).toBe(0.95);
+    expect(config().voice.kokoroVoice).toBe("af_heart");
+    expect(config().voice.speed).toBe(1.1);
     const calls: string[] = [];
     const realFetch = globalThis.fetch;
     globalThis.fetch = (async (url: string) => (calls.push(url), new Response("{}"))) as any;

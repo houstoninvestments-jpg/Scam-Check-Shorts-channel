@@ -33,8 +33,8 @@ learning run once a day. Each run logs its model cost at list prices in
    swapped out, and every line must pass a grade 8 reading gate. Then two
    independent Claude Opus 5.5 reviews. Both must say "scam" with no problems,
    or the scam is skipped.
-4. **Voice** (`src/voice`). The free, open Kokoro model, voice `am_michael`,
-   US English, speed 0.95, set in `config/channel.json`. It runs inside the
+4. **Voice** (`src/voice`). The free, open Kokoro model, voice `af_heart`,
+   US English, speed 1.1, set in `config/channel.json`. It runs inside the
    daily job and needs no key. ElevenLabs code is kept but switched off: it
    runs only if `voice.provider` in that file is set back to `"elevenlabs"`.
    Keys alone never turn it on, so no ElevenLabs credits are spent.
