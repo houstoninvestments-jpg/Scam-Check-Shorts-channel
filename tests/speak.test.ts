@@ -14,6 +14,9 @@ describe("the voice reads numbers as words", () => {
     expect(speakable("$2.5 million")).toBe("two point five million dollars");
     expect(speakable("$5K")).toBe("five thousand dollars");
     expect(speakable("Pay $1,500 now.")).toBe("Pay one thousand five hundred dollars now.");
+    expect(speakable("you must pay a $299 fee")).toBe("you must pay a two hundred ninety-nine dollar fee");
+    expect(speakable("a $2.5 million prize")).toBe("a two point five million dollar prize");
+    expect(speakable("Send a $50 gift card")).toBe("Send a fifty dollar gift card");
     expect(speakable("They want $2,350.75 in gift cards")).toBe("They want two thousand three hundred fifty dollars and seventy-five cents in gift cards");
   });
 

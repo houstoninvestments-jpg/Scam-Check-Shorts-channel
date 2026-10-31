@@ -61,14 +61,15 @@ export function yearWords(y: number): string {
 const SCALE_WORD: Record<string, string> = { k: "thousand", thousand: "thousand", m: "million", mm: "million", million: "million", b: "billion", bn: "billion", billion: "billion" };
 
 /** "$4.99" -> "four dollars and ninety-nine cents"; "$2.5 million" -> "two point five million dollars" */
-export function moneyWords(amount: string, scale?: string): string {
+export function moneyWords(amount: string, scale?: string, asAdjective = false): string {
   const clean = amount.replace(/,/g, "");
-  if (scale) return `${decimalWords(clean)} ${SCALE_WORD[scale.toLowerCase()]} dollars`;
+  if (scale) return `${decimalWords(clean)} ${SCALE_WORD[scale.toLowerCase()]} ${asAdjective ? "dollar" : "dollars"}`;
   const [whole, frac = ""] = clean.split(".");
   const dollars = Number(whole || "0");
   const cents = frac ? Math.round(Number(`0.${frac}`) * 100) : 0;
-  const d = `${numberWords(dollars)} ${dollars === 1 ? "dollar" : "dollars"}`;
-  const c = `${numberWords(cents)} ${cents === 1 ? "cent" : "cents"}`;
+  // "a $299 fee" is said "a two hundred ninety-nine dollar fee"
+  const d = `${numberWords(dollars)} ${dollars === 1 || asAdjective ? "dollar" : "dollars"}`;
+  const c = `${numberWords(cents)} ${cents === 1 || asAdjective ? "cent" : "cents"}`;
   if (!cents) return d;
   if (!dollars) return c;
   return `${d} and ${c}`;
@@ -102,7 +103,13 @@ const NUMBER = /(?<![\w.])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)(?![\w])/g
 export function speakable(text: string): string {
   return text
     .replace(PHONE, (m) => phoneWords(m))
-    .replace(MONEY, (_, amount: string, scale?: string) => moneyWords(amount, scale))
+    .replace(MONEY, (m: string, amount: string, scale: string | undefined, at: number, all: string) => {
+      // After "a"/"an" and before a noun, the amount describes it: "a $299 fee".
+      const before = all.slice(0, at);
+      const after = all.slice(at + m.length);
+      const adjective = /\b(a|an)\s+$/i.test(before) && /^\s+(?!(?:a|an|the|to|in|on|or|and|for|from|now|today|each|per|back)\b)[a-z]/i.test(after);
+      return moneyWords(amount, scale, adjective);
+    })
     .replace(PERCENT, (_, n: string) => `${decimalWords(n)} percent`)
     .replace(ORDINAL_NUM, (_, n: string) => ordinalWords(Number(n)))
     .replace(YEAR, (_, y: string) => yearWords(Number(y)))
