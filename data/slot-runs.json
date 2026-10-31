@@ -248,7 +248,20 @@
       "attempts": [
         {
           "startedAt": "2026-10-31T14:21:42.124Z",
-          "runId": "41209705673"
+          "runId": "41209705673",
+          "endedAt": "2026-10-31T14:29:25.144Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Did not pass the checks: Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (224 pages not yet on the channel)",
+            "Did not pass the checks: Top scams of 2024: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: Have a problem with something you bought?: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: How to Recognize and Report Spam Text Messages: problems: Flag 3 ('Link to fake site') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and empty matches are by design only for sender and attachment. As written, the flag will not circle anything. It should be kind \"text\" with match \"track-parcel.example/update\". (rewrite 1 of 2)",
+            "Passed the checks: How to Recognize and Report Spam Text Messages: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

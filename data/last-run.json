@@ -1,27 +1,121 @@
 {
   "date": "2026-10-31",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-10-30: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-10-31: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (224 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Top scams of 2024: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Have a problem with something you bought?: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to Recognize and Report Spam Text Messages: problems: Flag 3 ('Link to fake site') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and empty matches are by design only for sender and attachment. As written, the flag will not circle anything. It should be kind \"text\" with match \"track-parcel.example/update\". (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "How to Recognize and Report Spam Text Messages: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 32.4s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot1/scam-018.mp4 (1080x1920, 32.41s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot1/scam-018-cover.jpg (169 KB), loop similarity 0.994702"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded rcjXyZ9fmEc as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake package delivery text | sources: FTC Consumer Advice 2022-07-25 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 32.4s",
+    "music": "tension bed on: C with a minor tenth, 78 BPM; voice -23.7 LUFS, bed -43.7 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13485/8733 red px), phone screen untouched",
+    "title": "Scam No. 018: The fake package delivery text, and the three signs it is a scam",
+    "hashtags": "#ScamOrNot #PackageScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/018-fake-package-delivery-text/",
+    "upload": "rcjXyZ9fmEc, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.60 for 19 model calls (writer 7x $1.24, checker-b 6x $0.16, checker-a 6x $0.19)"
   },
-  "runId": "41174585644",
+  "runId": "41209705673",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-31-slot1/scam-018.mp4",
+  "episode": 18,
+  "youtubeId": "rcjXyZ9fmEc",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 1.6011,
+    "calls": 19,
+    "inputTokens": 59961,
+    "outputTokens": 30747,
+    "byRole": {
+      "writer": {
+        "calls": 7,
+        "usd": 1.2439
+      },
+      "checker-b": {
+        "calls": 6,
+        "usd": 0.163
+      },
+      "checker-a": {
+        "calls": 6,
+        "usd": 0.1942
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

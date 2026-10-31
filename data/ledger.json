@@ -1,5 +1,5 @@
 {
-  "nextNumber": 18,
+  "nextNumber": 19,
   "episodes": [
     {
       "number": 1,
@@ -1801,6 +1801,113 @@
       },
       "youtubeId": "Gf6-efhPvjc",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 18,
+      "leadId": "eda7ad9900a4",
+      "date": "2026-10-31",
+      "skin": "imessage",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake package delivery text",
+        "message": {
+          "sender": "+1 (202) 555-0147",
+          "subject": "",
+          "body": "Delivery Services: We tried to deliver your package today but there is a problem with your payment information. Tap the link to learn more: track-parcel.example/update",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes fake package delivery notifications, false claims of a payment information problem, and links sent by text to learn more about the issue.",
+          "evidence": [
+            {
+              "quote": "send you a package delivery notification — but it’s fake",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            },
+            {
+              "quote": "claim there’s a problem with your payment information — but there isn’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            },
+            {
+              "quote": "Or they might tell you to click on a link to learn more about the issue.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          ]
+        },
+        "hook": "A package text just landed. Would you tap this?",
+        "stampSay": "No package. Just a trap.",
+        "flags": [
+          {
+            "label": "Fake delivery notice",
+            "say": "Scammers send package alerts like this, and the delivery is made up.",
+            "target": {
+              "kind": "text",
+              "match": "We tried to deliver your package"
+            },
+            "evidence": {
+              "quote": "send you a package delivery notification — but it’s fake",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          },
+          {
+            "label": "Made-up payment problem",
+            "say": "They claim your payment info has a problem when nothing is wrong.",
+            "target": {
+              "kind": "text",
+              "match": "problem with your payment information"
+            },
+            "evidence": {
+              "quote": "claim there’s a problem with your payment information — but there isn’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          },
+          {
+            "label": "Link to fake site",
+            "say": "That link can lead to a lookalike site that steals your login.",
+            "target": {
+              "kind": "text",
+              "match": "track-parcel.example/update"
+            },
+            "evidence": {
+              "quote": "Some links might take you to a spoofed website that looks real but isn’t. If you log in, the scammers then might steal your username and password.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check with the real company",
+          "say": "If you think it might be real, contact the company using a number you know is real.",
+          "evidence": {
+            "quote": "If you think the message might be real, contact the company using a phone number or website you know is real.",
+            "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages"
+          }
+        },
+        "title": "The fake package delivery text, and the three signs it is a scam",
+        "description": "A text says your package is stuck because of a payment problem. We show three signs it is fake and what to do instead. Share it with someone who orders online.",
+        "category": "package"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-recognize-and-report-spam-text-messages",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "018-fake-package-delivery-text",
+      "status": "published",
+      "category": "package",
+      "costUsd": 1.6011,
+      "renderAttempts": 1,
+      "music": "C minor tenth 78 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994702,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "rcjXyZ9fmEc",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -1952,6 +2059,26 @@
     {
       "leadId": "0383d4e2ab4f",
       "date": "2026-10-30",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "d73cda5fadfb",
+      "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "6d75f6e53006",
+      "date": "2026-10-31",
       "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
