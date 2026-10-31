@@ -229,7 +229,16 @@
       "attempts": [
         {
           "startedAt": "2026-10-31T00:21:30.821Z",
-          "runId": "41149667776"
+          "runId": "41149667776",
+          "endedAt": "2026-10-31T00:24:39.066Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 2 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (225 pages not yet on the channel)",
+            "Passed the checks: Asked to pay to claim a million-dollar prize? Don’t bet on i: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

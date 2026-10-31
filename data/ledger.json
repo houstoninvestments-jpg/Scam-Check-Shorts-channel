@@ -1,5 +1,5 @@
 {
-  "nextNumber": 17,
+  "nextNumber": 18,
   "episodes": [
     {
       "number": 1,
@@ -1693,6 +1693,113 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "GB14MOUi94Q",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 17,
+      "leadId": "6b8424f64375",
+      "date": "2026-10-30",
+      "skin": "android",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Million-dollar prize text with a fee",
+        "message": {
+          "sender": "(202) 555-0163",
+          "subject": "",
+          "body": "Prize Center: Congratulations! Your number was selected for a $1,000,000 cash prize. To release your funds, pay the tax and handling fee with gift cards and confirm your bank account at claim-prize.example/win. Reply CLAIM now.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alert describing prize messages that promise a million-dollar prize, ask for a small fee for taxes or handling, and ask for payment by gift cards or for bank account details.",
+          "evidence": [
+            {
+              "quote": "But if your million-dollar cash prize letter comes with instructions to pay a small fee — maybe for taxes, reporting, or handling — it’s not luck. It’s a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            },
+            {
+              "quote": "call, text, email, or message you on social media to say you’re eligible for prize money. But they’ll say you have to send them money first",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            },
+            {
+              "quote": "There’s no reason to give your bank account or Social Security number to claim a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          ]
+        },
+        "hook": "A million-dollar text. Take a few seconds. Read it.",
+        "stampSay": "No prize. Just a fee that vanishes.",
+        "flags": [
+          {
+            "label": "Pay to claim",
+            "say": "Pay that fee and your money is gone, and there is no prize.",
+            "target": {
+              "kind": "text",
+              "match": "pay the tax and handling fee"
+            },
+            "evidence": {
+              "quote": "If you pay, you’ll lose your money and find out there’s no prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          },
+          {
+            "label": "Gift cards only",
+            "say": "Only a scammer insists you pay with gift cards to get a prize.",
+            "target": {
+              "kind": "text",
+              "match": "with gift cards"
+            },
+            "evidence": {
+              "quote": "only a scammer will insist you pay by wiring money through a company like Western Union or MoneyGram, using a payment app like Apple Pay, CashApp, PayPal, or Zelle, sending cash, or paying with gift cards or cryptocurrency to get your prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          },
+          {
+            "label": "Wants bank details",
+            "say": "There is no reason to give your bank account to claim a prize.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your bank account"
+            },
+            "evidence": {
+              "quote": "There’s no reason to give your bank account or Social Security number to claim a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search the name first",
+          "say": "Search the contest name online with the word scam before you reply or pay anything.",
+          "evidence": {
+            "quote": "Search online and see what you find about the contest or company. Type the name with terms like “review,” “complaint,” or “scam.”",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it"
+          }
+        },
+        "title": "The prize text that makes you pay a fee to claim your win",
+        "description": "A text says you won a million dollars, but you must pay a fee first. Real prizes do not cost money to claim. Here are three signs it is a scam and one safe move.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/asked-pay-claim-million-dollar-prize-dont-bet-it",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "017-million-dollar-prize-text-with-a-fee",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.2344,
+      "renderAttempts": 1,
+      "music": "G# tritone 68 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994751,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "Gf6-efhPvjc",
       "youtubePrivacy": "public"
     }
   ],

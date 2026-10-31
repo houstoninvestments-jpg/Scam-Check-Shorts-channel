@@ -1,27 +1,101 @@
 {
   "date": "2026-10-30",
-  "slot": 2,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-10-30: already posted (or the day was full); this start exits"
+      "detail": "slot 3 for 2026-10-30: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "2 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (225 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Asked to pay to claim a million-dollar prize? Don’t bet on i: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 32.9s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot3/scam-017.mp4 (1080x1920, 32.94s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot3/scam-017-cover.jpg (190 KB), loop similarity 0.994751"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded Gf6-efhPvjc as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Million-dollar prize text with a fee | sources: FTC Consumer Alerts 2025-03-19 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice am_michael at speed 0.95, 32.9s",
+    "music": "tension bed on: G# with a tritone, 68 BPM; voice -23.6 LUFS, bed -43.6 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13489/8733 red px), phone screen untouched",
+    "title": "Scam No. 017: The prize text that makes you pay a fee to claim your win",
+    "hashtags": "#ScamOrNot #PrizeScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/017-million-dollar-prize-text-with-a-fee/",
+    "upload": "Gf6-efhPvjc, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.23 for 3 model calls (writer 1x $0.19, checker-b 1x $0.02, checker-a 1x $0.02)"
   },
-  "runId": "41141556189",
+  "runId": "41149667776",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-10-30-slot3/scam-017.mp4",
+  "episode": 17,
+  "youtubeId": "Gf6-efhPvjc",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.2344,
+    "calls": 3,
+    "inputTokens": 9563,
+    "outputTokens": 4060,
+    "byRole": {
+      "writer": {
+        "calls": 1,
+        "usd": 0.1916
+      },
+      "checker-b": {
+        "calls": 1,
+        "usd": 0.0202
+      },
+      "checker-a": {
+        "calls": 1,
+        "usd": 0.0226
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

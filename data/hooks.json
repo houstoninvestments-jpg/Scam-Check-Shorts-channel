@@ -22,5 +22,10 @@
       "pattern": "It looks official. Look closer."
     }
   ],
-  "stats": {}
+  "stats": {
+    "going-around": {
+      "n": 1,
+      "sum": 0.8604
+    }
+  }
 }
