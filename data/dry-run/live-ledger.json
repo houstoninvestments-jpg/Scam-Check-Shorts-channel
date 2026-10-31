@@ -2104,10 +2104,13 @@
         }
       ],
       "slug": "020-fake-prize-email-with-a-fee",
-      "status": "checked",
+      "status": "rendered",
       "category": "prize",
       "costUsd": 0.2347,
-      "renderAttempts": 1
+      "renderAttempts": 2,
+      "music": "A tritone 81 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.99471,
+      "voice": "AI voice (Kokoro open model)"
     }
   ],
   "skipped": [
