@@ -326,7 +326,16 @@
       "attempts": [
         {
           "startedAt": "2026-11-01T20:21:34.227Z",
-          "runId": "41346383787"
+          "runId": "41346383787",
+          "endedAt": "2026-11-01T20:24:11.607Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 2 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (218 pages not yet on the channel)",
+            "Passed the checks: What are the signs of a scam?: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

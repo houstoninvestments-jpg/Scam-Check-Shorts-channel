@@ -1,5 +1,5 @@
 {
-  "nextNumber": 22,
+  "nextNumber": 23,
   "episodes": [
     {
       "number": 1,
@@ -2216,6 +2216,109 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "jAlfW07qbO0",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 22,
+      "leadId": "f00e53130824",
+      "date": "2026-11-01",
+      "skin": "dm",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake job offer in your DMs",
+        "message": {
+          "sender": "Remote Hiring Team",
+          "subject": "",
+          "body": "Hi! We saw your profile and you're a perfect fit for our remote data entry role. $35/hr, start this week. Only 2 spots left so reply today. To lock your spot, send a $45 onboarding fee by payment app. Then we'll send your start kit.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from FTC Consumer Alerts 'What are the signs of a scam?' which describes a fake job offer that asks for a fee before hiring, pressure to hurry, and payment by payment app.",
+          "evidence": [
+            {
+              "quote": "A scammer might offer you a (fake) job, but say you need to pay a fee before you get hired.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            },
+            {
+              "quote": "Don’t pay anyone who contacts you out of the blue and insists you can only pay with cash, a gift card, a wire transfer, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          ]
+        },
+        "hook": "A dream job in your DMs. Would you tap this?",
+        "stampSay": "That fee is the giveaway.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "You never applied, yet this offer just showed up in your messages.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Scammers contact you unexpectedly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          },
+          {
+            "label": "Rush to reply",
+            "say": "Pushing you to answer today leaves no time to check their story.",
+            "target": {
+              "kind": "text",
+              "match": "Only 2 spots left so reply today"
+            },
+            "evidence": {
+              "quote": "Scammers tell you to hurry. They don’t want you to have time to think or to check out their story.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          },
+          {
+            "label": "Pay to get hired",
+            "say": "A job offer that asks you to pay a fee first is a scammer's move.",
+            "target": {
+              "kind": "text",
+              "match": "send a $45 onboarding fee by payment app"
+            },
+            "evidence": {
+              "quote": "A scammer might offer you a (fake) job, but say you need to pay a fee before you get hired.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Look them up yourself",
+          "say": "Find the company's real contact info on your own and ask if this offer exists.",
+          "evidence": {
+            "quote": "If you’re not sure if a call or message is real, reach out to the business, organization, or person — even if they’re claiming to be a friend or relative — using contact information you looked up yourself and know to be true.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+          }
+        },
+        "title": "The job offer in your DMs that asks you to pay a fee",
+        "description": "A surprise job offer lands in your messages and wants a fee before you start. We show the three signs it's a scam. Then one safe step to check any offer like it.",
+        "category": "job"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "022-fake-job-offer-in-your-dms",
+      "status": "published",
+      "category": "job",
+      "costUsd": 0.1941,
+      "renderAttempts": 1,
+      "music": "C minor tenth 75 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.992716,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "6tpYKNO-U6Y",
       "youtubePrivacy": "public"
     }
   ],

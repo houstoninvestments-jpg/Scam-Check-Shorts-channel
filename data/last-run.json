@@ -1,27 +1,101 @@
 {
   "date": "2026-11-01",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-01: already posted (or the day was full); this start exits"
+      "detail": "slot 2 for 2026-11-01: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "2 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (218 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "What are the signs of a scam?: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 27.7s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot2/scam-022.mp4 (1080x1920, 27.67s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot2/scam-022-cover.jpg (194 KB), loop similarity 0.992716"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded 6tpYKNO-U6Y as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake job offer in your DMs | sources: FTC Consumer Alerts 2025-03-13 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.7s",
+    "music": "tension bed on: C with a minor tenth, 75 BPM; voice -22.5 LUFS, bed -42.4 LUFS (19.9 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13659/13499/8890 red px), phone screen untouched",
+    "title": "Scam No. 022: The job offer in your DMs that asks you to pay a fee",
+    "hashtags": "#ScamOrNot #JobScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/022-fake-job-offer-in-your-dms/",
+    "upload": "6tpYKNO-U6Y, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.19 for 3 model calls (writer 1x $0.15, checker-b 1x $0.02, checker-a 1x $0.02)"
   },
-  "runId": "41343088515",
+  "runId": "41346383787",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot2/scam-022.mp4",
+  "episode": 22,
+  "youtubeId": "6tpYKNO-U6Y",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.1941,
+    "calls": 3,
+    "inputTokens": 8853,
+    "outputTokens": 3339,
+    "byRole": {
+      "writer": {
+        "calls": 1,
+        "usd": 0.1532
+      },
+      "checker-b": {
+        "calls": 1,
+        "usd": 0.0192
+      },
+      "checker-a": {
+        "calls": 1,
+        "usd": 0.0217
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }
