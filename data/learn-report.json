@@ -1,6 +1,12 @@
 {
-  "updatedAt": "2026-10-31T00:24:03.540Z",
+  "updatedAt": "2026-11-01T00:25:09.566Z",
   "byHook": {
+    "real-or-scam": {
+      "videos": 1,
+      "views": 76,
+      "avgWatchPct": 64.7,
+      "avgReward": 0.823
+    },
     "going-around": {
       "videos": 1,
       "views": 74,
@@ -9,6 +15,12 @@
     }
   },
   "byCta": {
+    "direct": {
+      "videos": 1,
+      "views": 76,
+      "avgWatchPct": 64.7,
+      "avgReward": 0.823
+    },
     "soft": {
       "videos": 1,
       "views": 74,

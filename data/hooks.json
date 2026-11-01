@@ -26,6 +26,10 @@
     "going-around": {
       "n": 1,
       "sum": 0.8604
+    },
+    "real-or-scam": {
+      "n": 1,
+      "sum": 0.8233
     }
   }
 }

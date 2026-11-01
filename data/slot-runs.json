@@ -287,7 +287,17 @@
       "attempts": [
         {
           "startedAt": "2026-11-01T00:21:36.156Z",
-          "runId": "41256346982"
+          "runId": "41256346982",
+          "endedAt": "2026-11-01T00:25:38.828Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 2 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (220 pages not yet on the channel)",
+            "Did not pass the checks: Fake Prize, Sweepstakes, and Lottery Scams: problems: The description promises 'the three signs', but the video's three flags (fee, bank info, rush) do not match the FTC's 'Three Signs of a Prize Scam' (pay to get the prize, pay to raise your odds, give financial or personal information). 'Rush to act' comes from a different section of the article. This is a minor framing risk, not a factual error. (rewrite 1 of 2)",
+            "Passed the checks: Fake Prize, Sweepstakes, and Lottery Scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

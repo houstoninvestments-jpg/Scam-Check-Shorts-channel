@@ -1,5 +1,5 @@
 {
-  "nextNumber": 20,
+  "nextNumber": 21,
   "episodes": [
     {
       "number": 1,
@@ -2010,6 +2010,109 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "poeHl2DEHC8",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 20,
+      "leadId": "11779fec8b55",
+      "date": "2026-10-31",
+      "skin": "email",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake prize claim email",
+        "message": {
+          "sender": "Sweepstakes Claims Office <claims@prize-claims.example>",
+          "subject": "Congratulations! Your prize is waiting",
+          "body": "Dear Winner,\n\nYou have been selected as the winner of a brand new tablet in our Annual Sweepstakes.\n\nTo release your prize, a processing fee of $49.99 is required for shipping and handling.\n\nAct now. Your claim expires in 24 hours.\n\nReply with your full name, address, and bank account number, then pay the fee at:\nwww.prize-claims.example/winner\n\nSweepstakes Claims Office",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes prize emails that ask for a fee, request bank account information, and pressure you to act now.",
+          "evidence": [
+            {
+              "quote": "You get a call, email, or letter saying you won a sweepstakes, lottery, or prize — like an iPad, a new car, or something else. But you know it’s a scam because of what they do next: they ask you to pay money or give them your account information to get the prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            },
+            {
+              "quote": "They tell you it’s a limited time offer and you have to “act now” to claim your prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love gets this email today.",
+        "stampSay": "There is no prize. Only a trap.",
+        "flags": [
+          {
+            "label": "Pay to win",
+            "say": "Real prizes are free, so any fee to get one means a scam.",
+            "target": {
+              "kind": "text",
+              "match": "processing fee of $49.99"
+            },
+            "evidence": {
+              "quote": "If you have to pay to get your prize, it’s a scam. Real prizes are free.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          },
+          {
+            "label": "Asks for bank info",
+            "say": "There is no reason to ever share your bank account number to claim a prize.",
+            "target": {
+              "kind": "text",
+              "match": "bank account number"
+            },
+            "evidence": {
+              "quote": "There’s absolutely no reason to ever give your bank account or credit card number, or personal information like your Social Security number, to claim any prize.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          },
+          {
+            "label": "Rush to act",
+            "say": "Scammers push you to hurry so you have no time to think.",
+            "target": {
+              "kind": "text",
+              "match": "Act now. Your claim expires in 24 hours."
+            },
+            "evidence": {
+              "quote": "Scammers pressure you to act now to get a prize, or to hurry up and pay or give them information. They tell you it’s a limited time offer and you have to “act now” to claim your prize. They don’t want you to have time to think about what’s really happening.",
+              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Delete, don't click",
+          "say": "Delete the email without clicking any links, and do not reply.",
+          "evidence": {
+            "quote": "Delete any messages without clicking links, and don’t respond.",
+            "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
+          }
+        },
+        "title": "Fake prize email asks for a fee to ship your winnings",
+        "description": "An email says you won a tablet, but you must pay a fee and share your bank details first. Real prizes are free. Learn three red flags and the one safe move.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "020-fake-prize-claim-email",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.4242,
+      "renderAttempts": 1,
+      "music": "A tritone 81 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.995284,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "DZkLG6ZJdjQ",
       "youtubePrivacy": "public"
     }
   ],
