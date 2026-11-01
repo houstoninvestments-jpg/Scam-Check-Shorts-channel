@@ -2,110 +2,26 @@
   "date": "2026-11-01",
   "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-01: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (219 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "What To Know About Cryptocurrency and Scams: problems: Flag 3 ('Link and number') uses target.kind \"link\", which the template does not support (only \"text\", \"sender\", or \"attachment\"), and its match is empty. The flag will circle nothing, or fail to render. Change it to kind \"text\" with a match that appears in the body, such as \"protect-funds.example\" or \"(202) 555-0147\". (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "What To Know About Cryptocurrency and Scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 26.7s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot1/scam-021.mp4 (1080x1920, 26.75s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot1/scam-021-cover.jpg (186 KB), loop similarity 0.994677"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded jAlfW07qbO0 as public"
+      "detail": "slot 1 for 2026-11-01: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake bank alert demanding crypto | sources: FTC Consumer Advice 2022-05-19 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.7s",
-    "music": "tension bed on: G# with a fifth, 82 BPM; voice -22.2 LUFS, bed -42.3 LUFS (20.1 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13488/8859 red px), phone screen untouched",
-    "title": "Scam No. 021: Fake bank text wants you to move your money into crypto",
-    "hashtags": "#ScamOrNot #BankScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/021-fake-bank-alert-demanding-crypto/",
-    "upload": "jAlfW07qbO0, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.07 for 12 model calls (writer 4x $0.76, checker-b 4x $0.14, checker-a 4x $0.17)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41320763167",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot1/scam-021.mp4",
-  "episode": 21,
-  "youtubeId": "jAlfW07qbO0",
+  "runId": "41343088515",
   "cost": {
-    "usd": 1.0693,
-    "calls": 12,
-    "inputTokens": 57743,
-    "outputTokens": 19195,
-    "byRole": {
-      "writer": {
-        "calls": 4,
-        "usd": 0.7574
-      },
-      "checker-b": {
-        "calls": 4,
-        "usd": 0.1421
-      },
-      "checker-a": {
-        "calls": 4,
-        "usd": 0.1698
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
