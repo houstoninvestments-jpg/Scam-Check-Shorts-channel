@@ -1,5 +1,5 @@
 {
-  "nextNumber": 21,
+  "nextNumber": 22,
   "episodes": [
     {
       "number": 1,
@@ -2114,6 +2114,109 @@
       },
       "youtubeId": "DZkLG6ZJdjQ",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 21,
+      "leadId": "319cd8df2198",
+      "date": "2026-11-01",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake bank alert demanding crypto",
+        "message": {
+          "sender": "Secure Bank Alerts",
+          "subject": "",
+          "body": "Account Security Alert: We found suspicious activity on your account. Your funds are at risk. To protect your money, move your balance to a secure crypto wallet now. Tap: protect-funds.example or call (202) 555-0147.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes scammers posing as your bank who text that there is fraud on your account and tell you to buy crypto and send it to them.",
+          "evidence": [
+            {
+              "quote": "They might say there’s fraud on your account, or your money is at risk — and to fix it, you need to buy crypto and send it to them.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            },
+            {
+              "quote": "They’ll text, call, email, or send messages on social media — or maybe put a pop-up alert on your computer.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          ]
+        },
+        "hook": "Money at risk, they say. Would you tap this?",
+        "stampSay": "No real bank sent this.",
+        "flags": [
+          {
+            "label": "Fake bank alert",
+            "say": "Scammers pretend to be someone you trust so you will send them money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "In a business, government, or job impersonator scam, the scammer pretends to be someone you trust to convince you to send them money by buying and sending cryptocurrency.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          },
+          {
+            "label": "Crypto to fix it",
+            "say": "Real businesses never demand crypto to protect your money; that's always a scam.",
+            "target": {
+              "kind": "text",
+              "match": "move your balance to a secure crypto wallet"
+            },
+            "evidence": {
+              "quote": "No legitimate business is going to demand you send cryptocurrency in advance – not to buy something, and not to protect your money. That’s always a scam.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          },
+          {
+            "label": "Link to a scammer",
+            "say": "Tap the link in a message like this, and you reach a scammer.",
+            "target": {
+              "kind": "text",
+              "match": "protect-funds.example"
+            },
+            "evidence": {
+              "quote": "If you click the link in any message, answer the call, or call back the number on the pop-up, you’ll be connected to a scammer.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Don't send crypto",
+          "say": "Don't pay anyone who contacts you out of the blue and demands crypto.",
+          "evidence": {
+            "quote": "Don’t pay anyone who contacts you unexpectedly, demanding payment with cryptocurrency.",
+            "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+          }
+        },
+        "title": "Fake bank text wants you to move your money into crypto",
+        "description": "A text claims your account has fraud and your money is at risk. It tells you to move your funds into crypto to keep them safe. Here are three signs it is a scam and what to do instead.",
+        "category": "bank"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "021-fake-bank-alert-demanding-crypto",
+      "status": "published",
+      "category": "bank",
+      "costUsd": 1.0693,
+      "renderAttempts": 1,
+      "music": "G# fifth 82 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.994677,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "jAlfW07qbO0",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -2285,6 +2388,16 @@
     {
       "leadId": "6d75f6e53006",
       "date": "2026-10-31",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-01",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-11-01",
       "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],

@@ -307,7 +307,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-01T15:21:34.026Z",
-          "runId": "41320763167"
+          "runId": "41320763167",
+          "endedAt": "2026-11-01T15:27:10.505Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Did not pass the checks: Did someone share an explicit image of your child online? Ta: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (219 pages not yet on the channel)",
+            "Did not pass the checks: What To Know About Cryptocurrency and Scams: problems: Flag 3 ('Link and number') uses target.kind \"link\", which the template does not support (only \"text\", \"sender\", or \"attachment\"), and its match is empty. The flag will circle nothing, or fail to render. Change it to kind \"text\" with a match that appears in the body, such as \"protect-funds.example\" or \"(202) 555-0147\". (rewrite 1 of 2)",
+            "Passed the checks: What To Know About Cryptocurrency and Scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
