@@ -1,111 +1,27 @@
 {
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "slot": 3,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-01: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "2 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (217 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Protect yourself from phishing scams: problems: Flag 3 ('Link to click') uses target.kind \"link\" with an empty match. The only valid kinds are \"text\", \"sender\" and \"attachment\", so this circle will likely not render or will fail. Use kind \"text\" with match \"https://account-check.example/confirm\". (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Protect yourself from phishing scams: problems: The description calls contacting the company 'the one safe thing to do,' but the source also advises reporting the email to reportphishing@apwg.org and ReportFraud.ftc.gov and then deleting it. Viewers could think contacting the company is the only step needed. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Protect yourself from phishing scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 26.6s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot3/scam-023.mp4 (1080x1920, 26.64s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot3/scam-023-cover.jpg (186 KB), loop similarity 0.99528"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded wLbzGGKDpaQ as public"
+      "detail": "slot 3 for 2026-11-01: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Overdue invoice phishing email | sources: FTC Consumer Alerts 2025-06-04 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.6s",
-    "music": "tension bed on: B with a minor tenth, 80 BPM; voice -22.1 LUFS, bed -42.2 LUFS (20.1 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13660/13480/8870 red px), phone screen untouched",
-    "title": "Scam No. 023: Overdue Invoice Email Scam: Three Signs It's Fake",
-    "hashtags": "#ScamOrNot #BankScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/023-overdue-invoice-phishing-email/",
-    "upload": "wLbzGGKDpaQ, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.54 for 9 model calls (writer 3x $0.39, checker-b 3x $0.07, checker-a 3x $0.07)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41372017599",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-01-slot3/scam-023.mp4",
-  "episode": 23,
-  "youtubeId": "wLbzGGKDpaQ",
+  "runId": "41408273263",
   "cost": {
-    "usd": 0.5376,
-    "calls": 9,
-    "inputTokens": 29548,
-    "outputTokens": 9138,
-    "byRole": {
-      "writer": {
-        "calls": 3,
-        "usd": 0.3944
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.0718
-      },
-      "checker-a": {
-        "calls": 3,
-        "usd": 0.0714
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
