@@ -1,5 +1,5 @@
 {
-  "nextNumber": 24,
+  "nextNumber": 25,
   "episodes": [
     {
       "number": 1,
@@ -2424,6 +2424,109 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "wLbzGGKDpaQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 24,
+      "leadId": "e861b5ebc8cc",
+      "date": "2026-11-02",
+      "skin": "marketplace",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Imposter brand ad on a shopping app",
+        "message": {
+          "sender": "Official Brand Store",
+          "subject": "",
+          "body": "Sponsored\nOfficial Brand Store\nTap to see today's deals.\nofficial-brand-store.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of imposter ads that pose as well-known businesses on shopping platforms and ask you to click.",
+          "evidence": [
+            {
+              "quote": "Scammers impersonate well-known businesses or government agencies in ads in your social media feed, your search results, and on your favorite shopping platforms.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            },
+            {
+              "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "That brand store is not the brand.",
+        "flags": [
+          {
+            "label": "Fake famous brand",
+            "say": "Scammers pose as well-known businesses in ads on your favorite shopping platforms.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Scammers impersonate well-known businesses or government agencies in ads in your social media feed, your search results, and on your favorite shopping platforms.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          },
+          {
+            "label": "Wants your click",
+            "say": "They hope you think they're the real thing and click the fake ad.",
+            "target": {
+              "kind": "text",
+              "match": "Tap to see today's deals"
+            },
+            "evidence": {
+              "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          },
+          {
+            "label": "Scammers pay too",
+            "say": "Scammers now pay to place ads too, and people are losing big money.",
+            "target": {
+              "kind": "text",
+              "match": "Sponsored"
+            },
+            "evidence": {
+              "quote": "And now scammers are paying too — and people are losing big money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Pause before you tap",
+          "say": "The alert says they hope you'll click, so our own tip: pause before tapping any ad.",
+          "evidence": {
+            "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+          }
+        },
+        "title": "Fake brand ads on shopping apps",
+        "description": "Scammers pay for ads that pretend to be well-known businesses on shopping sites and social media. They want you to think the ad is real and click it. Here is what that ad is really doing.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "024-imposter-brand-ad-on-a-shopping-app",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.7162,
+      "renderAttempts": 1,
+      "music": "D tritone 66 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995175,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "3YR-Dn9GJpo",
       "youtubePrivacy": "public"
     }
   ],

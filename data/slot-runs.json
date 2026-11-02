@@ -364,7 +364,16 @@
       "attempts": [
         {
           "startedAt": "2026-11-02T15:21:52.340Z",
-          "runId": "41470682005"
+          "runId": "41470682005",
+          "endedAt": "2026-11-02T15:27:12.107Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 2 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Tell the FTC about imposter ads online: problems: Flag 'Paid to reach you' circles 'Sponsored' as a red flag, but the source says legitimate companies also pay to place ads ('Companies pay to place online ads connecting you to their legitimate products and services'). Every real ad carries a 'Sponsored' label, so presenting it as a warning sign could mislead viewers. The quote supports the spoken line but not the idea that 'Sponsored' marks a scam. (rewrite 1 of 2)",
+            "Did not pass the checks: Tell the FTC about imposter ads online: problems: Flag 3 ('Real money lost') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and only sender and attachment may have an empty match. As written, this flag will not circle anything or will break the render. To circle the URL, use kind \"text\" with match \"official-brand-store.example\". (rewrite 2 of 2)",
+            "Passed the checks: Tell the FTC about imposter ads online: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

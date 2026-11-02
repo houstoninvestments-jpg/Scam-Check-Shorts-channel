@@ -1,27 +1,101 @@
 {
   "date": "2026-11-02",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-01: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-11-02: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Tell the FTC about imposter ads online: problems: Flag 'Paid to reach you' circles 'Sponsored' as a red flag, but the source says legitimate companies also pay to place ads ('Companies pay to place online ads connecting you to their legitimate products and services'). Every real ad carries a 'Sponsored' label, so presenting it as a warning sign could mislead viewers. The quote supports the spoken line but not the idea that 'Sponsored' marks a scam. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Tell the FTC about imposter ads online: problems: Flag 3 ('Real money lost') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and only sender and attachment may have an empty match. As written, this flag will not circle anything or will break the render. To circle the URL, use kind \"text\" with match \"official-brand-store.example\". (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Tell the FTC about imposter ads online: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 28.1s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024.mp4 (1080x1920, 28.14s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024-cover.jpg (146 KB), loop similarity 0.995175"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded 3YR-Dn9GJpo as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Imposter brand ad on a shopping app | sources: FTC Consumer Alerts 2026-11-02 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.1s",
+    "music": "tension bed on: D with a tritone, 66 BPM; voice -22.4 LUFS, bed -42.4 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13495/8887 red px), phone screen untouched",
+    "title": "Scam No. 024: Fake brand ads on shopping apps",
+    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/024-imposter-brand-ad-on-a-shopping-app/",
+    "upload": "3YR-Dn9GJpo, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.72 for 9 model calls (writer 3x $0.55, checker-b 3x $0.08, checker-a 3x $0.09)"
   },
-  "runId": "41408273263",
+  "runId": "41470682005",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024.mp4",
+  "episode": 24,
+  "youtubeId": "3YR-Dn9GJpo",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.7162,
+    "calls": 9,
+    "inputTokens": 29629,
+    "outputTokens": 13432,
+    "byRole": {
+      "writer": {
+        "calls": 3,
+        "usd": 0.5485
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0811
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.0867
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }
