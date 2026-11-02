@@ -1,111 +1,27 @@
 {
   "date": "2026-11-02",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-02: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 4 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (216 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Getting the word out about FTC imposter scams: problems: stampSay \"No agency works like this.\" goes beyond the source. The source speaks only for the FTC (\"The FTC will never demand money...\", \"No one at the FTC will call, email, or text you...\"). It makes no claim about how all government agencies behave. Either narrow the line to the FTC or support it with a source covering agencies generally. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Getting the word out about FTC imposter scams: problems: Flag 1 ('Fake agency sender') circles the sender line, which is only a phone number. The agency impersonation ('Federal Consumer Office: This is Agent Mercer') is in the body, so the circle points at the wrong element, and viewers might think the number itself reveals the fake. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Getting the word out about FTC imposter scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 28.8s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025.mp4 (1080x1920, 28.82s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025-cover.jpg (209 KB), loop similarity 0.994547"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded zTvx4kEMArw as public"
+      "detail": "slot 1 for 2026-11-02: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake government agency text | sources: FTC Consumer Alerts 2025-03-26 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.8s",
-    "music": "tension bed on: A with a minor tenth, 75 BPM; voice -22.4 LUFS, bed -42.4 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13660/13480/8874 red px), phone screen untouched",
-    "title": "Scam No. 025: Fake government agent text says you're charged with a crime",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/025-fake-government-agency-text/",
-    "upload": "zTvx4kEMArw, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.93 for 12 model calls (writer 4x $0.70, checker-b 4x $0.11, checker-a 4x $0.12)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41518378184",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025.mp4",
-  "episode": 25,
-  "youtubeId": "zTvx4kEMArw",
+  "runId": "41542881519",
   "cost": {
-    "usd": 0.9317,
-    "calls": 12,
-    "inputTokens": 42573,
-    "outputTokens": 17206,
-    "byRole": {
-      "writer": {
-        "calls": 4,
-        "usd": 0.6954
-      },
-      "checker-b": {
-        "calls": 4,
-        "usd": 0.1118
-      },
-      "checker-a": {
-        "calls": 4,
-        "usd": 0.1244
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
