@@ -8,18 +8,18 @@
     "averageViewPercentage": 73.25,
     "holdAt10": 1.1,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "XVZ7AbUa-wU": {
     "videoId": "XVZ7AbUa-wU",
     "number": 3,
     "hookVariant": "going-around",
     "cta": "direct",
-    "views": 8,
-    "averageViewPercentage": 65.82,
+    "views": 11,
+    "averageViewPercentage": 51.21,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "9qFEqnt1HqU": {
     "videoId": "9qFEqnt1HqU",
@@ -30,51 +30,51 @@
     "averageViewPercentage": 62.99,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "x_oDuXnfQqA": {
     "videoId": "x_oDuXnfQqA",
     "number": 5,
     "hookVariant": "real-or-scam",
     "cta": "soft",
-    "views": 26,
-    "averageViewPercentage": 70.79,
-    "holdAt10": 1.0909,
+    "views": 27,
+    "averageViewPercentage": 68.15,
+    "holdAt10": 1.0833,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "OmRwCbn4erE": {
     "videoId": "OmRwCbn4erE",
     "number": 7,
     "hookVariant": "going-around",
     "cta": "none",
-    "views": 22,
-    "averageViewPercentage": 165.23,
+    "views": 17,
+    "averageViewPercentage": 78.21,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "xOQwIu7c33I": {
     "videoId": "xOQwIu7c33I",
     "number": 8,
     "hookVariant": "someone-you-love",
     "cta": "soft",
-    "views": 14,
+    "views": 17,
     "averageViewPercentage": 52.51,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "3V9jjUV4c1E": {
     "videoId": "3V9jjUV4c1E",
     "number": 6,
     "hookVariant": "would-you-tap",
     "cta": "direct",
-    "views": 4,
-    "averageViewPercentage": 85.65,
+    "views": 5,
+    "averageViewPercentage": 66.3,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "q9YJmWdzpyc": {
     "videoId": "q9YJmWdzpyc",
@@ -92,11 +92,11 @@
     "number": 10,
     "hookVariant": "would-you-tap",
     "cta": "none",
-    "views": 22,
-    "averageViewPercentage": 4621.89,
+    "views": 25,
+    "averageViewPercentage": 3851.58,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "nJsiJTLD8gM": {
     "videoId": "nJsiJTLD8gM",
@@ -114,32 +114,65 @@
     "number": 12,
     "hookVariant": "someone-you-love",
     "cta": "direct",
-    "views": 2,
+    "views": 4,
     "averageViewPercentage": 43.33,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "PDWg4vsuruE": {
     "videoId": "PDWg4vsuruE",
     "number": 13,
     "hookVariant": "real-or-scam",
     "cta": "none",
-    "views": 12,
-    "averageViewPercentage": 42.73,
+    "views": 21,
+    "averageViewPercentage": 46.44,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   },
   "z3_NndRRsdY": {
     "videoId": "z3_NndRRsdY",
     "number": 14,
     "hookVariant": "would-you-tap",
     "cta": "soft",
-    "views": 4,
-    "averageViewPercentage": 24.75,
+    "views": 10,
+    "averageViewPercentage": 64.88,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-01T00:25:04.205Z"
+    "measuredAt": "2026-11-02T01:24:22.871Z"
+  },
+  "McZQ_QbnNsY": {
+    "videoId": "McZQ_QbnNsY",
+    "number": 15,
+    "hookVariant": "going-around",
+    "cta": "direct",
+    "views": 13,
+    "averageViewPercentage": 45.73,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-11-02T01:24:22.871Z"
+  },
+  "GB14MOUi94Q": {
+    "videoId": "GB14MOUi94Q",
+    "number": 16,
+    "hookVariant": "someone-you-love",
+    "cta": "none",
+    "views": 6,
+    "averageViewPercentage": 33.03,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-11-02T01:24:22.871Z"
+  },
+  "Gf6-efhPvjc": {
+    "videoId": "Gf6-efhPvjc",
+    "number": 17,
+    "hookVariant": "real-or-scam",
+    "cta": "soft",
+    "views": 3,
+    "averageViewPercentage": 13.089999999999998,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-11-02T01:24:22.871Z"
   }
 }

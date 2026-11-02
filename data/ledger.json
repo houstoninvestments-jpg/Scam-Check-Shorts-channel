@@ -1,5 +1,5 @@
 {
-  "nextNumber": 23,
+  "nextNumber": 24,
   "episodes": [
     {
       "number": 1,
@@ -2319,6 +2319,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "6tpYKNO-U6Y",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 23,
+      "leadId": "b2b17c2ce20e",
+      "date": "2026-11-01",
+      "skin": "email",
+      "slot": 3,
+      "brands": [
+        "gmail"
+      ],
+      "cta": "soft",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Overdue invoice phishing email",
+        "message": {
+          "sender": "Account Services <billing@account-check.example>",
+          "subject": "Overdue invoice: confirm your account",
+          "body": "Your account has an overdue invoice. To fix this problem, please confirm your account number. Confirm now: https://account-check.example/confirm",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of phishing emails that pretend to be a company or bank you know, mention an overdue invoice, and ask you to confirm an account number by clicking a link.",
+          "evidence": [
+            {
+              "quote": "Scammers send phishing emails pretending to be companies you might know and trust — like a bank or utility company.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            },
+            {
+              "quote": "They might say there’s an overdue invoice, or that you need to confirm your credit card or bank account number to fix a problem.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          ]
+        },
+        "hook": "This email looks official. Look closer.",
+        "stampSay": "It's a phishing email.",
+        "flags": [
+          {
+            "label": "Email you didn't expect",
+            "say": "You never asked for this, and now it wants you to click.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Don’t click links or download attachments in unexpected messages.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          },
+          {
+            "label": "Overdue bill story",
+            "say": "Scammers often say there's an overdue invoice or a problem with your account.",
+            "target": {
+              "kind": "text",
+              "match": "overdue invoice"
+            },
+            "evidence": {
+              "quote": "They might say there’s an overdue invoice, or that you need to confirm your credit card or bank account number to fix a problem.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          },
+          {
+            "label": "Link to click",
+            "say": "The whole point of this email is to get you clicking that link.",
+            "target": {
+              "kind": "text",
+              "match": "https://account-check.example/confirm"
+            },
+            "evidence": {
+              "quote": "Their goal: get you to click links or open attachments.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Contact them directly",
+          "say": "Skip the link and contact the company or bank using a number you know is real.",
+          "evidence": {
+            "quote": "If you think the message could be legit, contact the company or bank using a phone number, email, or website you know is real.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+          }
+        },
+        "title": "Overdue Invoice Email Scam: Three Signs It's Fake",
+        "description": "An email says you have an overdue invoice and must confirm your account number. It is a phishing scam built to make you click. Skip the link, check with the company directly, then report and delete the email.",
+        "category": "bank"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "023-overdue-invoice-phishing-email",
+      "status": "published",
+      "category": "bank",
+      "costUsd": 0.5376,
+      "renderAttempts": 1,
+      "music": "B minor tenth 80 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.99528,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "wLbzGGKDpaQ",
       "youtubePrivacy": "public"
     }
   ],
