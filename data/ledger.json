@@ -1,5 +1,5 @@
 {
-  "nextNumber": 25,
+  "nextNumber": 26,
   "episodes": [
     {
       "number": 1,
@@ -2528,6 +2528,113 @@
       },
       "youtubeId": "3YR-Dn9GJpo",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 25,
+      "leadId": "42f0be0444a9",
+      "date": "2026-11-02",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake government agency text",
+        "message": {
+          "sender": "+1 (202) 555-0142",
+          "subject": "",
+          "body": "Federal Consumer Office: This is Agent Mercer. Our records show you are being charged with serious crimes tied to your accounts. To avoid further action, you must transfer funds to a secured account today. The Director is on the line to help you resolve this. Reply YES or call (202) 555-0142 now.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post, which describes scammers posing as a government agency who claim you are charged with serious crimes, say a top official is on the line to help, and tell you to transfer money.",
+          "evidence": [
+            {
+              "quote": "scammers are impersonating government agencies, including the FTC, to try to steal people’s personal information and money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            },
+            {
+              "quote": "We take it seriously when scammers claim that the Chairman of the FTC is on the line to help you get out of a bind or that you’re being charged with serious crimes.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            },
+            {
+              "quote": "The FTC will never demand money, make threats, tell you to transfer money, or promise you a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          ]
+        },
+        "hook": "A government agent texts you. Would you tap this?",
+        "stampSay": "Scammers pose as agencies like this.",
+        "flags": [
+          {
+            "label": "Fake agency claim",
+            "say": "Scammers pose as government agencies to steal your information and your money.",
+            "target": {
+              "kind": "text",
+              "match": "Federal Consumer Office: This is Agent Mercer"
+            },
+            "evidence": {
+              "quote": "scammers are impersonating government agencies, including the FTC, to try to steal people’s personal information and money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          },
+          {
+            "label": "Scary crime charges",
+            "say": "Claiming you're charged with serious crimes is a known scammer line.",
+            "target": {
+              "kind": "text",
+              "match": "charged with serious crimes"
+            },
+            "evidence": {
+              "quote": "We take it seriously when scammers claim that the Chairman of the FTC is on the line to help you get out of a bind or that you’re being charged with serious crimes.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          },
+          {
+            "label": "Move your money",
+            "say": "Too many people are still losing money to fake government agents like this.",
+            "target": {
+              "kind": "text",
+              "match": "transfer funds to a secured account"
+            },
+            "evidence": {
+              "quote": "too many people are still losing money to government imposters.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Stop and look it up",
+          "say": "Slow down, check the agency yourself, and stop before you pay anyone.",
+          "evidence": {
+            "quote": "Help the people you care about know how to slow down, check it out, and stop before they pay a scammer.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+          }
+        },
+        "title": "Fake government agent text says you're charged with a crime",
+        "description": "A text claims to be from a government agency and says you face serious charges. It tells you to move your money to stay safe. Here are three signs it's a scam and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "025-fake-government-agency-text",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.9317,
+      "renderAttempts": 1,
+      "music": "A minor tenth 75 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994547,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "zTvx4kEMArw",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -2710,6 +2817,11 @@
       "leadId": "0383d4e2ab4f",
       "date": "2026-11-01",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-02",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
   "firstUploadCheck": {

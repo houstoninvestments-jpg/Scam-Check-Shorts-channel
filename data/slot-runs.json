@@ -381,7 +381,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-02T20:21:44.277Z",
-          "runId": "41518378184"
+          "runId": "41518378184",
+          "endedAt": "2026-11-02T20:27:11.752Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 4 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (216 pages not yet on the channel)",
+            "Did not pass the checks: Getting the word out about FTC imposter scams: problems: stampSay \"No agency works like this.\" goes beyond the source. The source speaks only for the FTC (\"The FTC will never demand money...\", \"No one at the FTC will call, email, or text you...\"). It makes no claim about how all government agencies behave. Either narrow the line to the FTC or support it with a source covering agencies generally. (rewrite 1 of 2)",
+            "Did not pass the checks: Getting the word out about FTC imposter scams: problems: Flag 1 ('Fake agency sender') circles the sender line, which is only a phone number. The agency impersonation ('Federal Consumer Office: This is Agent Mercer') is in the body, so the circle points at the wrong element, and viewers might think the number itself reveals the fake. (rewrite 2 of 2)",
+            "Passed the checks: Getting the word out about FTC imposter scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

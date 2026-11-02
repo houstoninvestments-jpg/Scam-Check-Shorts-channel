@@ -1,6 +1,6 @@
 {
   "date": "2026-11-02",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -9,42 +9,52 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-02: first start"
+      "detail": "slot 2 for 2026-11-02: first start"
     },
     {
       "step": "scout",
       "ok": true,
-      "detail": "2 leads, 3 dropped (repeats or pages that can't make a video)"
+      "detail": "1 leads, 4 dropped (repeats or pages that can't make a video)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Tell the FTC about imposter ads online: problems: Flag 'Paid to reach you' circles 'Sponsored' as a red flag, but the source says legitimate companies also pay to place ads ('Companies pay to place online ads connecting you to their legitimate products and services'). Every real ad carries a 'Sponsored' label, so presenting it as a warning sign could mislead viewers. The quote supports the spoken line but not the idea that 'Sponsored' marks a scam. (rewrite 1 of 2)"
+      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (216 pages not yet on the channel)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Tell the FTC about imposter ads online: problems: Flag 3 ('Real money lost') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and only sender and attachment may have an empty match. As written, this flag will not circle anything or will break the render. To circle the URL, use kind \"text\" with match \"official-brand-store.example\". (rewrite 2 of 2)"
+      "detail": "Getting the word out about FTC imposter scams: problems: stampSay \"No agency works like this.\" goes beyond the source. The source speaks only for the FTC (\"The FTC will never demand money...\", \"No one at the FTC will call, email, or text you...\"). It makes no claim about how all government agencies behave. Either narrow the line to the FTC or support it with a source covering agencies generally. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Getting the word out about FTC imposter scams: problems: Flag 1 ('Fake agency sender') circles the sender line, which is only a phone number. The agency impersonation ('Federal Consumer Office: This is Agent Mercer') is in the body, so the circle points at the wrong element, and viewers might think the number itself reveals the fake. (rewrite 2 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Tell the FTC about imposter ads online: both reviews agree: scam, no problems"
+      "detail": "Getting the word out about FTC imposter scams: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 28.1s"
+      "detail": "AI voice (Kokoro open model), 28.8s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024.mp4 (1080x1920, 28.14s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025.mp4 (1080x1920, 28.82s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024-cover.jpg (146 KB), loop similarity 0.995175"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025-cover.jpg (209 KB), loop similarity 0.994547"
     },
     {
       "step": "thumbnail",
@@ -54,43 +64,43 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded 3YR-Dn9GJpo as public"
+      "detail": "uploaded zTvx4kEMArw as public"
     }
   ],
   "summary": {
-    "scam": "Imposter brand ad on a shopping app | sources: FTC Consumer Alerts 2026-11-02 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.1s",
-    "music": "tension bed on: D with a tritone, 66 BPM; voice -22.4 LUFS, bed -42.4 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13495/8887 red px), phone screen untouched",
-    "title": "Scam No. 024: Fake brand ads on shopping apps",
-    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/024-imposter-brand-ad-on-a-shopping-app/",
-    "upload": "3YR-Dn9GJpo, public, not locked",
+    "scam": "Fake government agency text | sources: FTC Consumer Alerts 2025-03-26 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.8s",
+    "music": "tension bed on: A with a minor tenth, 75 BPM; voice -22.4 LUFS, bed -42.4 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13660/13480/8874 red px), phone screen untouched",
+    "title": "Scam No. 025: Fake government agent text says you're charged with a crime",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/025-fake-government-agency-text/",
+    "upload": "zTvx4kEMArw, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.72 for 9 model calls (writer 3x $0.55, checker-b 3x $0.08, checker-a 3x $0.09)"
+    "cost": "$0.93 for 12 model calls (writer 4x $0.70, checker-b 4x $0.11, checker-a 4x $0.12)"
   },
-  "runId": "41470682005",
+  "runId": "41518378184",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot1/scam-024.mp4",
-  "episode": 24,
-  "youtubeId": "3YR-Dn9GJpo",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot2/scam-025.mp4",
+  "episode": 25,
+  "youtubeId": "zTvx4kEMArw",
   "cost": {
-    "usd": 0.7162,
-    "calls": 9,
-    "inputTokens": 29629,
-    "outputTokens": 13432,
+    "usd": 0.9317,
+    "calls": 12,
+    "inputTokens": 42573,
+    "outputTokens": 17206,
     "byRole": {
       "writer": {
-        "calls": 3,
-        "usd": 0.5485
+        "calls": 4,
+        "usd": 0.6954
       },
       "checker-b": {
-        "calls": 3,
-        "usd": 0.0811
+        "calls": 4,
+        "usd": 0.1118
       },
       "checker-a": {
-        "calls": 3,
-        "usd": 0.0867
+        "calls": 4,
+        "usd": 0.1244
       }
     },
     "models": [
