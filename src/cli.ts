@@ -196,6 +196,14 @@ async function main() {
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
       break;
     }
+    case "keep-awake": {
+      // Free Supabase projects pause after 7 days of low activity. One tiny call per daily run keeps the
+      // signup form, Family Pass sign-in and the Stripe webhook working. Public key only; reads nothing.
+      const { keepAwake } = await import("./lib/keepawake.js");
+      const r = await keepAwake();
+      console.log(process.env.GITHUB_ACTIONS ? `::${r.ok ? "notice" : "warning"} title=Database awake::${r.detail}` : r.detail);
+      break;
+    }
     case "slot-begin": {
       // Top of a slot's job: save the start now (pushed by the workflow) so the 30-minute watch can see it.
       const sw = await import("./pipeline/slotwatch.js");

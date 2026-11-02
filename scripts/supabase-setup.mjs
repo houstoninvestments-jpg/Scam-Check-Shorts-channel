@@ -3,6 +3,7 @@
 // Never prints a secret: only the publishable key, which is public by design.
 //
 //   npx tsx scripts/supabase-setup.mjs setup    apply migrations, check row level security, read the publishable key, set function settings
+//   npx tsx scripts/supabase-setup.mjs migrate  apply new migrations only (nothing else changes)
 //   npx tsx scripts/supabase-setup.mjs test     real signup on the live site, check the browser can't read it, delete the test rows
 //   npx tsx scripts/supabase-setup.mjs stripe   Stripe TEST setup; the key and webhook secret go straight into Supabase
 import { appendFileSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -51,10 +52,8 @@ async function setSecrets(pairs) {
   await mgmt("POST", `/v1/projects/${REF}/secrets`, Object.entries(pairs).map(([name, value]) => ({ name, value })));
 }
 
-async function setup() {
-  await checkSpec();
-
-  // 1. Migrations, in order, once each. Applied ones are remembered in a small table of our own.
+// Migrations, in order, once each. Applied ones are remembered in a small table of our own.
+async function migrate() {
   await sql("create table if not exists public._son_migrations (name text primary key, applied_at timestamptz not null default now()); alter table public._son_migrations enable row level security; revoke all on public._son_migrations from anon, authenticated;");
   const done = new Set((await sql("select name from public._son_migrations")).map((r) => r.name));
   for (const f of readdirSync("supabase/migrations").filter((f) => f.endsWith(".sql")).sort()) {
@@ -63,6 +62,12 @@ async function setup() {
     await sql(`insert into public._son_migrations(name) values ('${f.replace(/'/g, "''")}')`);
     note("Migration applied", f);
   }
+  note("Migrations", `${done.size} were already in; any new ones are listed above`);
+}
+
+async function setup() {
+  await checkSpec();
+  await migrate();
 
   // 2. Lockdown checks: RLS on every table, no browser read rights on the signup list.
   const tables = await sql("select tablename, rowsecurity from pg_tables where schemaname = 'public' order by tablename");
@@ -368,6 +373,7 @@ try {
   else if (mode === "refund-orphans") await refundOrphans();
   else if (mode === "webhook-check") await webhookCheck();
   else if (mode === "setup") await setup();
+  else if (mode === "migrate") await migrate();
   else if (mode === "purchase-test") await purchaseTest();
   else if (mode === "functions") await functionsReport();
   else if (mode === "test") await test();

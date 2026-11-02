@@ -45,6 +45,12 @@ describe("database rules", () => {
     await expect(as("anon", null, "select email from public.round_signups")).rejects.toThrow(/permission denied/);
   });
 
+  it("the keep-awake call works with the public key and reads nothing", async () => {
+    const r = await as("anon", null, "select public.keep_awake() as t");
+    expect(r.rows[0].t).toBeTruthy();
+    await expect(as("anon", null, "select email from public.round_signups")).rejects.toThrow(/permission denied/);
+  });
+
   it("anyone can sign up for the daily round; nobody can read the list", async () => {
     await as("anon", null, "insert into round_signups(email) values ('a@example.com')");
     await expect(as("anon", null, "insert into round_signups(email) values ('not-an-email')")).rejects.toThrow();
@@ -86,5 +92,19 @@ describe("database rules", () => {
     await as("postgres", null, "update purchases set refunded_at = now() where stripe_session_id = 'cs_1'");
     expect((await as("authenticated", U1, "select has_pass() as p")).rows[0].p).toBe(false);
     expect((await as("authenticated", U2, "select has_pass() as p")).rows[0].p).toBe(false);
+  });
+});
+
+describe("keep the free database awake", () => {
+  it("calls keep_awake with the publishable key only, and never throws", async () => {
+    const { keepAwake } = await import("../src/lib/keepawake");
+    const { config } = await import("../src/lib/config");
+    let seen: any;
+    const ok = await keepAwake((async (u: string, init: any) => ((seen = { u, ...init }), new Response('"2026-11-02T06:30:00+00:00"', { status: 200 }))) as any);
+    expect(seen.u).toBe(`${config().supabase.url}/rest/v1/rpc/keep_awake`);
+    expect(seen.headers.apikey).toBe(config().supabase.publishableKey);
+    expect(ok.ok).toBe(true);
+    const down = await keepAwake((async () => { throw new Error("offline"); }) as any);
+    expect(down.ok).toBe(false);
   });
 });

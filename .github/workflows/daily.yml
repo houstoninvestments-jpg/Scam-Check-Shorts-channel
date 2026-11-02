@@ -194,6 +194,11 @@ jobs:
           github-token: ${{ github.token }}
           path: work/release/control
 
+      - name: Keep the database awake
+        # Free Supabase projects pause after 7 days of low activity; signup, Family Pass and the Stripe webhook need it.
+        continue-on-error: true
+        run: npx tsx src/cli.ts keep-awake
+
       - name: Top up the evergreen scam library
         # Official pages (FTC, FBI IC3, USPIS, IRS, SSA, CFPB, FCC, AARP) used when fresh leads don't pass.
         # Refetches only when older than a week or under 60 pages; saved with the ledger below.
