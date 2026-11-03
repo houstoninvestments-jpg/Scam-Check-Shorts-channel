@@ -1,5 +1,5 @@
 {
-  "nextNumber": 28,
+  "nextNumber": 29,
   "episodes": [
     {
       "number": 1,
@@ -2850,6 +2850,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "1NHoBjSEp2U",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 28,
+      "leadId": "6fa5e4520b14",
+      "date": "2026-11-03",
+      "skin": "android",
+      "slot": 2,
+      "brands": [
+        "google"
+      ],
+      "cta": "none",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake treatment center search ad",
+        "message": {
+          "sender": "Sponsored result",
+          "subject": "",
+          "body": "Sponsored\nExample Recovery Center (fictional name)\nAdmissions open 24/7. Call now to check your insurance and start today.\n(202) 555-0142\nexample-recovery-admissions.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC Consumer Alerts), which describes paid search ads that the FTC alleges impersonated treatment centers people searched for, with a phone number that the FTC alleges led to a different call center. The center name shown is fictional.",
+          "evidence": [
+            {
+              "quote": "the FTC argues that Evoke ran Google search ads that impersonated specific treatment centers people searched for online.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            },
+            {
+              "quote": "When people called the phone number shown in the ad, the FTC alleges they were diverted to Evoke’s call center",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "That number may not be the center.",
+        "flags": [
+          {
+            "label": "Paid ad on top",
+            "say": "The top results can be ads a company paid for, based on what you searched.",
+            "target": {
+              "kind": "text",
+              "match": "Sponsored"
+            },
+            "evidence": {
+              "quote": "Know that the first two or three search results you see might be ads a company paid to place based on the search terms you used.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          },
+          {
+            "label": "Number in the ad",
+            "say": "Don't assume a number in a search result belongs to the place you searched for.",
+            "target": {
+              "kind": "text",
+              "match": "(202) 555-0142"
+            },
+            "evidence": {
+              "quote": "Don't assume a phone number that comes up in search results belongs to a legitimate business or the company you searched.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          },
+          {
+            "label": "Might not be them",
+            "say": "A paid ad may or may not be the place you were really looking for.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "These paid or “sponsored” ads may or may not be what you’re looking for.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Go to their own site",
+          "say": "Go straight to the center's own website to find the right contact information.",
+          "evidence": {
+            "quote": "Go directly to a company or organization’s website to find accurate contact information.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+          }
+        },
+        "title": "Fake treatment center ad with the wrong phone number",
+        "description": "A paid search ad can look like the treatment center you searched for. The number in the ad may lead somewhere else. Go to the center's own website to find the right contact.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "028-fake-treatment-center-search-ad",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.3994,
+      "renderAttempts": 1,
+      "music": "B tritone 70 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995002,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "INAkycQ_Xws",
       "youtubePrivacy": "public"
     }
   ],

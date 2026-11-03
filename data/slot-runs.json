@@ -441,7 +441,17 @@
       "attempts": [
         {
           "startedAt": "2026-11-03T20:21:39.910Z",
-          "runId": "41711720234"
+          "runId": "41711720234",
+          "endedAt": "2026-11-03T20:35:42.004Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 4 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (212 pages not yet on the channel)",
+            "Did not pass the checks: Seeking treatment for addiction? Some things to know before : problems: The recreated ad uses the name 'Riverview Treatment Center.' Real treatment and behavioral health providers with 'Riverview' in their names likely exist. Viewers could read this as a real center being the bad actor, or as a real center that was impersonated. A clearly fictional name, or an on-screen note that it is fictional, would lower this risk. (rewrite 1 of 2)",
+            "Passed the checks: Seeking treatment for addiction? Some things to know before : both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
