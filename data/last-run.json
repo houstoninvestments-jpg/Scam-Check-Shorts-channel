@@ -1,106 +1,27 @@
 {
   "date": "2026-11-03",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-03: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 4 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (212 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Seeking treatment for addiction? Some things to know before : problems: The recreated ad uses the name 'Riverview Treatment Center.' Real treatment and behavioral health providers with 'Riverview' in their names likely exist. Viewers could read this as a real center being the bad actor, or as a real center that was impersonated. A clearly fictional name, or an on-screen note that it is fictional, would lower this risk. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Seeking treatment for addiction? Some things to know before : both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 27.5s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot2/scam-028.mp4 (1080x1920, 27.52s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot2/scam-028-cover.jpg (176 KB), loop similarity 0.995002"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded INAkycQ_Xws as public"
+      "detail": "slot 1 for 2026-11-03: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake treatment center search ad | sources: FTC Consumer Alerts 2025-06-10 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.5s",
-    "music": "tension bed on: B with a tritone, 70 BPM; voice -22.2 LUFS, bed -42.2 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13480/8872 red px), phone screen untouched",
-    "title": "Scam No. 028: Fake treatment center ad with the wrong phone number",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/028-fake-treatment-center-search-ad/",
-    "upload": "INAkycQ_Xws, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.40 for 6 model calls (writer 2x $0.30, checker-b 2x $0.05, checker-a 2x $0.06)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41711720234",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot2/scam-028.mp4",
-  "episode": 28,
-  "youtubeId": "INAkycQ_Xws",
+  "runId": "41717896643",
   "cost": {
-    "usd": 0.3994,
-    "calls": 6,
-    "inputTokens": 18862,
-    "outputTokens": 7332,
-    "byRole": {
-      "writer": {
-        "calls": 2,
-        "usd": 0.2955
-      },
-      "checker-b": {
-        "calls": 2,
-        "usd": 0.0462
-      },
-      "checker-a": {
-        "calls": 2,
-        "usd": 0.0577
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
