@@ -1,5 +1,5 @@
 {
-  "nextNumber": 26,
+  "nextNumber": 27,
   "episodes": [
     {
       "number": 1,
@@ -2635,6 +2635,111 @@
       },
       "youtubeId": "zTvx4kEMArw",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 26,
+      "leadId": "a9c5b73e3866",
+      "date": "2026-11-02",
+      "skin": "android",
+      "slot": 3,
+      "brands": [
+        "gmail"
+      ],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Phishing text asking for your details",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Account Services: We need to verify your identity. Please confirm your name, date of birth and card number here: http://secure-verify.example/confirm",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of phishing texts that look legit and ask for personal or financial information. The sender number and link are generic fictional placeholders, not details the source describes.",
+          "evidence": [
+            {
+              "quote": "Scammers send phishing texts and emails that look legit to trick you into giving them personal or financial information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            },
+            {
+              "quote": "Unwanted messages often lead to scams.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          ]
+        },
+        "hook": "A text wants your details. Would you tap this?",
+        "stampSay": "This text is fishing for your information.",
+        "flags": [
+          {
+            "label": "Unknown sender",
+            "say": "It came from a number you don't know, and your phone may be able to block those.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Check if your mobile phone has options to filter and block texts from unknown senders.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          },
+          {
+            "label": "Asks for your details",
+            "say": "Scam texts look real, but they want your personal or money information.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your name, date of birth and card number"
+            },
+            "evidence": {
+              "quote": "Scammers send phishing texts and emails that look legit to trick you into giving them personal or financial information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          },
+          {
+            "label": "A link to tap",
+            "say": "You didn't ask for this message, and unwanted messages often lead to scams.",
+            "target": {
+              "kind": "text",
+              "match": "http://secure-verify.example/confirm"
+            },
+            "evidence": {
+              "quote": "Unwanted messages often lead to scams.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Report it as junk",
+          "say": "Use your phone's report junk option, or forward the text to 7726.",
+          "evidence": {
+            "quote": "Use your phone’s “report junk” option or forward unwanted texts to 7726 (SPAM) and unwanted emails to your email provider.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+          }
+        },
+        "title": "Unknown Number Texts Asking for Your Details: Spot the Scam",
+        "description": "A text from an unknown number asks you to confirm your name and card number at a link. We circle three things to look at before you tap. Then we share the one safe move to make instead.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "026-phishing-text-asking-for-your-details",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.8815,
+      "renderAttempts": 1,
+      "music": "C# tritone 82 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995035,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "CZRokYOB3hQ",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -2820,6 +2925,11 @@
     },
     {
       "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-02",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "9286e6c1ce7b",
       "date": "2026-11-02",
       "reason": "reviews disagree or unsure (unsure / scam)"
     }

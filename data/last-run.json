@@ -1,27 +1,116 @@
 {
   "date": "2026-11-02",
-  "slot": 1,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-02: already posted (or the day was full); this start exits"
+      "detail": "slot 3 for 2026-11-02: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 4 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (215 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Before you donate, find out where the money is going: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Dealing with spam texts, emails, and junk mail: problems: Flag 3 ('A link to tap') uses target.kind \"link\" with an empty match. The template only defines \"text\", \"sender\" and \"attachment\", so this circle will not land on anything. It should be kind \"text\" with match \"http://secure-verify.example/confirm\". (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Dealing with spam texts, emails, and junk mail: problems: The provenanceNote says the FTC describes phishing texts as 'sent from unknown senders with links.' The source does not say this. It mentions unknown senders only as advice on filtering and blocking texts. It mentions links only in the email-unsubscribe advice ('avoid clicking on links that can lead to phishing attacks'). Reword the note so it does not credit the FTC with a description it did not give, for example 'phishing texts that look legit and ask for personal or financial information.' (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Dealing with spam texts, emails, and junk mail: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 31.0s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot3/scam-026.mp4 (1080x1920, 30.98s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot3/scam-026-cover.jpg (160 KB), loop similarity 0.995035"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded CZRokYOB3hQ as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Phishing text asking for your details | sources: FTC Consumer Alerts 2025-01-24 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 31.0s",
+    "music": "tension bed on: C# with a tritone, 82 BPM; voice -22.4 LUFS, bed -42.4 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13659/13488/8887 red px), phone screen untouched",
+    "title": "Scam No. 026: Unknown Number Texts Asking for Your Details: Spot the Scam",
+    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/026-phishing-text-asking-for-your-details/",
+    "upload": "CZRokYOB3hQ, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.88 for 12 model calls (writer 4x $0.63, checker-b 4x $0.12, checker-a 4x $0.13)"
   },
-  "runId": "41542881519",
+  "runId": "41559143279",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-02-slot3/scam-026.mp4",
+  "episode": 26,
+  "youtubeId": "CZRokYOB3hQ",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.8815,
+    "calls": 12,
+    "inputTokens": 39150,
+    "outputTokens": 17294,
+    "byRole": {
+      "writer": {
+        "calls": 4,
+        "usd": 0.6318
+      },
+      "checker-b": {
+        "calls": 4,
+        "usd": 0.1166
+      },
+      "checker-a": {
+        "calls": 4,
+        "usd": 0.1332
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

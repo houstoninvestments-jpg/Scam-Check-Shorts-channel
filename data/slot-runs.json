@@ -400,7 +400,19 @@
       "attempts": [
         {
           "startedAt": "2026-11-03T01:21:38.390Z",
-          "runId": "41559143279"
+          "runId": "41559143279",
+          "endedAt": "2026-11-03T01:26:48.875Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 4 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (215 pages not yet on the channel)",
+            "Did not pass the checks: Before you donate, find out where the money is going: reviews disagree or unsure (unsure / scam)",
+            "Did not pass the checks: Dealing with spam texts, emails, and junk mail: problems: Flag 3 ('A link to tap') uses target.kind \"link\" with an empty match. The template only defines \"text\", \"sender\" and \"attachment\", so this circle will not land on anything. It should be kind \"text\" with match \"http://secure-verify.example/confirm\". (rewrite 1 of 2)",
+            "Did not pass the checks: Dealing with spam texts, emails, and junk mail: problems: The provenanceNote says the FTC describes phishing texts as 'sent from unknown senders with links.' The source does not say this. It mentions unknown senders only as advice on filtering and blocking texts. It mentions links only in the email-unsubscribe advice ('avoid clicking on links that can lead to phishing attacks'). Reword the note so it does not credit the FTC with a description it did not give, for example 'phishing texts that look legit and ask for personal or financial information.' (rewrite 2 of 2)",
+            "Passed the checks: Dealing with spam texts, emails, and junk mail: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
