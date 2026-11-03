@@ -1,5 +1,5 @@
 {
-  "nextNumber": 27,
+  "nextNumber": 28,
   "episodes": [
     {
       "number": 1,
@@ -2740,6 +2740,117 @@
       },
       "youtubeId": "CZRokYOB3hQ",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 27,
+      "leadId": "801e2bb9a6f4",
+      "date": "2026-11-03",
+      "skin": "imessage",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Crypto cash courier scam",
+        "message": {
+          "sender": "+1 (202) 555-0147",
+          "subject": "",
+          "body": "Hi! The exchange flagged your account again, so the bank will not approve your transfer. No worries, this happens. To keep investing, our courier can pick up the cash at your home tomorrow at 2pm. He will show you a $1 bill with serial number L48219073C so you know he is with us. As soon as he leaves, the deposit will show in your wallet. You are doing great! Check your returns at grow-coin.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FBI IC3 alert, which describes the flagged account excuse, a courier collecting cash at the victim's home, a dollar bill serial number used as a code, and a wallet deposit appearing after the pickup.",
+          "evidence": [
+            {
+              "quote": "the fraudulent cryptocurrency exchange may inform victims their account has been \"flagged,\" allowing the scammer to suggest the use of cash couriers as an alternative.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "the scammer arranges to send couriers to retrieve the cash at victims' homes or public locations. Scammers provide victims with a U.S. dollar bill serial number or another form of code/password.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "Once the cash pickup occurs and the courier departs, victims can see an increase in deposits in their virtual wallet displayed on their account with the scammer's investment platform.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "Legitimate financial institutions may deny suspicious funds transfers by victims, so scammers inform victims in-person cash pickups are required to continue investing with the fraudulent investment firm",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          ]
+        },
+        "hook": "It sounds like a helpful advisor. Look closer.",
+        "stampSay": "This is a cash courier investment scam.",
+        "flags": [
+          {
+            "label": "Cash pickup at home",
+            "say": "Scammers send couriers to collect cash at victims' homes or public places.",
+            "target": {
+              "kind": "text",
+              "match": "pick up the cash at your home"
+            },
+            "evidence": {
+              "quote": "the scammer arranges to send couriers to retrieve the cash at victims' homes or public locations.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          },
+          {
+            "label": "Dollar bill password",
+            "say": "Scammers give you a dollar bill serial number or a password to vouch for their courier.",
+            "target": {
+              "kind": "text",
+              "match": "serial number L48219073C"
+            },
+            "evidence": {
+              "quote": "Scammers provide victims with a U.S. dollar bill serial number or another form of code/password.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          },
+          {
+            "label": "Account flagged excuse",
+            "say": "A fake exchange may say your account is flagged, then suggest cash couriers instead.",
+            "target": {
+              "kind": "text",
+              "match": "flagged your account"
+            },
+            "evidence": {
+              "quote": "the fraudulent cryptocurrency exchange may inform victims their account has been \"flagged,\" allowing the scammer to suggest the use of cash couriers as an alternative.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Never hand over cash",
+          "say": "Don't share your home address or meet strangers to hand over cash for an investment.",
+          "evidence": {
+            "quote": "Don't disclose your home address or agree to meet with unknown individuals to deliver cash or other valuables as part of investment activities.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+          }
+        },
+        "title": "Crypto investment scam sends a courier to pick up your cash",
+        "description": "A friendly online contact says your investment account is flagged. Then a courier offers to pick up cash at your door. Here is how to spot it.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA260615",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "027-crypto-cash-courier-scam",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.9621,
+      "renderAttempts": 1,
+      "music": "C# tritone 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994212,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "1NHoBjSEp2U",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -2931,6 +3042,16 @@
     {
       "leadId": "9286e6c1ce7b",
       "date": "2026-11-02",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-03",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "8416f19c401a",
+      "date": "2026-11-03",
       "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],

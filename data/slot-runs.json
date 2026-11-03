@@ -422,7 +422,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-03T15:21:56.715Z",
-          "runId": "41662924397"
+          "runId": "41662924397",
+          "endedAt": "2026-11-03T15:27:36.860Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 4 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: low confidence (0.72 / 0.85) (rewrite 1 of 2)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (213 pages not yet on the channel)",
+            "Did not pass the checks: Are you really out of Cloud storage or is that message a sca: reviews disagree or unsure (unsure / scam)",
+            "Passed the checks: Internet Crime Complaint Center (IC3) | Scammers Use Courier: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
