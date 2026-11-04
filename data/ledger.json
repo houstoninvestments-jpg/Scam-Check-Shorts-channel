@@ -1,5 +1,5 @@
 {
-  "nextNumber": 31,
+  "nextNumber": 32,
   "episodes": [
     {
       "number": 1,
@@ -3170,6 +3170,109 @@
       },
       "youtubeId": "p7Y56ODpZDk",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 31,
+      "leadId": "825bf7fec597",
+      "date": "2026-11-04",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Fake tech support renewal text",
+        "message": {
+          "sender": "+1 (202) 555-0133",
+          "subject": "",
+          "body": "Nimbrolix Tech Support: Your yearly tech support plan has auto-renewed. $349.99 was charged to your card on file today. To dispute this charge, call (202) 555-0174 within 24 hours. Ref ID: NX-88213",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes texts claiming a charge of hundreds of dollars for a tech support subscription renewal and telling you to call a number within 24 hours to dispute it. The company name is invented and fictional.",
+          "evidence": [
+            {
+              "quote": "In another type of scheme, scammers send notices about automatic renewals for tech support subscriptions.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            },
+            {
+              "quote": "The message says you must call a phone number within 24 hours if you want to dispute the charge.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          ]
+        },
+        "hook": "It looks like a real receipt. Look closer.",
+        "stampSay": "This text wants you on the phone.",
+        "flags": [
+          {
+            "label": "Surprise renewal charge",
+            "say": "Scammers send texts claiming you paid hundreds to renew tech support.",
+            "target": {
+              "kind": "text",
+              "match": "$349.99 was charged"
+            },
+            "evidence": {
+              "quote": "You might get an email or text message that says you were charged hundreds of dollars to renew your tech support subscription.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          },
+          {
+            "label": "One day deadline",
+            "say": "They say you must call within a day to dispute the charge.",
+            "target": {
+              "kind": "text",
+              "match": "within 24 hours"
+            },
+            "evidence": {
+              "quote": "The message says you must call a phone number within 24 hours if you want to dispute the charge.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          },
+          {
+            "label": "Call this number",
+            "say": "Call that number and they will ask for remote access to your computer.",
+            "target": {
+              "kind": "text",
+              "match": "(202) 555-0174"
+            },
+            "evidence": {
+              "quote": "If you call, the scammers ask for remote access to your computer.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check your statement",
+          "say": "Look at your card or bank account yourself for any tech support charge.",
+          "evidence": {
+            "quote": "Also check your credit card or bank account for an unauthorized transaction for a tech support subscription.",
+            "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+          }
+        },
+        "title": "Fake tech support renewal text: three signs it's a scam",
+        "description": "A text says you were charged hundreds for a tech support plan and must call within 24 hours. The number leads to scammers who want remote access to your computer. Check your own statement instead of calling.",
+        "category": "tech_support"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "031-fake-tech-support-renewal-text",
+      "status": "published",
+      "category": "tech_support",
+      "costUsd": 1.061,
+      "renderAttempts": 1,
+      "music": "C fifth 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994644,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "LCxCdvZ-vAo",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -3377,6 +3480,11 @@
       "leadId": "3c42d8b5b4ee",
       "date": "2026-11-04",
       "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "99b532e6ded0",
+      "date": "2026-11-04",
+      "reason": "problems: Safe move 'Don't tap the link' is inferred rather than stated. The source explains that phishing links can lead to bogus sites and malware, but it never explicitly tells readers not to click. The only protective step it names is using strong, unique passwords. This is a reasonable inference and unlikely to mislead, but it is not direct source advice."
     }
   ],
   "firstUploadCheck": {

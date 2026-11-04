@@ -1,6 +1,6 @@
 {
   "date": "2026-11-04",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -9,7 +9,7 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-04: first start"
+      "detail": "slot 2 for 2026-11-04: first start"
     },
     {
       "step": "scout",
@@ -17,39 +17,54 @@
       "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
     },
     {
-      "step": "check",
-      "ok": false,
-      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+      "step": "same day",
+      "ok": true,
+      "detail": "1 leads already failed the checks today; not retried"
     },
     {
       "step": "library",
       "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (210 pages not yet on the channel)"
+      "detail": "fresh leads didn't pass; trying the evergreen library (209 pages not yet on the channel)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "How To Avoid a Government Impersonation Scam: problems: stampSay \"Agencies don't slide into your DMs.\" overstates the source. The FTC only says agencies will never message you on social media \"to ask for money or personal information.\" It does not say agencies never send DMs. Reword it to match, e.g. \"Agencies don't DM you asking for money or info.\" (rewrite 1 of 2)"
+      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 2 ('Odd link') uses target.kind \"link\" with an empty match. The template supports only \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match \"secure-verify.example/confirm\". (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 3 ('Wants private details') says identity theft 'always involves stealing details like your Social Security number and birth date.' The source only says it always involves theft of personal information, and gives SSN, home address, birth date and account numbers as examples. The spoken line reads as if SSN and birth date are always taken, which overstates the quote. It also talks about identity theft in general instead of explaining why this request is a red flag. Reword to something like 'Requests for your Social Security number or birth date are how identity thieves get your personal information.' (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Safe move 'Don't tap the link' is inferred rather than stated. The source explains that phishing links can lead to bogus sites and malware, but it never explicitly tells readers not to click. The only protective step it names is using strong, unique passwords. This is a reasonable inference and unlikely to mislead, but it is not direct source advice."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How To Spot, Avoid, and Report Tech Support Scams: problems: The invented sender name 'PC Shield Support' may match real software products or companies called 'PC Shield'. Showing it as the scammer's brand could wrongly implicate a real business. Use a name that is clearly fictional and check it first. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "How To Avoid a Government Impersonation Scam: both reviews agree: scam, no problems"
+      "detail": "How To Spot, Avoid, and Report Tech Support Scams: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 30.7s"
+      "detail": "AI voice (Kokoro open model), 26.5s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030.mp4 (1080x1920, 30.74s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031.mp4 (1080x1920, 26.52s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030-cover.jpg (220 KB), loop similarity 0.992443"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031-cover.jpg (184 KB), loop similarity 0.994644"
     },
     {
       "step": "thumbnail",
@@ -59,43 +74,43 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded p7Y56ODpZDk as public"
+      "detail": "uploaded LCxCdvZ-vAo as public"
     }
   ],
   "summary": {
-    "scam": "Fake government agent DM | sources: FTC Consumer Advice 2023-11-26 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 30.7s",
-    "music": "tension bed on: A with a tritone, 79 BPM; voice -22.6 LUFS, bed -42.6 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13659/13478/8792 red px), phone screen untouched",
-    "title": "Scam No. 030: Fake government agent DM scam: three red flags to spot",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/030-fake-government-agent-dm/",
-    "upload": "p7Y56ODpZDk, public, not locked",
+    "scam": "Fake tech support renewal text | sources: FTC Consumer Advice 2025-09-26 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.5s",
+    "music": "tension bed on: C with a fifth, 79 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13489/8733 red px), phone screen untouched",
+    "title": "Scam No. 031: Fake tech support renewal text: three signs it's a scam",
+    "hashtags": "#ScamOrNot #TechSupportScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/031-fake-tech-support-renewal-text/",
+    "upload": "LCxCdvZ-vAo, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.74 for 9 model calls (writer 3x $0.52, checker-b 3x $0.10, checker-a 3x $0.12)"
+    "cost": "$1.06 for 15 model calls (writer 5x $0.78, checker-a 5x $0.14, checker-b 5x $0.13)"
   },
-  "runId": "41856769570",
+  "runId": "41905729274",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030.mp4",
-  "episode": 30,
-  "youtubeId": "p7Y56ODpZDk",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031.mp4",
+  "episode": 31,
+  "youtubeId": "LCxCdvZ-vAo",
   "cost": {
-    "usd": 0.7368,
-    "calls": 9,
-    "inputTokens": 47057,
-    "outputTokens": 11825,
+    "usd": 1.061,
+    "calls": 15,
+    "inputTokens": 63879,
+    "outputTokens": 16757,
     "byRole": {
       "writer": {
-        "calls": 3,
-        "usd": 0.5201
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.0961
+        "calls": 5,
+        "usd": 0.7839
       },
       "checker-a": {
-        "calls": 3,
-        "usd": 0.1206
+        "calls": 5,
+        "usd": 0.1429
+      },
+      "checker-b": {
+        "calls": 5,
+        "usd": 0.1342
       }
     },
     "models": [

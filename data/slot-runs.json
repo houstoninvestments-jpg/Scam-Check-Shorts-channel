@@ -502,7 +502,20 @@
       "attempts": [
         {
           "startedAt": "2026-11-04T20:21:38.830Z",
-          "runId": "41905729274"
+          "runId": "41905729274",
+          "endedAt": "2026-11-04T20:27:02.022Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (209 pages not yet on the channel)",
+            "Did not pass the checks: Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 2 ('Odd link') uses target.kind \"link\" with an empty match. The template supports only \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match \"secure-verify.example/confirm\". (rewrite 1 of 2)",
+            "Did not pass the checks: Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 3 ('Wants private details') says identity theft 'always involves stealing details like your Social Security number and birth date.' The source only says it always involves theft of personal information, and gives SSN, home address, birth date and account numbers as examples. The spoken line reads as if SSN and birth date are always taken, which overstates the quote. It also talks about identity theft in general instead of explaining why this request is a red flag. Reword to something like 'Requests for your Social Security number or birth date are how identity thieves get your personal information.' (rewrite 2 of 2)",
+            "Did not pass the checks: Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Safe move 'Don't tap the link' is inferred rather than stated. The source explains that phishing links can lead to bogus sites and malware, but it never explicitly tells readers not to click. The only protective step it names is using strong, unique passwords. This is a reasonable inference and unlikely to mislead, but it is not direct source advice.",
+            "Did not pass the checks: How To Spot, Avoid, and Report Tech Support Scams: problems: The invented sender name 'PC Shield Support' may match real software products or companies called 'PC Shield'. Showing it as the scammer's brand could wrongly implicate a real business. Use a name that is clearly fictional and check it first. (rewrite 1 of 2)",
+            "Passed the checks: How To Spot, Avoid, and Report Tech Support Scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
