@@ -1,121 +1,27 @@
 {
   "date": "2026-11-04",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-04: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (209 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 2 ('Odd link') uses target.kind \"link\" with an empty match. The template supports only \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match \"secure-verify.example/confirm\". (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Flag 3 ('Wants private details') says identity theft 'always involves stealing details like your Social Security number and birth date.' The source only says it always involves theft of personal information, and gives SSN, home address, birth date and account numbers as examples. The spoken line reads as if SSN and birth date are always taken, which overstates the quote. It also talks about identity theft in general instead of explaining why this request is a red flag. Reword to something like 'Requests for your Social Security number or birth date are how identity thieves get your personal information.' (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Identity Theft and Fraud Can Be Devastating. Here’s How to A: problems: Safe move 'Don't tap the link' is inferred rather than stated. The source explains that phishing links can lead to bogus sites and malware, but it never explicitly tells readers not to click. The only protective step it names is using strong, unique passwords. This is a reasonable inference and unlikely to mislead, but it is not direct source advice."
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How To Spot, Avoid, and Report Tech Support Scams: problems: The invented sender name 'PC Shield Support' may match real software products or companies called 'PC Shield'. Showing it as the scammer's brand could wrongly implicate a real business. Use a name that is clearly fictional and check it first. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "How To Spot, Avoid, and Report Tech Support Scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 26.5s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031.mp4 (1080x1920, 26.52s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031-cover.jpg (184 KB), loop similarity 0.994644"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded LCxCdvZ-vAo as public"
+      "detail": "slot 1 for 2026-11-04: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake tech support renewal text | sources: FTC Consumer Advice 2025-09-26 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.5s",
-    "music": "tension bed on: C with a fifth, 79 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13489/8733 red px), phone screen untouched",
-    "title": "Scam No. 031: Fake tech support renewal text: three signs it's a scam",
-    "hashtags": "#ScamOrNot #TechSupportScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/031-fake-tech-support-renewal-text/",
-    "upload": "LCxCdvZ-vAo, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.06 for 15 model calls (writer 5x $0.78, checker-a 5x $0.14, checker-b 5x $0.13)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41905729274",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot2/scam-031.mp4",
-  "episode": 31,
-  "youtubeId": "LCxCdvZ-vAo",
+  "runId": "41915220599",
   "cost": {
-    "usd": 1.061,
-    "calls": 15,
-    "inputTokens": 63879,
-    "outputTokens": 16757,
-    "byRole": {
-      "writer": {
-        "calls": 5,
-        "usd": 0.7839
-      },
-      "checker-a": {
-        "calls": 5,
-        "usd": 0.1429
-      },
-      "checker-b": {
-        "calls": 5,
-        "usd": 0.1342
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
