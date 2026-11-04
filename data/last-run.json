@@ -1,27 +1,106 @@
 {
   "date": "2026-11-04",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
+  "status": "published",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-03: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-11-04: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (210 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How To Avoid a Government Impersonation Scam: problems: stampSay \"Agencies don't slide into your DMs.\" overstates the source. The FTC only says agencies will never message you on social media \"to ask for money or personal information.\" It does not say agencies never send DMs. Reword it to match, e.g. \"Agencies don't DM you asking for money or info.\" (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "How To Avoid a Government Impersonation Scam: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 30.7s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030.mp4 (1080x1920, 30.74s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030-cover.jpg (220 KB), loop similarity 0.992443"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded p7Y56ODpZDk as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake government agent DM | sources: FTC Consumer Advice 2023-11-26 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 30.7s",
+    "music": "tension bed on: A with a tritone, 79 BPM; voice -22.6 LUFS, bed -42.6 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13659/13478/8792 red px), phone screen untouched",
+    "title": "Scam No. 030: Fake government agent DM scam: three red flags to spot",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/030-fake-government-agent-dm/",
+    "upload": "p7Y56ODpZDk, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.74 for 9 model calls (writer 3x $0.52, checker-b 3x $0.10, checker-a 3x $0.12)"
   },
-  "runId": "41793125603",
+  "runId": "41856769570",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot1/scam-030.mp4",
+  "episode": 30,
+  "youtubeId": "p7Y56ODpZDk",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.7368,
+    "calls": 9,
+    "inputTokens": 47057,
+    "outputTokens": 11825,
+    "byRole": {
+      "writer": {
+        "calls": 3,
+        "usd": 0.5201
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0961
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.1206
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

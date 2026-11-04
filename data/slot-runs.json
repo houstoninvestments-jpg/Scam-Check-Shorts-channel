@@ -484,7 +484,17 @@
       "attempts": [
         {
           "startedAt": "2026-11-04T15:21:50.836Z",
-          "runId": "41856769570"
+          "runId": "41856769570",
+          "endedAt": "2026-11-04T15:27:12.177Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (210 pages not yet on the channel)",
+            "Did not pass the checks: How To Avoid a Government Impersonation Scam: problems: stampSay \"Agencies don't slide into your DMs.\" overstates the source. The FTC only says agencies will never message you on social media \"to ask for money or personal information.\" It does not say agencies never send DMs. Reword it to match, e.g. \"Agencies don't DM you asking for money or info.\" (rewrite 1 of 2)",
+            "Passed the checks: How To Avoid a Government Impersonation Scam: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

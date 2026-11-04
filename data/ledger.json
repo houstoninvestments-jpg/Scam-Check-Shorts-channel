@@ -1,5 +1,5 @@
 {
-  "nextNumber": 30,
+  "nextNumber": 31,
   "episodes": [
     {
       "number": 1,
@@ -3063,6 +3063,113 @@
       },
       "youtubeId": "I9rFVtM5PZw",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 30,
+      "leadId": "b1a91c7cd724",
+      "date": "2026-11-04",
+      "skin": "dm",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake government agent DM",
+        "message": {
+          "sender": "Federal Benefits Office",
+          "subject": "",
+          "body": "Hello Maria Lopez, this is Agent D. Reed, employee ID 44-2081. Your benefits number has been flagged and will be suspended today. To avoid suspension and arrest you must clear the balance now. Payment is accepted by gift card or payment app only. Reply with your full address to confirm your identity, or call (202) 555-0142.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article on government impersonation scams, which describes social media messages that use an employee ID number, threaten suspension or arrest, and demand payment by gift card or payment app.",
+          "evidence": [
+            {
+              "quote": "A government impersonation scam often starts with a call, email, text, or social media message from someone who says they’re with a government agency.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            },
+            {
+              "quote": "They say your Social Security benefits will end, or your Social Security number will be suspended, unless you pay immediately.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            },
+            {
+              "quote": "They insist the only way you can fix the problem is to pay with gift cards, a wire transfer, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          ]
+        },
+        "hook": "An agent just messaged you. Would you tap this?",
+        "stampSay": "Agencies don't DM you asking for money.",
+        "flags": [
+          {
+            "label": "Agency in your DMs",
+            "say": "Real agencies won't message you on social media asking for money or personal info.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Government agencies will never call, email, text, or message you on social media to ask for money or personal information.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          },
+          {
+            "label": "Fake employee ID",
+            "say": "Scammers add an employee ID number just to sound official.",
+            "target": {
+              "kind": "text",
+              "match": "employee ID 44-2081"
+            },
+            "evidence": {
+              "quote": "They might give you their “employee ID number” to sound official.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          },
+          {
+            "label": "Gift cards only",
+            "say": "No government agency will demand you pay with gift cards or a payment app.",
+            "target": {
+              "kind": "text",
+              "match": "gift card or payment app only"
+            },
+            "evidence": {
+              "quote": "No government agency will demand you wire money or pay with gift cards, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Call the agency yourself",
+          "say": "Ignore the message and call the agency directly at a number you know is correct.",
+          "evidence": {
+            "quote": "Hang up the phone and call the government agency directly at a number you know is correct.",
+            "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+          }
+        },
+        "title": "Fake government agent DM scam: three red flags to spot",
+        "description": "A message claims a government agent needs you to pay right now. We circle three signs it's a scam and share the one safe move. Watch before you tap.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "030-fake-government-agent-dm",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.7368,
+      "renderAttempts": 1,
+      "music": "A tritone 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.992443,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "p7Y56ODpZDk",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -3264,6 +3371,11 @@
     {
       "leadId": "8416f19c401a",
       "date": "2026-11-03",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-04",
       "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
