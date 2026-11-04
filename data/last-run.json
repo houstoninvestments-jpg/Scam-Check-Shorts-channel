@@ -1,131 +1,27 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "slot": 3,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-03: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 4 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (211 pages not yet on the channel)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Is That a Real Fraud Alert from Your Bank or a Scam?: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Recovering after weather emergencies from the South to the G: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "IRS, Security Summit partners warn taxpayers of new scam; un: its screen style already ran today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "The National Veterans Golden Age Games are free, no matter w: same type (text) as an earlier video today; waits for another day"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How to spot fake rental listings during a military move: problems: The description says the listing 'pops up in a marketplace app'. The source only says scammers post fake listings 'on a different site' and never mentions marketplace apps. Change it to something like 'on a listing site'. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How to spot fake rental listings during a military move: problems: Flag 3 'say' overstates the source. It says a landlord who only takes wire transfers or gift cards 'will disappear with your money', but the source calls that payment demand a 'sign of a scam' and says the scammer disappears only 'If you pay'. Suggested fix: 'A landlord who only takes wire or gift cards is a scam sign. Pay, and they disappear with your money.' (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "How to spot fake rental listings during a military move: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 29.9s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot3/scam-029.mp4 (1080x1920, 29.91s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot3/scam-029-cover.jpg (190 KB), loop similarity 0.99463"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded I9rFVtM5PZw as public"
+      "detail": "slot 3 for 2026-11-03: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake rental listing message | sources: FTC Consumer Alerts 2026-07-13 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 29.9s",
-    "music": "tension bed on: A with a minor tenth, 76 BPM; voice -22.2 LUFS, bed -42.2 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13499/8889 red px), phone screen untouched",
-    "title": "Scam No. 029: Fake rental listing scam: cheap rent, no tour, wire payment only",
-    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/029-fake-rental-listing-message/",
-    "upload": "I9rFVtM5PZw, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.70 for 9 model calls (writer 3x $0.53, checker-b 3x $0.08, checker-a 3x $0.09)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41753421172",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-03-slot3/scam-029.mp4",
-  "episode": 29,
-  "youtubeId": "I9rFVtM5PZw",
+  "runId": "41793125603",
   "cost": {
-    "usd": 0.6984,
-    "calls": 9,
-    "inputTokens": 32236,
-    "outputTokens": 12502,
-    "byRole": {
-      "writer": {
-        "calls": 3,
-        "usd": 0.5324
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.0782
-      },
-      "checker-a": {
-        "calls": 3,
-        "usd": 0.0878
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
