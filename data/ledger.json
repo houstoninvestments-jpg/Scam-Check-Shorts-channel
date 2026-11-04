@@ -1,5 +1,5 @@
 {
-  "nextNumber": 29,
+  "nextNumber": 30,
   "episodes": [
     {
       "number": 1,
@@ -2955,6 +2955,113 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "INAkycQ_Xws",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 29,
+      "leadId": "1aae089141fd",
+      "date": "2026-11-03",
+      "skin": "marketplace",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake rental listing message",
+        "message": {
+          "sender": "Dana R. · Listing: 2 Bed Apartment",
+          "subject": "",
+          "body": "Hi! Yes, the 2 bed is still available. Rent is $750 a month, half what similar units go for. I'm out of state for work, so I can't show the unit in person. For the deposit, I only take wire transfer or gift card.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article on fake rental listings, which describes below market rent, excuses for no in-person viewing, and demands for wire transfer or gift card payment.",
+          "evidence": [
+            {
+              "quote": "They post their fake listings on a different site and grab your attention with below market rent.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            },
+            {
+              "quote": "they make up excuses for why you can’t see it in person, which could be a sign of a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            },
+            {
+              "quote": "Another sign of a scam is a “landlord” who says you can only pay for a rental with cash, a gift card, cryptocurrency, or a wire transfer service.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          ]
+        },
+        "hook": "Would you tap this cheap apartment?",
+        "stampSay": "Fake listing. Your deposit vanishes.",
+        "flags": [
+          {
+            "label": "Too cheap",
+            "say": "Below market rent is how they grab your attention on a fake listing.",
+            "target": {
+              "kind": "text",
+              "match": "$750 a month, half what similar units go for"
+            },
+            "evidence": {
+              "quote": "They post their fake listings on a different site and grab your attention with below market rent.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          },
+          {
+            "label": "No tour allowed",
+            "say": "Made-up excuses for not seeing it in person could be a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "I can't show the unit in person"
+            },
+            "evidence": {
+              "quote": "they make up excuses for why you can’t see it in person, which could be a sign of a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          },
+          {
+            "label": "Wire or gift card",
+            "say": "Only wire or gift card payment is a scam sign; pay, and they disappear.",
+            "target": {
+              "kind": "text",
+              "match": "only take wire transfer or gift card"
+            },
+            "evidence": {
+              "quote": "Another sign of a scam is a “landlord” who says you can only pay for a rental with cash, a gift card, cryptocurrency, or a wire transfer service. If you pay, the scammer will disappear with your money — and you’ll be left with no place to move to.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search the address first",
+          "say": "Search the address online; another listing with a different price or landlord means a likely scam.",
+          "evidence": {
+            "quote": "Search the rental address online. If you find the same property listed with a different price or landlord, it’s likely a scam.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+          }
+        },
+        "title": "Fake rental listing scam: cheap rent, no tour, wire payment only",
+        "description": "A cheap apartment pops up on a listing site, but you can't see it in person. The landlord only takes a deposit by wire or gift card. Here are three red flags and the one thing to do before you pay.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "029-fake-rental-listing-message",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.6984,
+      "renderAttempts": 1,
+      "music": "A minor tenth 76 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.99463,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "I9rFVtM5PZw",
       "youtubePrivacy": "public"
     }
   ],

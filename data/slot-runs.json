@@ -459,7 +459,22 @@
       "attempts": [
         {
           "startedAt": "2026-11-04T01:21:41.373Z",
-          "runId": "41753421172"
+          "runId": "41753421172",
+          "endedAt": "2026-11-04T01:26:16.034Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 4 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (211 pages not yet on the channel)",
+            "Held back: Is That a Real Fraud Alert from Your Bank or a Scam?: its screen style already ran today; waits for another day",
+            "Held back: Recovering after weather emergencies from the South to the G: its screen style already ran today; waits for another day",
+            "Held back: IRS, Security Summit partners warn taxpayers of new scam; un: its screen style already ran today; waits for another day",
+            "Held back: The National Veterans Golden Age Games are free, no matter w: same type (text) as an earlier video today; waits for another day",
+            "Did not pass the checks: How to spot fake rental listings during a military move: problems: The description says the listing 'pops up in a marketplace app'. The source only says scammers post fake listings 'on a different site' and never mentions marketplace apps. Change it to something like 'on a listing site'. (rewrite 1 of 2)",
+            "Did not pass the checks: How to spot fake rental listings during a military move: problems: Flag 3 'say' overstates the source. It says a landlord who only takes wire transfers or gift cards 'will disappear with your money', but the source calls that payment demand a 'sign of a scam' and says the scammer disappears only 'If you pay'. Suggested fix: 'A landlord who only takes wire or gift cards is a scam sign. Pay, and they disappear with your money.' (rewrite 2 of 2)",
+            "Passed the checks: How to spot fake rental listings during a military move: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
