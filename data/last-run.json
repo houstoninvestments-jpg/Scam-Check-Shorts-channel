@@ -1,106 +1,27 @@
 {
   "date": "2026-11-05",
-  "slot": 2,
+  "slot": 1,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-05: first start"
-    },
-    {
-      "step": "scout",
-      "ok": false,
-      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (203 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Got a text about expiring reward points? Look closer: problems: stampSay 'Your points are fine' is not supported. The FTC says only that 'some' of these messages are fake and tells people to check whether their points 'are really expiring.' Telling viewers their points are definitely fine could mislead someone whose points really are expiring. The line should say the text is bait and that viewers should check their points themselves. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Got a text about expiring reward points? Look closer: problems: Flag 3 ('Fake points warning') circles the sender line, but the source says nothing about the sender or phone number being a warning sign. The spoken line is supported, but circling the sender implies the number itself is a tell. Retarget this flag to the message body or drop the sender circle. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Got a text about expiring reward points? Look closer: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 28.3s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034.mp4 (1080x1920, 28.31s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034-cover.jpg (136 KB), loop similarity 0.995321"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded SkdIDHJEyC0 as public"
+      "detail": "slot 1 for 2026-11-05: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Expiring reward points text | sources: FTC Consumer Alerts 2026-04-07 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.3s",
-    "music": "tension bed on: A# with a tritone, 67 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13504/8891 red px), phone screen untouched",
-    "title": "Scam No. 034: Reward points expiring text scam: how to spot it",
-    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/034-expiring-reward-points-text/",
-    "upload": "SkdIDHJEyC0, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.47 for 9 model calls (writer 3x $0.34, checker-a 3x $0.07, checker-b 3x $0.06)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "42102526091",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034.mp4",
-  "episode": 34,
-  "youtubeId": "SkdIDHJEyC0",
+  "runId": "42112934958",
   "cost": {
-    "usd": 0.4655,
-    "calls": 9,
-    "inputTokens": 28036,
-    "outputTokens": 7556,
-    "byRole": {
-      "writer": {
-        "calls": 3,
-        "usd": 0.337
-      },
-      "checker-a": {
-        "calls": 3,
-        "usd": 0.0716
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.0569
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
