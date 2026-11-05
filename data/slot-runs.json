@@ -565,7 +565,17 @@
       "attempts": [
         {
           "startedAt": "2026-11-05T20:21:45.870Z",
-          "runId": "42102526091"
+          "runId": "42102526091",
+          "endedAt": "2026-11-05T20:35:27.602Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (203 pages not yet on the channel)",
+            "Did not pass the checks: Got a text about expiring reward points? Look closer: problems: stampSay 'Your points are fine' is not supported. The FTC says only that 'some' of these messages are fake and tells people to check whether their points 'are really expiring.' Telling viewers their points are definitely fine could mislead someone whose points really are expiring. The line should say the text is bait and that viewers should check their points themselves. (rewrite 1 of 2)",
+            "Did not pass the checks: Got a text about expiring reward points? Look closer: problems: Flag 3 ('Fake points warning') circles the sender line, but the source says nothing about the sender or phone number being a warning sign. The spoken line is supported, but circling the sender implies the number itself is a tell. Retarget this flag to the message body or drop the sender circle. (rewrite 2 of 2)",
+            "Passed the checks: Got a text about expiring reward points? Look closer: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

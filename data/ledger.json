@@ -1,5 +1,5 @@
 {
-  "nextNumber": 34,
+  "nextNumber": 35,
   "episodes": [
     {
       "number": 1,
@@ -3482,6 +3482,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "vlXdAqMaMTc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 34,
+      "leadId": "1214ee8f4248",
+      "date": "2026-11-05",
+      "skin": "android",
+      "slot": 2,
+      "brands": [
+        "apple"
+      ],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Expiring reward points text",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Rewards Alert: Your points expire today. Click now to save them: save-points.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article, which describes texts warning that reward points expire today and a link to save them.",
+          "evidence": [
+            {
+              "quote": "If you’re signed up for a rewards program, you may have gotten texts warning that your points are expiring soon.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            },
+            {
+              "quote": "Scammers say you need to click on a link to save your points or they’ll expire today.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          ]
+        },
+        "hook": "Points expiring today. Would you tap this?",
+        "stampSay": "Check your points yourself. This is bait.",
+        "flags": [
+          {
+            "label": "Expires today",
+            "say": "Scammers say your points vanish today so you rush to click.",
+            "target": {
+              "kind": "text",
+              "match": "expire today"
+            },
+            "evidence": {
+              "quote": "Scammers say you need to click on a link to save your points or they’ll expire today.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          },
+          {
+            "label": "Link steals data",
+            "say": "Tap that link and they try to grab your card or Social Security number.",
+            "target": {
+              "kind": "text",
+              "match": "save-points.example"
+            },
+            "evidence": {
+              "quote": "But if you click, they’ll try to steal your personal information (like your Social Security or credit card number) or download harmful software on your phone.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          },
+          {
+            "label": "Fake points warning",
+            "say": "People told the FTC some of these point warnings are fakes from scammers.",
+            "target": {
+              "kind": "text",
+              "match": "Rewards Alert"
+            },
+            "evidence": {
+              "quote": "people are reporting to the FTC that some of those messages aren’t real — and come from scammers.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Find the site yourself",
+          "say": "Open the company's app or website on your own, never through the link in the text.",
+          "evidence": {
+            "quote": "Go to the company’s website or app, but find it yourself. Don’t use any links from the text.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+          }
+        },
+        "title": "Reward points expiring text scam: how to spot it",
+        "description": "A text says your reward points expire today and gives a link to save them. The link is a trap that goes after your personal information. Check your points by finding the company's site or app yourself.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "034-expiring-reward-points-text",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.4655,
+      "renderAttempts": 1,
+      "music": "A# tritone 67 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995321,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "SkdIDHJEyC0",
       "youtubePrivacy": "public"
     }
   ],

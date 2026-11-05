@@ -1,6 +1,6 @@
 {
   "date": "2026-11-05",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [],
@@ -9,52 +9,47 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-05: first start"
+      "detail": "slot 2 for 2026-11-05: first start"
     },
     {
       "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "check",
       "ok": false,
-      "detail": "Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)"
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
     },
     {
       "step": "library",
       "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (204 pages not yet on the channel)"
+      "detail": "fresh leads didn't pass; trying the evergreen library (203 pages not yet on the channel)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "How are scammers trying to reach you?: problems: The 'Unknown caller' flag treats getting a phone call as a warning sign, but the source only says phone calls are a common way scammers reach people. The spoken line is accurate, but the source does not describe an unknown caller as a sign of a scam. (rewrite 1 of 2)"
+      "detail": "Got a text about expiring reward points? Look closer: problems: stampSay 'Your points are fine' is not supported. The FTC says only that 'some' of these messages are fake and tells people to check whether their points 'are really expiring.' Telling viewers their points are definitely fine could mislead someone whose points really are expiring. The line should say the text is bait and that viewers should check their points themselves. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "How are scammers trying to reach you?: problems: The stamp ('This prize voicemail is a scam') and the title ('three signs it's a scam') are stated as certain. The source only says an unexpected call 'could be a scam' and that scammers say things like 'you've won a prize'. This is acceptable only because the message is recreated, but the flags are warning signs, not proof. (rewrite 2 of 2)"
+      "detail": "Got a text about expiring reward points? Look closer: problems: Flag 3 ('Fake points warning') circles the sender line, but the source says nothing about the sender or phone number being a warning sign. The spoken line is supported, but circling the sender implies the number itself is a tell. Retarget this flag to the message body or drop the sender circle. (rewrite 2 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "How are scammers trying to reach you?: both reviews agree: scam, no problems"
+      "detail": "Got a text about expiring reward points? Look closer: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 24.1s"
+      "detail": "AI voice (Kokoro open model), 28.3s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot1/scam-033.mp4 (1080x1920, 24.15s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034.mp4 (1080x1920, 28.31s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot1/scam-033-cover.jpg (179 KB), loop similarity 0.994958"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034-cover.jpg (136 KB), loop similarity 0.995321"
     },
     {
       "step": "thumbnail",
@@ -64,43 +59,43 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded vlXdAqMaMTc as public"
+      "detail": "uploaded SkdIDHJEyC0 as public"
     }
   ],
   "summary": {
-    "scam": "Fake prize voicemail | sources: FTC Consumer Alerts 2026-05-21 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 24.1s",
-    "music": "tension bed on: G# with a tritone, 68 BPM; voice -22.1 LUFS, bed -42 LUFS (19.9 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13659/13469/8865 red px), phone screen untouched",
-    "title": "Scam No. 033: Fake prize voicemail: three warning signs",
-    "hashtags": "#ScamOrNot #PrizeScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/033-fake-prize-voicemail/",
-    "upload": "vlXdAqMaMTc, public, not locked",
+    "scam": "Expiring reward points text | sources: FTC Consumer Alerts 2026-04-07 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.3s",
+    "music": "tension bed on: A# with a tritone, 67 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13504/8891 red px), phone screen untouched",
+    "title": "Scam No. 034: Reward points expiring text scam: how to spot it",
+    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/034-expiring-reward-points-text/",
+    "upload": "SkdIDHJEyC0, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.83 for 12 model calls (writer 4x $0.62, checker-b 4x $0.10, checker-a 4x $0.11)"
+    "cost": "$0.47 for 9 model calls (writer 3x $0.34, checker-a 3x $0.07, checker-b 3x $0.06)"
   },
-  "runId": "42054042631",
+  "runId": "42102526091",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot1/scam-033.mp4",
-  "episode": 33,
-  "youtubeId": "vlXdAqMaMTc",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot2/scam-034.mp4",
+  "episode": 34,
+  "youtubeId": "SkdIDHJEyC0",
   "cost": {
-    "usd": 0.8321,
-    "calls": 12,
-    "inputTokens": 38505,
-    "outputTokens": 15376,
+    "usd": 0.4655,
+    "calls": 9,
+    "inputTokens": 28036,
+    "outputTokens": 7556,
     "byRole": {
       "writer": {
-        "calls": 4,
-        "usd": 0.6175
-      },
-      "checker-b": {
-        "calls": 4,
-        "usd": 0.1028
+        "calls": 3,
+        "usd": 0.337
       },
       "checker-a": {
-        "calls": 4,
-        "usd": 0.1117
+        "calls": 3,
+        "usd": 0.0716
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0569
       }
     },
     "models": [
