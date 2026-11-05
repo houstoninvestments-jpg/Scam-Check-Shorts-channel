@@ -11,6 +11,8 @@ export interface VideoMetrics {
   cta: string;
   views: number;
   averageViewPercentage: number; // can pass 100 on Shorts because of loops
+  engagedViews?: number | null; // plays that went past the first moments (YouTube's old Shorts view count)
+  viewedPct?: number | null; // engagedViews / views: the share that stayed instead of swiping away
   holdAt10: number | null; // share of viewers still watching 10% in (about 3 seconds): the hook
   scored: boolean;
   measuredAt: string;
@@ -40,11 +42,9 @@ export function reward(m: Pick<VideoMetrics, "averageViewPercentage" | "holdAt10
 export async function measure(u: Uploader, ep: Episode, now = new Date()): Promise<VideoMetrics | null> {
   const start = ep.date;
   const end = now.toISOString().slice(0, 10);
-  const totals = await report(u, { startDate: start, endDate: end, metrics: "views,averageViewPercentage", dimensions: "video", filters: `video==${ep.youtubeId}` });
-  const row = totals.rows?.[0];
-  if (!row) return null;
-  const views = Number(row[1]);
-  const avgPct = Number(row[2]);
+  const t = await totalsFor(u, ep.youtubeId!, start, end);
+  if (!t) return null;
+  const { views, averageViewPercentage: avgPct, engagedViews, viewedPct } = t;
   let holdAt10: number | null = null;
   try {
     const curve = await report(u, { startDate: start, endDate: end, metrics: "audienceWatchRatio", dimensions: "elapsedVideoTimeRatio", filters: `video==${ep.youtubeId}` });
@@ -53,7 +53,62 @@ export async function measure(u: Uploader, ep: Episode, now = new Date()): Promi
   } catch {
     // retention curves need enough views; totals alone still teach us something
   }
-  return { videoId: ep.youtubeId!, number: ep.number, hookVariant: ep.hookVariant, cta: ep.cta, views, averageViewPercentage: avgPct, holdAt10, scored: false, measuredAt: now.toISOString() };
+  return { videoId: ep.youtubeId!, number: ep.number, hookVariant: ep.hookVariant, cta: ep.cta, views, averageViewPercentage: avgPct, engagedViews, viewedPct, holdAt10, scored: false, measuredAt: now.toISOString() };
+}
+
+/**
+ * Since March 31, 2025, YouTube's "views" counts every time a Short starts (a swipe past counts),
+ * and "engagedViews" keeps the old count of plays that went past the first moments. The gap is the
+ * closest the API comes to Studio's "viewed vs swiped away". If the API refuses engagedViews, the
+ * rest still comes back.
+ */
+export async function totalsFor(u: Uploader, videoId: string, startDate: string, endDate: string) {
+  const ask = (metrics: string) => report(u, { startDate, endDate, metrics, dimensions: "video", filters: `video==${videoId}` });
+  let r: Awaited<ReturnType<typeof report>>;
+  let engaged = true;
+  try {
+    r = await ask("views,engagedViews,averageViewPercentage,averageViewDuration");
+  } catch (e) {
+    if (!/engagedViews|400/.test(String(e))) throw e;
+    engaged = false;
+    r = await ask("views,averageViewPercentage,averageViewDuration");
+  }
+  const row = r.rows?.[0];
+  if (!row) return null;
+  const col = (name: string) => {
+    const i = r.columnHeaders.findIndex((h) => h.name === name);
+    return i >= 0 ? Number(row[i]) : null;
+  };
+  const views = col("views") ?? 0;
+  const engagedViews = engaged ? col("engagedViews") : null;
+  return {
+    views,
+    engagedViews,
+    viewedPct: engagedViews !== null && views > 0 ? +((100 * engagedViews) / views).toFixed(1) : null,
+    averageViewPercentage: +(col("averageViewPercentage") ?? 0).toFixed(1),
+    averageViewDuration: col("averageViewDuration"),
+  };
+}
+
+/** Every published video: views, how many swiped away, how much the rest watched, and the opening line. */
+export async function viewsReport(u: Uploader, hookLine: (h: string) => string, now = new Date()) {
+  const rows: Record<string, unknown>[] = [];
+  for (const ep of published(loadLedger())) {
+    if (!ep.youtubeId) continue;
+    const t = await totalsFor(u, ep.youtubeId, ep.date, now.toISOString().slice(0, 10));
+    rows.push({
+      number: ep.number,
+      date: ep.date,
+      videoId: ep.youtubeId,
+      firstLine: hookLine(ep.script.hook),
+      views: t?.views ?? 0,
+      engagedViews: t?.engagedViews ?? null,
+      swipedAwayPct: t?.viewedPct != null ? +(100 - t.viewedPct).toFixed(1) : null,
+      averageViewPercentage: t?.averageViewPercentage ?? null,
+      averageViewDuration: t?.averageViewDuration ?? null,
+    });
+  }
+  return { measuredAt: now.toISOString(), note: "swipedAwayPct = 1 - engagedViews/views (views counts every start since March 2025)", videos: rows };
 }
 
 /**

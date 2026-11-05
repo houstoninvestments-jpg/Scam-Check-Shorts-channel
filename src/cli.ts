@@ -196,6 +196,19 @@ async function main() {
       console.log(process.env.GITHUB_ACTIONS ? `::notice title=Preview::${msg}` : `${r.file} ${msg}`);
       break;
     }
+    case "views-report": {
+      // Per video: views, swiped away, average view %, opening line. Read-only on YouTube.
+      const { viewsReport } = await import("./learn/index.js");
+      const { hookLine } = await import("./render/timeline.js");
+      const { writeJson } = await import("./lib/util.js");
+      const r = await viewsReport(oauthUploader(), hookLine);
+      writeJson(path("data/views-report.json"), r);
+      for (const v of r.videos as any[]) {
+        const line = `${v.views} views | swiped away ${v.swipedAwayPct ?? "n/a"}% | avg viewed ${v.averageViewPercentage ?? "n/a"}% | "${v.firstLine}"`;
+        console.log(process.env.GITHUB_ACTIONS ? `::notice title=No. ${v.number}::${line}` : `No. ${v.number}: ${line}`);
+      }
+      break;
+    }
     case "keep-awake": {
       // Free Supabase projects pause after 7 days of low activity. One tiny call per daily run keeps the
       // signup form, Family Pass sign-in and the Stripe webhook working. Public key only; reads nothing.

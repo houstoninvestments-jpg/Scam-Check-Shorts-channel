@@ -1,0 +1,40 @@
+name: Views report
+
+# Started by hand. Per published video: views, swiped away (from views vs engaged views), average
+# view %, and the opening line. Reads YouTube Analytics only; changes nothing on YouTube.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # saves data/views-report.json
+
+concurrency:
+  group: views-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Views, swiped away and watch time per video
+        run: npx tsx src/cli.ts views-report
+      - name: Save the report
+        run: |
+          git config user.name "scam-or-not-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/views-report.json
+          if git diff --cached --quiet; then exit 0; fi
+          scripts/secret-scan.sh
+          git commit -q -m "Views report $(date -u +%F)"
+          for i in 1 2 3 4; do git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
