@@ -67,7 +67,7 @@ export const Script = z.object({
     provenanceNote: z.string().describe("For recreated: which source it was recreated from."),
     evidence: z.array(Quote).min(1).describe("Quotes that show this message (or its parts) is real and circulating."),
   }),
-  hook: z.string().describe("Spoken over the opening. Under 10 words."),
+  hook: z.string().describe("The punch: 2 to 6 words, spoken on frame one and shown in giant letters. Shocking, contrarian, an order or a threat."),
   stampSay: z.string().describe("Spoken as the SCAM stamp lands. Under 8 words."),
   flags: z.array(Flag).length(3),
   safeMove: z.object({
@@ -75,7 +75,7 @@ export const Script = z.object({
     say: z.string().describe("One spoken sentence, under 18 words."),
     evidence: Quote,
   }),
-  title: z.string().describe("YouTube title, under 70 characters, no clickbait lies."),
+  title: z.string().describe("YouTube title built to get the click, under 60 characters. Bold, but never gets the verdict wrong."),
   description: z.string().describe("2 to 3 short sentences. Plain words."),
   // The writer only picks a category id from config/hashtags.json. Hashtags and search tags are built in code.
   category: z.string().optional().describe("One category id from the list in the prompt. Leave empty if none fits."),

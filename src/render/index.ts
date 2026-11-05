@@ -15,6 +15,8 @@ export function makeSfx(dir: string) {
   const ff = (args: string[]) => execFileSync("ffmpeg", ["-y", "-loglevel", "error", ...args]);
   ff(["-f", "lavfi", "-i", "sine=frequency=1100:duration=0.07", "-af", "afade=t=out:st=0.03:d=0.04", join(dir, "tick.wav")]);
   ff(["-f", "lavfi", "-i", "anoisesrc=d=0.35:c=brown:a=0.9", "-af", "lowpass=f=220,afade=t=out:st=0.05:d=0.3,volume=3", join(dir, "stamp.wav")]);
+  // The opening hit: a deep drop with a crack on top, under the punch on frame one.
+  ff(["-f", "lavfi", "-i", "aevalsrc='0.9*sin(2*PI*(90-60*t)*t)*exp(-6*t)+0.5*(random(0)*2-1)*exp(-40*t)':s=44100:d=0.6", "-af", "lowpass=f=1800,volume=2", join(dir, "hit.wav")]);
 }
 
 export function prepareTimeline(voice: VoiceResult, publicDir: string): Timeline {
