@@ -1,121 +1,27 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "slot": 3,
   "dryRun": false,
-  "status": "published",
+  "status": "skipped",
   "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-04: first start"
-    },
-    {
-      "step": "scout",
-      "ok": true,
-      "detail": "1 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "1 leads already failed the checks today; not retried"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (207 pages not yet on the channel)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "How to spot a postcard scam targeting veterans: written as impostor, same as an earlier video today; not checked, waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Taxpayers shouldn’t let gift card scammers ruin the holidays: same type (impostor) as an earlier video today; waits for another day"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Debt collection: Know your rights, avoid scams: reviews disagree or unsure (unsure / unsure)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Rental Listing Scams: problems: The description promises 'the three signs' as a cheap apartment, an owner out of the country, and a deposit by wire or gift card. The flags actually shown are owner away, answer today, and wire or gift card. No flag circles the $750 price, and the urgency flag isn't mentioned, so the description doesn't match the video. Either add a price flag (the source supports 'surprisingly low rent') or rewrite the description to name the urgency sign. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Rental Listing Scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 30.0s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot3/scam-032.mp4 (1080x1920, 29.97s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot3/scam-032-cover.jpg (213 KB), loop similarity 0.994337"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded HsYidbN0FNw as public"
+      "detail": "slot 3 for 2026-11-04: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake rental listing reply | sources: FTC Consumer Advice 2026-06-16 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 30.0s",
-    "music": "tension bed on: D with a tritone, 67 BPM; voice -22.2 LUFS, bed -42.2 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13657/13486/8858 red px), phone screen untouched",
-    "title": "Scam No. 032: Fake Rental Listing Scam: The Landlord Who Can't Show Up",
-    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/032-fake-rental-listing-reply/",
-    "upload": "HsYidbN0FNw, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.92 for 10 model calls (writer 4x $0.72, checker-b 3x $0.10, checker-a 3x $0.11)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "41947890371",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-04-slot3/scam-032.mp4",
-  "episode": 32,
-  "youtubeId": "HsYidbN0FNw",
+  "runId": "41990834715",
   "cost": {
-    "usd": 0.9239,
-    "calls": 10,
-    "inputTokens": 40242,
-    "outputTokens": 16664,
-    "byRole": {
-      "writer": {
-        "calls": 4,
-        "usd": 0.716
-      },
-      "checker-b": {
-        "calls": 3,
-        "usd": 0.1004
-      },
-      "checker-a": {
-        "calls": 3,
-        "usd": 0.1074
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
