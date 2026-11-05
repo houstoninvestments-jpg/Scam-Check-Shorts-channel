@@ -62,7 +62,11 @@
       "attempts": [
         {
           "startedAt": "2026-11-05T22:29:30.046Z",
-          "runId": "42121809862"
+          "runId": "42121809862",
+          "endedAt": "2026-11-05T22:30:30.206Z",
+          "ok": true,
+          "why": "posted",
+          "tried": []
         }
       ]
     }
