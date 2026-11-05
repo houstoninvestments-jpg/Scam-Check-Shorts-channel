@@ -1,5 +1,5 @@
 {
-  "nextNumber": 33,
+  "nextNumber": 34,
   "episodes": [
     {
       "number": 1,
@@ -3380,6 +3380,109 @@
       },
       "youtubeId": "HsYidbN0FNw",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 33,
+      "leadId": "75eeb874595b",
+      "date": "2026-11-05",
+      "skin": "voicemail",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake prize voicemail",
+        "message": {
+          "sender": "Unknown Caller (202) 555-0147",
+          "subject": "",
+          "body": "Hi, this is Prize Services. Good news, you've won a prize in our customer giveaway. To claim it, call us back today at (202) 555-0147 and confirm your personal info.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post, which describes scam calls that say \"you've won a prize\" and scams built to steal money or personal info. The call-back line is added only to fit the voicemail format; the source does not describe it.",
+          "evidence": [
+            {
+              "quote": "Scammers call to say things like “you’ve won a prize” or “you need to move your money to protect it.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            },
+            {
+              "quote": "Phone calls are another common way scammers reach people.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          ]
+        },
+        "hook": "Would you call this number back?",
+        "stampSay": "Warning signs point to a scam.",
+        "flags": [
+          {
+            "label": "Surprise prize",
+            "say": "Scammers call people and tell them they have won a prize.",
+            "target": {
+              "kind": "text",
+              "match": "won a prize"
+            },
+            "evidence": {
+              "quote": "Scammers call to say things like “you’ve won a prize” or “you need to move your money to protect it.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          },
+          {
+            "label": "Out of the blue",
+            "say": "A call you did not expect could be a scam.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "If you get an unexpected text, call, or message on social media, know that it could be a scam designed to steal your money or personal info.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          },
+          {
+            "label": "Wants your details",
+            "say": "An unexpected call can be a scam built to steal your money or personal info.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your personal info"
+            },
+            "evidence": {
+              "quote": "If you get an unexpected text, call, or message on social media, know that it could be a scam designed to steal your money or personal info.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Report the call",
+          "say": "Treat it as an unwanted call and report it.",
+          "evidence": {
+            "quote": "Report unwanted calls.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+          }
+        },
+        "title": "Fake prize voicemail: three warning signs",
+        "description": "A voicemail says you won a prize and asks you to call back with your personal info. We show three warning signs that it could be a scam. Then we share the one safe move to make instead.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "033-fake-prize-voicemail",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.8321,
+      "renderAttempts": 1,
+      "music": "G# tritone 68 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.994958,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "vlXdAqMaMTc",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -3602,6 +3705,11 @@
       "leadId": "803d2c9a715c",
       "date": "2026-11-04",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-05",
+      "reason": "reviews disagree or unsure (unsure / scam)"
     }
   ],
   "firstUploadCheck": {

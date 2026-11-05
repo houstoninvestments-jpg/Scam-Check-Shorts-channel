@@ -546,7 +546,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-05T15:21:47.787Z",
-          "runId": "42054042631"
+          "runId": "42054042631",
+          "endedAt": "2026-11-05T15:27:23.565Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Seeing lots of ads for health insurance plans during open en: reviews disagree or unsure (unsure / scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (204 pages not yet on the channel)",
+            "Did not pass the checks: How are scammers trying to reach you?: problems: The 'Unknown caller' flag treats getting a phone call as a warning sign, but the source only says phone calls are a common way scammers reach people. The spoken line is accurate, but the source does not describe an unknown caller as a sign of a scam. (rewrite 1 of 2)",
+            "Did not pass the checks: How are scammers trying to reach you?: problems: The stamp ('This prize voicemail is a scam') and the title ('three signs it's a scam') are stated as certain. The source only says an unexpected call 'could be a scam' and that scammers say things like 'you've won a prize'. This is acceptable only because the message is recreated, but the flags are warning signs, not proof. (rewrite 2 of 2)",
+            "Passed the checks: How are scammers trying to reach you?: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
