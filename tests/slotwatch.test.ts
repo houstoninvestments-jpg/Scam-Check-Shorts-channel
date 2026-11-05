@@ -176,3 +176,16 @@ describe("the alert email", () => {
     delete process.env.ALERT_EMAIL;
   });
 });
+
+describe("slot-end when setup broke", () => {
+  it("a missing run report still ends the slot as a failed try (the command never crashes)", async () => {
+    const { execFileSync } = await import("node:child_process");
+    const dir = mkdtempSync(join(tmpdir(), "se-"));
+    const out = execFileSync("npx", ["tsx", path("src/cli.ts"), "slot-end", "--job-status", "failure"], {
+      cwd: path("."),
+      encoding: "utf8",
+      env: { ...process.env, SLOT: "1", SLOT_DATE: "2026-11-05", SLOT_RUNS_FILE: join(dir, "s.json"), GITHUB_RUN_ID: "9", GITHUB_OUTPUT: join(dir, "out"), GITHUB_ACTIONS: "", LAST_RUN_FILE: join(dir, "missing.json") },
+    });
+    expect(out).toMatch(/missed .*retrying once now/);
+  });
+});

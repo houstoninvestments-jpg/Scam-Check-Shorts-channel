@@ -249,7 +249,8 @@ async function main() {
         dryRun: dry,
         runId: process.env.GITHUB_RUN_ID,
         jobStatus: arg("--job-status") ?? "unknown",
-        report: readJson<import("./pipeline/daily.js").RunReport | undefined>(path(dry ? "data/dry-run/last-run.json" : "data/last-run.json"), undefined),
+        // Missing when setup broke before the run wrote one: that still counts as a failed try (retry, then email).
+        report: readJson<import("./pipeline/daily.js").RunReport | null>(process.env.LAST_RUN_FILE || path(dry ? "data/dry-run/last-run.json" : "data/last-run.json"), null) ?? undefined,
         runUrl: process.env.GITHUB_RUN_ID ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` : undefined,
       });
       say("Slot end", r.detail);

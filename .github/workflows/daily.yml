@@ -142,10 +142,16 @@ jobs:
           git commit -q -m "Slot $SLOT started ($SLOT_DATE)"
           for i in 1 2 3 4; do git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && break || sleep $((2**i)); done
 
+      - name: Saved ffmpeg packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ffmpeg-debs
+          key: ffmpeg-debs-${{ runner.os }}-v1
+
       - name: Install
         run: |
-          # Skip if already there; time-limited retries, since Ubuntu's mirror sometimes stalls.
-          if ! command -v ffmpeg >/dev/null; then for i in 1 2 3; do timeout 240 sudo apt-get update -q && timeout 300 sudo apt-get install -y -q ffmpeg && break; echo "ffmpeg install try $i stalled; retrying"; sleep 10; done; fi; command -v ffmpeg
+          # ffmpeg: Ubuntu's packages, from the cache above when saved (its mirror sometimes stalls).
+          scripts/install-ffmpeg.sh; command -v ffmpeg
           pip install -q -r requirements-voice.txt
 
       - name: Free voice model (fallback)
