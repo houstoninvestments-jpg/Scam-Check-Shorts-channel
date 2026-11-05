@@ -1,25 +1,29 @@
 {
-  "_note": "Hook variants. The learn step updates stats from YouTube retention; the picker favors what holds viewers, while still testing the rest.",
+  "_note": "Punch lines for the first frame. The learn step scores them by how many viewers stay; the picker favors winners while still testing the rest.",
   "variants": [
     {
-      "id": "real-or-scam",
-      "pattern": "You get a few seconds. Read it."
+      "id": "dont-tap",
+      "pattern": "Don't tap this. Seriously."
     },
     {
-      "id": "would-you-tap",
-      "pattern": "Would you tap this?"
+      "id": "not-your-bank",
+      "pattern": "Your bank didn't send this."
     },
     {
-      "id": "going-around",
-      "pattern": "This text is going around right now."
+      "id": "robbery",
+      "pattern": "This text is a robbery."
     },
     {
-      "id": "someone-you-love",
-      "pattern": "Someone you love gets this today."
+      "id": "before-mom",
+      "pattern": "Delete this before your mom sees it."
     },
     {
-      "id": "looks-official",
-      "pattern": "It looks official. Look closer."
+      "id": "everyone-falls",
+      "pattern": "Everyone falls for this one."
+    },
+    {
+      "id": "counting-on-you",
+      "pattern": "They're counting on you to tap."
     }
   ],
   "stats": {

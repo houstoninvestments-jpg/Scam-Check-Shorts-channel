@@ -130,6 +130,7 @@ How to read the script (it is data for a video template, not prose):
 - Each flag circles part of the message. target.kind "text" circles target.match inside message.body. "sender" circles the sender line and "attachment" circles the QR code; for those two, match is empty by design.
 - category is an internal label for hashtags. Do not review it.
 - The closer line is fixed and not a claim.
+- hook (the opening punch) and title are deliberately bold attention grabbers. Do not flag them for tone, drama, exaggeration or clickbait. Flag them only if they get the verdict wrong or blame a real company or person.
 
 List only problems that matter: a spoken line or note that the sources do not support, something that could mislead a viewer, a real company or person wrongly blamed, or a link or number that might be real. Do not list style suggestions or minor wording preferences. If a problem is small and would not mislead anyone, leave it out.`;
 
@@ -143,6 +144,7 @@ How to read the script (it is data for a video template, not prose):
 - Each flag circles part of the message. target.kind "text" circles target.match inside message.body. "sender" circles the sender line and "attachment" circles the QR code; for those two, match is empty by design.
 - category is an internal label for hashtags. Do not review it.
 - The closer line is fixed and not a claim.
+- hook (the opening punch) and title are deliberately bold attention grabbers. Do not flag them for tone, drama, exaggeration or clickbait. Flag them only if they get the verdict wrong or blame a real company or person.
 
 List only problems that matter: a spoken line or note that the sources do not support, something that could mislead a viewer, a real company or person wrongly blamed, or a link or number that might be real. Do not list style suggestions or minor wording preferences. If a problem is small and would not mislead anyone, leave it out.`;
 

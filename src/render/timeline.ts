@@ -87,7 +87,7 @@ export function captionChunks(seg: VoiceSegment, startSec: number, maxWords = 4)
 export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id: string) => string): Timeline {
   const beats: Beat[] = [];
   const captions: Caption[] = [];
-  let t = 0.35; // a beat of the clean phone before the hook, matches the loop point
+  let t = 0.07; // the punch starts on the second frame: no silent still picture
   const spoken = (id: BeatId, minSec = 0) => {
     const s = segs[id];
     const len = Math.max(s.duration, minSec);
