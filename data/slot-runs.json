@@ -523,7 +523,20 @@
       "attempts": [
         {
           "startedAt": "2026-11-05T01:21:33.104Z",
-          "runId": "41947890371"
+          "runId": "41947890371",
+          "endedAt": "2026-11-05T01:26:36.848Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: 1 leads already failed the checks today; not retried",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (207 pages not yet on the channel)",
+            "Held back: How to spot a postcard scam targeting veterans: written as impostor, same as an earlier video today; not checked, waits for another day",
+            "Held back: Taxpayers shouldn’t let gift card scammers ruin the holidays: same type (impostor) as an earlier video today; waits for another day",
+            "Did not pass the checks: Debt collection: Know your rights, avoid scams: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: Rental Listing Scams: problems: The description promises 'the three signs' as a cheap apartment, an owner out of the country, and a deposit by wire or gift card. The flags actually shown are owner away, answer today, and wire or gift card. No flag circles the $750 price, and the urgency flag isn't mentioned, so the description doesn't match the video. Either add a price flag (the source supports 'surprisingly low rent') or rewrite the description to name the urgency sign. (rewrite 1 of 2)",
+            "Passed the checks: Rental Listing Scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
