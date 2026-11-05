@@ -1,5 +1,5 @@
 {
-  "nextNumber": 21,
+  "nextNumber": 36,
   "episodes": [
     {
       "number": 1,
@@ -2017,25 +2017,22 @@
       "leadId": "11779fec8b55",
       "date": "2026-10-31",
       "skin": "email",
+      "slot": 3,
       "brands": [],
       "cta": "soft",
       "hookVariant": "someone-you-love",
       "script": {
-        "scamName": "Fake prize email with a fee",
+        "scamName": "Fake prize claim email",
         "message": {
           "sender": "Sweepstakes Claims Office <claims@prize-claims.example>",
-          "subject": "You are our iPad winner!",
-          "body": "Congratulations! You have been selected as the winner of a brand new iPad. To release your prize, a processing fee of $49 must be paid within 24 hours. Click here to pay and confirm your bank account details: prize-claims.example/claim. Act now, this offer expires today.",
+          "subject": "Congratulations! Your prize is waiting",
+          "body": "Dear Winner,\n\nYou have been selected as the winner of a brand new tablet in our Annual Sweepstakes.\n\nTo release your prize, a processing fee of $49.99 is required for shipping and handling.\n\nAct now. Your claim expires in 24 hours.\n\nReply with your full name, address, and bank account number, then pay the fee at:\nwww.prize-claims.example/winner\n\nSweepstakes Claims Office",
           "hasQr": false,
           "provenance": "recreated",
-          "provenanceNote": "Recreated from Source 1 (FTC Consumer Advice), which describes prize emails about an iPad, demands for processing fees and account information, and act-now pressure.",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes prize emails that ask for a fee, request bank account information, and pressure you to act now.",
           "evidence": [
             {
-              "quote": "Or they might say you won something expensive, like an iPad or a new car from your local dealership.",
-              "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
-            },
-            {
-              "quote": "they ask you to pay money or give them your account information to get the prize.",
+              "quote": "You get a call, email, or letter saying you won a sweepstakes, lottery, or prize — like an iPad, a new car, or something else. But you know it’s a scam because of what they do next: they ask you to pay money or give them your account information to get the prize.",
               "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
             },
             {
@@ -2045,14 +2042,14 @@
           ]
         },
         "hook": "Someone you love gets this email today.",
-        "stampSay": "Real prizes are free.",
+        "stampSay": "There is no prize. Only a trap.",
         "flags": [
           {
-            "label": "Pay to get prize",
-            "say": "A real prize is free, so a fee to collect it means scam.",
+            "label": "Pay to win",
+            "say": "Real prizes are free, so any fee to get one means a scam.",
             "target": {
               "kind": "text",
-              "match": "processing fee of $49"
+              "match": "processing fee of $49.99"
             },
             "evidence": {
               "quote": "If you have to pay to get your prize, it’s a scam. Real prizes are free.",
@@ -2061,10 +2058,10 @@
           },
           {
             "label": "Asks for bank info",
-            "say": "There is no reason to hand over your bank account number to claim a prize.",
+            "say": "There is no reason to ever share your bank account number to claim a prize.",
             "target": {
               "kind": "text",
-              "match": "bank account details"
+              "match": "bank account number"
             },
             "evidence": {
               "quote": "There’s absolutely no reason to ever give your bank account or credit card number, or personal information like your Social Security number, to claim any prize.",
@@ -2076,24 +2073,24 @@
             "say": "Scammers push you to hurry so you have no time to think.",
             "target": {
               "kind": "text",
-              "match": "Act now"
+              "match": "Act now. Your claim expires in 24 hours."
             },
             "evidence": {
-              "quote": "They don’t want you to have time to think about what’s really happening.",
+              "quote": "Scammers pressure you to act now to get a prize, or to hurry up and pay or give them information. They tell you it’s a limited time offer and you have to “act now” to claim your prize. They don’t want you to have time to think about what’s really happening.",
               "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
             }
           }
         ],
         "safeMove": {
           "label": "Delete, don't click",
-          "say": "Delete the email without clicking any link, and do not reply.",
+          "say": "Delete the email without clicking any links, and do not reply.",
           "evidence": {
             "quote": "Delete any messages without clicking links, and don’t respond.",
             "url": "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams"
           }
         },
-        "title": "You Won a Prize Email: Why the Fee Gives the Scam Away",
-        "description": "A prize email says you won a tablet, but you must pay a fee and share your bank details first. Real prizes are free, so any fee means it is a scam. Here are three signs to spot and the one safe move to make.",
+        "title": "Fake prize email asks for a fee to ship your winnings",
+        "description": "An email says you won a tablet, but you must pay a fee and share your bank details first. Real prizes are free. Learn three red flags and the one safe move.",
         "category": "prize"
       },
       "sources": [
@@ -2103,13 +2100,1594 @@
           "capture": "page"
         }
       ],
-      "slug": "020-fake-prize-email-with-a-fee",
-      "status": "rendered",
+      "slug": "020-fake-prize-claim-email",
+      "status": "published",
       "category": "prize",
-      "costUsd": 0.2347,
-      "renderAttempts": 2,
+      "costUsd": 0.4242,
+      "renderAttempts": 1,
       "music": "A tritone 81 BPM, 19.9 dB under the voice",
-      "loopSimilarity": 0.99471,
+      "loopSimilarity": 0.995284,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "DZkLG6ZJdjQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 21,
+      "leadId": "319cd8df2198",
+      "date": "2026-11-01",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake bank alert demanding crypto",
+        "message": {
+          "sender": "Secure Bank Alerts",
+          "subject": "",
+          "body": "Account Security Alert: We found suspicious activity on your account. Your funds are at risk. To protect your money, move your balance to a secure crypto wallet now. Tap: protect-funds.example or call (202) 555-0147.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes scammers posing as your bank who text that there is fraud on your account and tell you to buy crypto and send it to them.",
+          "evidence": [
+            {
+              "quote": "They might say there’s fraud on your account, or your money is at risk — and to fix it, you need to buy crypto and send it to them.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            },
+            {
+              "quote": "They’ll text, call, email, or send messages on social media — or maybe put a pop-up alert on your computer.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          ]
+        },
+        "hook": "Money at risk, they say. Would you tap this?",
+        "stampSay": "No real bank sent this.",
+        "flags": [
+          {
+            "label": "Fake bank alert",
+            "say": "Scammers pretend to be someone you trust so you will send them money.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "In a business, government, or job impersonator scam, the scammer pretends to be someone you trust to convince you to send them money by buying and sending cryptocurrency.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          },
+          {
+            "label": "Crypto to fix it",
+            "say": "Real businesses never demand crypto to protect your money; that's always a scam.",
+            "target": {
+              "kind": "text",
+              "match": "move your balance to a secure crypto wallet"
+            },
+            "evidence": {
+              "quote": "No legitimate business is going to demand you send cryptocurrency in advance – not to buy something, and not to protect your money. That’s always a scam.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          },
+          {
+            "label": "Link to a scammer",
+            "say": "Tap the link in a message like this, and you reach a scammer.",
+            "target": {
+              "kind": "text",
+              "match": "protect-funds.example"
+            },
+            "evidence": {
+              "quote": "If you click the link in any message, answer the call, or call back the number on the pop-up, you’ll be connected to a scammer.",
+              "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Don't send crypto",
+          "say": "Don't pay anyone who contacts you out of the blue and demands crypto.",
+          "evidence": {
+            "quote": "Don’t pay anyone who contacts you unexpectedly, demanding payment with cryptocurrency.",
+            "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams"
+          }
+        },
+        "title": "Fake bank text wants you to move your money into crypto",
+        "description": "A text claims your account has fraud and your money is at risk. It tells you to move your funds into crypto to keep them safe. Here are three signs it is a scam and what to do instead.",
+        "category": "bank"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "021-fake-bank-alert-demanding-crypto",
+      "status": "published",
+      "category": "bank",
+      "costUsd": 1.0693,
+      "renderAttempts": 1,
+      "music": "G# fifth 82 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.994677,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "jAlfW07qbO0",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 22,
+      "leadId": "f00e53130824",
+      "date": "2026-11-01",
+      "skin": "dm",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake job offer in your DMs",
+        "message": {
+          "sender": "Remote Hiring Team",
+          "subject": "",
+          "body": "Hi! We saw your profile and you're a perfect fit for our remote data entry role. $35/hr, start this week. Only 2 spots left so reply today. To lock your spot, send a $45 onboarding fee by payment app. Then we'll send your start kit.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from FTC Consumer Alerts 'What are the signs of a scam?' which describes a fake job offer that asks for a fee before hiring, pressure to hurry, and payment by payment app.",
+          "evidence": [
+            {
+              "quote": "A scammer might offer you a (fake) job, but say you need to pay a fee before you get hired.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            },
+            {
+              "quote": "Don’t pay anyone who contacts you out of the blue and insists you can only pay with cash, a gift card, a wire transfer, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          ]
+        },
+        "hook": "A dream job in your DMs. Would you tap this?",
+        "stampSay": "That fee is the giveaway.",
+        "flags": [
+          {
+            "label": "Out of the blue",
+            "say": "You never applied, yet this offer just showed up in your messages.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Scammers contact you unexpectedly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          },
+          {
+            "label": "Rush to reply",
+            "say": "Pushing you to answer today leaves no time to check their story.",
+            "target": {
+              "kind": "text",
+              "match": "Only 2 spots left so reply today"
+            },
+            "evidence": {
+              "quote": "Scammers tell you to hurry. They don’t want you to have time to think or to check out their story.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          },
+          {
+            "label": "Pay to get hired",
+            "say": "A job offer that asks you to pay a fee first is a scammer's move.",
+            "target": {
+              "kind": "text",
+              "match": "send a $45 onboarding fee by payment app"
+            },
+            "evidence": {
+              "quote": "A scammer might offer you a (fake) job, but say you need to pay a fee before you get hired.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Look them up yourself",
+          "say": "Find the company's real contact info on your own and ask if this offer exists.",
+          "evidence": {
+            "quote": "If you’re not sure if a call or message is real, reach out to the business, organization, or person — even if they’re claiming to be a friend or relative — using contact information you looked up yourself and know to be true.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam"
+          }
+        },
+        "title": "The job offer in your DMs that asks you to pay a fee",
+        "description": "A surprise job offer lands in your messages and wants a fee before you start. We show the three signs it's a scam. Then one safe step to check any offer like it.",
+        "category": "job"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/what-are-signs-scam",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "022-fake-job-offer-in-your-dms",
+      "status": "published",
+      "category": "job",
+      "costUsd": 0.1941,
+      "renderAttempts": 1,
+      "music": "C minor tenth 75 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.992716,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "6tpYKNO-U6Y",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 23,
+      "leadId": "b2b17c2ce20e",
+      "date": "2026-11-01",
+      "skin": "email",
+      "slot": 3,
+      "brands": [
+        "gmail"
+      ],
+      "cta": "soft",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Overdue invoice phishing email",
+        "message": {
+          "sender": "Account Services <billing@account-check.example>",
+          "subject": "Overdue invoice: confirm your account",
+          "body": "Your account has an overdue invoice. To fix this problem, please confirm your account number. Confirm now: https://account-check.example/confirm",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of phishing emails that pretend to be a company or bank you know, mention an overdue invoice, and ask you to confirm an account number by clicking a link.",
+          "evidence": [
+            {
+              "quote": "Scammers send phishing emails pretending to be companies you might know and trust — like a bank or utility company.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            },
+            {
+              "quote": "They might say there’s an overdue invoice, or that you need to confirm your credit card or bank account number to fix a problem.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          ]
+        },
+        "hook": "This email looks official. Look closer.",
+        "stampSay": "It's a phishing email.",
+        "flags": [
+          {
+            "label": "Email you didn't expect",
+            "say": "You never asked for this, and now it wants you to click.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Don’t click links or download attachments in unexpected messages.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          },
+          {
+            "label": "Overdue bill story",
+            "say": "Scammers often say there's an overdue invoice or a problem with your account.",
+            "target": {
+              "kind": "text",
+              "match": "overdue invoice"
+            },
+            "evidence": {
+              "quote": "They might say there’s an overdue invoice, or that you need to confirm your credit card or bank account number to fix a problem.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          },
+          {
+            "label": "Link to click",
+            "say": "The whole point of this email is to get you clicking that link.",
+            "target": {
+              "kind": "text",
+              "match": "https://account-check.example/confirm"
+            },
+            "evidence": {
+              "quote": "Their goal: get you to click links or open attachments.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Contact them directly",
+          "say": "Skip the link and contact the company or bank using a number you know is real.",
+          "evidence": {
+            "quote": "If you think the message could be legit, contact the company or bank using a phone number, email, or website you know is real.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams"
+          }
+        },
+        "title": "Overdue Invoice Email Scam: Three Signs It's Fake",
+        "description": "An email says you have an overdue invoice and must confirm your account number. It is a phishing scam built to make you click. Skip the link, check with the company directly, then report and delete the email.",
+        "category": "bank"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/04/protect-yourself-phishing-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "023-overdue-invoice-phishing-email",
+      "status": "published",
+      "category": "bank",
+      "costUsd": 0.5376,
+      "renderAttempts": 1,
+      "music": "B minor tenth 80 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.99528,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "wLbzGGKDpaQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 24,
+      "leadId": "e861b5ebc8cc",
+      "date": "2026-11-02",
+      "skin": "marketplace",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Imposter brand ad on a shopping app",
+        "message": {
+          "sender": "Official Brand Store",
+          "subject": "",
+          "body": "Sponsored\nOfficial Brand Store\nTap to see today's deals.\nofficial-brand-store.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of imposter ads that pose as well-known businesses on shopping platforms and ask you to click.",
+          "evidence": [
+            {
+              "quote": "Scammers impersonate well-known businesses or government agencies in ads in your social media feed, your search results, and on your favorite shopping platforms.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            },
+            {
+              "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "That brand store is not the brand.",
+        "flags": [
+          {
+            "label": "Fake famous brand",
+            "say": "Scammers pose as well-known businesses in ads on your favorite shopping platforms.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Scammers impersonate well-known businesses or government agencies in ads in your social media feed, your search results, and on your favorite shopping platforms.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          },
+          {
+            "label": "Wants your click",
+            "say": "They hope you think they're the real thing and click the fake ad.",
+            "target": {
+              "kind": "text",
+              "match": "Tap to see today's deals"
+            },
+            "evidence": {
+              "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          },
+          {
+            "label": "Scammers pay too",
+            "say": "Scammers now pay to place ads too, and people are losing big money.",
+            "target": {
+              "kind": "text",
+              "match": "Sponsored"
+            },
+            "evidence": {
+              "quote": "And now scammers are paying too — and people are losing big money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Pause before you tap",
+          "say": "The alert says they hope you'll click, so our own tip: pause before tapping any ad.",
+          "evidence": {
+            "quote": "They hope you’ll think they’re the real thing and click on their imposter ad.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online"
+          }
+        },
+        "title": "Fake brand ads on shopping apps",
+        "description": "Scammers pay for ads that pretend to be well-known businesses on shopping sites and social media. They want you to think the ad is real and click it. Here is what that ad is really doing.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/11/tell-ftc-about-imposter-ads-online",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "024-imposter-brand-ad-on-a-shopping-app",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.7162,
+      "renderAttempts": 1,
+      "music": "D tritone 66 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995175,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "3YR-Dn9GJpo",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 25,
+      "leadId": "42f0be0444a9",
+      "date": "2026-11-02",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake government agency text",
+        "message": {
+          "sender": "+1 (202) 555-0142",
+          "subject": "",
+          "body": "Federal Consumer Office: This is Agent Mercer. Our records show you are being charged with serious crimes tied to your accounts. To avoid further action, you must transfer funds to a secured account today. The Director is on the line to help you resolve this. Reply YES or call (202) 555-0142 now.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post, which describes scammers posing as a government agency who claim you are charged with serious crimes, say a top official is on the line to help, and tell you to transfer money.",
+          "evidence": [
+            {
+              "quote": "scammers are impersonating government agencies, including the FTC, to try to steal people’s personal information and money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            },
+            {
+              "quote": "We take it seriously when scammers claim that the Chairman of the FTC is on the line to help you get out of a bind or that you’re being charged with serious crimes.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            },
+            {
+              "quote": "The FTC will never demand money, make threats, tell you to transfer money, or promise you a prize.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          ]
+        },
+        "hook": "A government agent texts you. Would you tap this?",
+        "stampSay": "Scammers pose as agencies like this.",
+        "flags": [
+          {
+            "label": "Fake agency claim",
+            "say": "Scammers pose as government agencies to steal your information and your money.",
+            "target": {
+              "kind": "text",
+              "match": "Federal Consumer Office: This is Agent Mercer"
+            },
+            "evidence": {
+              "quote": "scammers are impersonating government agencies, including the FTC, to try to steal people’s personal information and money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          },
+          {
+            "label": "Scary crime charges",
+            "say": "Claiming you're charged with serious crimes is a known scammer line.",
+            "target": {
+              "kind": "text",
+              "match": "charged with serious crimes"
+            },
+            "evidence": {
+              "quote": "We take it seriously when scammers claim that the Chairman of the FTC is on the line to help you get out of a bind or that you’re being charged with serious crimes.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          },
+          {
+            "label": "Move your money",
+            "say": "Too many people are still losing money to fake government agents like this.",
+            "target": {
+              "kind": "text",
+              "match": "transfer funds to a secured account"
+            },
+            "evidence": {
+              "quote": "too many people are still losing money to government imposters.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Stop and look it up",
+          "say": "Slow down, check the agency yourself, and stop before you pay anyone.",
+          "evidence": {
+            "quote": "Help the people you care about know how to slow down, check it out, and stop before they pay a scammer.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams"
+          }
+        },
+        "title": "Fake government agent text says you're charged with a crime",
+        "description": "A text claims to be from a government agency and says you face serious charges. It tells you to move your money to stay safe. Here are three signs it's a scam and what to do instead.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/03/getting-word-out-about-ftc-imposter-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "025-fake-government-agency-text",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.9317,
+      "renderAttempts": 1,
+      "music": "A minor tenth 75 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994547,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "zTvx4kEMArw",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 26,
+      "leadId": "a9c5b73e3866",
+      "date": "2026-11-02",
+      "skin": "android",
+      "slot": 3,
+      "brands": [
+        "gmail"
+      ],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Phishing text asking for your details",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Account Services: We need to verify your identity. Please confirm your name, date of birth and card number here: http://secure-verify.example/confirm",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of phishing texts that look legit and ask for personal or financial information. The sender number and link are generic fictional placeholders, not details the source describes.",
+          "evidence": [
+            {
+              "quote": "Scammers send phishing texts and emails that look legit to trick you into giving them personal or financial information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            },
+            {
+              "quote": "Unwanted messages often lead to scams.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          ]
+        },
+        "hook": "A text wants your details. Would you tap this?",
+        "stampSay": "This text is fishing for your information.",
+        "flags": [
+          {
+            "label": "Unknown sender",
+            "say": "It came from a number you don't know, and your phone may be able to block those.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Check if your mobile phone has options to filter and block texts from unknown senders.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          },
+          {
+            "label": "Asks for your details",
+            "say": "Scam texts look real, but they want your personal or money information.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your name, date of birth and card number"
+            },
+            "evidence": {
+              "quote": "Scammers send phishing texts and emails that look legit to trick you into giving them personal or financial information.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          },
+          {
+            "label": "A link to tap",
+            "say": "You didn't ask for this message, and unwanted messages often lead to scams.",
+            "target": {
+              "kind": "text",
+              "match": "http://secure-verify.example/confirm"
+            },
+            "evidence": {
+              "quote": "Unwanted messages often lead to scams.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Report it as junk",
+          "say": "Use your phone's report junk option, or forward the text to 7726.",
+          "evidence": {
+            "quote": "Use your phone’s “report junk” option or forward unwanted texts to 7726 (SPAM) and unwanted emails to your email provider.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail"
+          }
+        },
+        "title": "Unknown Number Texts Asking for Your Details: Spot the Scam",
+        "description": "A text from an unknown number asks you to confirm your name and card number at a link. We circle three things to look at before you tap. Then we share the one safe move to make instead.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/01/dealing-spam-texts-emails-junk-mail",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "026-phishing-text-asking-for-your-details",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.8815,
+      "renderAttempts": 1,
+      "music": "C# tritone 82 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995035,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "CZRokYOB3hQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 27,
+      "leadId": "801e2bb9a6f4",
+      "date": "2026-11-03",
+      "skin": "imessage",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Crypto cash courier scam",
+        "message": {
+          "sender": "+1 (202) 555-0147",
+          "subject": "",
+          "body": "Hi! The exchange flagged your account again, so the bank will not approve your transfer. No worries, this happens. To keep investing, our courier can pick up the cash at your home tomorrow at 2pm. He will show you a $1 bill with serial number L48219073C so you know he is with us. As soon as he leaves, the deposit will show in your wallet. You are doing great! Check your returns at grow-coin.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FBI IC3 alert, which describes the flagged account excuse, a courier collecting cash at the victim's home, a dollar bill serial number used as a code, and a wallet deposit appearing after the pickup.",
+          "evidence": [
+            {
+              "quote": "the fraudulent cryptocurrency exchange may inform victims their account has been \"flagged,\" allowing the scammer to suggest the use of cash couriers as an alternative.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "the scammer arranges to send couriers to retrieve the cash at victims' homes or public locations. Scammers provide victims with a U.S. dollar bill serial number or another form of code/password.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "Once the cash pickup occurs and the courier departs, victims can see an increase in deposits in their virtual wallet displayed on their account with the scammer's investment platform.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            },
+            {
+              "quote": "Legitimate financial institutions may deny suspicious funds transfers by victims, so scammers inform victims in-person cash pickups are required to continue investing with the fraudulent investment firm",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          ]
+        },
+        "hook": "It sounds like a helpful advisor. Look closer.",
+        "stampSay": "This is a cash courier investment scam.",
+        "flags": [
+          {
+            "label": "Cash pickup at home",
+            "say": "Scammers send couriers to collect cash at victims' homes or public places.",
+            "target": {
+              "kind": "text",
+              "match": "pick up the cash at your home"
+            },
+            "evidence": {
+              "quote": "the scammer arranges to send couriers to retrieve the cash at victims' homes or public locations.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          },
+          {
+            "label": "Dollar bill password",
+            "say": "Scammers give you a dollar bill serial number or a password to vouch for their courier.",
+            "target": {
+              "kind": "text",
+              "match": "serial number L48219073C"
+            },
+            "evidence": {
+              "quote": "Scammers provide victims with a U.S. dollar bill serial number or another form of code/password.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          },
+          {
+            "label": "Account flagged excuse",
+            "say": "A fake exchange may say your account is flagged, then suggest cash couriers instead.",
+            "target": {
+              "kind": "text",
+              "match": "flagged your account"
+            },
+            "evidence": {
+              "quote": "the fraudulent cryptocurrency exchange may inform victims their account has been \"flagged,\" allowing the scammer to suggest the use of cash couriers as an alternative.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Never hand over cash",
+          "say": "Don't share your home address or meet strangers to hand over cash for an investment.",
+          "evidence": {
+            "quote": "Don't disclose your home address or agree to meet with unknown individuals to deliver cash or other valuables as part of investment activities.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA260615"
+          }
+        },
+        "title": "Crypto investment scam sends a courier to pick up your cash",
+        "description": "A friendly online contact says your investment account is flagged. Then a courier offers to pick up cash at your door. Here is how to spot it.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA260615",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "027-crypto-cash-courier-scam",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.9621,
+      "renderAttempts": 1,
+      "music": "C# tritone 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994212,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "1NHoBjSEp2U",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 28,
+      "leadId": "6fa5e4520b14",
+      "date": "2026-11-03",
+      "skin": "android",
+      "slot": 2,
+      "brands": [
+        "google"
+      ],
+      "cta": "none",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake treatment center search ad",
+        "message": {
+          "sender": "Sponsored result",
+          "subject": "",
+          "body": "Sponsored\nExample Recovery Center (fictional name)\nAdmissions open 24/7. Call now to check your insurance and start today.\n(202) 555-0142\nexample-recovery-admissions.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC Consumer Alerts), which describes paid search ads that the FTC alleges impersonated treatment centers people searched for, with a phone number that the FTC alleges led to a different call center. The center name shown is fictional.",
+          "evidence": [
+            {
+              "quote": "the FTC argues that Evoke ran Google search ads that impersonated specific treatment centers people searched for online.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            },
+            {
+              "quote": "When people called the phone number shown in the ad, the FTC alleges they were diverted to Evoke’s call center",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          ]
+        },
+        "hook": "Someone you love sees this ad today.",
+        "stampSay": "That number may not be the center.",
+        "flags": [
+          {
+            "label": "Paid ad on top",
+            "say": "The top results can be ads a company paid for, based on what you searched.",
+            "target": {
+              "kind": "text",
+              "match": "Sponsored"
+            },
+            "evidence": {
+              "quote": "Know that the first two or three search results you see might be ads a company paid to place based on the search terms you used.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          },
+          {
+            "label": "Number in the ad",
+            "say": "Don't assume a number in a search result belongs to the place you searched for.",
+            "target": {
+              "kind": "text",
+              "match": "(202) 555-0142"
+            },
+            "evidence": {
+              "quote": "Don't assume a phone number that comes up in search results belongs to a legitimate business or the company you searched.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          },
+          {
+            "label": "Might not be them",
+            "say": "A paid ad may or may not be the place you were really looking for.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "These paid or “sponsored” ads may or may not be what you’re looking for.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Go to their own site",
+          "say": "Go straight to the center's own website to find the right contact information.",
+          "evidence": {
+            "quote": "Go directly to a company or organization’s website to find accurate contact information.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search"
+          }
+        },
+        "title": "Fake treatment center ad with the wrong phone number",
+        "description": "A paid search ad can look like the treatment center you searched for. The number in the ad may lead somewhere else. Go to the center's own website to find the right contact.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/seeking-treatment-addiction-some-things-know-you-search",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "028-fake-treatment-center-search-ad",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.3994,
+      "renderAttempts": 1,
+      "music": "B tritone 70 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995002,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "INAkycQ_Xws",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 29,
+      "leadId": "1aae089141fd",
+      "date": "2026-11-03",
+      "skin": "marketplace",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake rental listing message",
+        "message": {
+          "sender": "Dana R. · Listing: 2 Bed Apartment",
+          "subject": "",
+          "body": "Hi! Yes, the 2 bed is still available. Rent is $750 a month, half what similar units go for. I'm out of state for work, so I can't show the unit in person. For the deposit, I only take wire transfer or gift card.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article on fake rental listings, which describes below market rent, excuses for no in-person viewing, and demands for wire transfer or gift card payment.",
+          "evidence": [
+            {
+              "quote": "They post their fake listings on a different site and grab your attention with below market rent.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            },
+            {
+              "quote": "they make up excuses for why you can’t see it in person, which could be a sign of a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            },
+            {
+              "quote": "Another sign of a scam is a “landlord” who says you can only pay for a rental with cash, a gift card, cryptocurrency, or a wire transfer service.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          ]
+        },
+        "hook": "Would you tap this cheap apartment?",
+        "stampSay": "Fake listing. Your deposit vanishes.",
+        "flags": [
+          {
+            "label": "Too cheap",
+            "say": "Below market rent is how they grab your attention on a fake listing.",
+            "target": {
+              "kind": "text",
+              "match": "$750 a month, half what similar units go for"
+            },
+            "evidence": {
+              "quote": "They post their fake listings on a different site and grab your attention with below market rent.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          },
+          {
+            "label": "No tour allowed",
+            "say": "Made-up excuses for not seeing it in person could be a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "I can't show the unit in person"
+            },
+            "evidence": {
+              "quote": "they make up excuses for why you can’t see it in person, which could be a sign of a scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          },
+          {
+            "label": "Wire or gift card",
+            "say": "Only wire or gift card payment is a scam sign; pay, and they disappear.",
+            "target": {
+              "kind": "text",
+              "match": "only take wire transfer or gift card"
+            },
+            "evidence": {
+              "quote": "Another sign of a scam is a “landlord” who says you can only pay for a rental with cash, a gift card, cryptocurrency, or a wire transfer service. If you pay, the scammer will disappear with your money — and you’ll be left with no place to move to.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search the address first",
+          "say": "Search the address online; another listing with a different price or landlord means a likely scam.",
+          "evidence": {
+            "quote": "Search the rental address online. If you find the same property listed with a different price or landlord, it’s likely a scam.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move"
+          }
+        },
+        "title": "Fake rental listing scam: cheap rent, no tour, wire payment only",
+        "description": "A cheap apartment pops up on a listing site, but you can't see it in person. The landlord only takes a deposit by wire or gift card. Here are three red flags and the one thing to do before you pay.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/07/how-spot-fake-rental-listings-during-military-move",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "029-fake-rental-listing-message",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.6984,
+      "renderAttempts": 1,
+      "music": "A minor tenth 76 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.99463,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "I9rFVtM5PZw",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 30,
+      "leadId": "b1a91c7cd724",
+      "date": "2026-11-04",
+      "skin": "dm",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake government agent DM",
+        "message": {
+          "sender": "Federal Benefits Office",
+          "subject": "",
+          "body": "Hello Maria Lopez, this is Agent D. Reed, employee ID 44-2081. Your benefits number has been flagged and will be suspended today. To avoid suspension and arrest you must clear the balance now. Payment is accepted by gift card or payment app only. Reply with your full address to confirm your identity, or call (202) 555-0142.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article on government impersonation scams, which describes social media messages that use an employee ID number, threaten suspension or arrest, and demand payment by gift card or payment app.",
+          "evidence": [
+            {
+              "quote": "A government impersonation scam often starts with a call, email, text, or social media message from someone who says they’re with a government agency.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            },
+            {
+              "quote": "They say your Social Security benefits will end, or your Social Security number will be suspended, unless you pay immediately.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            },
+            {
+              "quote": "They insist the only way you can fix the problem is to pay with gift cards, a wire transfer, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          ]
+        },
+        "hook": "An agent just messaged you. Would you tap this?",
+        "stampSay": "Agencies don't DM you asking for money.",
+        "flags": [
+          {
+            "label": "Agency in your DMs",
+            "say": "Real agencies won't message you on social media asking for money or personal info.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Government agencies will never call, email, text, or message you on social media to ask for money or personal information.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          },
+          {
+            "label": "Fake employee ID",
+            "say": "Scammers add an employee ID number just to sound official.",
+            "target": {
+              "kind": "text",
+              "match": "employee ID 44-2081"
+            },
+            "evidence": {
+              "quote": "They might give you their “employee ID number” to sound official.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          },
+          {
+            "label": "Gift cards only",
+            "say": "No government agency will demand you pay with gift cards or a payment app.",
+            "target": {
+              "kind": "text",
+              "match": "gift card or payment app only"
+            },
+            "evidence": {
+              "quote": "No government agency will demand you wire money or pay with gift cards, cryptocurrency, or a payment app.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Call the agency yourself",
+          "say": "Ignore the message and call the agency directly at a number you know is correct.",
+          "evidence": {
+            "quote": "Hang up the phone and call the government agency directly at a number you know is correct.",
+            "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam"
+          }
+        },
+        "title": "Fake government agent DM scam: three red flags to spot",
+        "description": "A message claims a government agent needs you to pay right now. We circle three signs it's a scam and share the one safe move. Watch before you tap.",
+        "category": "impostor"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-avoid-government-impersonation-scam",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "030-fake-government-agent-dm",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.7368,
+      "renderAttempts": 1,
+      "music": "A tritone 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.992443,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "p7Y56ODpZDk",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 31,
+      "leadId": "825bf7fec597",
+      "date": "2026-11-04",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "looks-official",
+      "script": {
+        "scamName": "Fake tech support renewal text",
+        "message": {
+          "sender": "+1 (202) 555-0133",
+          "subject": "",
+          "body": "Nimbrolix Tech Support: Your yearly tech support plan has auto-renewed. $349.99 was charged to your card on file today. To dispute this charge, call (202) 555-0174 within 24 hours. Ref ID: NX-88213",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article, which describes texts claiming a charge of hundreds of dollars for a tech support subscription renewal and telling you to call a number within 24 hours to dispute it. The company name is invented and fictional.",
+          "evidence": [
+            {
+              "quote": "In another type of scheme, scammers send notices about automatic renewals for tech support subscriptions.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            },
+            {
+              "quote": "The message says you must call a phone number within 24 hours if you want to dispute the charge.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          ]
+        },
+        "hook": "It looks like a real receipt. Look closer.",
+        "stampSay": "This text wants you on the phone.",
+        "flags": [
+          {
+            "label": "Surprise renewal charge",
+            "say": "Scammers send texts claiming you paid hundreds to renew tech support.",
+            "target": {
+              "kind": "text",
+              "match": "$349.99 was charged"
+            },
+            "evidence": {
+              "quote": "You might get an email or text message that says you were charged hundreds of dollars to renew your tech support subscription.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          },
+          {
+            "label": "One day deadline",
+            "say": "They say you must call within a day to dispute the charge.",
+            "target": {
+              "kind": "text",
+              "match": "within 24 hours"
+            },
+            "evidence": {
+              "quote": "The message says you must call a phone number within 24 hours if you want to dispute the charge.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          },
+          {
+            "label": "Call this number",
+            "say": "Call that number and they will ask for remote access to your computer.",
+            "target": {
+              "kind": "text",
+              "match": "(202) 555-0174"
+            },
+            "evidence": {
+              "quote": "If you call, the scammers ask for remote access to your computer.",
+              "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check your statement",
+          "say": "Look at your card or bank account yourself for any tech support charge.",
+          "evidence": {
+            "quote": "Also check your credit card or bank account for an unauthorized transaction for a tech support subscription.",
+            "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams"
+          }
+        },
+        "title": "Fake tech support renewal text: three signs it's a scam",
+        "description": "A text says you were charged hundreds for a tech support plan and must call within 24 hours. The number leads to scammers who want remote access to your computer. Check your own statement instead of calling.",
+        "category": "tech_support"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-spot-avoid-and-report-tech-support-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "031-fake-tech-support-renewal-text",
+      "status": "published",
+      "category": "tech_support",
+      "costUsd": 1.061,
+      "renderAttempts": 1,
+      "music": "C fifth 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994644,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "LCxCdvZ-vAo",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 32,
+      "leadId": "d87af371199f",
+      "date": "2026-11-04",
+      "skin": "marketplace",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "someone-you-love",
+      "script": {
+        "scamName": "Fake rental listing reply",
+        "message": {
+          "sender": "Owner (2 Bed Apartment)",
+          "subject": "",
+          "body": "Hi! Yes, the 2 bed is still open at $750 a month. I'm out of the country for work right now, so I can't show it in person. Three other people are asking, so I need your answer today. To hold it, send the $750 deposit by wire transfer or gift card and I'll mail you the keys.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice article on rental listing scams, which describes fake owners claiming to be out of the country, rushing a quick decision, and asking for deposits by wire transfer or gift card.",
+          "evidence": [
+            {
+              "quote": "the fake owner will usually claim to be out of the country or give another excuse for not showing the property — then rush you into making a quick decision.",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            },
+            {
+              "quote": "The fake owner might tell you can only secure the property with a wire transfer through Western Union or MoneyGram, gift cards, or cryptocurrency to pay for an application fee, deposit, or first month’s rent.",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            },
+            {
+              "quote": "The fake ads might offer surprisingly low rent or amazing amenities.",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            }
+          ]
+        },
+        "hook": "Someone you love gets this rental reply today.",
+        "stampSay": "There's no apartment waiting for you.",
+        "flags": [
+          {
+            "label": "Owner is away",
+            "say": "A fake landlord often says they're abroad so they never have to show the place.",
+            "target": {
+              "kind": "text",
+              "match": "out of the country"
+            },
+            "evidence": {
+              "quote": "the fake owner will usually claim to be out of the country or give another excuse for not showing the property",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            }
+          },
+          {
+            "label": "Answer today",
+            "say": "When someone pushes you to decide quickly, walk away.",
+            "target": {
+              "kind": "text",
+              "match": "I need your answer today"
+            },
+            "evidence": {
+              "quote": "If anyone pressures you to make a decision quickly, walk away.",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            }
+          },
+          {
+            "label": "Wire or gift card",
+            "say": "Wiring money or sending gift cards is like sending cash you probably can't get back.",
+            "target": {
+              "kind": "text",
+              "match": "wire transfer or gift card"
+            },
+            "evidence": {
+              "quote": "Wiring money, sending gift cards, or paying by cryptocurrency is the same as sending cash — once you send it, you probably can’t get it back.",
+              "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check who owns it",
+          "say": "Look up who owns the property, then check that the landlord's ID matches those records.",
+          "evidence": {
+            "quote": "Search city or county tax assessment websites to learn who owns a property, then check the landlord’s ID to be sure it matches the records.",
+            "url": "https://consumer.ftc.gov/articles/rental-listing-scams"
+          }
+        },
+        "title": "Fake Rental Listing Scam: The Landlord Who Can't Show Up",
+        "description": "The owner is away, you must answer today, and the deposit is by wire or gift card. We show the three signs this rental reply is fake. Then the one safe move: check who really owns the place.",
+        "category": "marketplace"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/rental-listing-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "032-fake-rental-listing-reply",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.9239,
+      "renderAttempts": 1,
+      "music": "D tritone 67 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994337,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "HsYidbN0FNw",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 33,
+      "leadId": "75eeb874595b",
+      "date": "2026-11-05",
+      "skin": "voicemail",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Fake prize voicemail",
+        "message": {
+          "sender": "Unknown Caller (202) 555-0147",
+          "subject": "",
+          "body": "Hi, this is Prize Services. Good news, you've won a prize in our customer giveaway. To claim it, call us back today at (202) 555-0147 and confirm your personal info.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post, which describes scam calls that say \"you've won a prize\" and scams built to steal money or personal info. The call-back line is added only to fit the voicemail format; the source does not describe it.",
+          "evidence": [
+            {
+              "quote": "Scammers call to say things like “you’ve won a prize” or “you need to move your money to protect it.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            },
+            {
+              "quote": "Phone calls are another common way scammers reach people.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          ]
+        },
+        "hook": "Would you call this number back?",
+        "stampSay": "Warning signs point to a scam.",
+        "flags": [
+          {
+            "label": "Surprise prize",
+            "say": "Scammers call people and tell them they have won a prize.",
+            "target": {
+              "kind": "text",
+              "match": "won a prize"
+            },
+            "evidence": {
+              "quote": "Scammers call to say things like “you’ve won a prize” or “you need to move your money to protect it.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          },
+          {
+            "label": "Out of the blue",
+            "say": "A call you did not expect could be a scam.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "If you get an unexpected text, call, or message on social media, know that it could be a scam designed to steal your money or personal info.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          },
+          {
+            "label": "Wants your details",
+            "say": "An unexpected call can be a scam built to steal your money or personal info.",
+            "target": {
+              "kind": "text",
+              "match": "confirm your personal info"
+            },
+            "evidence": {
+              "quote": "If you get an unexpected text, call, or message on social media, know that it could be a scam designed to steal your money or personal info.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Report the call",
+          "say": "Treat it as an unwanted call and report it.",
+          "evidence": {
+            "quote": "Report unwanted calls.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you"
+          }
+        },
+        "title": "Fake prize voicemail: three warning signs",
+        "description": "A voicemail says you won a prize and asks you to call back with your personal info. We show three warning signs that it could be a scam. Then we share the one safe move to make instead.",
+        "category": "prize"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/05/how-are-scammers-trying-reach-you",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "033-fake-prize-voicemail",
+      "status": "published",
+      "category": "prize",
+      "costUsd": 0.8321,
+      "renderAttempts": 1,
+      "music": "G# tritone 68 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.994958,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "vlXdAqMaMTc",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 34,
+      "leadId": "1214ee8f4248",
+      "date": "2026-11-05",
+      "skin": "android",
+      "slot": 2,
+      "brands": [
+        "apple"
+      ],
+      "cta": "none",
+      "hookVariant": "would-you-tap",
+      "script": {
+        "scamName": "Expiring reward points text",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Rewards Alert: Your points expire today. Click now to save them: save-points.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts article, which describes texts warning that reward points expire today and a link to save them.",
+          "evidence": [
+            {
+              "quote": "If you’re signed up for a rewards program, you may have gotten texts warning that your points are expiring soon.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            },
+            {
+              "quote": "Scammers say you need to click on a link to save your points or they’ll expire today.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          ]
+        },
+        "hook": "Points expiring today. Would you tap this?",
+        "stampSay": "Check your points yourself. This is bait.",
+        "flags": [
+          {
+            "label": "Expires today",
+            "say": "Scammers say your points vanish today so you rush to click.",
+            "target": {
+              "kind": "text",
+              "match": "expire today"
+            },
+            "evidence": {
+              "quote": "Scammers say you need to click on a link to save your points or they’ll expire today.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          },
+          {
+            "label": "Link steals data",
+            "say": "Tap that link and they try to grab your card or Social Security number.",
+            "target": {
+              "kind": "text",
+              "match": "save-points.example"
+            },
+            "evidence": {
+              "quote": "But if you click, they’ll try to steal your personal information (like your Social Security or credit card number) or download harmful software on your phone.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          },
+          {
+            "label": "Fake points warning",
+            "say": "People told the FTC some of these point warnings are fakes from scammers.",
+            "target": {
+              "kind": "text",
+              "match": "Rewards Alert"
+            },
+            "evidence": {
+              "quote": "people are reporting to the FTC that some of those messages aren’t real — and come from scammers.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Find the site yourself",
+          "say": "Open the company's app or website on your own, never through the link in the text.",
+          "evidence": {
+            "quote": "Go to the company’s website or app, but find it yourself. Don’t use any links from the text.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer"
+          }
+        },
+        "title": "Reward points expiring text scam: how to spot it",
+        "description": "A text says your reward points expire today and gives a link to save them. The link is a trap that goes after your personal information. Check your points by finding the company's site or app yourself.",
+        "category": "text"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/got-text-about-expiring-reward-points-look-closer",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "034-expiring-reward-points-text",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.4655,
+      "renderAttempts": 1,
+      "music": "A# tritone 67 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995321,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "SkdIDHJEyC0",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 35,
+      "leadId": "6b281cdb039b",
+      "date": "2026-11-05",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [
+        "whatsapp"
+      ],
+      "cta": "soft",
+      "hookVariant": "dont-tap",
+      "script": {
+        "scamName": "Friend's crypto coach text",
+        "message": {
+          "sender": "+1 (202) 555-0142",
+          "subject": "",
+          "body": "Hey, it's Lena! My coach doubled my money in crypto last month. Zero risk, she handles everything. She's taking a few new students this week. Grab your spot: crypto-coach.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post on investment scams, which describes messages from a friend or love interest offering coaching in stocks, forex, or crypto, promising fast money and playing down risk.",
+          "evidence": [
+            {
+              "quote": "These messages might also come from a friend or love interest offering you “coaching” to learn how to make a fortune in stocks, forex, or cryptocurrency.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            },
+            {
+              "quote": "Scammers might reach you through social media, WhatsApp, or through online ads, promising you’ll make a lot of money quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          ]
+        },
+        "hook": "Don't tap that link. Seriously.",
+        "stampSay": "That coach is a thief.",
+        "flags": [
+          {
+            "label": "Rich fast? Bait.",
+            "say": "Scammers promise you'll get rich fast, and that promise is the whole trap.",
+            "target": {
+              "kind": "text",
+              "match": "doubled my money"
+            },
+            "evidence": {
+              "quote": "Scammers might reach you through social media, WhatsApp, or through online ads, promising you’ll make a lot of money quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          },
+          {
+            "label": "Zero risk lie",
+            "say": "Every real investment has risk, so anyone calling it risk-free is a scammer.",
+            "target": {
+              "kind": "text",
+              "match": "Zero risk"
+            },
+            "evidence": {
+              "quote": "Those are scammers who want you to think their opportunity is risk-free when it’s not.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          },
+          {
+            "label": "Friend with a coach",
+            "say": "Scam pitches can come from a friend offering coaching to get rich in crypto.",
+            "target": {
+              "kind": "text",
+              "match": "My coach"
+            },
+            "evidence": {
+              "quote": "These messages might also come from a friend or love interest offering you “coaching” to learn how to make a fortune in stocks, forex, or cryptocurrency.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check Investor.gov first",
+          "say": "Look the person up on Investor.gov before you send a single dollar.",
+          "evidence": {
+            "quote": "Many investment scams start with unlicensed people or unregistered firms, so use the free search tool on Investor.gov to check out anyone recommending or selling investments.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+          }
+        },
+        "title": "Your Friend's Crypto Coach Is a Thief",
+        "description": "A text from a friend says a coach doubled their money with zero risk. It's a scam built to drain your savings. Here are three red flags and the one move that keeps your cash.",
+        "category": "text",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "035-friends-crypto-coach-text",
+      "status": "rendered",
+      "category": "text",
+      "costUsd": 1.1646,
+      "renderAttempts": 1,
+      "music": "A# fifth 74 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995414,
       "voice": "AI voice (Kokoro open model)"
     }
   ],
@@ -2283,6 +3861,71 @@
       "leadId": "6d75f6e53006",
       "date": "2026-10-31",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-01",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "0383d4e2ab4f",
+      "date": "2026-11-01",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-02",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "9286e6c1ce7b",
+      "date": "2026-11-02",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-03",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "8416f19c401a",
+      "date": "2026-11-03",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-04",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "99b532e6ded0",
+      "date": "2026-11-04",
+      "reason": "problems: Safe move 'Don't tap the link' is inferred rather than stated. The source explains that phishing links can lead to bogus sites and malware, but it never explicitly tells readers not to click. The only protective step it names is using strong, unique passwords. This is a reasonable inference and unlikely to mislead, but it is not direct source advice."
+    },
+    {
+      "leadId": "aaa516fad4b1",
+      "date": "2026-11-04",
+      "reason": "same type as an earlier video today (impostor)"
+    },
+    {
+      "leadId": "803d2c9a715c",
+      "date": "2026-11-04",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "3c42d8b5b4ee",
+      "date": "2026-11-05",
+      "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "real:94741076cc3a",
+      "date": "2026-11-05",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "real:d7f1970106e2",
+      "date": "2026-11-05",
+      "reason": "reviews disagree or unsure (unsure / not_scam)"
     }
   ],
   "firstUploadCheck": {

@@ -41,7 +41,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-05T22:20:27.900Z",
-          "runId": "42120511153"
+          "runId": "42120511153",
+          "endedAt": "2026-11-05T22:26:13.417Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: New trends in reports of imposter scams: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: Notice in the mail about your property? Here’s what to know: reviews disagree or unsure (unsure / not_scam)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (202 pages not yet on the channel)",
+            "Did not pass the checks: With people losing big to investment scams, learn how to spo: problems: Flag 3 spoken line says scammers 'pose as a friend,' but the source only says these messages 'might also come from a friend or love interest.' It does not say the sender is an impostor. A safer line would be 'Scam pitches can come from a friend offering coaching to get rich in stocks or crypto.' (rewrite 1 of 2)",
+            "Passed the checks: With people losing big to investment scams, learn how to spo: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
