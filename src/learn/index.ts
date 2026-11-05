@@ -22,7 +22,7 @@ const METRICS = () => process.env.METRICS_FILE || path("data/metrics.json");
 const SCORED = () => process.env.SCORED_FILE || path("data/metrics-scored.json");
 export const RETENTION_DAYS = 30;
 const MIN_AGE_DAYS = 3;
-const MIN_VIEWS = 50;
+const MIN_VIEWS = 15; // the channel's videos get tens of views at this stage; wait for 50 and nothing is ever learned
 const GIVE_UP_DAYS = 21;
 
 async function report(u: Uploader, params: Record<string, string>) {
@@ -33,9 +33,11 @@ async function report(u: Uploader, params: Record<string, string>) {
 }
 
 /** Reward in 0..1: half how much of the video people watch, half how many stay past the hook. */
-export function reward(m: Pick<VideoMetrics, "averageViewPercentage" | "holdAt10">): number {
+export function reward(m: Pick<VideoMetrics, "averageViewPercentage" | "holdAt10"> & { viewedPct?: number | null }): number {
   const watch = Math.min(1, m.averageViewPercentage / 100);
   const hook = m.holdAt10 === null ? watch : Math.min(1, m.holdAt10 / 1.0);
+  // The share that didn't swipe away is what decides whether YouTube keeps pushing a Short: it counts most.
+  if (m.viewedPct != null) return +(0.6 * Math.min(1, m.viewedPct / 100) + 0.25 * watch + 0.15 * hook).toFixed(4);
   return +(0.5 * watch + 0.5 * hook).toFixed(4);
 }
 
@@ -101,6 +103,7 @@ export async function viewsReport(u: Uploader, hookLine: (h: string) => string, 
       date: ep.date,
       videoId: ep.youtubeId,
       firstLine: hookLine(ep.script.hook),
+      format: `${ep.script.opener ?? "classic"}${ep.script.verdict === "real" ? ", real" : ""}`,
       views: t?.views ?? 0,
       engagedViews: t?.engagedViews ?? null,
       swipedAwayPct: t?.viewedPct != null ? +(100 - t.viewedPct).toFixed(1) : null,

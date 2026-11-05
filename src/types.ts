@@ -79,6 +79,10 @@ export const Script = z.object({
   description: z.string().describe("2 to 3 short sentences. Plain words."),
   // The writer only picks a category id from config/hashtags.json. Hashtags and search tags are built in code.
   category: z.string().optional().describe("One category id from the list in the prompt. Leave empty if none fits."),
+  // Set in code, not by the writer: "real" is the twist video (a safe message most people would call a scam).
+  verdict: z.enum(["scam", "real"]).optional(),
+  // Set in code: "classic" is the old calm opening, kept in one slot for a week as the control.
+  opener: z.enum(["punch", "classic"]).optional(),
 });
 export type Script = z.infer<typeof Script>;
 

@@ -89,5 +89,11 @@
   "music": {
     "enabled": true,
     "belowVoiceDb": 20
+  },
+  "format": {
+    "_note": "classicSlot keeps the old calm opening until classicUntil as the control; realSlot is the 'this one's REAL' twist (falls back to a scam if none passes).",
+    "classicSlot": 1,
+    "classicUntil": "2026-11-12",
+    "realSlot": 2
   }
 }

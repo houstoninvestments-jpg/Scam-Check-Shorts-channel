@@ -13,6 +13,7 @@ export const C = {
   faint: "#6B7380",
   red: "#FF3B30",
   redTint: "rgba(255, 59, 48, 0.14)",
+  green: "#34C759", // only for the REAL twist's stamp and safe signs
   safe: "#FFFFFF",
   bezel: "#1B1E23",
 };

@@ -10,18 +10,27 @@ export interface Marks {
   text: { match: string; state: MarkState; n: number }[];
 }
 
-/** The red circle drawn around a red flag. It hugs each line of wrapped text. */
+/** Circle colour (r, g, b): red for a scam's red flags, green for the REAL twist's safe signs. And whether links are blacked out. */
+export const MarkStyle = React.createContext<{ color: string; maskLinks: boolean }>({ color: "255, 59, 48", maskLinks: false });
+
+/** The fake link shown blacked out, like a redacted real one: "https://pay-tolls.example/x" -> "https://████████/x". */
+export function maskLink(text: string): string {
+  return text.replace(/\b((?:https?:\/\/)?)((?:[a-z0-9-]+\.)+example)\b/gi, (_, scheme: string, host: string) => `${scheme}${"█".repeat(Math.max(6, Math.min(14, host.length - 8)))}`);
+}
+
+/** The circle drawn around a flag. It hugs each line of wrapped text. */
 export const Circle: React.FC<{ state: MarkState; progress: number; children: React.ReactNode; radius?: number }> = ({ state, progress, children, radius = 22 }) => {
+  const { color } = React.useContext(MarkStyle);
   if (state === "off") return <>{children}</>;
   const a = state === "active" ? Math.min(1, progress * 3) : 0.85;
   return (
     <span
       style={{
-        border: `6px solid rgba(255, 59, 48, ${a})`,
+        border: `6px solid rgba(${color}, ${a})`,
         borderRadius: radius,
         padding: "0 8px",
         margin: "0 -8px",
-        background: state === "active" ? C.redTint : "transparent",
+        background: state === "active" ? `rgba(${color}, 0.14)` : "transparent",
         WebkitBoxDecorationBreak: "clone",
         boxDecorationBreak: "clone",
       }}
@@ -33,6 +42,8 @@ export const Circle: React.FC<{ state: MarkState; progress: number; children: Re
 
 /** Render the message body with any circled phrases. */
 export const MarkedBody: React.FC<{ body: string; marks: Marks; progress: number; style?: React.CSSProperties }> = ({ body, marks, progress, style }) => {
+  const { maskLinks } = React.useContext(MarkStyle);
+  const show = (t: string) => (maskLinks ? maskLink(t) : t);
   const ranges = marks.text
     .map((m) => ({ ...m, at: m.match ? body.indexOf(m.match) : -1 }))
     .filter((m) => m.at >= 0)
@@ -41,15 +52,15 @@ export const MarkedBody: React.FC<{ body: string; marks: Marks; progress: number
   let i = 0;
   ranges.forEach((r, k) => {
     if (r.at < i) return; // overlapping circles: keep the first
-    if (r.at > i) parts.push(body.slice(i, r.at));
+    if (r.at > i) parts.push(show(body.slice(i, r.at)));
     parts.push(
       <Circle key={k} state={r.state} progress={progress}>
-        {r.match}
+        {show(r.match)}
       </Circle>,
     );
     i = r.at + r.match.length;
   });
-  parts.push(body.slice(i));
+  parts.push(show(body.slice(i)));
   return <div style={{ whiteSpace: "pre-wrap", ...style }}>{parts}</div>;
 };
 

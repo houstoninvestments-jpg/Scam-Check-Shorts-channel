@@ -20,7 +20,9 @@ export const saveHooks = (h: HookFile) => writeJson(FILE(), h);
  * Pick the next hook. Untested hooks go first; after that, mostly the best average
  * (upper confidence bound), so a lucky early video can't lock in one hook forever.
  */
-export function pickHook(h: HookFile, recent: string[] = []): HookVariant {
+export function pickHook(all: HookFile, recent: string[] = [], style: "punch" | "classic" | "real" = "punch"): HookVariant {
+  const pool = all.variants.filter((v) => (v.style ?? "punch") === style);
+  const h: HookFile = { ...all, variants: pool.length ? pool : all.variants };
   const untested = h.variants.filter((v) => !h.stats[v.id]?.n);
   if (untested.length) return untested.find((v) => !recent.includes(v.id)) ?? untested[0];
   const total = h.variants.reduce((n, v) => n + (h.stats[v.id]?.n ?? 0), 0);

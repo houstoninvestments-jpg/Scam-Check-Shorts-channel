@@ -21,7 +21,9 @@ export async function rerender(number: number, workDir: string, voice?: "elevenl
   const lines = spokenLines(ep.script).map((text, i) => ({ id: ids[i], text }));
   const v = await synthesize(lines, join(workDir, "audio"), { force: voice });
   const publicDir = join(workDir, "public");
-  const timeline = prepareTimeline(v, publicDir);
+  // Older episodes carry no opener: they were made with the classic opening.
+  const opener = ep.script.opener ?? "classic";
+  const timeline = prepareTimeline(v, publicDir, opener);
   const props: ShortProps = {
     number,
     skin: ep.skin,
@@ -33,6 +35,8 @@ export async function rerender(number: number, workDir: string, voice?: "elevenl
     sourceName: sourceShort(ep.sources[0]?.name ?? ""),
     testLabel: "PREVIEW",
     music: false,
+    opener,
+    verdict: ep.script.verdict ?? "scam",
   };
   const music = withMusic ? makeMusic(timeline, publicDir, config().music.belowVoiceDb, number) : null;
   props.music = !!music;

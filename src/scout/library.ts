@@ -144,3 +144,26 @@ export function libraryLeads(ledger: Ledger, date: string, dedupeSimilarity: num
   }
   return seeded(dedupe(leads, ledger.episodes, dedupeSimilarity).kept, `library-${date}`);
 }
+
+/** Official pages that say how real messages behave or how to check safely: sources for the REAL twist. */
+const SAFE_ADVICE = /\b(legitimate|real (company|bank|business)|number you know|contact the (company|bank)|official (app|website)|back of your card|you know is real|go directly to|log in(to)? (your|the) account directly)\b/i;
+
+/**
+ * Leads for the REAL twist video: library pages with safe-checking advice, not used for a REAL video
+ * in the last 60 days, in a stable per-day order. Their ids start with "real:" so they never clash
+ * with the same page used for a scam video.
+ */
+export function realLeads(ledger: Ledger, date: string): Lead[] {
+  const recent = new Set(ledger.episodes.filter((e) => e.leadId.startsWith("real:") && Date.parse(date) - Date.parse(e.date) <= 60 * 86_400_000).map((e) => e.leadId));
+  const failed = new Set(ledger.skipped.filter((s) => s.leadId.startsWith("real:") && Date.parse(date) - Date.parse(s.date) <= LIBRARY_RETRY_DAYS * 86_400_000).map((s) => s.leadId));
+  const leads: Lead[] = [];
+  for (const e of loadLibraryIndex().entries) {
+    const id = `real:${e.id}`;
+    if (recent.has(id) || failed.has(id)) continue;
+    const doc = loadLibraryDoc(e.id);
+    if (!doc || !SAFE_ADVICE.test(doc.text) || !AUTHORITATIVE_KINDS.has(doc.kind)) continue;
+    leads.push({ id, title: doc.title, channel: detectChannel(doc), docs: [doc], score: 0.3, reasons: ["real twist"] });
+  }
+  return seeded(leads, `real-${date}`);
+}
+const AUTHORITATIVE_KINDS = new Set<SourceKind>(["ftc", "ag", "gov", "aarp"]);

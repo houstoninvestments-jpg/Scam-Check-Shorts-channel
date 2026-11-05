@@ -5,11 +5,11 @@ import { config } from "../lib/config.js";
 import { loadLedger, saveLedger, upsertEpisode } from "../lib/ledger.js";
 import { log, pad3, path, readJson, slugify, today, writeJson } from "../lib/util.js";
 import type { LLM } from "../llm/client.js";
-import { libraryLeads } from "../scout/library.js";
+import { libraryLeads, realLeads } from "../scout/library.js";
 import { loadSlotRuns, saveSlotRuns, slotRunsFile, slotStart } from "./slotwatch.js";
 import { scout, scoutFromFixtures, updateSourceHealth } from "../scout/index.js";
-import { write } from "../writer/index.js";
-import { check, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
+import { write, type WriteMode } from "../writer/index.js";
+import { check, expectedVerdict, mechanicalCheck, sanitizeMessage, spokenLines } from "../checker/index.js";
 import { loadHooks, pickHook } from "../learn/hooks.js";
 import { chooseCta, chooseSkin, episodeMark, leadMark, sameDayClash, type DayMark } from "./choose.js";
 import { costSummary } from "../llm/client.js";
@@ -32,7 +32,9 @@ export interface RunOptions {
   library?: boolean; // fall back to the evergreen library when fresh leads fail (default: on for live sources, off for fixtures)
   slot?: number; // which of the day's posting slots this run is (1-3); manual runs leave it empty
   slotDate?: string; // the Pacific date the slot belongs to; with slot, a second start exits (or retries after a miss)
-  fakeMiss?: boolean; // test runs only: end the slot as a miss before anything is written, to check the retry and alert
+  fakeMiss?: boolean;
+  opener?: "punch" | "classic"; // tests and manual runs: force an opening (default: by slot, see config format)
+  real?: boolean; // tests and manual runs: try the REAL twist first (default: the config's realSlot) // test runs only: end the slot as a miss before anything is written, to check the retry and alert
 }
 
 export interface RunReport {
@@ -158,6 +160,11 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
 
       // 2-3. Write and check, lead by lead, until one passes. Unsure means skip, never escalate.
       const hooks = loadHooks();
+      // Format for this slot: the control slot keeps the old calm opening for a week; the REAL slot tries the twist.
+      const fmt = cfg.format ?? {};
+      const opener: "punch" | "classic" = opts.opener ?? (opts.slot && fmt.classicSlot === opts.slot && fmt.classicUntil && date <= fmt.classicUntil ? "classic" : "punch");
+      const wantReal = opts.real ?? (!!opts.slot && fmt.realSlot === opts.slot);
+      step("format", true, `${opener === "classic" ? "classic opening (control slot)" : "punch opening"}${wantReal && opener === "punch" ? ", REAL twist first" : ""}`);
       const recentHooks = ledger.episodes.slice(-3).map((e) => e.hookVariant).reverse();
       let chosen: { lead: Lead; script: Script; hookId: string; skin: SkinId; mark: DayMark } | undefined;
       // A lead that failed the checks (or clashed with an earlier video) today is not tried again today.
@@ -165,7 +172,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       const fresh = found.leads.filter((l) => !failedToday.has(l.id));
       if (fresh.length < found.leads.length) step("same day", true, `${found.leads.length - fresh.length} leads already failed the checks today; not retried`);
       // Write and check leads from one pool, at most `cap` written, until one passes both reviews.
-      const tryLeads = async (pool: Lead[], cap: number) => {
+      const tryLeads = async (pool: Lead[], cap: number, mode: WriteMode = { verdict: "scam", opener }) => {
         let tried = 0;
         for (const lead of pool) {
           if (tried >= cap) return;
@@ -181,8 +188,8 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
             continue;
           }
           tried++;
-          const hook = pickHook(hooks, recentHooks);
-          let script = sanitizeMessage(await write(opts.llm, lead, hook, skin));
+          const hook = pickHook(hooks, recentHooks, mode.verdict === "real" ? "real" : mode.opener);
+          let script = sanitizeMessage(await write(opts.llm, lead, hook, skin, [], undefined, mode));
           const mark: DayMark = { category: categoryFor(script, lead.title).id, brands: guess.brands };
           if (sameDayClash(mark, todayMarks)) {
             step("same day", true, `${lead.title.slice(0, 60)}: written as ${mark.category}, same as an earlier video today; not checked, waits for another day`);
@@ -193,19 +200,19 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
           let mech = mechanicalCheck(script, lead);
           if (!mech.ok) {
             // one rewrite with the exact failures, then move on
-            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems));
+            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, mech.problems, undefined, mode));
             mech = mechanicalCheck(script, lead);
           }
           let verdict = await check(opts.llm, script, lead);
           // Both reviews say it IS a scam but list fixable problems: up to two rewrites with those exact
           // problems, each followed by both reviews from scratch. Any doubt that it's a scam = skip.
           for (let round = 1; round <= 2; round++) {
-            const fixable = !verdict.pass && verdict.a?.verdict === "scam" && verdict.b?.verdict === "scam";
+            const fixable = !verdict.pass && verdict.a?.verdict === expectedVerdict(script) && verdict.b?.verdict === expectedVerdict(script);
             if (!fixable) break;
             step("check", false, `${lead.title.slice(0, 60)}: ${verdict.reason} (rewrite ${round} of 2)`);
             const problems = [...(verdict.a?.problems ?? []), ...(verdict.b?.problems ?? [])];
             if ((verdict.a?.confidence ?? 1) < 0.8 || (verdict.b?.confidence ?? 1) < 0.8) problems.push("A reviewer was not confident; make every line plainly backed by its quote.");
-            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems, script));
+            script = sanitizeMessage(await write(opts.llm, lead, hook, skin, problems, script, mode));
             verdict = await check(opts.llm, script, lead);
           }
           step("check", verdict.pass, `${lead.title.slice(0, 60)}: ${verdict.reason}`);
@@ -225,7 +232,15 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
         step("library", pool.length > 0, `${why}; trying the evergreen library (${pool.length} pages not yet on the channel)`);
         await tryLeads(pool, 4);
       };
-      if (libraryFirst && useLibrary) {
+      // The REAL twist slot tries a safe message first; if none passes both reviews, the slot posts a scam as usual.
+      if (wantReal && useLibrary && opener === "punch") {
+        const pool = realLeads(ledger, date).filter((l) => !failedToday.has(l.id));
+        step("real twist", pool.length > 0, `this slot is the REAL twist: ${pool.length} official advice pages to build a safe message from`);
+        await tryLeads(pool, 2, { verdict: "real", opener });
+      }
+      if (chosen) {
+        // done: the REAL twist passed
+      } else if (libraryFirst && useLibrary) {
         // A retry after a miss: the library first (fresh leads already failed this slot), then fresh ones.
         await tryLibrary("retry after a miss");
         if (!chosen) await tryLeads(fresh, 6);
@@ -279,7 +294,7 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
     if (voice.provider === "kokoro" && !opts.voice && elevenlabsOn() && process.env.ELEVENLABS_API_KEY) report.warnings.push("ElevenLabs failed; used the free fallback voice");
     let timeline;
     try {
-      timeline = prepareTimeline(voice, publicDir);
+      timeline = prepareTimeline(voice, publicDir, script.opener ?? "punch");
     } catch (e) {
       throw new Error(`timing: ${String(e)}`);
     }
@@ -298,7 +313,10 @@ export async function runDaily(opts: RunOptions): Promise<RunReport> {
       // Always set explicitly: an absent value would fall back to the template's sample settings.
       testLabel: opts.dryRun ? "TEST RENDER" : "",
       music: false,
+      opener: script.opener ?? "punch",
+      verdict: script.verdict ?? "scam",
     };
+    report.summary.format = `${props.opener} opening, ${props.verdict === "real" ? "REAL twist" : "scam"}`;
     if (cfg.music.enabled) {
       const m = makeMusic(timeline, publicDir, cfg.music.belowVoiceDb, number);
       props.music = true;

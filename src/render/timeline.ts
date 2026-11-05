@@ -84,10 +84,11 @@ export function captionChunks(seg: VoiceSegment, startSec: number, maxWords = 4)
  * Lay the beats end to end: hook, "Real or scam?", silent 3-2-1, stamp, three flags, safe move, closer.
  * Throws if the voice runs long, so the writer gets another try instead of shipping a cut video.
  */
-export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id: string) => string): Timeline {
+export function buildTimeline(segs: Record<string, VoiceSegment>, audioName: (id: string) => string, opener: "punch" | "classic" = "punch"): Timeline {
   const beats: Beat[] = [];
   const captions: Caption[] = [];
-  let t = 0.07; // the punch starts on the second frame: no silent still picture
+  // Punch: the voice starts on the second frame, no silent still picture. Classic (control): a beat of the clean phone first.
+  let t = opener === "classic" ? 0.35 : 0.07;
   const spoken = (id: BeatId, minSec = 0) => {
     const s = segs[id];
     const len = Math.max(s.duration, minSec);

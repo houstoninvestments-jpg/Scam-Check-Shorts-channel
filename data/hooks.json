@@ -1,29 +1,75 @@
 {
-  "_note": "Punch lines for the first frame. The learn step scores them by how many viewers stay; the picker favors winners while still testing the rest.",
+  "_note": "Openers by style: punch (frame-one hit), real (the REAL twist), classic (old calm opening, control slot). The learn step scores each by how many viewers stay; the picker favors winners while still testing the rest.",
   "variants": [
     {
       "id": "dont-tap",
-      "pattern": "Don't tap this. Seriously."
+      "pattern": "Don't tap this. Seriously.",
+      "style": "punch"
     },
     {
       "id": "not-your-bank",
-      "pattern": "Your bank didn't send this."
+      "pattern": "Your bank didn't send this.",
+      "style": "punch"
     },
     {
       "id": "robbery",
-      "pattern": "This text is a robbery."
+      "pattern": "This text is a robbery.",
+      "style": "punch"
     },
     {
       "id": "before-mom",
-      "pattern": "Delete this before your mom sees it."
+      "pattern": "Delete this before your mom sees it.",
+      "style": "punch"
     },
     {
       "id": "everyone-falls",
-      "pattern": "Everyone falls for this one."
+      "pattern": "Everyone falls for this one.",
+      "style": "punch"
     },
     {
       "id": "counting-on-you",
-      "pattern": "They're counting on you to tap."
+      "pattern": "They're counting on you to tap.",
+      "style": "punch"
+    },
+    {
+      "id": "real-or-scam",
+      "pattern": "You get a few seconds. Read it.",
+      "style": "classic"
+    },
+    {
+      "id": "would-you-tap",
+      "pattern": "Would you tap this?",
+      "style": "classic"
+    },
+    {
+      "id": "going-around",
+      "pattern": "This text is going around right now.",
+      "style": "classic"
+    },
+    {
+      "id": "someone-you-love",
+      "pattern": "Someone you love gets this today.",
+      "style": "classic"
+    },
+    {
+      "id": "looks-official",
+      "pattern": "It looks official. Look closer.",
+      "style": "classic"
+    },
+    {
+      "id": "everyone-deletes",
+      "pattern": "Everyone deletes this one. Wrong.",
+      "style": "real"
+    },
+    {
+      "id": "big-mistake",
+      "pattern": "Delete this? Big mistake.",
+      "style": "real"
+    },
+    {
+      "id": "youd-block-it",
+      "pattern": "You'd block this. Don't.",
+      "style": "real"
     }
   ],
   "stats": {

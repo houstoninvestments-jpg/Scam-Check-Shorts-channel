@@ -19,7 +19,7 @@ export function makeSfx(dir: string) {
   ff(["-f", "lavfi", "-i", "aevalsrc='0.9*sin(2*PI*(90-60*t)*t)*exp(-6*t)+0.5*(random(0)*2-1)*exp(-40*t)':s=44100:d=0.6", "-af", "lowpass=f=1800,volume=2", join(dir, "hit.wav")]);
 }
 
-export function prepareTimeline(voice: VoiceResult, publicDir: string): Timeline {
+export function prepareTimeline(voice: VoiceResult, publicDir: string, opener: "punch" | "classic" = "punch"): Timeline {
   mkdirSync(publicDir, { recursive: true });
   const segs = Object.fromEntries(voice.segments.map((s) => [s.id, s]));
   const names: Record<string, string> = {};
@@ -30,7 +30,7 @@ export function prepareTimeline(voice: VoiceResult, publicDir: string): Timeline
   }
   makeSfx(publicDir);
   copyFileSync(path("node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2"), join(publicDir, "inter.woff2"));
-  return buildTimeline(segs, (id) => names[id]);
+  return buildTimeline(segs, (id) => names[id], opener);
 }
 
 function browserExecutable(): string | undefined {

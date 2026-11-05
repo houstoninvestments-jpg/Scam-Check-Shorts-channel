@@ -37,7 +37,8 @@ export function oauthUploader(fetchImpl: typeof fetch = fetch): Uploader {
 
 export function videoTitle(ep: Episode) {
   // "No." not "#": a "#001" in the title could be read as a hashtag and push the description hashtags off the title.
-  const t = `Scam No. ${pad3(ep.number)}: ${noHash(ep.script.title)}`;
+  // The REAL twist keeps the number but can't call itself a scam.
+  const t = `${ep.script.verdict === "real" ? "Scam or Not No." : "Scam No."} ${pad3(ep.number)}: ${noHash(ep.script.title)}`;
   return t.length <= 100 ? t : t.slice(0, 99) + "…";
 }
 

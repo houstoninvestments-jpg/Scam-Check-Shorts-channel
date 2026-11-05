@@ -42,7 +42,10 @@ function seeded<T>(arr: T[], seed: string): T[] {
  * so the round matches that day's Short; the rest come from past scams and the real pool.
  */
 export function buildRound(date: string, episodes: Episode[], legit: LegitItem[], baseUrl: string): Round | null {
-  const eps = episodes.filter((e) => e.date <= date && (e.status === "published" || e.status === "rendered"));
+  const shown = episodes.filter((e) => e.date <= date && (e.status === "published" || e.status === "rendered"));
+  const eps = shown.filter((e) => e.script.verdict !== "real");
+  // REAL twist videos join the safe messages in the round.
+  legit = [...legit, ...shown.filter((e) => e.script.verdict === "real").map((e) => ({ id: e.slug, sender: e.script.message.sender, body: e.script.message.body, why: e.script.safeMove.say }) as LegitItem)];
   if (!eps.length || legit.length < 2) return null;
   const newest = eps.at(-1)!;
   const scamCount = parseInt(sha(date, 2), 16) % 2 === 0 ? 2 : 1; // varies day to day: 2 scams + 1 real, or 1 + 2

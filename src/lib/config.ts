@@ -3,6 +3,7 @@ import { path, readJson } from "./util.js";
 export interface ChannelConfig {
   channel: { name: string; tagline: string; never: string; closer: string; contactEmail: string; policyDate: string };
   cadence: { shortsPerDay: number; timezone: string; slots: { slot: number; pacific: string }[] };
+  format?: { classicSlot?: number; classicUntil?: string; realSlot?: number };
   models: { writer: string; checker: string };
   voice: {
     provider: "elevenlabs" | "kokoro";

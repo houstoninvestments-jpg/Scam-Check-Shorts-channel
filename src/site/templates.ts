@@ -84,9 +84,9 @@ footer a{color:var(--ink)}
 `;
 
 /** A phone screen showing a message, like the cover frame. The message is a quote, not our copy. */
-export function phone(o: { sender: string; body: string; stamp?: "question" | "verdict"; note?: string }) {
+export function phone(o: { sender: string; body: string; stamp?: "question" | "verdict" | "real"; note?: string }) {
   const stamp =
-    o.stamp === "question" ? `<div class="stamp" aria-label="Real or scam?">REAL OR<br>SCAM?</div>` : o.stamp === "verdict" ? `<div class="stamp verdict-stamp">SCAM</div>` : "";
+    o.stamp === "question" ? `<div class="stamp" aria-label="Real or scam?">REAL OR<br>SCAM?</div>` : o.stamp === "verdict" ? `<div class="stamp verdict-stamp">SCAM</div>` : o.stamp === "real" ? `<div class="stamp verdict-stamp" style="color:#34C759;border-color:#34C759">REAL</div>` : "";
   const initial = /^[+\d(]/.test(o.sender) ? "?" : esc(o.sender.trim().charAt(0).toUpperCase() || "?");
   return `<div class="stage">${stamp}<div class="phone"><div class="screen">
 <div class="bar"><span>9:41</span><span>▮▮▮</span></div>
@@ -169,17 +169,18 @@ ${o.scripts ?? ""}
 
 export function scamPage(e: Episode, cfg: ChannelConfig, root: string, youtubeUrl?: string) {
   const s = e.script;
+  const real = s.verdict === "real"; // the twist: a safe message
   const hashtags = episodeHashtags(e);
   const exact = s.message.body.replace(/\s+/g, " ").trim();
   const body = `
 <p class="small" style="margin:.8em 0 0">${esc(e.date)}</p>
-<h1 style="margin-top:.15em">Is this text a scam?</h1>
+<h1 style="margin-top:.15em">${real ? "Everyone calls this a scam. It's real." : "Is this text a scam?"}</h1>
 <p class="tags">${hashtags.map(esc).join(" ")}</p>
 ${s.message.subject ? `<p class="from">Subject: ${esc(s.message.subject)}</p>` : ""}
-${phone({ sender: s.message.sender, body: s.message.body, stamp: "verdict", note: s.message.provenance === "recreated" ? s.message.provenanceNote : "A real message, with links and numbers swapped out for safety." })}
-<h2>3 red flags</h2>
+${phone({ sender: s.message.sender, body: s.message.body, stamp: real ? "real" : "verdict", note: s.message.provenance === "recreated" ? s.message.provenanceNote : "A real message, with links and numbers swapped out for safety." })}
+<h2>${real ? "3 safe signs" : "3 red flags"}</h2>
 <ul class="flags">
-${s.flags.map((f, i) => `<li><span class="flag-no">RED FLAG ${i + 1}</span><b>${esc(f.label)}</b>${esc(f.say)}<br><span class="small">Source: “${esc(f.evidence.quote)}” <a href="${esc(f.evidence.url)}" rel="nofollow noopener">link</a></span></li>`).join("\n")}
+${s.flags.map((f, i) => `<li><span class="flag-no">${real ? "SAFE SIGN" : "RED FLAG"} ${i + 1}</span><b>${esc(f.label)}</b>${esc(f.say)}<br><span class="small">Source: “${esc(f.evidence.quote)}” <a href="${esc(f.evidence.url)}" rel="nofollow noopener">link</a></span></li>`).join("\n")}
 </ul>
 <h2>Safe move</h2>
 <div class="card"><b>${esc(s.safeMove.label)}</b><br>${esc(s.safeMove.say)}<br><span class="small">Source: “${esc(s.safeMove.evidence.quote)}” <a href="${esc(s.safeMove.evidence.url)}" rel="nofollow noopener">link</a></span></div>
@@ -191,7 +192,7 @@ ${youtubeUrl ? `<a class="btn alt" href="${esc(youtubeUrl)}">Watch the video</a>
 <ul>${e.sources.map((src) => `<li><a href="${esc(src.url)}" rel="nofollow noopener">${esc(src.name)}</a></li>`).join("")}</ul>
 `;
   return page({
-    top: topBar(root, `Scam No. ${pad3(e.number)}`),
+    top: topBar(root, `${real ? "Scam or Not No." : "Scam No."} ${pad3(e.number)}`),
     title: exact,
     description: `Real or scam? Scam #${pad3(e.number)}. Look closer before you tap.`,
     body,
