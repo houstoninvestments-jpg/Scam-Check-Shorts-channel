@@ -31,12 +31,12 @@ const REAL_BEATS = `This video is the twist: the message on the phone is REAL. I
 Beats:
 1. ${REAL_HOOK}
 2. The voice asks "Real or scam?" (added later; do not write it). Then a silent pause so viewers can read the message.
-3. A green REAL stamp lands. stampSay is one short spoken line, like "It's real. Here's how you can tell."
+3. A green REAL stamp lands. stampSay is one short spoken line, like "It's real. And it's safe either way."
 4. Three safe signs (they go in "flags"). Each one is circled on the message, named in 2-4 big words, and explained in one spoken sentence. Each must be backed by a quote from the sources about how real messages behave or how to check safely.
 5. One safe move: how to double-check without risk, like opening the app yourself or calling the number on your card.
 6. The closer is fixed and added later. Do not write it.
 
-The message: build a genuine-style message that follows the safe patterns the sources describe. It asks for nothing sensitive, has no link to tap and no number to call back except one the viewer already has, and puts on no pressure. It must still look like something people panic over (an alert, a code, a delivery, a charge). Use generic names, never a real company. provenance is "recreated"; provenanceNote says "A typical safe message built by the channel from <source name> guidance." message.evidence quotes the sources on how legitimate messages behave or how to check safely.
+The message: build a genuine-style message that follows the safe patterns the sources describe. It asks for nothing sensitive, has no link to tap and no number to call back except one the viewer already has, and puts on no pressure. It must still look like something people panic over (an alert, a code, a delivery, a charge). Because no one can prove a sender from a screen, the video's point is that this message is safe to deal with: even if it were fake, it asks for nothing and only points to a channel the viewer already trusts. Say that, never "this company really sent it". Use generic names, never a real company. provenance is "recreated"; provenanceNote says "A typical safe message built by the channel from <source name> guidance." message.evidence quotes the sources on how legitimate messages behave or how to check safely.
 Examples of the kind of message (adapt, don't copy):
 - "Your sign-in code is 482913. It expires in 10 minutes. Never share this code with anyone."
 - "Did you make a purchase of $42.10 today? If not, call the number on the back of your card."
