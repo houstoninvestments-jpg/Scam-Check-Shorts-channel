@@ -1,27 +1,104 @@
 {
   "date": "2026-11-05",
-  "slot": 2,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-05: already posted (or the day was full); this start exits"
+      "detail": "slot 3 for 2026-11-05: first start"
+    },
+    {
+      "step": "scout",
+      "ok": false,
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "punch opening"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (202 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "With people losing big to investment scams, learn how to spo: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 29.5s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot3/scam-035.mp4 (1080x1920, 29.55s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot3/scam-035-cover.jpg (167 KB), loop similarity 0.995475"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded eCVc3lDovKA as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake crypto coach text | sources: FTC Consumer Alerts 2026-04-16 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 29.5s",
+    "format": "punch opening, scam",
+    "music": "tension bed on: A# with a fifth, 74 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13494/8868 red px), phone screen untouched",
+    "title": "Scam No. 035: Your Friend's Crypto Tip Is a Trap",
+    "hashtags": "#ScamOrNot #TextScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/035-fake-crypto-coach-text/",
+    "upload": "eCVc3lDovKA, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.22 for 3 model calls (writer 1x $0.17, checker-b 1x $0.02, checker-a 1x $0.02)"
   },
-  "runId": "42140707587",
+  "runId": "42143221742",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-05-slot3/scam-035.mp4",
+  "episode": 35,
+  "youtubeId": "eCVc3lDovKA",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.2175,
+    "calls": 3,
+    "inputTokens": 10387,
+    "outputTokens": 3589,
+    "byRole": {
+      "writer": {
+        "calls": 1,
+        "usd": 0.1736
+      },
+      "checker-b": {
+        "calls": 1,
+        "usd": 0.0206
+      },
+      "checker-a": {
+        "calls": 1,
+        "usd": 0.0233
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

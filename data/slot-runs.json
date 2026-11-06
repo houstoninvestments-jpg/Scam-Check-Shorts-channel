@@ -583,7 +583,15 @@
       "attempts": [
         {
           "startedAt": "2026-11-06T01:21:34.450Z",
-          "runId": "42143221742"
+          "runId": "42143221742",
+          "endedAt": "2026-11-06T01:24:37.028Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (202 pages not yet on the channel)",
+            "Passed the checks: With people losing big to investment scams, learn how to spo: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

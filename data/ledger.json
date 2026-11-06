@@ -1,5 +1,5 @@
 {
-  "nextNumber": 35,
+  "nextNumber": 36,
   "episodes": [
     {
       "number": 1,
@@ -3587,6 +3587,113 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "SkdIDHJEyC0",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 35,
+      "leadId": "6b281cdb039b",
+      "date": "2026-11-05",
+      "skin": "imessage",
+      "slot": 3,
+      "brands": [
+        "whatsapp"
+      ],
+      "cta": "soft",
+      "hookVariant": "dont-tap",
+      "script": {
+        "scamName": "Fake crypto coach text",
+        "message": {
+          "sender": "Jess",
+          "subject": "",
+          "body": "Hey!! I've been making serious money in crypto with my coach. He showed me how to triple my money in 3 weeks. Zero risk, he guarantees it. He only takes a few people. Want in? Message him here: coach-profits.example",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of investment scam messages from a friend offering coaching, promising fast money, and playing down risk.",
+          "evidence": [
+            {
+              "quote": "These messages might also come from a friend or love interest offering you “coaching” to learn how to make a fortune in stocks, forex, or cryptocurrency.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            },
+            {
+              "quote": "Scammers might reach you through social media, WhatsApp, or through online ads, promising you’ll make a lot of money quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          ]
+        },
+        "hook": "Don't tap this. Seriously.",
+        "stampSay": "This hot tip empties your account.",
+        "flags": [
+          {
+            "label": "Zero risk lie",
+            "say": "Every investment has risk, so anyone who plays it down is a scammer.",
+            "target": {
+              "kind": "text",
+              "match": "Zero risk"
+            },
+            "evidence": {
+              "quote": "If anyone plays down the risk of an investment or acts like risk disclosures are just a formality you don’t need to worry about, keep your money.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          },
+          {
+            "label": "Friendly coach pitch",
+            "say": "Scammers pose as a friend or crush and offer coaching to get rich in crypto.",
+            "target": {
+              "kind": "text",
+              "match": "coach"
+            },
+            "evidence": {
+              "quote": "These messages might also come from a friend or love interest offering you “coaching” to learn how to make a fortune in stocks, forex, or cryptocurrency.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          },
+          {
+            "label": "Fast money promise",
+            "say": "Promising you'll get rich quick is exactly how these scammers reel people in.",
+            "target": {
+              "kind": "text",
+              "match": "triple my money in 3 weeks"
+            },
+            "evidence": {
+              "quote": "Scammers might reach you through social media, WhatsApp, or through online ads, promising you’ll make a lot of money quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check their license",
+          "say": "Before sending a cent, look up anyone selling investments with the free search on Investor.gov.",
+          "evidence": {
+            "quote": "Many investment scams start with unlicensed people or unregistered firms, so use the free search tool on Investor.gov to check out anyone recommending or selling investments.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them"
+          }
+        },
+        "title": "Your Friend's Crypto Tip Is a Trap",
+        "description": "A text from a friend says a coach can triple your money with zero risk. It's a scam built to drain your savings. Here are the three signs and the one move that protects you.",
+        "category": "text",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/people-losing-big-investment-scams-learn-how-spot-and-avoid-them",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "035-fake-crypto-coach-text",
+      "status": "published",
+      "category": "text",
+      "costUsd": 0.2175,
+      "renderAttempts": 1,
+      "music": "A# fifth 74 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995475,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "eCVc3lDovKA",
       "youtubePrivacy": "public"
     }
   ],
