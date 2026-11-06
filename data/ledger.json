@@ -1,5 +1,5 @@
 {
-  "nextNumber": 37,
+  "nextNumber": 38,
   "episodes": [
     {
       "number": 1,
@@ -3800,6 +3800,114 @@
       },
       "youtubeId": "fjG6PYirZ8o",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 37,
+      "leadId": "71aa780d0fb0",
+      "date": "2026-11-06",
+      "skin": "imessage",
+      "slot": 2,
+      "brands": [
+        "whatsapp",
+        "telegram"
+      ],
+      "cta": "none",
+      "hookVariant": "not-your-bank",
+      "script": {
+        "scamName": "Fake recruiter job text",
+        "message": {
+          "sender": "+1 (415) 555-0163",
+          "subject": "",
+          "body": "Hi! This is Megan from the hiring team at Zorblatt Retail Group. We are hiring for a remote position as an online assessor. Pay is $280 per day, work from home. Reply YES or INTERESTED to get started today.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts description of fake recruiter texts: a recruiter claiming to be with a known company, a remote position or online assessor job, daily pay with no job details, and a request to reply YES or INTERESTED. 'Zorblatt Retail Group' is an invented, fictional company name standing in for the real company names scammers borrow; it is not a real business.",
+          "evidence": [
+            {
+              "quote": "The (fake) recruiters claim to be with legit companies you might know and say they’re hiring for jobs you can do from home like “online assessor” or just simply a “remote position.” They’ll often mention pay (sometimes daily or weekly rates) without any details on the actual job.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+            },
+            {
+              "quote": "instead of asking you to click a link, they’ll ask you to reply with “YES” or “INTERESTED.”",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+            }
+          ]
+        },
+        "hook": "That recruiter doesn't exist.",
+        "stampSay": "Fake recruiter, real theft.",
+        "flags": [
+          {
+            "label": "Job out of nowhere",
+            "say": "You never applied, and real employers don't hire you by surprise text.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Ignore generic and unexpected texts, WhatsApp, or Telegram messages about jobs. Real employers will never contact you that way.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+            }
+          },
+          {
+            "label": "Pay, no job",
+            "say": "Big daily number, and zero clue what the job actually is.",
+            "target": {
+              "kind": "text",
+              "match": "$280 per day"
+            },
+            "evidence": {
+              "quote": "They’ll often mention pay (sometimes daily or weekly rates) without any details on the actual job.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+            }
+          },
+          {
+            "label": "Reply bait",
+            "say": "No link this time, they just want you talking so the con can start.",
+            "target": {
+              "kind": "text",
+              "match": "Reply YES or INTERESTED"
+            },
+            "evidence": {
+              "quote": "They want you to engage so they can scam you.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Don't reply. Report it.",
+          "say": "Don't answer, and report it to the FTC at ReportFraud dot ftc dot gov.",
+          "evidence": {
+            "quote": "And report scams you see to the FTC at ReportFraud.ftc.gov.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+          }
+        },
+        "title": "That Dream Job Text Is a Trap",
+        "description": "A friendly recruiter texts you a work-from-home job with great daily pay. There is no job, and the recruiter is a scammer. Here are the three signs and the one thing to do instead.",
+        "category": "job",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "037-fake-recruiter-job-text",
+      "status": "published",
+      "category": "job",
+      "costUsd": 3.3277,
+      "renderAttempts": 1,
+      "music": "D tritone 72 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995572,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "rFwvsW4605o",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -4032,6 +4140,31 @@
       "leadId": "2fe59354d8f2",
       "date": "2026-11-06",
       "reason": "mechanical: script has 84 spoken words; limit is 83 to keep the video short"
+    },
+    {
+      "leadId": "real:f4a687b0e8ee",
+      "date": "2026-11-06",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "real:f5df81d370c5",
+      "date": "2026-11-06",
+      "reason": "problems: The FTC source covers investment-training scams, not library classes. The message being safe is inferred from the source's general advice (no guaranteed returns, take your time, get a second opinion, research first), not stated by it. It fits the safe pattern: no links, nothing to buy, no pressure, and it points only to an in-person front desk. Still, nothing in the sources speaks directly to this type of message."
+    },
+    {
+      "leadId": "3641786b9866",
+      "date": "2026-11-06",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "bb355a9edff0",
+      "date": "2026-11-06",
+      "reason": "problems: Flag 3 ('Verify trap') circles the link, but the source never mentions links or 'verify now' wording. It only says phishing texts try to trick you into giving personal info. The spoken line stays within the quote, but the source does not specifically back the link as the red flag."
+    },
+    {
+      "leadId": "2e77466f1f46",
+      "date": "2026-11-06",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],
   "firstUploadCheck": {

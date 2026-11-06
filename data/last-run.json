@@ -1,6 +1,6 @@
 {
   "date": "2026-11-06",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
   "status": "published",
   "warnings": [
@@ -12,7 +12,7 @@
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-06: first start"
+      "detail": "slot 2 for 2026-11-06: first start"
     },
     {
       "step": "scout",
@@ -22,52 +22,87 @@
     {
       "step": "format",
       "ok": true,
-      "detail": "classic opening (control slot)"
+      "detail": "punch opening, REAL twist first"
+    },
+    {
+      "step": "real twist",
+      "ok": true,
+      "detail": "this slot is the REAL twist: 96 official advice pages to build a safe message from"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Internet Crime Complaint Center (IC3) | Kali365 Phishing-as-: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to spot investment training scams on social media: low confidence (0.85 / 0.72) (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to spot investment training scams on social media: problems: The FTC source gives these points (take your time, get a second opinion, research the company) as advice for the viewer. It never says a message containing these phrases is a sign of legitimacy. A scammer could copy the same wording, so the flags lean on the source a bit beyond what it states. The message still follows the safe pattern: no link, nothing to buy or hand over, no pressure, and it points only to the library front desk. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How to spot investment training scams on social media: problems: The FTC source covers investment-training scams, not library classes. The message being safe is inferred from the source's general advice (no guaranteed returns, take your time, get a second opinion, research first), not stated by it. It fits the safe pattern: no links, nothing to buy, no pressure, and it points only to an in-person front desk. Still, nothing in the sources speaks directly to this type of message."
     },
     {
       "step": "library",
       "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (201 pages not yet on the channel)"
+      "detail": "fresh leads didn't pass; trying the evergreen library (199 pages not yet on the channel)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Avoid online JOANN impersonators and their fake sales: problems: Flag 3 ('Online only sale') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag circles nothing. It should be kind \"text\" with a match such as \"Shop our online bankruptcy sale\" or \"Shop now: craft-closing-sale.example\". (rewrite 1 of 2)"
+      "detail": "Stay ahead of scammers in 2025: reviews disagree or unsure (unsure / unsure)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Avoid online JOANN impersonators and their fake sales: problems: The message is shown as an email, but the FTC source describes social media ads (Facebook, Pinterest, Nextdoor) leading to a bogus website, not emails. The provenance note and description acknowledge this, but the on-screen format could still suggest the FTC reported scam emails. (rewrite 2 of 2)"
+      "detail": "What To Do if You Were Scammed: problems: Flag 3 ('Fake verify link') uses target.kind \"link\" with an empty match. Only \"sender\" and \"attachment\" are meant to have an empty match, so this flag likely won't circle anything. It should be kind \"text\" with match \"bank-secure-verify.example\". (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Avoid online JOANN impersonators and their fake sales: mechanical: script has 84 spoken words; limit is 83 to keep the video short"
+      "detail": "What To Do if You Were Scammed: problems: Spoken stampSay 'Your bank isn't texting this' is not directly supported. The source never says banks don't send texts; it only says scammers use texts to get account numbers. The verdict is still right, because the message asks you to reply with your account number. (rewrite 2 of 2)"
     },
     {
       "step": "check",
       "ok": false,
-      "detail": "Yes, going to the DMV is the only way to avoid a REAL ID sca: problems: Flag 3 ('Surprise link') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match set to the URL (e.g., \"https://realid-skipline.example/apply\"). (rewrite 1 of 2)"
+      "detail": "What To Do if You Were Scammed: problems: Flag 3 ('Verify trap') circles the link, but the source never mentions links or 'verify now' wording. It only says phishing texts try to trick you into giving personal info. The spoken line stays within the quote, but the source does not specifically back the link as the red flag."
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Got a letter about unemployment benefits you didn’t file? Th: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "That job offer text is probably a scam: problems: The recreated message names 'Northstar Retail Group' as the company the fake recruiter claims to work for. The source says scammers use names of legit companies, so a real business with this or a similar name (e.g. 'North Star Retail Group') could be linked to the scam on screen. Confirm no real company uses this name, or switch to an obviously fictional one. (rewrite 1 of 2)"
     },
     {
       "step": "check",
       "ok": true,
-      "detail": "Yes, going to the DMV is the only way to avoid a REAL ID sca: both reviews agree: scam, no problems"
+      "detail": "That job offer text is probably a scam: both reviews agree: scam, no problems"
     },
     {
       "step": "voice",
       "ok": true,
-      "detail": "AI voice (Kokoro open model), 27.9s"
+      "detail": "AI voice (Kokoro open model), 27.6s"
     },
     {
       "step": "render",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036.mp4 (1080x1920, 27.9s)"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot2/scam-037.mp4 (1080x1920, 27.58s)"
     },
     {
       "step": "cover",
       "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036-cover.jpg (185 KB), loop similarity 0.99499"
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot2/scam-037-cover.jpg (173 KB), loop similarity 0.995572"
     },
     {
       "step": "thumbnail",
@@ -77,44 +112,44 @@
     {
       "step": "publish",
       "ok": true,
-      "detail": "uploaded fjG6PYirZ8o as public"
+      "detail": "uploaded rFwvsW4605o as public"
     }
   ],
   "summary": {
-    "scam": "Fake REAL ID skip-the-line text | sources: FTC Consumer Alerts 2025-06-23 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.9s",
-    "format": "classic opening, scam",
-    "music": "tension bed on: A with a minor tenth, 79 BPM; voice -22.2 LUFS, bed -42.2 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13496/8887 red px), phone screen untouched",
-    "title": "Scam No. 036: The REAL ID text that says you can skip the line",
-    "hashtags": "#ScamOrNot #DMVScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/036-fake-real-id-skip-the-line-text/",
-    "upload": "fjG6PYirZ8o, public, not locked",
+    "scam": "Fake recruiter job text | sources: FTC Consumer Alerts 2026-04-30 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.6s",
+    "format": "punch opening, scam",
+    "music": "tension bed on: D with a tritone, 72 BPM; voice -22.5 LUFS, bed -42.5 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13488/8860 red px), phone screen untouched",
+    "title": "Scam No. 037: That Dream Job Text Is a Trap",
+    "hashtags": "#ScamOrNot #JobScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/037-fake-recruiter-job-text/",
+    "upload": "rFwvsW4605o, public, not locked",
     "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.07 for 13 model calls (writer 5x $0.86, checker-b 4x $0.10, checker-a 4x $0.11)"
+    "cost": "$3.33 for 34 model calls (writer 12x $2.64, checker-a 11x $0.36, checker-b 11x $0.33)"
   },
-  "runId": "42242188519",
+  "runId": "42287569199",
   "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036.mp4",
-  "episode": 36,
-  "youtubeId": "fjG6PYirZ8o",
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot2/scam-037.mp4",
+  "episode": 37,
+  "youtubeId": "rFwvsW4605o",
   "cost": {
-    "usd": 1.0743,
-    "calls": 13,
-    "inputTokens": 48554,
-    "outputTokens": 18125,
+    "usd": 3.3277,
+    "calls": 34,
+    "inputTokens": 142408,
+    "outputTokens": 58676,
     "byRole": {
       "writer": {
-        "calls": 5,
-        "usd": 0.8627
-      },
-      "checker-b": {
-        "calls": 4,
-        "usd": 0.101
+        "calls": 12,
+        "usd": 2.6409
       },
       "checker-a": {
-        "calls": 4,
-        "usd": 0.1107
+        "calls": 11,
+        "usd": 0.3608
+      },
+      "checker-b": {
+        "calls": 11,
+        "usd": 0.326
       }
     },
     "models": [

@@ -621,7 +621,25 @@
       "attempts": [
         {
           "startedAt": "2026-11-06T20:21:34.721Z",
-          "runId": "42287569199"
+          "runId": "42287569199",
+          "endedAt": "2026-11-06T20:33:28.977Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Internet Crime Complaint Center (IC3) | Kali365 Phishing-as-: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: How to spot investment training scams on social media: low confidence (0.85 / 0.72) (rewrite 1 of 2)",
+            "Did not pass the checks: How to spot investment training scams on social media: problems: The FTC source gives these points (take your time, get a second opinion, research the company) as advice for the viewer. It never says a message containing these phrases is a sign of legitimacy. A scammer could copy the same wording, so the flags lean on the source a bit beyond what it states. The message still follows the safe pattern: no link, nothing to buy or hand over, no pressure, and it points only to the library front desk. (rewrite 2 of 2)",
+            "Did not pass the checks: How to spot investment training scams on social media: problems: The FTC source covers investment-training scams, not library classes. The message being safe is inferred from the source's general advice (no guaranteed returns, take your time, get a second opinion, research first), not stated by it. It fits the safe pattern: no links, nothing to buy, no pressure, and it points only to an in-person front desk. Still, nothing in the sources speaks directly to this type of message.",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (199 pages not yet on the channel)",
+            "Did not pass the checks: Stay ahead of scammers in 2025: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: What To Do if You Were Scammed: problems: Flag 3 ('Fake verify link') uses target.kind \"link\" with an empty match. Only \"sender\" and \"attachment\" are meant to have an empty match, so this flag likely won't circle anything. It should be kind \"text\" with match \"bank-secure-verify.example\". (rewrite 1 of 2)",
+            "Did not pass the checks: What To Do if You Were Scammed: problems: Spoken stampSay 'Your bank isn't texting this' is not directly supported. The source never says banks don't send texts; it only says scammers use texts to get account numbers. The verdict is still right, because the message asks you to reply with your account number. (rewrite 2 of 2)",
+            "Did not pass the checks: What To Do if You Were Scammed: problems: Flag 3 ('Verify trap') circles the link, but the source never mentions links or 'verify now' wording. It only says phishing texts try to trick you into giving personal info. The spoken line stays within the quote, but the source does not specifically back the link as the red flag.",
+            "Did not pass the checks: Got a letter about unemployment benefits you didn’t file? Th: reviews disagree or unsure (unsure / unsure)",
+            "Did not pass the checks: That job offer text is probably a scam: problems: The recreated message names 'Northstar Retail Group' as the company the fake recruiter claims to work for. The source says scammers use names of legit companies, so a real business with this or a similar name (e.g. 'North Star Retail Group') could be linked to the scam on screen. Confirm no real company uses this name, or switch to an obviously fictional one. (rewrite 1 of 2)",
+            "Passed the checks: That job offer text is probably a scam: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
