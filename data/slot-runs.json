@@ -601,7 +601,19 @@
       "attempts": [
         {
           "startedAt": "2026-11-06T15:21:46.912Z",
-          "runId": "42242188519"
+          "runId": "42242188519",
+          "endedAt": "2026-11-06T15:28:17.527Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (201 pages not yet on the channel)",
+            "Did not pass the checks: Avoid online JOANN impersonators and their fake sales: problems: Flag 3 ('Online only sale') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag circles nothing. It should be kind \"text\" with a match such as \"Shop our online bankruptcy sale\" or \"Shop now: craft-closing-sale.example\". (rewrite 1 of 2)",
+            "Did not pass the checks: Avoid online JOANN impersonators and their fake sales: problems: The message is shown as an email, but the FTC source describes social media ads (Facebook, Pinterest, Nextdoor) leading to a bogus website, not emails. The provenance note and description acknowledge this, but the on-screen format could still suggest the FTC reported scam emails. (rewrite 2 of 2)",
+            "Did not pass the checks: Avoid online JOANN impersonators and their fake sales: mechanical: script has 84 spoken words; limit is 83 to keep the video short",
+            "Did not pass the checks: Yes, going to the DMV is the only way to avoid a REAL ID sca: problems: Flag 3 ('Surprise link') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match set to the URL (e.g., \"https://realid-skipline.example/apply\"). (rewrite 1 of 2)",
+            "Passed the checks: Yes, going to the DMV is the only way to avoid a REAL ID sca: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

@@ -1,27 +1,125 @@
 {
   "date": "2026-11-06",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ny-ag failed: no articles found",
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-05: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-11-06: first start"
+    },
+    {
+      "step": "scout",
+      "ok": false,
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "classic opening (control slot)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (201 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Avoid online JOANN impersonators and their fake sales: problems: Flag 3 ('Online only sale') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag circles nothing. It should be kind \"text\" with a match such as \"Shop our online bankruptcy sale\" or \"Shop now: craft-closing-sale.example\". (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Avoid online JOANN impersonators and their fake sales: problems: The message is shown as an email, but the FTC source describes social media ads (Facebook, Pinterest, Nextdoor) leading to a bogus website, not emails. The provenance note and description acknowledge this, but the on-screen format could still suggest the FTC reported scam emails. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Avoid online JOANN impersonators and their fake sales: mechanical: script has 84 spoken words; limit is 83 to keep the video short"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Yes, going to the DMV is the only way to avoid a REAL ID sca: problems: Flag 3 ('Surprise link') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", so this flag may not circle anything. It should be kind \"text\" with match set to the URL (e.g., \"https://realid-skipline.example/apply\"). (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Yes, going to the DMV is the only way to avoid a REAL ID sca: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 27.9s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036.mp4 (1080x1920, 27.9s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036-cover.jpg (185 KB), loop similarity 0.99499"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded fjG6PYirZ8o as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake REAL ID skip-the-line text | sources: FTC Consumer Alerts 2025-06-23 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.9s",
+    "format": "classic opening, scam",
+    "music": "tension bed on: A with a minor tenth, 79 BPM; voice -22.2 LUFS, bed -42.2 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13658/13496/8887 red px), phone screen untouched",
+    "title": "Scam No. 036: The REAL ID text that says you can skip the line",
+    "hashtags": "#ScamOrNot #DMVScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/036-fake-real-id-skip-the-line-text/",
+    "upload": "fjG6PYirZ8o, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.07 for 13 model calls (writer 5x $0.86, checker-b 4x $0.10, checker-a 4x $0.11)"
   },
-  "runId": "42184447242",
+  "runId": "42242188519",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-06-slot1/scam-036.mp4",
+  "episode": 36,
+  "youtubeId": "fjG6PYirZ8o",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 1.0743,
+    "calls": 13,
+    "inputTokens": 48554,
+    "outputTokens": 18125,
+    "byRole": {
+      "writer": {
+        "calls": 5,
+        "usd": 0.8627
+      },
+      "checker-b": {
+        "calls": 4,
+        "usd": 0.101
+      },
+      "checker-a": {
+        "calls": 4,
+        "usd": 0.1107
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

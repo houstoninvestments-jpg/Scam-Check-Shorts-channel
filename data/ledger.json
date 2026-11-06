@@ -1,5 +1,5 @@
 {
-  "nextNumber": 36,
+  "nextNumber": 37,
   "episodes": [
     {
       "number": 1,
@@ -3695,6 +3695,111 @@
       },
       "youtubeId": "eCVc3lDovKA",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 36,
+      "leadId": "36775736874e",
+      "date": "2026-11-06",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake REAL ID skip-the-line text",
+        "message": {
+          "sender": "State DMV",
+          "subject": "",
+          "body": "State DMV alert: REAL ID appointments are in person only, but you can skip the line and expedite your REAL ID application now. Share your details and pay the processing fee here: https://realid-skipline.example/apply",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alert describing texts that claim you can skip the line, share information, and pay through a link.",
+          "evidence": [
+            {
+              "quote": "They say you can skip the line and expedite your application for a REAL ID.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+            },
+            {
+              "quote": "You just have to click a link to share your information and pay, they say.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+            }
+          ]
+        },
+        "hook": "Read it. Nobody skips the line.",
+        "stampSay": "No one can speed this up.",
+        "flags": [
+          {
+            "label": "Line skip promise",
+            "say": "They promise to jump the queue, but nobody can speed up a REAL ID for you.",
+            "target": {
+              "kind": "text",
+              "match": "skip the line"
+            },
+            "evidence": {
+              "quote": "And nobody can expedite the process for you.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+            }
+          },
+          {
+            "label": "Pay online",
+            "say": "You can't apply online or by mail, so paying online gets you nothing.",
+            "target": {
+              "kind": "text",
+              "match": "pay the processing fee"
+            },
+            "evidence": {
+              "quote": "You can’t submit an application online or in the mail.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+            }
+          },
+          {
+            "label": "Surprise link",
+            "say": "That link is a phishing trap built to take your money or your details.",
+            "target": {
+              "kind": "text",
+              "match": "https://realid-skipline.example/apply"
+            },
+            "evidence": {
+              "quote": "But this is a phishing scam to steal your money or info.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Go in person",
+          "say": "The only way to get a REAL ID is to visit your state DMV in person.",
+          "evidence": {
+            "quote": "Know that the only way to get a REAL ID is by visiting your state DMV in person.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam"
+          }
+        },
+        "title": "The REAL ID text that says you can skip the line",
+        "description": "A text claims you can skip the DMV line and get your REAL ID faster if you pay through a link. There is no fast lane. The only way to get one is to visit your state DMV in person.",
+        "category": "dmv",
+        "verdict": "scam",
+        "opener": "classic"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/06/yes-going-dmv-only-way-avoid-real-id-scam",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "036-fake-real-id-skip-the-line-text",
+      "status": "published",
+      "category": "dmv",
+      "costUsd": 1.0743,
+      "renderAttempts": 1,
+      "music": "A minor tenth 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.99499,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "fjG6PYirZ8o",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -3922,6 +4027,11 @@
       "leadId": "3c42d8b5b4ee",
       "date": "2026-11-05",
       "reason": "reviews disagree or unsure (unsure / scam)"
+    },
+    {
+      "leadId": "2fe59354d8f2",
+      "date": "2026-11-06",
+      "reason": "mechanical: script has 84 spoken words; limit is 83 to keep the video short"
     }
   ],
   "firstUploadCheck": {
