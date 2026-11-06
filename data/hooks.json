@@ -74,12 +74,24 @@
   ],
   "stats": {
     "going-around": {
-      "n": 1,
-      "sum": 0.8604
+      "n": 4,
+      "sum": 2.175
     },
     "real-or-scam": {
-      "n": 1,
-      "sum": 0.8233
+      "n": 3,
+      "sum": 1.7684
+    },
+    "would-you-tap": {
+      "n": 7,
+      "sum": 3.6266
+    },
+    "someone-you-love": {
+      "n": 3,
+      "sum": 1.3736
+    },
+    "looks-official": {
+      "n": 2,
+      "sum": 0.9464
     }
   }
 }

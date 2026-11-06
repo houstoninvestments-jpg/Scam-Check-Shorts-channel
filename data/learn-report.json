@@ -1,31 +1,55 @@
 {
-  "updatedAt": "2026-11-05T00:57:18.438Z",
+  "updatedAt": "2026-11-06T01:00:37.679Z",
   "byHook": {
-    "real-or-scam": {
-      "videos": 1,
-      "views": 76,
-      "avgWatchPct": 64.7,
-      "avgReward": 0.823
+    "would-you-tap": {
+      "videos": 7,
+      "views": 158,
+      "avgWatchPct": 546.3,
+      "avgReward": 0.518
     },
     "going-around": {
-      "videos": 1,
-      "views": 74,
-      "avgWatchPct": 72.1,
-      "avgReward": 0.86
+      "videos": 4,
+      "views": 126,
+      "avgWatchPct": 56,
+      "avgReward": 0.544
+    },
+    "someone-you-love": {
+      "videos": 3,
+      "views": 66,
+      "avgWatchPct": 43.1,
+      "avgReward": 0.458
+    },
+    "real-or-scam": {
+      "videos": 3,
+      "views": 126,
+      "avgWatchPct": 59,
+      "avgReward": 0.589
+    },
+    "looks-official": {
+      "videos": 2,
+      "views": 61,
+      "avgWatchPct": 58.5,
+      "avgReward": 0.473
     }
   },
   "byCta": {
-    "direct": {
-      "videos": 1,
-      "views": 76,
-      "avgWatchPct": 64.7,
-      "avgReward": 0.823
-    },
     "soft": {
-      "videos": 1,
-      "views": 74,
-      "avgWatchPct": 72.1,
-      "avgReward": 0.86
+      "videos": 7,
+      "views": 231,
+      "avgWatchPct": 63,
+      "avgReward": 0.551
+    },
+    "direct": {
+      "videos": 6,
+      "views": 184,
+      "avgWatchPct": 69.8,
+      "avgReward": 0.541
+    },
+    "none": {
+      "videos": 6,
+      "views": 122,
+      "avgWatchPct": 601.9,
+      "avgReward": 0.464
     }
   }
 }
