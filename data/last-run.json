@@ -2,104 +2,26 @@
   "date": "2026-11-07",
   "slot": 1,
   "dryRun": false,
-  "status": "published",
-  "warnings": [
-    "source ny-ag failed: no articles found",
-    "source ca-ag failed: no articles found"
-  ],
+  "status": "skipped",
+  "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-07: first start"
-    },
-    {
-      "step": "scout",
-      "ok": false,
-      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "format",
-      "ok": true,
-      "detail": "classic opening (control slot)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (194 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "Why can’t that new love interest meet in person?: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 26.5s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot1/scam-039.mp4 (1080x1920, 26.54s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot1/scam-039-cover.jpg (213 KB), loop similarity 0.993847"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded 6GTw3ZjZRF0 as public"
+      "detail": "slot 1 for 2026-11-07: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Online love interest emergency chat | sources: FTC Consumer Alerts 2026-02-12 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.5s",
-    "format": "classic opening, scam",
-    "music": "tension bed on: A# with a minor tenth, 66 BPM; voice -22.1 LUFS, bed -42.2 LUFS (20.1 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13658/13484/8733 red px), phone screen untouched",
-    "title": "Scam No. 039: The online romance that ends in a gift card ask",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/039-online-love-interest-emergency-chat/",
-    "upload": "6GTw3ZjZRF0, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.19 for 3 model calls (writer 1x $0.16, checker-b 1x $0.02, checker-a 1x $0.02)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "42385938289",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot1/scam-039.mp4",
-  "episode": 39,
-  "youtubeId": "6GTw3ZjZRF0",
+  "runId": "42406236197",
   "cost": {
-    "usd": 0.1935,
-    "calls": 3,
-    "inputTokens": 9926,
-    "outputTokens": 3035,
-    "byRole": {
-      "writer": {
-        "calls": 1,
-        "usd": 0.1551
-      },
-      "checker-b": {
-        "calls": 1,
-        "usd": 0.0196
-      },
-      "checker-a": {
-        "calls": 1,
-        "usd": 0.0188
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
