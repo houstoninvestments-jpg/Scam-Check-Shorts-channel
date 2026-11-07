@@ -1,5 +1,5 @@
 {
-  "nextNumber": 39,
+  "nextNumber": 40,
   "episodes": [
     {
       "number": 1,
@@ -4012,6 +4012,115 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "XFls0gVzORQ",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 39,
+      "leadId": "564156a88ef0",
+      "date": "2026-11-07",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Online love interest emergency chat",
+        "message": {
+          "sender": "Daniel",
+          "subject": "",
+          "body": "Hey babe, I know we were finally going to meet this weekend. I can't. They won't let me leave the rig and now I'm in the medical bay with a bad infection. The doctor wants $900 before he treats me. Can you buy a gift card and send me the numbers on the back? I'll pay you back the day I'm home. I love you so much.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post 'Why can’t that new love interest meet in person?', which describes the oil rig excuse, the medical emergency money ask, and the gift card payment method.",
+          "evidence": [
+            {
+              "quote": "Scammers say they can’t meet you in person. They might say they’re in the military, doing business overseas, or working on an oil rig. Or they might make plans to meet — but always need to cancel.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            },
+            {
+              "quote": "But eventually, they’ll ask for money — maybe for a medical emergency, tickets to visit you, or some other issue.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            },
+            {
+              "quote": "putting money on a gift card and giving them the numbers on the back",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            }
+          ]
+        },
+        "hook": "He loves you. Read it.",
+        "stampSay": "Love doesn't come with an invoice.",
+        "flags": [
+          {
+            "label": "Can't ever meet",
+            "say": "They always have a reason they can't meet, like being stuck on an oil rig.",
+            "target": {
+              "kind": "text",
+              "match": "They won't let me leave the rig"
+            },
+            "evidence": {
+              "quote": "Scammers say they can’t meet you in person. They might say they’re in the military, doing business overseas, or working on an oil rig.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            }
+          },
+          {
+            "label": "Sudden money ask",
+            "say": "After days of sweet talk, a medical emergency shows up and they need cash.",
+            "target": {
+              "kind": "text",
+              "match": "The doctor wants $900 before he treats me"
+            },
+            "evidence": {
+              "quote": "But eventually, they’ll ask for money — maybe for a medical emergency, tickets to visit you, or some other issue.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            }
+          },
+          {
+            "label": "Gift card payment",
+            "say": "They pick a way to pay that is hard to get back, like gift card codes.",
+            "target": {
+              "kind": "text",
+              "match": "send me the numbers on the back"
+            },
+            "evidence": {
+              "quote": "Scammers ask you to send money in a way that makes it hard for you to get it back — wiring money through a company like Western Union or MoneyGram, putting money on a gift card and giving them the numbers on the back",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Stop and tell someone",
+          "say": "Cut off contact, then talk it over with a person you trust.",
+          "evidence": {
+            "quote": "Cut off contact and talk to someone you trust. Are they concerned, too?",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person"
+          }
+        },
+        "title": "The online romance that ends in a gift card ask",
+        "description": "A new love interest can't meet in person, then has an emergency and needs money. We show the three signs of a romance scam and the one safe move to make.",
+        "category": "impostor",
+        "verdict": "scam",
+        "opener": "classic"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2026/02/why-cant-new-love-interest-meet-person",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "039-online-love-interest-emergency-chat",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.1935,
+      "renderAttempts": 1,
+      "music": "A# minor tenth 66 BPM, 20.1 dB under the voice",
+      "loopSimilarity": 0.993847,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "6GTw3ZjZRF0",
       "youtubePrivacy": "public"
     }
   ],

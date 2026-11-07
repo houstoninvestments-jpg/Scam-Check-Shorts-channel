@@ -666,7 +666,15 @@
       "attempts": [
         {
           "startedAt": "2026-11-07T15:21:39.187Z",
-          "runId": "42385938289"
+          "runId": "42385938289",
+          "endedAt": "2026-11-07T15:24:13.390Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (194 pages not yet on the channel)",
+            "Passed the checks: Why can’t that new love interest meet in person?: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
