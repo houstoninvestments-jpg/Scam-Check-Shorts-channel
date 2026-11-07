@@ -682,7 +682,18 @@
       "attempts": [
         {
           "startedAt": "2026-11-07T20:21:26.630Z",
-          "runId": "42410616943"
+          "runId": "42410616943",
+          "endedAt": "2026-11-07T20:26:23.482Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Held back: Don’t pay to get your Employer Identification Number (EIN): same type (impostor) as an earlier video today; waits for another day",
+            "Did not pass the checks: How To Recognize and Avoid Phishing Scams: reviews disagree or unsure (unsure / not_scam)",
+            "Did not pass the checks: Donate to charities (not scammers) on Giving Tuesday: reviews disagree or unsure (unsure / unsure)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (193 pages not yet on the channel)",
+            "Passed the checks: How To Avoid a Scam: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

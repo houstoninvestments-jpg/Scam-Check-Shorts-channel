@@ -1,5 +1,5 @@
 {
-  "nextNumber": 40,
+  "nextNumber": 41,
   "episodes": [
     {
       "number": 1,
@@ -4122,6 +4122,119 @@
       },
       "youtubeId": "6GTw3ZjZRF0",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 40,
+      "leadId": "58c389ff1512",
+      "date": "2026-11-07",
+      "skin": "voicemail",
+      "slot": 2,
+      "brands": [],
+      "cta": "none",
+      "hookVariant": "dont-tap",
+      "script": {
+        "scamName": "Fake tax arrest voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "This is Officer Daniel Reed with the IRS. There is a problem with your tax account. You owe back taxes and a warrant will be issued for your arrest today. Do not hang up or ignore this message. Call us back right now at (202) 555-0142. You can only pay by gift card or wire transfer. Do not wait.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from Source 1 (FTC, How To Avoid a Scam): scammers pose as the IRS, claim you owe money, threaten arrest, pressure you to act now, and demand gift cards or wire transfer.",
+          "evidence": [
+            {
+              "quote": "They might use a real name, like the FTC, Social Security Administration, IRS, or Medicare, or make up a name that sounds official.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            },
+            {
+              "quote": "They might say you’re in trouble with the government. Or you owe money.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            },
+            {
+              "quote": "They might threaten to arrest you, sue you, take away your driver’s or business license, or deport you.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            },
+            {
+              "quote": "They often insist that you can only pay by using cryptocurrency, wiring money through a company like MoneyGram or Western Union, using a payment app, or putting money on a gift card and then giving them the numbers on the back of the card.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            }
+          ]
+        },
+        "hook": "Don't call back. Seriously.",
+        "stampSay": "Nobody is coming to arrest you.",
+        "flags": [
+          {
+            "label": "Fake officer, fake number",
+            "say": "That badge name and number mean nothing, because caller ID can be faked.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "They use technology to change the phone number that appears on your caller ID. So the name and number you see might not be real.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            }
+          },
+          {
+            "label": "Arrest threat",
+            "say": "Threatening arrest is a classic scammer pressure move.",
+            "target": {
+              "kind": "text",
+              "match": "warrant will be issued for your arrest"
+            },
+            "evidence": {
+              "quote": "They might threaten to arrest you, sue you, take away your driver’s or business license, or deport you.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            }
+          },
+          {
+            "label": "Gift cards only",
+            "say": "Never pay someone who insists gift cards or wire are the only way.",
+            "target": {
+              "kind": "text",
+              "match": "gift card or wire transfer"
+            },
+            "evidence": {
+              "quote": "Never pay someone who insists that you can only pay with cryptocurrency, a wire transfer service like Western Union or MoneyGram, a payment app, or a gift card.",
+              "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Look up the real number",
+          "say": "Find the agency's number yourself and never call the one they left you.",
+          "evidence": {
+            "quote": "Or look up their phone number. Don’t call a number they gave you or the number from your caller ID.",
+            "url": "https://consumer.ftc.gov/articles/how-avoid-scam"
+          }
+        },
+        "title": "Don't Call This Voicemail Back",
+        "description": "A voicemail says you owe taxes and a warrant is out for your arrest. It's a scam. Here's how to spot it and what to do instead.",
+        "category": "tax",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-avoid-scam",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "040-fake-tax-arrest-voicemail",
+      "status": "published",
+      "category": "tax",
+      "costUsd": 1.0155,
+      "renderAttempts": 1,
+      "music": "G minor tenth 81 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994705,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "5ThN0aWbZsU",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -4378,6 +4491,16 @@
     {
       "leadId": "2e77466f1f46",
       "date": "2026-11-06",
+      "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "real:f02038c03827",
+      "date": "2026-11-07",
+      "reason": "reviews disagree or unsure (unsure / not_scam)"
+    },
+    {
+      "leadId": "real:6be528d7f91b",
+      "date": "2026-11-07",
       "reason": "reviews disagree or unsure (unsure / unsure)"
     }
   ],

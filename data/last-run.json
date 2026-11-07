@@ -1,27 +1,125 @@
 {
   "date": "2026-11-07",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ny-ag failed: no articles found",
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-07: already posted (or the day was full); this start exits"
+      "detail": "slot 2 for 2026-11-07: first start"
+    },
+    {
+      "step": "scout",
+      "ok": false,
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "punch opening, REAL twist first"
+    },
+    {
+      "step": "real twist",
+      "ok": true,
+      "detail": "this slot is the REAL twist: 94 official advice pages to build a safe message from"
+    },
+    {
+      "step": "same day",
+      "ok": true,
+      "detail": "Don’t pay to get your Employer Identification Number (EIN): same type (impostor) as an earlier video today; waits for another day"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "How To Recognize and Avoid Phishing Scams: reviews disagree or unsure (unsure / not_scam)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Donate to charities (not scammers) on Giving Tuesday: reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (193 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "How To Avoid a Scam: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 25.8s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot2/scam-040.mp4 (1080x1920, 25.84s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot2/scam-040-cover.jpg (205 KB), loop similarity 0.994705"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded 5ThN0aWbZsU as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake tax arrest voicemail | sources: FTC Consumer Advice 2023-07-01 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 25.8s",
+    "format": "punch opening, scam",
+    "music": "tension bed on: G with a minor tenth, 81 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13478/8868 red px), phone screen untouched",
+    "title": "Scam No. 040: Don't Call This Voicemail Back",
+    "hashtags": "#ScamOrNot #TaxScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/040-fake-tax-arrest-voicemail/",
+    "upload": "5ThN0aWbZsU, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$1.02 for 10 model calls (writer 4x $0.80, checker-b 3x $0.10, checker-a 3x $0.11)"
   },
-  "runId": "42406236197",
+  "runId": "42410616943",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot2/scam-040.mp4",
+  "episode": 40,
+  "youtubeId": "5ThN0aWbZsU",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 1.0155,
+    "calls": 10,
+    "inputTokens": 42173,
+    "outputTokens": 18284,
+    "byRole": {
+      "writer": {
+        "calls": 4,
+        "usd": 0.8018
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.1
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.1137
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }
