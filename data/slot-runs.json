@@ -647,7 +647,16 @@
       "attempts": [
         {
           "startedAt": "2026-11-07T01:21:45.849Z",
-          "runId": "42323571066"
+          "runId": "42323571066",
+          "endedAt": "2026-11-07T01:25:11.405Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (195 pages not yet on the channel)",
+            "Did not pass the checks: Internet Crime Complaint Center (IC3) | Malicious Cyber Acto: problems: Flag 2 ('Fake file link') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and an empty match is allowed only for sender and attachment. This flag will circle nothing, or break the render. It should be kind \"text\" with match \"invite-share.example/file/8821\" (or \"Open it here\"). (rewrite 1 of 2)",
+            "Passed the checks: Internet Crime Complaint Center (IC3) | Malicious Cyber Acto: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

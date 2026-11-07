@@ -1,5 +1,5 @@
 {
-  "nextNumber": 38,
+  "nextNumber": 39,
   "episodes": [
     {
       "number": 1,
@@ -3907,6 +3907,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "rFwvsW4605o",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 38,
+      "leadId": "997fe92a6346",
+      "date": "2026-11-06",
+      "skin": "dm",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "robbery",
+      "script": {
+        "scamName": "Fake invite DM that hijacks your account",
+        "message": {
+          "sender": "Dana (Summit Planning Team)",
+          "subject": "",
+          "body": "Hi! This is Dana from the summit planning team. Your speaker invitation is ready. Open it here: invite-share.example/file/8821 You'll need to verify your identity in our app to view the file. Just tap Allow when it asks.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FBI IC3 alert on OAuth consent phishing, which describes actors impersonating event coordinators and planners who send malicious links posing as invitations and file sharing, asking targets to verify identity through an app the actor controls.",
+          "evidence": [
+            {
+              "quote": "Previous phishing campaigns have also impersonated event coordinators and planners, who sent malicious links to targets under the guise of an invitation to an event and the need to verify the target's identity through a malicious application under the actor's control.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+            },
+            {
+              "quote": "It typically begins with a phishing email or direct message through a CMA and, when the user clicks the malicious link, they are redirected to a legitimate communication provider permission request screen.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+            }
+          ]
+        },
+        "hook": "This DM is a robbery.",
+        "stampSay": "They don't even need your password.",
+        "flags": [
+          {
+            "label": "Stranger with a story",
+            "say": "A stranger posing as an event planner slides into your DMs with an invite.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Previous phishing campaigns have also impersonated event coordinators and planners, who sent malicious links to targets under the guise of an invitation to an event",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+            }
+          },
+          {
+            "label": "Real screen, fake app",
+            "say": "That link opens a genuine permission screen; tap approve and the scammers' app gets in.",
+            "target": {
+              "kind": "text",
+              "match": "invite-share.example/file/8821"
+            },
+            "evidence": {
+              "quote": "when the user clicks the malicious link, they are redirected to a legitimate communication provider permission request screen. If the user approves the request, they unwittingly grant high-level access to a malicious application controlled by the cyber actor.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+            }
+          },
+          {
+            "label": "Permission grab",
+            "say": "Tap approve and they can read and send your emails without your password.",
+            "target": {
+              "kind": "text",
+              "match": "verify your identity in our app"
+            },
+            "evidence": {
+              "quote": "From that moment, the cyber actor can act on behalf of the user, including reading and sending emails, and accessing sensitive data without having access to the user's credentials.",
+              "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Verify the sender yourself",
+          "say": "Check the sender yourself another way, and only approve apps you already trust.",
+          "evidence": {
+            "quote": "Additionally, independently verify the identity of the sender and only grant authorization to trusted applications.",
+            "url": "https://www.ic3.gov/PSA/2026/PSA260901"
+          }
+        },
+        "title": "This DM Steals Your Email Without a Password",
+        "description": "A friendly DM with an event invite and a file link. Tap it, hit allow, and scammers can read and send your email with no password. Here's how to spot it.",
+        "category": "impostor",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://www.ic3.gov/PSA/2026/PSA260901",
+          "name": "FBI Internet Crime Complaint Center (IC3)",
+          "capture": "page"
+        }
+      ],
+      "slug": "038-fake-invite-dm-that-hijacks-your-account",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4049,
+      "renderAttempts": 1,
+      "music": "D minor tenth 79 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.992588,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "XFls0gVzORQ",
       "youtubePrivacy": "public"
     }
   ],
