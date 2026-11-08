@@ -743,7 +743,15 @@
       "attempts": [
         {
           "startedAt": "2026-11-08T20:21:50.525Z",
-          "runId": "42519655236"
+          "runId": "42519655236",
+          "endedAt": "2026-11-08T20:25:37.607Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Avoid online JOANN impersonators and their fake sales: problems: Flag 2 ('No crazy deals') says there is 'no limited-time push', but the message has a hard deadline ('close for good on June 30') and the subject says 'One last sale.' A closing sale is limited-time by nature. The line overstates the safe sign and could teach viewers that any deadline means scam, or that this message has none. It would be more accurate to say there is no pressure to pay right now or online. (rewrite 1 of 2)",
+            "Passed the checks: Avoid online JOANN impersonators and their fake sales: both reviews agree: real, no problems"
+          ]
         }
       ]
     }

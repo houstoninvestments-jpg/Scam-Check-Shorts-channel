@@ -1,27 +1,110 @@
 {
   "date": "2026-11-08",
-  "slot": 1,
+  "slot": 2,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ny-ag failed: no articles found",
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-08: already posted (or the day was full); this start exits"
+      "detail": "slot 2 for 2026-11-08: first start"
+    },
+    {
+      "step": "scout",
+      "ok": false,
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "punch opening, REAL twist first"
+    },
+    {
+      "step": "real twist",
+      "ok": true,
+      "detail": "this slot is the REAL twist: 92 official advice pages to build a safe message from"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Avoid online JOANN impersonators and their fake sales: problems: Flag 2 ('No crazy deals') says there is 'no limited-time push', but the message has a hard deadline ('close for good on June 30') and the subject says 'One last sale.' A closing sale is limited-time by nature. The line overstates the safe sign and could teach viewers that any deadline means scam, or that this message has none. It would be more accurate to say there is no pressure to pay right now or online. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Avoid online JOANN impersonators and their fake sales: both reviews agree: real, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 27.4s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot2/scam-043.mp4 (1080x1920, 27.43s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot2/scam-043-cover.jpg (229 KB), loop similarity 0.995459"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded VEKS4HOI3OY as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Store closing sale email | sources: FTC Consumer Alerts 2025-05-07 (page) | checks: both reviews agree: real, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.4s",
+    "format": "punch opening, REAL twist",
+    "music": "tension bed on: A# with a fifth, 66 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13489/8860 red px), phone screen untouched",
+    "title": "Scam or Not No. 043: Everyone Deletes This Email. It's Real.",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/043-store-closing-sale-email/",
+    "upload": "VEKS4HOI3OY, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.48 for 6 model calls (writer 2x $0.37, checker-a 2x $0.05, checker-b 2x $0.06)"
   },
-  "runId": "42516374360",
+  "runId": "42519655236",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot2/scam-043.mp4",
+  "episode": 43,
+  "youtubeId": "VEKS4HOI3OY",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.4823,
+    "calls": 6,
+    "inputTokens": 23340,
+    "outputTokens": 8262,
+    "byRole": {
+      "writer": {
+        "calls": 2,
+        "usd": 0.3729
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0537
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0558
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

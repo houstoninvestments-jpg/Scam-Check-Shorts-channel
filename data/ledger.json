@@ -1,5 +1,5 @@
 {
-  "nextNumber": 43,
+  "nextNumber": 44,
   "episodes": [
     {
       "number": 1,
@@ -4456,6 +4456,117 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "HO0xhH96RUo",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 43,
+      "leadId": "real:2fe59354d8f2",
+      "date": "2026-11-08",
+      "skin": "email",
+      "slot": 2,
+      "brands": [
+        "facebook"
+      ],
+      "cta": "none",
+      "hookVariant": "everyone-deletes",
+      "script": {
+        "scamName": "Store closing sale email",
+        "message": {
+          "sender": "Maple Street Craft Supply <news@maplecraft.example>",
+          "subject": "Our store is closing. One last sale.",
+          "body": "Hi Dana, after 22 years, our Maple Street store will close for good on June 30. Starting Friday, everything is 20 to 40 percent off. This sale is in store only. We are not selling online, and we will never email you a checkout link. No code needed. Just come in. Want to check this is really us? Type our web address, the one on your receipts, into your browser yourself. Thank you for all the years. The Maple Street team.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "A typical safe message built by the channel from FTC Consumer Alerts guidance.",
+          "evidence": [
+            {
+              "quote": "The real JOANN sales are only happening in person in their physical stores.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            },
+            {
+              "quote": "Scammers often reel you in with supposed \"limited-time\" deals and crazy-low prices to convince you to buy quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            },
+            {
+              "quote": "go to the company’s website using a URL you know is real to avoid a search result scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            }
+          ]
+        },
+        "hook": "You'd delete this one. Wrong.",
+        "stampSay": "It's real. And safe either way.",
+        "flags": [
+          {
+            "label": "In store only",
+            "say": "Like the sale in the FTC alert, this one happens in person, inside the store.",
+            "target": {
+              "kind": "text",
+              "match": "This sale is in store only."
+            },
+            "evidence": {
+              "quote": "The real JOANN sales are only happening in person in their physical stores.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            }
+          },
+          {
+            "label": "No rush to buy",
+            "say": "Nothing here pushes you to buy quickly, which is how scammers reel you in.",
+            "target": {
+              "kind": "text",
+              "match": "No code needed. Just come in."
+            },
+            "evidence": {
+              "quote": "Scammers often reel you in with supposed \"limited-time\" deals and crazy-low prices to convince you to buy quickly.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            }
+          },
+          {
+            "label": "No link to tap",
+            "say": "It tells you to type the address you already know, not tap anything.",
+            "target": {
+              "kind": "text",
+              "match": "Type our web address, the one on your receipts, into your browser yourself."
+            },
+            "evidence": {
+              "quote": "go to the company’s website using a URL you know is real to avoid a search result scam.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Ask the store yourself",
+          "say": "Walk in or call the store number you already have and ask how the sale works.",
+          "evidence": {
+            "quote": "Check with the store directly to see how they’re running their sale.",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales"
+          }
+        },
+        "title": "Everyone Deletes This Email. It's Real.",
+        "description": "A store closing sale email lands in your inbox. Most people call it a scam and hit delete. Here is why this one is safe to deal with, even if you can't prove who sent it.",
+        "category": "",
+        "verdict": "real",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2025/05/avoid-online-joann-impersonators-their-fake-sales",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "043-store-closing-sale-email",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.4823,
+      "renderAttempts": 1,
+      "music": "A# fifth 66 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995459,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "VEKS4HOI3OY",
       "youtubePrivacy": "public"
     }
   ],
