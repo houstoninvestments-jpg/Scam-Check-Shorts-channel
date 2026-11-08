@@ -2,134 +2,26 @@
   "date": "2026-11-08",
   "slot": 1,
   "dryRun": false,
-  "status": "published",
-  "warnings": [
-    "source ny-ag failed: no articles found",
-    "source ca-ag failed: no articles found"
-  ],
+  "status": "skipped",
+  "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 1 for 2026-11-08: first start"
-    },
-    {
-      "step": "scout",
-      "ok": false,
-      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "format",
-      "ok": true,
-      "detail": "classic opening (control slot)"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (191 pages not yet on the channel)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Can you spot an investment scam on social media?: problems: Flag 3 says asking for a few hundred dollars on a payment app 'is the scam itself.' The source describes this as one step in how the scam plays out and says such a request 'could be a scam.' It does not say a payment-app request is by definition a scam. The wording is slightly stronger than the source, but in this context it is unlikely to mislead. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Can you spot an investment scam on social media?: mechanical: readability: sentence has 18 words: \"In this scam, they tell you to send a few hundred dollars on a payment app to begin.\""
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Refund checks are in the mail for eligible Publishers Cleari: problems: Flag 2's spoken line says 'The agency sending real refund checks never asks for your account information.' The source says this only about the FTC. The recreated message never names the FTC, so the line turns an FTC-specific statement into a general rule. Naming the FTC would keep it accurate. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Refund checks are in the mail for eligible Publishers Cleari: problems: Flag 3 ('Claims you're owed'): the quote 'Not every PCH customer is eligible for a refund.' is accurate, but it does not show that being told you are owed a refund is a warning sign. Real refund notices also tell eligible people they are owed money. Circling 'you are owed a refund check' as a scam sign could mislead viewers into distrusting legitimate refund notices. The flag needs a sign the source actually describes as a red flag, or a rewrite that ties the point to what the source says. (rewrite 2 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "Refund checks are in the mail for eligible Publishers Cleari: problems: Flag 3 ('Real checks are mailed') circles the 'Claim now' link and implies that real refunds never come as an online claim. Source 1 only says that the checks in this one PCH case are in the mail. It does not say that legitimate refunds never use online claims, and it even points eligible people to ftc.gov/PCH. Viewers could wrongly treat every online refund-claim process as a scam. The quote supports 'checks were mailed in this case', not a general rule that a claim link is a red flag."
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How To Recognize and Avoid Phishing Scams: problems: Flag 3 ('Payment update link') uses target.kind \"link\" with an empty match. The template only supports \"text\", \"sender\" and \"attachment\", and an empty match is valid only for sender or attachment. As written, the flag may circle nothing or fail to render. Change it to kind \"text\" with a match that exists in the body, such as \"https://account-verify.example/update\" or \"Update your payment details\". (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "How To Recognize and Avoid Phishing Scams: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 27.1s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot1/scam-042.mp4 (1080x1920, 27.07s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot1/scam-042-cover.jpg (189 KB), loop similarity 0.994673"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded HO0xhH96RUo as public"
+      "detail": "slot 1 for 2026-11-08: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Account on hold text | sources: FTC Consumer Advice 2022-09-21 (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 27.1s",
-    "format": "classic opening, scam",
-    "music": "tension bed on: A with a tritone, 81 BPM; voice -22.2 LUFS, bed -42.1 LUFS (19.9 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13661/13454/8733 red px), phone screen untouched",
-    "title": "Scam No. 042: The text that says your account is on hold",
-    "hashtags": "#ScamOrNot #BankScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/042-account-on-hold-text/",
-    "upload": "HO0xhH96RUo, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$1.54 for 19 model calls (writer 7x $1.21, checker-b 6x $0.16, checker-a 6x $0.17)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "42494344162",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot1/scam-042.mp4",
-  "episode": 42,
-  "youtubeId": "HO0xhH96RUo",
+  "runId": "42516374360",
   "cost": {
-    "usd": 1.5399,
-    "calls": 19,
-    "inputTokens": 76522,
-    "outputTokens": 25337,
-    "byRole": {
-      "writer": {
-        "calls": 7,
-        "usd": 1.2118
-      },
-      "checker-b": {
-        "calls": 6,
-        "usd": 0.1585
-      },
-      "checker-a": {
-        "calls": 6,
-        "usd": 0.1696
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
