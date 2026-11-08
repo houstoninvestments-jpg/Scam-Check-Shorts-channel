@@ -1,27 +1,115 @@
 {
   "date": "2026-11-07",
-  "slot": 2,
+  "slot": 3,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ny-ag failed: no articles found",
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 2 for 2026-11-07: already posted (or the day was full); this start exits"
+      "detail": "slot 3 for 2026-11-07: first start"
+    },
+    {
+      "step": "scout",
+      "ok": false,
+      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "punch opening"
+    },
+    {
+      "step": "library",
+      "ok": true,
+      "detail": "fresh leads didn't pass; trying the evergreen library (192 pages not yet on the channel)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Getting a pet? Avoid scams: problems: Sender name 'Golden Paws Breeders' is invented and does not come from the source. It is a plausible real business name, and breeders or kennels with similar 'Golden Paws' names may exist, so the video could appear to accuse a real business. Use an obviously fictional or generic sender label instead. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Getting a pet? Avoid scams: problems: The description says the pup is 'probably not even real', but the source only says the puppy 'might not even exist'. This is a slight overstatement of the source; it does not change the verdict. (rewrite 2 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Getting a pet? Avoid scams: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 26.0s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot3/scam-041.mp4 (1080x1920, 25.98s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot3/scam-041-cover.jpg (204 KB), loop similarity 0.995299"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded NLYGw77kVoA as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake puppy sale listing | sources: FTC Consumer Alerts 2024-12-16 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 26.0s",
+    "format": "punch opening, scam",
+    "music": "tension bed on: D with a fifth, 69 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13495/8867 red px), phone screen untouched",
+    "title": "Scam No. 041: This Puppy Doesn't Exist",
+    "hashtags": "#ScamOrNot #MarketplaceScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/041-fake-puppy-sale-listing/",
+    "upload": "NLYGw77kVoA, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.59 for 9 model calls (writer 3x $0.46, checker-b 3x $0.07, checker-a 3x $0.07)"
   },
-  "runId": "42426323954",
+  "runId": "42433855659",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-07-slot3/scam-041.mp4",
+  "episode": 41,
+  "youtubeId": "NLYGw77kVoA",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.5936,
+    "calls": 9,
+    "inputTokens": 34225,
+    "outputTokens": 9104,
+    "byRole": {
+      "writer": {
+        "calls": 3,
+        "usd": 0.4576
+      },
+      "checker-b": {
+        "calls": 3,
+        "usd": 0.0674
+      },
+      "checker-a": {
+        "calls": 3,
+        "usd": 0.0685
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

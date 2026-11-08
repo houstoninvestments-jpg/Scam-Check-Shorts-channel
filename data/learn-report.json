@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-07T00:10:07.609Z",
+  "updatedAt": "2026-11-08T01:24:39.248Z",
   "byHook": {
     "would-you-tap": {
-      "videos": 7,
-      "views": 158,
-      "avgWatchPct": 546.3,
-      "avgReward": 0.518
+      "videos": 9,
+      "views": 210,
+      "avgWatchPct": 435.1,
+      "avgReward": 0.473
     },
     "going-around": {
       "videos": 4,
@@ -40,16 +40,16 @@
       "avgReward": 0.516
     },
     "direct": {
-      "videos": 6,
-      "views": 184,
-      "avgWatchPct": 69.8,
-      "avgReward": 0.541
+      "videos": 7,
+      "views": 218,
+      "avgWatchPct": 66.9,
+      "avgReward": 0.514
     },
     "none": {
-      "videos": 7,
-      "views": 138,
-      "avgWatchPct": 520.6,
-      "avgReward": 0.449
+      "videos": 8,
+      "views": 156,
+      "avgWatchPct": 460.9,
+      "avgReward": 0.427
     }
   }
 }

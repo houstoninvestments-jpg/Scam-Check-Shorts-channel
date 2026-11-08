@@ -701,7 +701,17 @@
       "attempts": [
         {
           "startedAt": "2026-11-08T01:21:30.507Z",
-          "runId": "42433855659"
+          "runId": "42433855659",
+          "endedAt": "2026-11-08T01:25:12.248Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (192 pages not yet on the channel)",
+            "Did not pass the checks: Getting a pet? Avoid scams: problems: Sender name 'Golden Paws Breeders' is invented and does not come from the source. It is a plausible real business name, and breeders or kennels with similar 'Golden Paws' names may exist, so the video could appear to accuse a real business. Use an obviously fictional or generic sender label instead. (rewrite 1 of 2)",
+            "Did not pass the checks: Getting a pet? Avoid scams: problems: The description says the pup is 'probably not even real', but the source only says the puppy 'might not even exist'. This is a slight overstatement of the source; it does not change the verdict. (rewrite 2 of 2)",
+            "Passed the checks: Getting a pet? Avoid scams: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

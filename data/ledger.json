@@ -1,5 +1,5 @@
 {
-  "nextNumber": 41,
+  "nextNumber": 42,
   "episodes": [
     {
       "number": 1,
@@ -4234,6 +4234,115 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "5ThN0aWbZsU",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 41,
+      "leadId": "cf93ad87834f",
+      "date": "2026-11-07",
+      "skin": "marketplace",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "not-your-bank",
+      "script": {
+        "scamName": "Fake puppy sale listing",
+        "message": {
+          "sender": "Puppy Listing Seller",
+          "subject": "",
+          "body": "Hi! Yes, the golden retriever puppies are still available. Purebred, papers included, first shots done. $350 each. Only 2 left and 4 other people asking today, so I need full payment up front to hold one. Western Union or MoneyGram only. I ship him tomorrow morning. He is so sweet and ready for his forever home!",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Alerts post 'Getting a pet? Avoid scams', which describes fake puppy ads priced at a few hundred dollars, pressure to act fast before the pups are gone, and scammers insisting you pay up front. The source separately says only scammers say you must pay by wire transfer service, gift cards, a payment app, or cryptocurrency. The sender label is generic and fictional.",
+          "evidence": [
+            {
+              "quote": "Scammers are posting ads (particularly for puppies), pretending these precious pooches are for sale.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            },
+            {
+              "quote": "sometimes advertising purebred puppies for a few hundred dollars when they often cost thousands",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            },
+            {
+              "quote": "they’ll insist you pay for it up front",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            }
+          ]
+        },
+        "hook": "This puppy doesn't exist.",
+        "stampSay": "That puppy is a money trap.",
+        "flags": [
+          {
+            "label": "Way too cheap",
+            "say": "A purebred pup for a few hundred bucks? They usually cost thousands.",
+            "target": {
+              "kind": "text",
+              "match": "$350"
+            },
+            "evidence": {
+              "quote": "sometimes advertising purebred puppies for a few hundred dollars when they often cost thousands",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            }
+          },
+          {
+            "label": "Fake rush",
+            "say": "They push you to act fast before the pup goes to another home.",
+            "target": {
+              "kind": "text",
+              "match": "4 other people asking"
+            },
+            "evidence": {
+              "quote": "pushing you to act fast before they’ve gone to other homes",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            }
+          },
+          {
+            "label": "Wire transfer only",
+            "say": "Only scammers say you must wire the money, since it's hard to get back.",
+            "target": {
+              "kind": "text",
+              "match": "Western Union or MoneyGram"
+            },
+            "evidence": {
+              "quote": "Only scammers say you must pay with gift cards, a payment app, cryptocurrency, or a wire transfer service like Western Union or MoneyGram since it’s hard to get your money back.",
+              "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Search the seller first",
+          "say": "Before you pay a cent, search the seller's name with the words review, scam, or complaint.",
+          "evidence": {
+            "quote": "Search online for the name of the seller or business and words like “review,” “scam,” or “complaint.”",
+            "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams"
+          }
+        },
+        "title": "This Puppy Doesn't Exist",
+        "description": "A cute puppy, a tiny price, and a seller who needs your money today. It's a scam, and the pup might not even exist. Here are the three red flags and the one move that protects you.",
+        "category": "marketplace",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/consumer-alerts/2024/12/getting-pet-avoid-scams",
+          "name": "FTC Consumer Alerts",
+          "capture": "page"
+        }
+      ],
+      "slug": "041-fake-puppy-sale-listing",
+      "status": "published",
+      "category": "marketplace",
+      "costUsd": 0.5936,
+      "renderAttempts": 1,
+      "music": "D fifth 69 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995299,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "NLYGw77kVoA",
       "youtubePrivacy": "public"
     }
   ],

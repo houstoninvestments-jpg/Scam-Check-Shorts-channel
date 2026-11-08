@@ -83,12 +83,12 @@
     "hookVariant": "would-you-tap",
     "cta": "direct",
     "views": 10,
-    "averageViewPercentage": 51.9,
+    "averageViewPercentage": 50.7,
     "engagedViews": 6,
     "viewedPct": 60,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "q9YJmWdzpyc": {
     "videoId": "q9YJmWdzpyc",
@@ -131,12 +131,12 @@
     "hookVariant": "someone-you-love",
     "cta": "direct",
     "views": 4,
-    "averageViewPercentage": 36.8,
+    "averageViewPercentage": 43.3,
     "engagedViews": 1,
     "viewedPct": 25,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "PDWg4vsuruE": {
     "videoId": "PDWg4vsuruE",
@@ -157,12 +157,12 @@
     "hookVariant": "would-you-tap",
     "cta": "soft",
     "views": 13,
-    "averageViewPercentage": 52,
+    "averageViewPercentage": 64.9,
     "engagedViews": 2,
     "viewedPct": 15.4,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "McZQ_QbnNsY": {
     "videoId": "McZQ_QbnNsY",
@@ -183,12 +183,12 @@
     "hookVariant": "someone-you-love",
     "cta": "none",
     "views": 8,
-    "averageViewPercentage": 32.7,
+    "averageViewPercentage": 27.2,
     "engagedViews": 3,
     "viewedPct": 37.5,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "Gf6-efhPvjc": {
     "videoId": "Gf6-efhPvjc",
@@ -196,12 +196,12 @@
     "hookVariant": "real-or-scam",
     "cta": "soft",
     "views": 11,
-    "averageViewPercentage": 34.8,
+    "averageViewPercentage": 35.9,
     "engagedViews": 5,
     "viewedPct": 45.5,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "rcjXyZ9fmEc": {
     "videoId": "rcjXyZ9fmEc",
@@ -235,12 +235,12 @@
     "hookVariant": "someone-you-love",
     "cta": "soft",
     "views": 7,
-    "averageViewPercentage": 57.8,
+    "averageViewPercentage": 27.6,
     "engagedViews": 1,
     "viewedPct": 14.3,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "jAlfW07qbO0": {
     "videoId": "jAlfW07qbO0",
@@ -305,7 +305,7 @@
     "viewedPct": 22.2,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "CZRokYOB3hQ": {
     "videoId": "CZRokYOB3hQ",
@@ -331,7 +331,7 @@
     "viewedPct": 100,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "INAkycQ_Xws": {
     "videoId": "INAkycQ_Xws",
@@ -344,7 +344,7 @@
     "viewedPct": 0,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "I9rFVtM5PZw": {
     "videoId": "I9rFVtM5PZw",
@@ -364,13 +364,13 @@
     "number": 30,
     "hookVariant": "would-you-tap",
     "cta": "direct",
-    "views": 4,
-    "averageViewPercentage": 0,
-    "engagedViews": 0,
-    "viewedPct": 0,
+    "views": 10,
+    "averageViewPercentage": 6.5,
+    "engagedViews": 1,
+    "viewedPct": 10,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-07T00:10:01.482Z"
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   },
   "LCxCdvZ-vAo": {
     "videoId": "LCxCdvZ-vAo",
@@ -397,5 +397,44 @@
     "holdAt10": null,
     "scored": true,
     "measuredAt": "2026-11-07T00:10:01.482Z"
+  },
+  "vlXdAqMaMTc": {
+    "videoId": "vlXdAqMaMTc",
+    "number": 33,
+    "hookVariant": "would-you-tap",
+    "cta": "direct",
+    "views": 34,
+    "averageViewPercentage": 49,
+    "engagedViews": 9,
+    "viewedPct": 26.5,
+    "holdAt10": null,
+    "scored": true,
+    "measuredAt": "2026-11-08T01:24:33.191Z"
+  },
+  "SkdIDHJEyC0": {
+    "videoId": "SkdIDHJEyC0",
+    "number": 34,
+    "hookVariant": "would-you-tap",
+    "cta": "none",
+    "views": 18,
+    "averageViewPercentage": 43.3,
+    "engagedViews": 3,
+    "viewedPct": 16.7,
+    "holdAt10": null,
+    "scored": true,
+    "measuredAt": "2026-11-08T01:24:33.191Z"
+  },
+  "eCVc3lDovKA": {
+    "videoId": "eCVc3lDovKA",
+    "number": 35,
+    "hookVariant": "dont-tap",
+    "cta": "soft",
+    "views": 8,
+    "averageViewPercentage": 22.6,
+    "engagedViews": 2,
+    "viewedPct": 25,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-11-08T01:24:33.191Z"
   }
 }
