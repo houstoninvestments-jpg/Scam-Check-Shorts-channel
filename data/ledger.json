@@ -1,5 +1,5 @@
 {
-  "nextNumber": 42,
+  "nextNumber": 43,
   "episodes": [
     {
       "number": 1,
@@ -4344,6 +4344,119 @@
       },
       "youtubeId": "NLYGw77kVoA",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 42,
+      "leadId": "f02038c03827",
+      "date": "2026-11-08",
+      "skin": "imessage",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Account on hold text",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Dear Customer: We noticed suspicious log-in attempts on your account. Your account is now on hold due to a billing problem. Update your payment details to restore access: https://account-verify.example/update",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FTC Consumer Advice phishing article, which lists these tactics: a generic greeting, a claim of suspicious log-in attempts, an account on hold for a billing problem, and a link to update payment details.",
+          "evidence": [
+            {
+              "quote": "say they’ve noticed some suspicious activity or log-in attempts — they haven’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            },
+            {
+              "quote": "The email says your account is on hold because of a billing problem.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            },
+            {
+              "quote": "The email invites you to click on a link to update your payment details.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            },
+            {
+              "quote": "The email has a generic greeting.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            }
+          ]
+        },
+        "hook": "You get seconds. Read it.",
+        "stampSay": "That link is the whole trap.",
+        "flags": [
+          {
+            "label": "No name used",
+            "say": "It never says your name, and a generic greeting is a sign of a scam.",
+            "target": {
+              "kind": "text",
+              "match": "Dear Customer"
+            },
+            "evidence": {
+              "quote": "The email has a generic greeting.",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            }
+          },
+          {
+            "label": "Made-up login scare",
+            "say": "They say someone tried to log in to your account. They did not.",
+            "target": {
+              "kind": "text",
+              "match": "suspicious log-in attempts"
+            },
+            "evidence": {
+              "quote": "say they’ve noticed some suspicious activity or log-in attempts — they haven’t",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            }
+          },
+          {
+            "label": "Payment update link",
+            "say": "A real company won't text you a link to update your payment information.",
+            "target": {
+              "kind": "text",
+              "match": "https://account-verify.example/update"
+            },
+            "evidence": {
+              "quote": "legitimate companies won’t email or text with a link to update your payment information",
+              "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Call the number you know",
+          "say": "Contact the company through a phone number or website you know is real, not the text.",
+          "evidence": {
+            "quote": "contact the company using a phone number or website you know is real — not the information in the email",
+            "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+          }
+        },
+        "title": "The text that says your account is on hold",
+        "description": "A text claims your account is on hold and sends a link to fix your payment details. Here are three signs it is fake, and the one safe move to make instead.",
+        "category": "bank",
+        "verdict": "scam",
+        "opener": "classic"
+      },
+      "sources": [
+        {
+          "url": "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams",
+          "name": "FTC Consumer Advice",
+          "capture": "page"
+        }
+      ],
+      "slug": "042-account-on-hold-text",
+      "status": "published",
+      "category": "bank",
+      "costUsd": 1.5399,
+      "renderAttempts": 1,
+      "music": "A tritone 81 BPM, 19.9 dB under the voice",
+      "loopSimilarity": 0.994673,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "HO0xhH96RUo",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -4611,6 +4724,16 @@
       "leadId": "real:6be528d7f91b",
       "date": "2026-11-07",
       "reason": "reviews disagree or unsure (unsure / unsure)"
+    },
+    {
+      "leadId": "b4e80b9f1975",
+      "date": "2026-11-08",
+      "reason": "mechanical: readability: sentence has 18 words: \"In this scam, they tell you to send a few hundred dollars on a payment app to begin.\""
+    },
+    {
+      "leadId": "f7b7fe3ad6df",
+      "date": "2026-11-08",
+      "reason": "problems: Flag 3 ('Real checks are mailed') circles the 'Claim now' link and implies that real refunds never come as an online claim. Source 1 only says that the checks in this one PCH case are in the mail. It does not say that legitimate refunds never use online claims, and it even points eligible people to ftc.gov/PCH. Viewers could wrongly treat every online refund-claim process as a scam. The quote supports 'checks were mailed in this case', not a general rule that a claim link is a red flag."
     }
   ],
   "firstUploadCheck": {
