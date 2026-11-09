@@ -1,125 +1,27 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "slot": 3,
   "dryRun": false,
-  "status": "published",
-  "warnings": [
-    "source ny-ag failed: no articles found",
-    "source ca-ag failed: no articles found"
-  ],
+  "status": "skipped",
+  "warnings": [],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-08: first start"
-    },
-    {
-      "step": "scout",
-      "ok": false,
-      "detail": "0 leads, 3 dropped (repeats or pages that can't make a video)"
-    },
-    {
-      "step": "format",
-      "ok": true,
-      "detail": "punch opening"
-    },
-    {
-      "step": "library",
-      "ok": true,
-      "detail": "fresh leads didn't pass; trying the evergreen library (188 pages not yet on the channel)"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Got a text about unpaid tolls? It’s probably a scam: same type (bank) as an earlier video today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Looking for health insurance? Make sure that’s what you’re g: same type (bank) as an earlier video today; waits for another day"
-    },
-    {
-      "step": "same day",
-      "ok": true,
-      "detail": "Think Blake Shelton or Kevin Costner Is Really Messaging You: written as impostor, same as an earlier video today; not checked, waits for another day"
-    },
-    {
-      "step": "check",
-      "ok": false,
-      "detail": "How to Spot FCC Imposters: problems: Minor: the made-up name 'Agent Daniel Reyes' is not checked against real FCC staff. The source notes scammers use names of actual FCC employees, so a generic placeholder or a name confirmed to be fictional would avoid implicating a real person. (rewrite 1 of 2)"
-    },
-    {
-      "step": "check",
-      "ok": true,
-      "detail": "How to Spot FCC Imposters: both reviews agree: scam, no problems"
-    },
-    {
-      "step": "voice",
-      "ok": true,
-      "detail": "AI voice (Kokoro open model), 28.0s"
-    },
-    {
-      "step": "render",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot3/scam-044.mp4 (1080x1920, 28.01s)"
-    },
-    {
-      "step": "cover",
-      "ok": true,
-      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot3/scam-044-cover.jpg (204 KB), loop similarity 0.994828"
-    },
-    {
-      "step": "thumbnail",
-      "ok": true,
-      "detail": "thumbnail set from the cover frame"
-    },
-    {
-      "step": "publish",
-      "ok": true,
-      "detail": "uploaded XCJKAfd3XbI as public"
+      "detail": "slot 3 for 2026-11-08: already posted (or the day was full); this start exits"
     }
   ],
   "summary": {
-    "scam": "Fake government agent voicemail | sources: FCC  (page) | checks: both reviews agree: scam, no problems",
-    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 28.0s",
-    "format": "punch opening, scam",
-    "music": "tension bed on: D with a fifth, 67 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
-    "countdown": "3.0s, red 3-2-1 above the phone (13659/13493/8868 red px), phone screen untouched",
-    "title": "Scam No. 044: This Voicemail Says You're a Criminal",
-    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
-    "page": "https://scamornotdaily.com/scam/044-fake-government-agent-voicemail/",
-    "upload": "XCJKAfd3XbI, public, not locked",
-    "thumbnail": "set: thumbnail set from the cover frame",
-    "cost": "$0.66 for 7 model calls (writer 3x $0.57, checker-b 2x $0.04, checker-a 2x $0.05)"
+    "cost": "$0.00 for 0 model calls ()"
   },
-  "runId": "42545093665",
-  "attempt": 1,
-  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-08-slot3/scam-044.mp4",
-  "episode": 44,
-  "youtubeId": "XCJKAfd3XbI",
+  "runId": "42583483971",
   "cost": {
-    "usd": 0.6644,
-    "calls": 7,
-    "inputTokens": 30693,
-    "outputTokens": 9898,
-    "byRole": {
-      "writer": {
-        "calls": 3,
-        "usd": 0.5729
-      },
-      "checker-b": {
-        "calls": 2,
-        "usd": 0.0447
-      },
-      "checker-a": {
-        "calls": 2,
-        "usd": 0.0469
-      }
-    },
-    "models": [
-      "claude-fable-5-1",
-      "claude-opus-5-5"
-    ]
+    "usd": 0,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "byRole": {},
+    "models": []
   }
 }
