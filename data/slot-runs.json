@@ -759,7 +759,15 @@
       "attempts": [
         {
           "startedAt": "2026-11-09T15:21:39.299Z",
-          "runId": "42643737071"
+          "runId": "42643737071",
+          "endedAt": "2026-11-09T15:30:20.813Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 1 leads, 2 dropped (repeats or pages that can't make a video)",
+            "Did not pass the checks: Consumer Alert:Attorney General James Warns New Yorkers of S: problems: Safe move says 'call the hotline' without saying which one. The source only says 'hotline' next to the online VA account. Viewers should be told to use an official number they find themselves, not one supplied by a message. This is minor, since the shown message contains no number. (rewrite 1 of 2)",
+            "Passed the checks: Consumer Alert:Attorney General James Warns New Yorkers of S: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }

@@ -1,27 +1,104 @@
 {
   "date": "2026-11-09",
-  "slot": 3,
+  "slot": 1,
   "dryRun": false,
-  "status": "skipped",
-  "warnings": [],
+  "status": "published",
+  "warnings": [
+    "source ca-ag failed: no articles found"
+  ],
   "errors": [],
   "steps": [
     {
       "step": "slot",
       "ok": true,
-      "detail": "slot 3 for 2026-11-08: already posted (or the day was full); this start exits"
+      "detail": "slot 1 for 2026-11-09: first start"
+    },
+    {
+      "step": "scout",
+      "ok": true,
+      "detail": "1 leads, 2 dropped (repeats or pages that can't make a video)"
+    },
+    {
+      "step": "format",
+      "ok": true,
+      "detail": "classic opening (control slot)"
+    },
+    {
+      "step": "check",
+      "ok": false,
+      "detail": "Consumer Alert:Attorney General James Warns New Yorkers of S: problems: Safe move says 'call the hotline' without saying which one. The source only says 'hotline' next to the online VA account. Viewers should be told to use an official number they find themselves, not one supplied by a message. This is minor, since the shown message contains no number. (rewrite 1 of 2)"
+    },
+    {
+      "step": "check",
+      "ok": true,
+      "detail": "Consumer Alert:Attorney General James Warns New Yorkers of S: both reviews agree: scam, no problems"
+    },
+    {
+      "step": "voice",
+      "ok": true,
+      "detail": "AI voice (Kokoro open model), 31.2s"
+    },
+    {
+      "step": "render",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-09-slot1/scam-045.mp4 (1080x1920, 31.17s)"
+    },
+    {
+      "step": "cover",
+      "ok": true,
+      "detail": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-09-slot1/scam-045-cover.jpg (166 KB), loop similarity 0.995119"
+    },
+    {
+      "step": "thumbnail",
+      "ok": true,
+      "detail": "thumbnail set from the cover frame"
+    },
+    {
+      "step": "publish",
+      "ok": true,
+      "detail": "uploaded Y7fhbergR-Y as public"
     }
   ],
   "summary": {
-    "cost": "$0.00 for 0 model calls ()"
+    "scam": "Fake veterans benefits text | sources: New York Attorney General 2026-11-09 (page) | checks: both reviews agree: scam, no problems",
+    "voice": "AI voice (Kokoro open model), voice af_heart at speed 1.1, 31.2s",
+    "format": "classic opening, scam",
+    "music": "tension bed on: G with a tritone, 78 BPM; voice -22.3 LUFS, bed -42.3 LUFS (20 dB under)",
+    "countdown": "3.0s, red 3-2-1 above the phone (13657/13502/8870 red px), phone screen untouched",
+    "title": "Scam No. 045: Fake veterans benefits text wants your login",
+    "hashtags": "#ScamOrNot #ImpostorScam #ScamAlert #Shorts",
+    "page": "https://scamornotdaily.com/scam/045-fake-veterans-benefits-text/",
+    "upload": "Y7fhbergR-Y, public, not locked",
+    "thumbnail": "set: thumbnail set from the cover frame",
+    "cost": "$0.40 for 6 model calls (writer 2x $0.30, checker-b 2x $0.05, checker-a 2x $0.05)"
   },
-  "runId": "42583483971",
+  "runId": "42643737071",
+  "attempt": 1,
+  "videoFile": "/home/runner/work/Scam-Check-Shorts-channel/Scam-Check-Shorts-channel/work/2026-11-09-slot1/scam-045.mp4",
+  "episode": 45,
+  "youtubeId": "Y7fhbergR-Y",
   "cost": {
-    "usd": 0,
-    "calls": 0,
-    "inputTokens": 0,
-    "outputTokens": 0,
-    "byRole": {},
-    "models": []
+    "usd": 0.3971,
+    "calls": 6,
+    "inputTokens": 24050,
+    "outputTokens": 5999,
+    "byRole": {
+      "writer": {
+        "calls": 2,
+        "usd": 0.3015
+      },
+      "checker-b": {
+        "calls": 2,
+        "usd": 0.0468
+      },
+      "checker-a": {
+        "calls": 2,
+        "usd": 0.0488
+      }
+    },
+    "models": [
+      "claude-fable-5-1",
+      "claude-opus-5-5"
+    ]
   }
 }

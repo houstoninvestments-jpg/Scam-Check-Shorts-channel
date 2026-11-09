@@ -1,5 +1,5 @@
 {
-  "nextNumber": 45,
+  "nextNumber": 46,
   "episodes": [
     {
       "number": 1,
@@ -4676,6 +4676,111 @@
         "detail": "thumbnail set from the cover frame"
       },
       "youtubeId": "XCJKAfd3XbI",
+      "youtubePrivacy": "public"
+    },
+    {
+      "number": 45,
+      "leadId": "a01ffa5f5507",
+      "date": "2026-11-09",
+      "skin": "android",
+      "slot": 1,
+      "brands": [],
+      "cta": "direct",
+      "hookVariant": "real-or-scam",
+      "script": {
+        "scamName": "Fake veterans benefits text",
+        "message": {
+          "sender": "(202) 555-0147",
+          "subject": "",
+          "body": "Veterans Benefits Center: Your claim is on hold. Confirm your login within 24 hours to avoid losing your benefits. Verify here: benefits-claim.example/verify",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the New York Attorney General alert describing imposter and phishing scams that pose as a government agency to get veterans' logins and personal information.",
+          "evidence": [
+            {
+              "quote": "Imposter or Phishing Scams: Scammers pretend to be an official government agency, family member, or business to get veterans to send money or personal information.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+            },
+            {
+              "quote": "Protect your data. Never share your Defense Finance Accounting Service (DFAS) myPay login or VA.gov login, or other sensitive information.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+            }
+          ]
+        },
+        "hook": "Veterans, you get seconds. Read it.",
+        "stampSay": "A fake benefits office fishing for logins.",
+        "flags": [
+          {
+            "label": "Out of nowhere",
+            "say": "It came out of nowhere, and unexpected texts are ones you shouldn't click or answer.",
+            "target": {
+              "kind": "sender",
+              "match": ""
+            },
+            "evidence": {
+              "quote": "Avoid clicking on and answering unexpected emails, texts, phone calls, or social media messages.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+            }
+          },
+          {
+            "label": "Wants your login",
+            "say": "Your benefits login is yours alone; never share it with anyone who asks.",
+            "target": {
+              "kind": "text",
+              "match": "Confirm your login"
+            },
+            "evidence": {
+              "quote": "Never share your Defense Finance Accounting Service (DFAS) myPay login or VA.gov login, or other sensitive information.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+            }
+          },
+          {
+            "label": "Ticking clock",
+            "say": "The clock is a pressure tactic, and pressure that rushes you should be rejected.",
+            "target": {
+              "kind": "text",
+              "match": "within 24 hours"
+            },
+            "evidence": {
+              "quote": "Reject high-pressure sales tactics that create a sense of urgency.",
+              "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Check your real account",
+          "say": "Log in to your real benefits account yourself, or call the official hotline number you find yourself.",
+          "evidence": {
+            "quote": "Test any benefits-related message for legitimacy. Verify by checking with official sources like your online VA account, or hotline.",
+            "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service"
+          }
+        },
+        "title": "Fake veterans benefits text wants your login",
+        "description": "A text says your veterans claim is on hold and asks you to confirm your login fast. It is an imposter trying to steal your account. Here are three red flags and the one safe move.",
+        "category": "impostor",
+        "verdict": "scam",
+        "opener": "classic"
+      },
+      "sources": [
+        {
+          "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-warns-new-yorkers-scams-targeting-military-service",
+          "name": "New York Attorney General",
+          "capture": "page"
+        }
+      ],
+      "slug": "045-fake-veterans-benefits-text",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.3971,
+      "renderAttempts": 1,
+      "music": "G tritone 78 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.995119,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "Y7fhbergR-Y",
       "youtubePrivacy": "public"
     }
   ],
