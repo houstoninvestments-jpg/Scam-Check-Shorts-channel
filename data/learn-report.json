@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-08T01:24:39.248Z",
+  "updatedAt": "2026-11-09T01:25:03.099Z",
   "byHook": {
     "would-you-tap": {
-      "videos": 9,
-      "views": 210,
-      "avgWatchPct": 435.1,
-      "avgReward": 0.473
+      "videos": 10,
+      "views": 236,
+      "avgWatchPct": 394.3,
+      "avgReward": 0.452
     },
     "going-around": {
       "videos": 4,
@@ -30,26 +30,38 @@
       "views": 77,
       "avgWatchPct": 49.9,
       "avgReward": 0.434
+    },
+    "not-your-bank": {
+      "videos": 1,
+      "views": 21,
+      "avgWatchPct": 68.6,
+      "avgReward": 0.446
+    },
+    "robbery": {
+      "videos": 1,
+      "views": 19,
+      "avgWatchPct": 25.1,
+      "avgReward": 0.227
     }
   },
   "byCta": {
     "soft": {
-      "videos": 8,
-      "views": 259,
-      "avgWatchPct": 58.8,
-      "avgReward": 0.516
+      "videos": 9,
+      "views": 278,
+      "avgWatchPct": 55.1,
+      "avgReward": 0.484
     },
     "direct": {
-      "videos": 7,
-      "views": 218,
-      "avgWatchPct": 66.9,
-      "avgReward": 0.514
+      "videos": 8,
+      "views": 244,
+      "avgWatchPct": 61.9,
+      "avgReward": 0.484
     },
     "none": {
-      "videos": 8,
-      "views": 156,
-      "avgWatchPct": 460.9,
-      "avgReward": 0.427
+      "videos": 9,
+      "views": 177,
+      "avgWatchPct": 417.3,
+      "avgReward": 0.429
     }
   }
 }

@@ -82,8 +82,8 @@
       "sum": 1.7684
     },
     "would-you-tap": {
-      "n": 9,
-      "sum": 4.255
+      "n": 10,
+      "sum": 4.5248
     },
     "someone-you-love": {
       "n": 4,
@@ -92,6 +92,14 @@
     "looks-official": {
       "n": 3,
       "sum": 1.3022
+    },
+    "not-your-bank": {
+      "n": 1,
+      "sum": 0.446
+    },
+    "robbery": {
+      "n": 1,
+      "sum": 0.227
     }
   }
 }

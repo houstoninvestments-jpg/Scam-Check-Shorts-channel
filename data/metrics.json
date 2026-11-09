@@ -88,7 +88,7 @@
     "viewedPct": 60,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "q9YJmWdzpyc": {
     "videoId": "q9YJmWdzpyc",
@@ -136,7 +136,7 @@
     "viewedPct": 25,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "PDWg4vsuruE": {
     "videoId": "PDWg4vsuruE",
@@ -162,7 +162,7 @@
     "viewedPct": 15.4,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "McZQ_QbnNsY": {
     "videoId": "McZQ_QbnNsY",
@@ -182,13 +182,13 @@
     "number": 16,
     "hookVariant": "someone-you-love",
     "cta": "none",
-    "views": 8,
-    "averageViewPercentage": 27.2,
-    "engagedViews": 3,
-    "viewedPct": 37.5,
+    "views": 10,
+    "averageViewPercentage": 22,
+    "engagedViews": 4,
+    "viewedPct": 40,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "Gf6-efhPvjc": {
     "videoId": "Gf6-efhPvjc",
@@ -201,7 +201,7 @@
     "viewedPct": 45.5,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "rcjXyZ9fmEc": {
     "videoId": "rcjXyZ9fmEc",
@@ -234,13 +234,13 @@
     "number": 20,
     "hookVariant": "someone-you-love",
     "cta": "soft",
-    "views": 7,
-    "averageViewPercentage": 27.6,
-    "engagedViews": 1,
-    "viewedPct": 14.3,
+    "views": 10,
+    "averageViewPercentage": 44.6,
+    "engagedViews": 2,
+    "viewedPct": 20,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "jAlfW07qbO0": {
     "videoId": "jAlfW07qbO0",
@@ -305,7 +305,7 @@
     "viewedPct": 22.2,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "CZRokYOB3hQ": {
     "videoId": "CZRokYOB3hQ",
@@ -331,20 +331,20 @@
     "viewedPct": 100,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "INAkycQ_Xws": {
     "videoId": "INAkycQ_Xws",
     "number": 28,
     "hookVariant": "someone-you-love",
     "cta": "none",
-    "views": 7,
+    "views": 8,
     "averageViewPercentage": 0,
     "engagedViews": 0,
     "viewedPct": 0,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "I9rFVtM5PZw": {
     "videoId": "I9rFVtM5PZw",
@@ -364,13 +364,13 @@
     "number": 30,
     "hookVariant": "would-you-tap",
     "cta": "direct",
-    "views": 10,
-    "averageViewPercentage": 6.5,
-    "engagedViews": 1,
-    "viewedPct": 10,
+    "views": 26,
+    "averageViewPercentage": 27.1,
+    "engagedViews": 7,
+    "viewedPct": 26.9,
     "holdAt10": null,
-    "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "scored": true,
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   },
   "LCxCdvZ-vAo": {
     "videoId": "LCxCdvZ-vAo",
@@ -429,12 +429,51 @@
     "number": 35,
     "hookVariant": "dont-tap",
     "cta": "soft",
-    "views": 8,
-    "averageViewPercentage": 22.6,
-    "engagedViews": 2,
-    "viewedPct": 25,
+    "views": 12,
+    "averageViewPercentage": 38.7,
+    "engagedViews": 4,
+    "viewedPct": 33.3,
     "holdAt10": null,
     "scored": false,
-    "measuredAt": "2026-11-08T01:24:33.191Z"
+    "measuredAt": "2026-11-09T01:24:56.730Z"
+  },
+  "fjG6PYirZ8o": {
+    "videoId": "fjG6PYirZ8o",
+    "number": 36,
+    "hookVariant": "real-or-scam",
+    "cta": "direct",
+    "views": 13,
+    "averageViewPercentage": 56.2,
+    "engagedViews": 2,
+    "viewedPct": 15.4,
+    "holdAt10": null,
+    "scored": false,
+    "measuredAt": "2026-11-09T01:24:56.730Z"
+  },
+  "rFwvsW4605o": {
+    "videoId": "rFwvsW4605o",
+    "number": 37,
+    "hookVariant": "not-your-bank",
+    "cta": "none",
+    "views": 21,
+    "averageViewPercentage": 68.6,
+    "engagedViews": 6,
+    "viewedPct": 28.6,
+    "holdAt10": null,
+    "scored": true,
+    "measuredAt": "2026-11-09T01:24:56.730Z"
+  },
+  "XFls0gVzORQ": {
+    "videoId": "XFls0gVzORQ",
+    "number": 38,
+    "hookVariant": "robbery",
+    "cta": "soft",
+    "views": 19,
+    "averageViewPercentage": 25.1,
+    "engagedViews": 4,
+    "viewedPct": 21.1,
+    "holdAt10": null,
+    "scored": true,
+    "measuredAt": "2026-11-09T01:24:56.730Z"
   }
 }

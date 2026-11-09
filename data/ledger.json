@@ -1,5 +1,5 @@
 {
-  "nextNumber": 44,
+  "nextNumber": 45,
   "episodes": [
     {
       "number": 1,
@@ -4568,6 +4568,115 @@
       },
       "youtubeId": "VEKS4HOI3OY",
       "youtubePrivacy": "public"
+    },
+    {
+      "number": 44,
+      "leadId": "70c57e263c69",
+      "date": "2026-11-08",
+      "skin": "voicemail",
+      "slot": 3,
+      "brands": [],
+      "cta": "soft",
+      "hookVariant": "dont-tap",
+      "script": {
+        "scamName": "Fake government agent voicemail",
+        "message": {
+          "sender": "(202) 555-0142",
+          "subject": "",
+          "body": "Transcript: This is an agent with the Federal Communications Commission. Your phone number is under investigation for criminal activity. To avoid arrest, you must verify your Social Security number and pay a fine today using gift cards. Call (202) 555-0142 right now. Failure to respond will result in a warrant.",
+          "hasQr": false,
+          "provenance": "recreated",
+          "provenanceNote": "Recreated from the FCC consumer alert (Source 1), which describes callers claiming a phone number is under investigation for criminal activity, demands for immediate payment or personal information, gift card payment, and threats of action. No agent name is used, because the source warns scammers use names of real FCC employees.",
+          "evidence": [
+            {
+              "quote": "Callers falsely claim that a consumer's phone number is under investigation for criminal activity. It's a scam!",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            },
+            {
+              "quote": "Fraudsters impersonate a government agency or official and claim that immediate payment is needed or that personal information must be verified in order to resolve a problem.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            },
+            {
+              "quote": "Savvy scammers have used the names of actual FCC employees. This makes the call seem more convincing.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            }
+          ]
+        },
+        "hook": "Don't call back. Seriously.",
+        "stampSay": "Fake agent. Real scam.",
+        "flags": [
+          {
+            "label": "Fake investigation",
+            "say": "The agency itself says this exact claim is false, and it's a scam.",
+            "target": {
+              "kind": "text",
+              "match": "under investigation for criminal activity"
+            },
+            "evidence": {
+              "quote": "Callers falsely claim that a consumer's phone number is under investigation for criminal activity. It's a scam!",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            }
+          },
+          {
+            "label": "Gift card payment",
+            "say": "The real agency takes no gift cards, so asking for them is a red flag.",
+            "target": {
+              "kind": "text",
+              "match": "gift cards"
+            },
+            "evidence": {
+              "quote": "We do not accept payment in cash, cash apps, crypto currency, store credit accounts, or gift cards. If someone claiming to be from the FCC asks for such a payment, it's a red flag.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            }
+          },
+          {
+            "label": "Warrant threat",
+            "say": "The real agency never calls and threatens action to get money or your info.",
+            "target": {
+              "kind": "text",
+              "match": "Failure to respond will result in a warrant"
+            },
+            "evidence": {
+              "quote": "The FCC will also never call or text you and threaten to take action if you don’t give us money or personal information.",
+              "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+            }
+          }
+        ],
+        "safeMove": {
+          "label": "Don't call back",
+          "say": "Don't call that number back, and do not respond to the imposter at all.",
+          "evidence": {
+            "quote": "If you think you've been contacted by phone, text, or email by an FCC or government imposter, do NOT respond.",
+            "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters"
+          }
+        },
+        "title": "This Voicemail Says You're a Criminal",
+        "description": "A voicemail says your phone number is under investigation. It demands your Social Security number and gift cards to avoid a warrant. Here is how to spot the fake government agent.",
+        "category": "impostor",
+        "verdict": "scam",
+        "opener": "punch"
+      },
+      "sources": [
+        {
+          "url": "https://www.fcc.gov/consumers/scam-alert/how-spot-fcc-imposters",
+          "name": "FCC",
+          "capture": "page"
+        }
+      ],
+      "slug": "044-fake-government-agent-voicemail",
+      "status": "published",
+      "category": "impostor",
+      "costUsd": 0.6644,
+      "renderAttempts": 1,
+      "music": "D fifth 67 BPM, 20 dB under the voice",
+      "loopSimilarity": 0.994828,
+      "voice": "AI voice (Kokoro open model)",
+      "thumbnail": {
+        "ok": true,
+        "detail": "thumbnail set from the cover frame"
+      },
+      "youtubeId": "XCJKAfd3XbI",
+      "youtubePrivacy": "public"
     }
   ],
   "skipped": [
@@ -4845,6 +4954,11 @@
       "leadId": "f7b7fe3ad6df",
       "date": "2026-11-08",
       "reason": "problems: Flag 3 ('Real checks are mailed') circles the 'Claim now' link and implies that real refunds never come as an online claim. Source 1 only says that the checks in this one PCH case are in the mail. It does not say that legitimate refunds never use online claims, and it even points eligible people to ftc.gov/PCH. Viewers could wrongly treat every online refund-claim process as a scam. The quote supports 'checks were mailed in this case', not a general rule that a claim link is a red flag."
+    },
+    {
+      "leadId": "90d365d4b497",
+      "date": "2026-11-08",
+      "reason": "same type as an earlier video today (impostor)"
     }
   ],
   "firstUploadCheck": {

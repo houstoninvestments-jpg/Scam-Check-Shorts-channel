@@ -759,7 +759,19 @@
       "attempts": [
         {
           "startedAt": "2026-11-09T01:21:40.124Z",
-          "runId": "42545093665"
+          "runId": "42545093665",
+          "endedAt": "2026-11-09T01:25:36.704Z",
+          "ok": true,
+          "why": "posted",
+          "tried": [
+            "Looked for new scams: 0 leads, 3 dropped (repeats or pages that can't make a video)",
+            "Evergreen library: fresh leads didn't pass; trying the evergreen library (188 pages not yet on the channel)",
+            "Held back: Got a text about unpaid tolls? It’s probably a scam: same type (bank) as an earlier video today; waits for another day",
+            "Held back: Looking for health insurance? Make sure that’s what you’re g: same type (bank) as an earlier video today; waits for another day",
+            "Held back: Think Blake Shelton or Kevin Costner Is Really Messaging You: written as impostor, same as an earlier video today; not checked, waits for another day",
+            "Did not pass the checks: How to Spot FCC Imposters: problems: Minor: the made-up name 'Agent Daniel Reyes' is not checked against real FCC staff. The source notes scammers use names of actual FCC employees, so a generic placeholder or a name confirmed to be fictional would avoid implicating a real person. (rewrite 1 of 2)",
+            "Passed the checks: How to Spot FCC Imposters: both reviews agree: scam, no problems"
+          ]
         }
       ]
     }
